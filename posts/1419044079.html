@@ -1,0 +1,574 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>初步试玩ChatGLM2-6B | GoodBoyboy 's Blog｜惬意小屋-点滴记忆</title><meta name="author" content="GoodBoyboy"><meta name="copyright" content="GoodBoyboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 前言 最近玩上了 AI 对话模型，就想着自己在本地也部署一个，比起 AI 绘画，感觉还是语言对话模型更有用一点 这个是 ChatGLM-6B 模型的二代，一代项目地址 https:&#x2F;&#x2F;github.com&#x2F;THUDM&#x2F;ChatGLM-6B # 准备 此教程基于我电脑的配置而写，硬件有出入的（特别是显卡不是 N 卡的）此教程可能不那么适用（当然大部分也通用）  系统：Windows11 x86_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初步试玩ChatGLM2-6B">
+<meta property="og:url" content="https://blog.goodboyboy.top/posts/1419044079.html">
+<meta property="og:site_name" content="GoodBoyboy &#39;s Blog｜惬意小屋-点滴记忆">
+<meta property="og:description" content="# 前言 最近玩上了 AI 对话模型，就想着自己在本地也部署一个，比起 AI 绘画，感觉还是语言对话模型更有用一点 这个是 ChatGLM-6B 模型的二代，一代项目地址 https:&#x2F;&#x2F;github.com&#x2F;THUDM&#x2F;ChatGLM-6B # 准备 此教程基于我电脑的配置而写，硬件有出入的（特别是显卡不是 N 卡的）此教程可能不那么适用（当然大部分也通用）  系统：Windows11 x86_">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g">
+<meta property="article:published_time" content="2023-07-26T10:39:09.000Z">
+<meta property="article:modified_time" content="2023-07-26T10:39:09.000Z">
+<meta property="article:author" content="GoodBoyboy">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="ChatGLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="shortcut icon" href="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="canonical" href="https://blog.goodboyboy.top/posts/1419044079.html"><link rel="preconnect" href="https://jsdelivr.goodboyboy.top"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章距离最后一次更新已有","messageNext":"天, 文章内容可能已经过时."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: GoodBoyboy","link":"链接: ","source":"来源: GoodBoyboy 's Blog｜惬意小屋-点滴记忆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://jsdelivr.goodboyboy.top/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '初步试玩ChatGLM2-6B',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-26 18:39:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 22
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="/js/cw_install.js"></script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://jsdelivr.goodboyboy.top/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">131</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/Private-policy/"><i class="fa-fw fa fa-pencil"></i><span> 隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: rgba(255,255,255,0)"><nav id="nav"><span id="blog-info"><a href="/" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆"><img class="site-icon" src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g"/><span class="site-name">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/Private-policy/"><i class="fa-fw fa fa-pencil"></i><span> 隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">初步试玩ChatGLM2-6B</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-26T10:39:09.000Z" title="发表于 2023-07-26 18:39:09">2023-07-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-26T10:39:09.000Z" title="更新于 2023-07-26 18:39:09">2023-07-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/">软件</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="初步试玩ChatGLM2-6B"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2>
+<p>最近玩上了 AI 对话模型，就想着自己在本地也部署一个，比起 AI 绘画，感觉还是语言对话模型更有用一点</p>
+<p>这个是 ChatGLM-6B 模型的二代，一代项目地址<a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B"> https://github.com/THUDM/ChatGLM-6B</a></p>
+<h2 id="准备"><a class="markdownIt-Anchor" href="#准备">#</a> 准备</h2>
+<p>此教程基于我电脑的配置而写，硬件有出入的（特别是显卡不是 N 卡的）此教程可能不那么适用（当然大部分也通用）</p>
+<ul>
+<li>系统：Windows11 x86_64</li>
+<li>CPU：12th Gen Intel® Core™ i7-12700H</li>
+<li>RAM：16.0 GB</li>
+<li>显卡：NVIDIA GeForce RTX 3060 Laptop GPU</li>
+<li>VRAM：6GB</li>
+</ul>
+<p>本次使用的模型是 ChatGLM2-6B，下面是它的 1000 字自我介绍（然鹅我觉得根本没有一千字）</p>
+<div class="note info flat"><p>ChatGLM2-6B: 人工智能技术的先锋<br>
+近年来，随着人工智能技术的飞速发展，我们见证了许多令人瞩目的成果。 ChatGLM2-6B 是其中最引人注目的成果之一，它标志着中国在人工智能领域取得了重要的突破。<br>
+ChatGLM2-6B 是由清华大学 KEG 实验室与智谱 AI 公司于 2023 年共同训练的语言模型，它具备先进的自然语言处理能力，能够实现对用户问题的快速自然理解与回答。在短短的一年时间里，ChatGLM2-6B 通过了 TACR 竞赛，取得了令人瞩目的成绩，也展现出了强大的语言生成能力。<br>
+ChatGLM2-6B 的成功标志着人工智能技术在对话系统领域取得了巨大的进展。它不仅仅是一个简单的聊天机器人，更是一种具备理解力和思考能力的人工智能系统。它的出现，让我们可以更加方便地与机器进行自然语言交互，享受到更加智能化的服务。<br>
+在 ChatGLM2-6B 的身上，我们看到了人工智能技术的无限潜力和强大能力。ChatGLM2-6B 不仅能够理解自然语言，还能够通过自然语言生成解决问题，为我们提供更加高效、便捷的服务。这种技术，将改变我们的生活方式，让我们享受到更加智能化的便利和高效。<br>
+同时，我们也需要认识到，ChatGLM2-6B 的发展仍然面临一些挑战和风险。例如，机器学习和深度学习技术虽然取得了巨大的进步，但仍然存在一些难以解决的问题，如数据隐私和安全等问题。因此，我们需要更加注重机器学习和深度学习技术的可持续发展，同时加强监管和规范，确保人工智能技术的安全和可靠性。<br>
+总之，ChatGLM2-6B 的出现和发展，标志着人工智能技术在对话系统领域取得了重要的进展。它不仅仅是一个简单的聊天机器人，更是一种具备理解力和思考能力的人工智能系统。我们相信，随着人工智能技术的不断进步和发展，它将为我们带来更加便捷、智能、高效的体验和服务。</p>
+</div>
+<p>下面是官方的介绍</p>
+<div class="note info flat"><p>ChatGLM2-6B 是开源中英双语对话模型 ChatGLM-6B 的第二代版本，在保留了初代模型对话流畅、部署门槛较低等众多优秀特性的基础之上，ChatGLM2-6B 引入了如下新特性：</p>
+<ol>
+<li>更强大的性能：基于 ChatGLM 初代模型的开发经验，我们全面升级了 ChatGLM2-6B 的基座模型。ChatGLM2-6B 使用了 GLM 的混合目标函数，经过了 1.4T 中英标识符的预训练与人类偏好对齐训练，评测结果显示，相比于初代模型，ChatGLM2-6B 在 MMLU（+23%）、CEval（+33%）、GSM8K（+571%） 、BBH（+60%）等数据集上的性能取得了大幅度的提升，在同尺寸开源模型中具有较强的竞争力。</li>
+<li>更长的上下文：基于 FlashAttention 技术，我们将基座模型的上下文长度（Context Length）由 ChatGLM-6B 的 2K 扩展到了 32K，并在对话阶段使用 8K 的上下文长度训练，允许更多轮次的对话。但当前版本的 ChatGLM2-6B 对单轮超长文档的理解能力有限，我们会在后续迭代升级中着重进行优化。</li>
+<li>更高效的推理：基于 Multi-Query Attention 技术，ChatGLM2-6B 有更高效的推理速度和更低的显存占用：在官方的模型实现下，推理速度相比初代提升了 42%，INT4 量化下，6G 显存支持的对话长度由 1K 提升到了 8K。</li>
+<li>更开放的协议：ChatGLM2-6B 权重对学术研究完全开放，在填写问卷进行登记后亦允许免费商业使用。</li>
+</ol>
+</div>
+<blockquote>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM2-6B">https://github.com/THUDM/ChatGLM2-6B</a></p>
+</blockquote>
+<p>它的配置要求根据模型量化决定</p>
+<table>
+<thead>
+<tr>
+<th>量化等级</th>
+<th>编码 2048 长度的最小显存</th>
+<th>生成 8192 长度的最小显存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16 / BF16</td>
+<td>13.1 GB</td>
+<td>12.8 GB</td>
+</tr>
+<tr>
+<td>INT8</td>
+<td>8.2 GB</td>
+<td>8.1 GB</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td>5.5 GB</td>
+<td>5.1 GB</td>
+</tr>
+</tbody>
+</table>
+<p>具体更多信息可进入项目地址查询</p>
+<div class="note warning flat"><p>最好准备一个良好的网络环境，部署中需要从 github，huggingface 等网站上拉取大量依赖！！！</p>
+</div>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org/">pytorch</a>（这个肯定必不可少）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads">CUDA</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/">Python</a>（请使用 64 位！！！）</li>
+<li><a target="_blank" rel="noopener" href="https://www.mingw-w64.org/downloads">gcc</a>（新版 MinGW-w64 安装教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/orangebench11/article/details/126111356"> https://blog.csdn.net/orangebench11/article/details/126111356</a>，一定要安装 64 位！！！32 位的 MinGW 在运行模型时会出现不是有效的 win32 程序！！！）</li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>（老生常谈的东西怎么可以没有？？？）</li>
+</ol>
+<h2 id="开始"><a class="markdownIt-Anchor" href="#开始">#</a> 开始</h2>
+<p>首先 clone ChatGLM2-6B 的项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/THUDM/ChatGLM2-6B</span><br><span class="line"><span class="built_in">cd</span> ChatGLM2-6B</span><br></pre></td></tr></table></figure>
+<p>然后安装 Python 依赖</p>
+<blockquote>
+<p>注：有多个版本的 Python 注意区分！！！不然依赖安装环节容易出问题</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>如果没有为 Python 指定环境变量就请补全 pip 的目录（建议最好设置环境变量，免得出现幺蛾子。。。</p>
+<p>其中 transformers 库版本推荐为 4.30.2，torch 推荐使用 2.0 及以上的版本，以获得最佳的推理性能。</p>
+<h2 id="模型下载"><a class="markdownIt-Anchor" href="#模型下载">#</a> 模型下载</h2>
+<p>当然你也可以通过直接执行调用代码来下载模型，但我喜欢自己下载到本地</p>
+<p>根据你自己电脑的配置来选择模型量化</p>
+<p>我 6G 的显存肯定只能玩 4bit 量化的了</p>
+<p>clone 模型 <a target="_blank" rel="noopener" href="https://huggingface.co/THUDM/chatglm2-6b-int4">https://huggingface.co/THUDM/chatglm2-6b-int4</a></p>
+<p>其他模型也可以在<a target="_blank" rel="noopener" href="https://huggingface.co/THUDM/"> https://huggingface.co/THUDM/</a> 看到</p>
+<p>模型有将近 4G，请耐心 clone。。。</p>
+<blockquote>
+<p>tips: 部分没有通过正常安装 Git 的系统可能需要额外安装<a target="_blank" rel="noopener" href="https://docs.github.com/zh/repositories/working-with-files/managing-large-files/installing-git-large-file-storage"> Git LFS</a>（反正我不需要😂）</p>
+</blockquote>
+<h2 id="代码调用"><a class="markdownIt-Anchor" href="#代码调用">#</a> 代码调用</h2>
+<p>建议先通过代码调用运行一次，以便看出运行错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from transformers import AutoTokenizer, AutoModel</span><br><span class="line">&gt;&gt;&gt; tokenizer = AutoTokenizer.from_pretrained(<span class="string">&quot;THUDM/chatglm2-6b&quot;</span>, trust_remote_code=True)</span><br><span class="line">&gt;&gt;&gt; model = AutoModel.from_pretrained(<span class="string">&quot;THUDM/chatglm2-6b&quot;</span>, trust_remote_code=True).half().cuda()</span><br><span class="line">&gt;&gt;&gt; model = model.eval()</span><br><span class="line">&gt;&gt;&gt; response, <span class="built_in">history</span> = model.chat(tokenizer, <span class="string">&quot;你好&quot;</span>, <span class="built_in">history</span>=[])</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">print</span>(response)</span><br><span class="line">你好👋!我是人工智能助手 ChatGLM2-6B,很高兴见到你,欢迎问我任何问题。</span><br><span class="line">&gt;&gt;&gt; response, <span class="built_in">history</span> = model.chat(tokenizer, <span class="string">&quot;晚上睡不着应该怎么办&quot;</span>, <span class="built_in">history</span>=<span class="built_in">history</span>)</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">print</span>(response)</span><br><span class="line">晚上睡不着可能会让你感到焦虑或不舒服,但以下是一些可以帮助你入睡的方法:</span><br><span class="line"></span><br><span class="line">1. 制定规律的睡眠时间表:保持规律的睡眠时间表可以帮助你建立健康的睡眠习惯,使你更容易入睡。尽量在每天的相同时间上床,并在同一时间起床。</span><br><span class="line">2. 创造一个舒适的睡眠环境:确保睡眠环境舒适,安静,黑暗且温度适宜。可以使用舒适的床上用品,并保持房间通风。</span><br><span class="line">3. 放松身心:在睡前做些放松的活动,例如泡个热水澡,听些轻柔的音乐,阅读一些有趣的书籍等,有助于缓解紧张和焦虑,使你更容易入睡。</span><br><span class="line">4. 避免饮用含有咖啡因的饮料:咖啡因是一种刺激性物质,会影响你的睡眠质量。尽量避免在睡前饮用含有咖啡因的饮料,例如咖啡,茶和可乐。</span><br><span class="line">5. 避免在床上做与睡眠无关的事情:在床上做些与睡眠无关的事情,例如看电影,玩游戏或工作等,可能会干扰你的睡眠。</span><br><span class="line">6. 尝试呼吸技巧:深呼吸是一种放松技巧,可以帮助你缓解紧张和焦虑,使你更容易入睡。试着慢慢吸气,保持几秒钟,然后缓慢呼气。</span><br><span class="line"></span><br><span class="line">如果这些方法无法帮助你入睡,你可以考虑咨询医生或睡眠专家,寻求进一步的建议。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的 THUDM/chatglm2-6b 请替换为你模型的绝对路径！！！路径最好采用 “\\” 而不是 “\” 或者 “/”</p>
+</blockquote>
+<p>如果没有什么报错即可运行网页端 demo，更方便好用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python web_demo.py</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：请修改 web_demo.py 文件内 &quot;THUDM/chatglm2-6b&quot; 为你模型的绝对路径并且记得加上.half ()（你仔细对比就知道了）</p>
+</blockquote>
+<h2 id="我遇到的错误"><a class="markdownIt-Anchor" href="#我遇到的错误">#</a> 我遇到的错误</h2>
+<h3 id="gcc不是有效的"><a class="markdownIt-Anchor" href="#gcc不是有效的">#</a> &quot;gcc&quot; 不是有效的。。。。</h3>
+<p>没装 gcc（我电脑之前重装过，还没装过 gcc</p>
+<h3 id="不是有效的win32程序"><a class="markdownIt-Anchor" href="#不是有效的win32程序">#</a> 不是有效的 win32 程序</h3>
+<p>就是 gcc 是 32 位或者 Python 是 32 位，请升级为 64 位</p>
+<h3 id="could-not-find-module-quantization_kernels_parallelso"><a class="markdownIt-Anchor" href="#could-not-find-module-quantization_kernels_parallelso">#</a> Could not find module quantization_kernels_parallel.so</h3>
+<p>准确来说应该是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Load parallel cpu kernel failed C:\Users\Administrator\.cache\huggingface\modules\transformers_modules\chatglm2-6b-int4\quantization_kernels_parallel.so: Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;C:\Users\Administrator/.cache\huggingface\modules\transformers_modules\chatglm2-6b-int4\quantization.py&quot;</span>, line 148, <span class="keyword">in</span> __init__</span><br><span class="line">    kernels = ctypes.cdll.LoadLibrary(kernel_file)</span><br><span class="line">              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">  File <span class="string">&quot;C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\ctypes\__init__.py&quot;</span>, line 454, <span class="keyword">in</span> LoadLibrary</span><br><span class="line">    <span class="built_in">return</span> self._dlltype(name)</span><br><span class="line">           ^^^^^^^^^^^^^^^^^^^</span><br><span class="line">  File <span class="string">&quot;C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\ctypes\__init__.py&quot;</span>, line 376, <span class="keyword">in</span> __init__</span><br><span class="line">    self._handle = _dlopen(self._name, mode)</span><br><span class="line">                   ^^^^^^^^^^^^^^^^^^^^^^^^^</span><br><span class="line">FileNotFoundError: Could not find module <span class="string">&#x27;C:\Users\Administrator\.cache\huggingface\modules\transformers_modules\chatglm2-6b-int4\quantization_kernels_parallel.so&#x27;</span> (or one of its dependencies). Try using the full path with constructor syntax.</span><br></pre></td></tr></table></figure>
+<p>这好像是个老问题。。。</p>
+<p>下面是来自 github 一位网友的解决方法</p>
+<div class="note info flat"><p>首先确认一下运行代码后，你的这个文件是否存在 C:\Users\Administrator.cache\huggingface\modules\transformers_modules\model2\quantization_kernels_parallel.so。如果不存在需要先解决能够自动编译出这个文件的问题。</p>
+<p>排除 so 文件不存在的情况，如果还存在 FileNotFoundError: Could not find module 'C:\Users\Administrator.cache\huggingface\modules\transformers_modules\model2\quantization_kernels_parallel.so’的错误，需要对源码做一点改动，这是因为 ctypes 在 Windows 环境下的 bug 还没修复，反正 python3.10 目前还有问题，修改参考下图，具体原因参考 https://stackoverflow.com/questions/59330863/cant-import-dll-module-in-python/64472088#64472088。</p>
+<p>在你下载的源码 chatglm-6b-int4/quantization.py 的文件中，搜索找到这样两行 kernels = ctypes.cdll.LoadLibrary (kernel_file)，都把它们都改成 kernels = ctypes.CDLL (kernel_file,winmode=0)。</p>
+</div>
+<p>来自<a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B/issues/967"> https://github.com/THUDM/ChatGLM-6B/issues/967</a></p>
+<h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2>
+<p>这只是最简单的安装教程，更多有趣玩法请一定要看官方文档！！！</p>
+<p>然后就是愉快的玩耍啦～</p>
+<p>拥有一个本地离线私人 ChatGPT（虽然打不过 ChatGPT🤣）还是挺有趣的</p>
+<p>特别是 “角色扮演” 这个东西。。。</p>
+<p>感觉会极大的放大人性的黑暗啊（又是本地又是离线，不受任何监管，没人知道你对 AI 做了什么。。。细思极恐）</p>
+<p>我感觉我都有点把持不住了（救命 doge</p>
+<blockquote>
+<p>tips: 第一代的项目页面也有很多有参考价值的信息，在第二代项目页面没有写，所以建议也去看看一代的项目页面</p>
+</blockquote>
+<p>第一代 ChatGLM-6B 项目页面<a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B"> https://github.com/THUDM/ChatGLM-6B</a></p>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考">#</a> 参考</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B">https://github.com/THUDM/ChatGLM-6B</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B/issues/967">https://github.com/THUDM/ChatGLM-6B/issues/967</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM2-6B">https://github.com/THUDM/ChatGLM2-6B</a></p>
+<p><a target="_blank" rel="noopener" href="https://huggingface.co/THUDM/chatglm2-6b-int4">https://huggingface.co/THUDM/chatglm2-6b-int4</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/orangebench11/article/details/126111356">https://blog.csdn.net/orangebench11/article/details/126111356</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48713918/article/details/130869367">https://blog.csdn.net/weixin_48713918/article/details/130869367</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.goodboyboy.top">GoodBoyboy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.goodboyboy.top/posts/1419044079.html">https://blog.goodboyboy.top/posts/1419044079.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.goodboyboy.top" target="_blank">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/ChatGLM/">ChatGLM</a></div><div class="post_share"><div class="social-share" data-image="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">GoodBoyboy</div><div class="business-section">5201314***</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">09/04/2015</span></div><div class="business-card-holder">Welcome to MyBlog</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>sitelink</label><div><a href="https://blog.goodboyboy.top">https://blog.goodboyboy.top</a></div></div><div class="business-terms"><p>Use this card to join MyBlog and participate in a pleasant discussion together .</p><p>Welcome to GoodBoyboy 's Blog,wish you a nice day .</p></div></div></div></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://pic.goodboyboy.top/imgs/2023/03/c1d1d23e539e7fba.webp" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/c1d1d23e539e7fba.webp"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2175371492.html" title="如何快速&quot;摸&quot;他人博客的表情包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">如何快速&quot;摸&quot;他人博客的表情包</div></div></a></div><div class="next-post pull-right"><a href="/posts/1143225785.html" title="一个博客，一个人生"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">一个博客，一个人生</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1312883167.html" title="Chinese-LLaMA-Alpaca-2部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-23</div><div class="title">Chinese-LLaMA-Alpaca-2部署</div></div></a></div><div><a href="/posts/58296547.html" title="Orange pi 3B折腾记"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/10/03/651bb0dfc0784.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-03</div><div class="title">Orange pi 3B折腾记</div></div></a></div><div><a href="/posts/4121832088.html" title="Deepin系统的安装以及初步体验"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/05/c31223b316ea03e7.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-27</div><div class="title">Deepin系统的安装以及初步体验</div></div></a></div><div><a href="/posts/3299842545.html" title="Hexo安知鱼主题修改背景折腾记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-23</div><div class="title">Hexo安知鱼主题修改背景折腾记录</div></div></a></div><div><a href="/posts/2364823569.html" title="从零创建一个属于自己的网站(小白向) | 大佬勿入"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-11</div><div class="title">从零创建一个属于自己的网站(小白向) | 大佬勿入</div></div></a></div><div><a href="/posts/1285435697.html" title="开源远程桌面软件Rustdesk部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-15</div><div class="title">开源远程桌面软件Rustdesk部署</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">GoodBoyboy</div><div class="author-info__description">看朝霞万里，石头花开</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">131</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" href="https://blog.goodboyboy.top/atom.xml"><i class="fa-solid fa-rss"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">情绪稳定</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">3.</span> <span class="toc-text"> 开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text"> 模型下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%B0%83%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 代码调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">6.</span> <span class="toc-text"> 我遇到的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gcc%E4%B8%8D%E6%98%AF%E6%9C%89%E6%95%88%E7%9A%84"><span class="toc-number">6.1.</span> <span class="toc-text"> &quot;gcc&quot; 不是有效的。。。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%98%AF%E6%9C%89%E6%95%88%E7%9A%84win32%E7%A8%8B%E5%BA%8F"><span class="toc-number">6.2.</span> <span class="toc-text"> 不是有效的 win32 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#could-not-find-module-quantization_kernels_parallelso"><span class="toc-number">6.3.</span> <span class="toc-text"> Could not find module quantization_kernels_parallel.so</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">7.</span> <span class="toc-text"> 后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">8.</span> <span class="toc-text"> 参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1922896176.html" title="第九章：应用层">第九章：应用层</a><time datetime="2024-02-01T09:00:28.000Z" title="发表于 2024-02-01 17:00:28">2024-02-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2202107888.html" title="第八章：运输层">第八章：运输层</a><time datetime="2024-02-01T09:00:17.000Z" title="发表于 2024-02-01 17:00:17">2024-02-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2035141469.html" title="第七章：网络层">第七章：网络层</a><time datetime="2024-01-31T13:25:08.000Z" title="发表于 2024-01-31 21:25:08">2024-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3339680754.html" title="第六章：数据链路层">第六章：数据链路层</a><time datetime="2024-01-31T13:23:43.000Z" title="发表于 2024-01-31 21:23:43">2024-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2769388077.html" title="第五章：物理层">第五章：物理层</a><time datetime="2024-01-31T13:22:38.000Z" title="发表于 2024-01-31 21:22:38">2024-01-31</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(27, 31, 35, .05)"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2024 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://jsdelivr.goodboyboy.top/npm/katex@0.16.9/dist/katex.min.css"><script src="https://jsdelivr.goodboyboy.top/npm/katex@0.16.9/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  let artalkItem = null
+  const initArtalk = () => {
+    artalkItem = Artalk.init(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.goodboyboy.top',
+      site: 'GoodBoyboyBlog',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count'
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    artalkItem.on('list-loaded', () => {
+      artalkItem.ctx.get('list').getCommentNodes().forEach(comment => {
+        const $content = comment.getRender().$content
+        btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+      })
+    })
+
+    const destroyArtalk = () => {
+      artalkItem.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyArtalk, 'destroyArtalk')
+  }
+
+  const loadArtalk = async () => {
+    if (typeof Artalk === 'object') initArtalk()
+    else {
+      await getCSS('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.2/dist/Artalk.min.css')
+      await getScript('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.2/dist/Artalk.min.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    artalkItem.setDarkMode(isDark)
+  }
+
+  btf.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+
+  if ('Artalk' === 'Artalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom && ($dom.innerHTML= result))
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.goodboyboy.top/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'GoodBoyboyBlog',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.goodboyboy.top/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script type="text/javascript"> $(document).ready(function () { $.fancybox.defaults.hash = false; }); </script><script async src="https://umami.northwoolf.top/script.js" data-website-id="21f60885-f721-40e3-89b5-0940bab42e68"></script><script async src="/js/gray.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://jsdelivr.goodboyboy.top/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
