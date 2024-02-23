@@ -614,7 +614,7 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/emotion/ikun.json</loc>
+    <loc>https://blog.goodboyboy.top/emotion/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A8%E6%80%81.json</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -623,7 +623,7 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/emotion/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A8%E6%80%81.json</loc>
+    <loc>https://blog.goodboyboy.top/emotion/ikun.json</loc>
     
     <lastmod>2023-08-30</lastmod>
     
@@ -1379,14 +1379,7 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/v2ray/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/web%E9%9D%A2%E6%9D%BF/</loc>
+    <loc>https://blog.goodboyboy.top/tags/c/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1407,28 +1400,14 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/c/</loc>
+    <loc>https://blog.goodboyboy.top/tags/v2ray/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%94%A0%E5%97%91/</loc>
+    <loc>https://blog.goodboyboy.top/tags/web%E9%9D%A2%E6%9D%BF/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1436,62 +1415,6 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E4%B8%AD%E7%A7%8B/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%96%B0%E5%B9%B4/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%B0%B4%E6%96%87/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%AE%B6%E6%9C%89%E5%A4%A7%E7%8C%AB/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%B8%B8%E6%88%8FPV/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E7%94%BB%E8%B4%A8%E4%BF%AE%E8%A1%A5/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/emo/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E4%B9%90%E5%AD%90/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1533,21 +1456,56 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E9%A9%AC%E7%94%B2/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E5%94%A0%E5%97%91/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E4%B8%AD%E7%A7%8B/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E4%B9%90%E5%AD%90/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E5%AE%B6%E6%9C%89%E5%A4%A7%E7%8C%AB/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%B8%B8%E6%88%8FPV/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E7%94%BB%E8%B4%A8%E4%BF%AE%E8%A1%A5/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1575,21 +1533,42 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/Orange-pi/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E6%96%B0%E5%B9%B4/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E6%B0%B4%E6%96%87/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E9%A9%AC%E7%94%B2/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/emo/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1632,6 +1611,27 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/OATH/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/Orange-pi/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1785,6 +1785,13 @@
   </url>
   
   <url>
+    <loc>https://blog.goodboyboy.top/tags/wiper4/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/tags/n2n/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1800,13 +1807,6 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/%E8%81%94%E6%9C%BA/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/wiper4/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1855,13 +1855,6 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/Stable-diffusion/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.goodboyboy.top/tags/SoftEther/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1870,6 +1863,13 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/VLAN/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/Stable-diffusion/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1897,6 +1897,20 @@
   </url>
   
   <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/Gitea/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/tags/adobe/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1911,14 +1925,14 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/Gitea/</loc>
+    <loc>https://blog.goodboyboy.top/tags/Hexo/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/</loc>
+    <loc>https://blog.goodboyboy.top/tags/WebPush/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1953,21 +1967,14 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/Hexo/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/WebPush/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1988,6 +1995,13 @@
   </url>
   
   <url>
+    <loc>https://blog.goodboyboy.top/tags/https/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/tags/Git/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1995,7 +2009,21 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/https/</loc>
+    <loc>https://blog.goodboyboy.top/tags/CustomSkinLoad/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/Minecraft/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2023,49 +2051,7 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/tags/CustomSkinLoad/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/Minecraft/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.goodboyboy.top/tags/skin/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/Hypixel/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%8A%A0%E9%80%9Fip/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2093,28 +2079,21 @@
   </url>
   
   <url>
+    <loc>https://blog.goodboyboy.top/tags/Hypixel/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E5%8A%A0%E9%80%9Fip/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/tags/%E7%89%88%E6%9D%83/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/butterfly/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2163,6 +2142,13 @@
   </url>
   
   <url>
+    <loc>https://blog.goodboyboy.top/tags/butterfly/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -2171,27 +2157,6 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/%E7%BB%83%E8%BD%A6/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E5%8D%97%E6%98%8C/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E6%99%AE%E9%80%9A%E8%AF%9D/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/tags/%E8%80%83%E8%AF%95/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2213,6 +2178,41 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%99%AE%E9%80%9A%E8%AF%9D/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E8%80%83%E8%AF%95/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E5%8D%97%E6%98%8C/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2263,14 +2263,14 @@
 
   
   <url>
-    <loc>https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/</loc>
+    <loc>https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2291,14 +2291,14 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/Windows/</loc>
+    <loc>https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/Linux/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/Linux/</loc>
+    <loc>https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/Windows/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2389,13 +2389,6 @@
   </url>
   
   <url>
-    <loc>https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%A5%E5%B8%B8/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -2404,6 +2397,13 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2024-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/</loc>
     <lastmod>2024-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
