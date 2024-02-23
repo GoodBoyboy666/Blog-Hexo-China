@@ -1,6 +1,6 @@
 //来自https://zhuanlan.zhihu.com/p/514814219
 window.onload = function () {
-    var url = "https://v1.hitokoto.cn/?c=d&encode=text"; //需要获取的api链接
+    var url = "https://hitokoto.api.goodboyboy.top/?c=d&encode=text"; //需要获取的api链接
     var xhr = createXHR();
     xhr.open("GET", url, false);
     xhr.send(null);
