@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-03-06T09:16:07.000Z</updated>
+  <updated>2024-03-09T07:11:30.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新增外设成员啦——显示器AOC Q27G2S/D</title>
+    <link href="https://blog.goodboyboy.top/posts/1049274587.html"/>
+    <id>https://blog.goodboyboy.top/posts/1049274587.html</id>
+    <published>2024-03-09T07:11:30.000Z</published>
+    <updated>2024-03-09T07:11:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前因"><a class="markdownIt-Anchor" href="#前因">#</a> 前因</h2><p>因为笔记本对于我自己来说方便很多，所以当初就买的笔记本当我的主力生产工具。</p><p>平时写代码，看电影，玩游戏都是用的自己的笔记本，屏幕是 15.6 英寸的。</p><p>屏幕素质倒是还可以，2k165hz，100% DCI-P3，面板是 IPS，主要是感觉还是有点小……</p><p>一开始到没觉得什么，直到一次偶然的机会去网吧包夜（详情可以去看我去南昌旅游那几篇日记），网吧的大曲面屏给我的视觉冲击效果比我的笔记本强太多了，大概是 32 寸的屏幕左右，用来看坤哥超带劲（大雾）。</p><p>虽然屏幕素质一般般，分辨率是 1080 的屏幕，但是屏幕大带来的视觉效果确实挺震撼的……</p><p>后来在上机实验课时使用教室的电脑写代码，显示器尺寸大概是 23.5 寸的，感觉比在自己笔记本小屏幕上写舒服太多了。</p><p>而且平时因为有存钱的习惯，买了显示器后也不会影响到我的正常生活。</p><p>于是乎，为了能够提升我的代码生产力（<s>bushi</s>），我决定升级我的显示设备（别人都能 648 为什么我不可以，我也要 648 一下 doge）。</p><h2 id="选择"><a class="markdownIt-Anchor" href="#选择">#</a> 选择</h2><p>在网上找了一圈，一开始是看的 HTK 的显示器，但是网上的评论说品控太差了，所以便放弃了（要是品控没那么恐怖的话我感觉还是蛮不错的）</p><p>接着经过学长的推荐，我打算在 AOC 里找找有没有合适的型号，然后我就看到了 Q27G2S/D 这款。</p><p>而且刚好是京东促销 + 官方升级这款型号的面板（虽然参数上去了但是砍掉了硬件防蓝光），好像是从群创换成了京东方，因为好像是去年 11 月份换的，网上大多都还是旧版型号的资料……</p><p>最后是 1199 买下了它。</p><h2 id="配置"><a class="markdownIt-Anchor" href="#配置">#</a> 配置</h2><ul><li>尺寸：27 英寸</li><li>面板类型 IPS</li><li>刷新率：180hz</li><li>HDR：HDR 400 认证</li><li>静态对比度：1200:1</li><li>显示颜色：10bit</li><li>色域：99% sRGB 覆盖率（CIE 1931）92% DCI-P3 覆盖率（CIE 1976）</li></ul><p><img src="https://pic.goodboyboy.top/imgs/2024/03/09/swvkxr.webp" alt="配置图片"></p><h2 id="收货"><a class="markdownIt-Anchor" href="#收货">#</a> 收货</h2><p>京东快递确实是真的快，上午下单下午就到了。</p><p>本来是打算体验一下送货上门的，结果可能是因为学校的规定所以就放到菜鸟驿站了（md 为此我还专门把地址改到了寝室号）。</p><p>在驿站拿到显示器后第一感觉就是大，然后就是重（后来看好像总重有 8kg 多），把显示器从驿站提到寝室直接累出一身汗……</p><h2 id="开箱-组装"><a class="markdownIt-Anchor" href="#开箱-组装">#</a> 开箱、组装</h2><p>不得不说，这台显示器说明书上面的组装说明感觉说了和没说一样。图也是狗屁看不懂…… 于是我把说明书上的注意事项看了后直接开始组装。</p><p>不过幸好组装还是蛮简单的，把底座和支架接在一起，拧紧底座上的不可拆卸螺丝，最后再把支架扣在显示器背板上就行了。</p><p>然后就是上电开机！</p><h2 id="开机"><a class="markdownIt-Anchor" href="#开机">#</a> 开机</h2><p>把各种线材接好，打开电脑切换屏幕。</p><p>刚开始打开的时候屏幕有局部色彩花屏的情况，当时还一脸问号，怀疑是不是自己买的 HDMI 线材有问题（附赠的是 DP 线，但是我笔记本只有含 DP 的 type-c 接口，然而转换器买了还没到），因为这个花屏像是信号被干扰的那种色彩花屏，不是损坏的那种花屏，所以我觉得应该不是显示器问题（显示器外包装也没有破损的情况）。</p><p>之后发现原来是自己笔记本没接电源，显卡以节能模式运行才导致的问题。</p><h2 id="测试-整理"><a class="markdownIt-Anchor" href="#测试-整理">#</a> 测试、整理</h2><p>先把坏点测了一遍，发现屏幕有一个坏点，其他的倒是没什么问题。</p><p>之后又测了一些显示器水平的一些项目，不过这个价位的显示器也就不期待它有专业显示器的成绩了……</p><p>测试完成后就正式布置显示器（因为桌面之前的布局放不下显示器）</p><p>东整整西整整终于把显示器布置好并把外包装收拾好了（退换货是需要外包装的，建议至少保留 15 天）</p><h2 id="使用体验"><a class="markdownIt-Anchor" href="#使用体验">#</a> 使用体验</h2><p>先是测试了几款游戏（LOL,CS2，只狼等），在默认配置下感觉还不错（受限于 HDMI2.0，刷新率只开得到 144hz），大屏幕打游戏就是爽，拥有网吧一样的游戏体验加上寝室安静舒适的环境，直接爽飞天。</p><p>然后又测试了一下电影之类的视频情况，感觉 92% 的 P3 和我原来笔记本的 100% P3 好像也没啥区别？反正我是看不出来……</p><p>同样是受限于带宽，10bit 好像也开不上去……（等转换器到了再测）</p><p>HDR 倒是可以开，不过有两种 HDR。一种是在显示器设置里开启 HDR，一种是在 Windows 设置里开启 HDR（接管显示器 HDR）。</p><p>显示器的 HDR 开启后在测试有 HDR 的电影时感觉确实暗部细节清楚很多</p><p>Windows 的 HDR 开启后感觉可以直接亮瞎我的眼睛…… 亮度无法调节，显示器设置里的亮度也变成 100 并且直接被锁死，HDR 模式显示由系统控制。。。</p><p>最后还是选择开启显示器的 HDR，Windows 那个爆炸亮度的 HDR 还是算了……</p><p>至于写代码，大屏就是爽，这个没得说的，这篇文章也是用这台显示器写的，嘎嘎舒服～</p><p>这台显示器没有内置音频设备，外放只能靠笔记本的扬声器，耳机的话倒是有蓝牙耳机无所谓。</p><p>不过笔记本扬声器的杜比音效确实不错，环绕音做的挺好，给我的感觉就像声音是显示器发出来的一样。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>存了好久的钱突然花了还有点舍不得嘞……</p><div class="note warning flat"><p>请理性消费哦～</p></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前因&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前因&quot;&gt;#&lt;/a&gt; 前因&lt;/h2&gt;
+&lt;p&gt;因为笔记本对于我自己来说方便很多，所以当初就买的笔记本当我的主力生产工具。&lt;/p&gt;
+&lt;p&gt;平时写代码，看电影，玩游戏都是用的自己的笔记本，屏幕</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="外设" scheme="https://blog.goodboyboy.top/tags/%E5%A4%96%E8%AE%BE/"/>
+    
+    <category term="显示器" scheme="https://blog.goodboyboy.top/tags/%E6%98%BE%E7%A4%BA%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>暮色遗梦 | 第六章 晋升</title>
