@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>一款好用的v2ray的web管理面板-v2-ui | GoodBoyboy 's Blog｜惬意小屋-点滴记忆</title><meta name="author" content="GoodBoyboy"><meta name="copyright" content="GoodBoyboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这里有东西被加密了，需要输入密码查看哦~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一款好用的v2ray的web管理面板-v2-ui">
+<meta property="og:url" content="https://blog.goodboyboy.top/35.html">
+<meta property="og:site_name" content="GoodBoyboy &#39;s Blog｜惬意小屋-点滴记忆">
+<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦~">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g">
+<meta property="article:published_time" content="2020-02-06T07:31:25.000Z">
+<meta property="article:modified_time" content="2020-02-06T07:31:25.000Z">
+<meta property="article:author" content="GoodBoyboy">
+<meta property="article:tag" content="v2ray">
+<meta property="article:tag" content="web面板">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="shortcut icon" href="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="canonical" href="https://blog.goodboyboy.top/35.html"><link rel="preconnect" href="https://jsdelivr.goodboyboy.top"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章距离最后一次更新已有","messageNext":"天, 文章内容可能已经过时."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: GoodBoyboy","link":"链接: ","source":"来源: GoodBoyboy 's Blog｜惬意小屋-点滴记忆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://jsdelivr.goodboyboy.top/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一款好用的v2ray的web管理面板-v2-ui',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-02-06 15:31:25'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 22
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="/js/cw_install.js"></script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/tianli_gpt.css"><style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://jsdelivr.goodboyboy.top/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">168</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: rgba(255,255,255,0)"><nav id="nav"><span id="blog-info"><a href="/" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆"><img class="site-icon" src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g"/><span class="site-name">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">一款好用的v2ray的web管理面板-v2-ui</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-06T07:31:25.000Z" title="发表于 2020-02-06 15:31:25">2020-02-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-02-06T07:31:25.000Z" title="更新于 2020-02-06 15:31:25">2020-02-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BA%94%E7%94%A8/">应用</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BA%94%E7%94%A8/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="一款好用的v2ray的web管理面板-v2-ui"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="80eeffa258f928ebf21f35362274da327e314fa1c199f7f8d1b283f86d00e22c">be9d6234909b4c5ef701f980ee3d9fa3a4b39e7f7c903d2e720f5757d6a51411f0a9f7d3888a348a1a08f2b9fbd0f4a6983a1e986fb6a06d451c08a136994fd3a4d5d557ae5b6dbbb4e5c7e794047312293168aeac0d9af7506c4dcdcac593ec6f4750823243d49265ec6d68ae4e531937993cc99a77d1882d30a358031998bba04454ccbdd2e2f4c28e7ccc45a521311a3e6e779726ba88ea08b4be3d0a364ca9d666a16df567ac930f6e1ee95689dfe5fc84ab29c6ff6831b6292e8d0dedc10083def646f1cad2070205d9168df8b117c99b5f26ac86df7b1678f1cb1d9805b38b10f5261fe18485c5047c1b8b641f179288110d4f241acebe28a26f5172939a07f112458dd5cf5ef54c4e1665d59b2ff1af6c7ff73469c2b19096b062dc2a9de200aa09ae008616d1ccf534b6751a4205393842afd5597076df3b8e3a7e6ff7dccf2b9dbe1dd689f9f3f3438a184e7ab8a141c5c51e47342941124870b3d1ec0aca65957415aede573aac95110dbdaaa676b9e64e001f9a4e5e31f6572eb974cc2f29d5ee23238138b538239a3dd9df583e4175161f4b6dd914aa5d53cecbf43b5a491aec2674af261bab9c463d475634baf466a62b7c36f96abb0771b14a6c3811eea2d421801112e9f4f9b99f55cf185c54bce2a62c6c92c990a819d8d44fe88257f0b6c202a24e3e120fd5a65671cb97898d7345a802406ae659b1c3a1354f31835150570a9fc70953b90ee85a075431808da023aa4e0664ae427fde04853c8145a6a9bd8ee1c657e08eafef519fea48f2393322fb415c2d18ccd5bbaf1263a451496f673fd10900ae2f05c35cc09f0c0f1ae2212fdf08f6b9263519e3daaf31b109051998ed9936e629a63c4daa2895df8aac3e77f37a92415a5f9fd859c99113bc255cf395fbcacfd2df52225e42b96197ef6a13095209faf7f282869da6f45c956134b11270c38eb61f2eb505a228b3493c7f6c6288211244a42b3e855ad549450a76c90de530f14c2cbb660968794664019e929cd132ea6cd601bc79e03a30fedab888688deab4e53d6d00fdcd0e43e9b472fe6469827392ef0249c5c0890ab06ec8aeef854469d85f39bd54632205b9f39fb0b939e99d435cb346e1a689b2390c4ec9e970cdf885fd49d728ccbe243ecebd3e8ea660ef1047c50d5f4d62c543eeda5e03d4c8f7da448cb193edf3aa938bb3d1a3d226afb7e9a5ace77b625070c8e9b6e8dcfada447cd8733e4f35690ffd0157f2c9f0b69033f096f5ba102cee62b7b4a9f2c3ea331e5985bd90dc6c5bf575015a94a79ff0f8ad42ce30369a88583b66668fbc304514a445f4b1f78dc856d271df184554b4765b9cf98fa1c8304db7f105776a95af574ce189d2e91657064498e147f89ab0dbed823148b5a8fa4105a40263aee851201ddae18986aec98aa183f94e19ee1501446eb089e1158c39a1de30db7290c6c4bc953c3d27e1c9f26b35033f47141eb45e4f33a3f26bc7d14ba330e7b7fbf355aff2bd8177ad16f116985b09ee82aaecb2217721337e89b243926b418d7e4ff5f934c03c60014c9ecadf7f360d9af9d2af77a73deac7f21102834412ab2687f5bc5b2f87d466005b5bad11a534f3e3d177d5e459ef65951f0353304648a0edf55d7bafbc2f767df307abd7e5ad0eed96f1dee9d9d7d22b323dc17fb1b8477cc48253f226d88faecde550b675e7bc593e8d33f38a079e40e0ec3f70743278b474a5318e78257098a27b951ffe75492ccddc5231afee2c844859b1c15931d2c3449af047125eb8db57a4a53af1287ed7596af202b1f515dedb1049cc910d05e3507ff58f3a0013d9e3f0550ef3c527f0d06700414d0923806bd6849060211af71d68de12c30e886070de868899302174743c3d9d6f4886ebeccf7c85b6bfc95539be7c6724a95a5026161f18b183ae3eecd3abde1a933f7aac38cf4408aaa0ec8590057ec3e3d4dc634dab894d445c7df9aa9142ba1c59a9b67c607feaec2f1c4ca0eaeb5b38303a8f1572c55816d909aac0c603621662b0fb0f379c0e2d238ef6b0424a8c9f564b8bebc6020d12c683316f0a88dbc9dbce8cc852a9f7a33f61089202ea57d7aa2f05d4b32751215cc55899fdf0c94405ac8ea8ac3d45a0326acb90cc9018814f63c2788928d7bc353e9e62c512bc0b7b92ea094633b19701855deb2734c7a6cc0b5713ab0a7fb57e61179410badaf38506e7973de2a3b34623d8ed7d6e5f1ec53d0b106baea2028068c6ab9ed55359fe39203e5d918f948d373079d10f0304cd2b2856b1ce05dfd1320a3c5a2558267d4f9a67745aa3f2f2fc2f33222abb9064ce32b9ed1db47ab0fd608952f810eb035b5eb025525dc20eb1475e8bd6295d41521f7e7a595056623296ba62fa2fb6f531d387f9a83fc2c54b93713d0f22118f698d83d530b7d89b942030032b17063be32be90735180df1281d20d74c2426d0a1de92afaf068f1a78f443182645215f93e890555b53306dc0aa114d57cc116e556c186194d33547b13c559308c937f23b5d8c5436d15849799c28a6bc0939b62cb9559dfd6fc5915b50e337a70b9f7eb22664947d03331a274540d1f610934ac397691323dcf90cf8a79f8ab0f7397ef3c56129eca4a2a52a00fceed3314dec10dc5bcab5660ca51f0c0edb5b5be011a0ffcf1bbb3153f1cd2c724851ece193e96154e3eadacd5969ffbdfb13bf337a721e8e691e101247488a4db3524bfc8b69a64141b3ca475b0472b675e06b351baa033d250df68daf2f322e596c84f5e5ccfaa03bbae669b12f620f307bcf2a9ec6bd1e9701a646a7fdd7a37e33ffda36ce2145841d5ca7ec9c601c50fa2c82427b919d7d668c126d4e05fb60c16a89c68fd4dda60da6e2adbecf841eb2f5ee95365363791c23ae6844c29457820f53bd77fe2ae14bfb358c811f218803cf6b13ed40c6903a210aa5d433dbcadde2f9b8ccba11ffff38481ab0bfcf9817b7fdbfb5e946c6d6fd4e1a5d711801abd0270dee0d2c2b969ef19223f4efd96a58d8cddbbb8fa5490d1df7bf4b6c631f79e2dc3ee33b763537d12c42a60a81dd8f936e66a092c1870d3ad41cb9204f7acf6c0a0c395f5bda3f460850ff7b86a04032e788c42150b0f0e3b33269dd66a570167d8db3e74bbc940806c16508513dc2ad1b66370e7ef18a1bf4586a4b353e93048176099d7c0c7bf6e8fa54674869959ebd45e17972a0b3eced8667f4cea5398c232e9d97bcdac885f456329f8abfe296b022c6e6f6287edf3d0e9043048e965b5da00310dcc0bdc8b0ac57dce2c9fdb7f67a0ccaeddbd7af626acf89ae16e43fcc9b26bc546a5cb873c89e25deec9fbcb6770ed173074a119609d41837f685c2dd453b57ebf686abb6b6020a44d3c2ff832a5cb9c1f06b02bc522cec8b70742a14a9db5124c6fcc43a096c35e390ae77228d61faf807c104ffdca1e2af1ad3a044fad7dc0a5547ff15838628cd4f7230b4bf4f1be0988951aeacd5782015fe2c10024c3952888e0e737be679ea89165769932812764baa2a4756898e78afe7bd731e500b411bf66e8f197ba233e2770335ec43a659ed28c9b2350ece05117d540f8965c2f6242f8ab40aab0e356ac3892224afe94b505c525b4fa3c25fcb28b7640edb1f326154f989ba680130cda5d73fb4b2388439d337280e9b2b3ecb42ef0b73867e917e5885677e07638f0951d04e175f021b0e18ef60a2358b7428698814545a2ed0fb858a4fba7a8778a5ec046c48840babb4a8a51bca1083f4e70a5d4225fe90c990ede2257cf656f79a12da72be7d9bed90f0c74da7a10edad2a13dd4398b3901a89a9ee9488a587c778c987e6e21c892a3b3d2f753b9009cdd7ea55230bc794c1a64b303602db5dc95130594cd2b6c6122b64f776e6682370fae3f571f251ac36e1ed4d184f4d7d59c763db4bc2610d58e6ac7c488f77c7ecd60bfbf53b496db395ec7581aa1f93432b4c898790d235dfdd96ea5e77790c3aa556850f2b6c27dcbb346cf4cb336e696bb02d1e6720a4c9ee4ae75940bd820e11432a5454a5ea7d022a6b54475768c03631ae99cbf838a92189033340ffbef4c5ed93e6fa5ad3b3c2b7827c117995f0198b42ac9d8d3e44f75d5e783d73d6feb18fa5609203aa37c79203f6d2f0c654690542ab80bf16ca9ef0aaf259d79d39a6e06293a1ea620b5a08899b17bbf9f2c31c6661ce995d18697fc5b90472beb542dbe722e15127d5e64cba3209b2ac0d3c60d5fa8838dd1a0141af08080ebf8ce6fd68b0182807e3029fbfc07900f4cbfb1284da5deeebc4dc443df0dc2d49b0bd24e7fe9ae01c76ff0ab55a0b1dbecbff3e997642a198f1ad3c4779428374d0844aba1654b2d40ffc9f8f682325141df4cedaee410fd7636d513c7c0bac3e52ab02b7114f16601655f9f922ee754f8a2229431bd23c59d7f878c228d646abee1f98e9368dc2c8fa5d3ec5186c7743a6d60692654c0bfb9e3b29ee65ccf7d099d94b6d0c26dd88bdb0c3e3c9029d0d2f3a61eb0a2522e86694d0d715f8364d4027481dc8da4833d0041f73a93db939f967c3f4bd19fc35855e25c1d35d72b1b5e8b9eb609b236c9b73d292a68806c5f53529d2ae465802fb56521c7d469bbb0a293fc2712fc86126218dea20c3cb03bd4abcb29b83c63ea0d706bbfdf03abf3f680b06e3792365dc38436dc6a6ad4eeb1230927d00f3bfd3de2dd53a4c47e5e8bd9cdb41cc94513ea040ba886855e36d20435c49e1e228cc9151d92c7797f1f0984fdb0d1ff0ff301196d8b82f08429bfd5983d104f800577cc07330794428c823aa64f090ec3e5040e328ebf43d6adb9fe9a91ff975e5fc82664c320c8426fd06d4a25645391add506ef3d033009ab44dde68a35cd3307bb66d0b38eae5e34968419860d56a8cc6b99d67e386869db25b9a8fa4c2921031a4a45cec93ce1cdd0e71cbb6d4d8619a9c7280890d6bd885c3f8be5d92d672e5e8ae1be826393fe2c7d478b52b8b3f29a17c8b9ee67e520cdfadba5276ccc771ac13cb0be641850fb23d7b24663aef00f245681f153e23f6d6d97f1163c5c6cbdf24d712ca17ea4</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.goodboyboy.top">GoodBoyboy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.goodboyboy.top/35.html">https://blog.goodboyboy.top/35.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.goodboyboy.top" target="_blank">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/v2ray/">v2ray</a><a class="post-meta__tags" href="/tags/web%E9%9D%A2%E6%9D%BF/">web面板</a></div><div class="post_share"><div class="social-share" data-image="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">GoodBoyboy</div><div class="business-section">5201314***</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">09/04/2015</span></div><div class="business-card-holder">Welcome to MyBlog</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>sitelink</label><div><a href="https://blog.goodboyboy.top">https://blog.goodboyboy.top</a></div></div><div class="business-terms"><p>Use this card to join MyBlog and participate in a pleasant discussion together .</p><p>Welcome to GoodBoyboy 's Blog,wish you a nice day .</p></div></div></div></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://pic.goodboyboy.top/imgs/2023/03/c1d1d23e539e7fba.webp" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/c1d1d23e539e7fba.webp"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/36.html" title="windows搭建cloudreve对接OneDrive教程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">windows搭建cloudreve对接OneDrive教程</div></div></a></div><div class="next-post pull-right"><a href="/33.html" title="在Linux上搭建酸酸乳（ssr）服务器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">在Linux上搭建酸酸乳（ssr）服务器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/246.html" title="如何在非443端口开启SSL（重置版）"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/dbf71e7c4200d4f1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-27</div><div class="title">如何在非443端口开启SSL（重置版）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/loading.gif" data-lazy-src="https://gravatar.goodboyboy.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">GoodBoyboy</div><div class="author-info__description">看朝霞万里，石头花开</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">168</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" href="https://blog.goodboyboy.top/atom.xml"><i class="fa-solid fa-rss"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">每一次交流都是思想的碰撞</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class is-expand" style="display:none"></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2372224366.html" title="国际版Minecraft打骨折了！！！">国际版Minecraft打骨折了！！！</a><time datetime="2024-05-15T14:47:37.000Z" title="发表于 2024-05-15 22:47:37">2024-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1103572792.html" title="发现一款好用又好看的RSS订阅器">发现一款好用又好看的RSS订阅器</a><time datetime="2024-05-12T13:41:44.000Z" title="发表于 2024-05-12 21:41:44">2024-05-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1702715019.html" title="麻了，这年头怎么N卡驱动也炸">麻了，这年头怎么N卡驱动也炸</a><time datetime="2024-05-12T05:26:53.000Z" title="发表于 2024-05-12 13:26:53">2024-05-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3656384274.html" title="生成属于你的PGP密钥ID靓号">生成属于你的PGP密钥ID靓号</a><time datetime="2024-05-04T14:03:20.000Z" title="发表于 2024-05-04 22:03:20">2024-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2762852643.html" title="暮色遗梦 | 第九章 再会">暮色遗梦 | 第九章 再会</a><time datetime="2024-04-27T14:58:28.000Z" title="发表于 2024-04-27 22:58:28">2024-04-27</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(27, 31, 35, .05)"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2024 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://jsdelivr.goodboyboy.top/npm/katex@0.16.9/dist/katex.min.css"><script src="https://jsdelivr.goodboyboy.top/npm/katex@0.16.9/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  let artalkItem = null
+  const initArtalk = () => {
+    artalkItem = Artalk.init(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.goodboyboy.top',
+      site: 'GoodBoyboyBlog',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    artalkItem.on('list-loaded', () => {
+      artalkItem.ctx.get('list').getCommentNodes().forEach(comment => {
+        const $content = comment.getRender().$content
+        btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+      })
+    })
+
+    const destroyArtalk = () => {
+      artalkItem.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyArtalk, 'destroyArtalk')
+  }
+
+  const loadArtalk = async () => {
+    if (typeof Artalk === 'object') initArtalk()
+    else {
+      await getCSS('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.2/dist/Artalk.min.css')
+      await getScript('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.2/dist/Artalk.min.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    artalkItem.setDarkMode(isDark)
+  }
+
+  btf.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+
+  if ('Artalk' === 'Artalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom && ($dom.innerHTML= result))
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.goodboyboy.top/api/v2/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'GET',
+  }
+
+  const searchParams = new URLSearchParams({
+    'site_name': 'GoodBoyboyBlog',
+    'limit': '6',
+  })
+
+  const getComment = async () => {
+    try {
+      const res = await fetch(`https://artalk.goodboyboy.top/api/v2/stats/latest_comments?${searchParams}`, headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script type="text/javascript"> $(document).ready(function () { $.fancybox.defaults.hash = false; }); </script><script data-pjax async src="https://umami.northwoolf.top/script.js" data-website-id="21f60885-f721-40e3-89b5-0940bab42e68"></script><script type="text/javascript" src="https://jsdelivr.goodboyboy.top/npm/typed.js@2.0.16/dist/typed.umd.js"></script><script data-pjax>var typed = new Typed('.ai-typed-text', {stringsElement: '.ai-source-text',typeSpeed: 25,startDelay:1000,fadeOut:false,});</script><canvas class="fireworks" mobile="false"></canvas><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://jsdelivr.goodboyboy.top/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://jsdelivr.goodboyboy.top/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
