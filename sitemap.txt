@@ -1,10 +1,11 @@
+https://blog.goodboyboy.top/about/index.html
+https://blog.goodboyboy.top/music/index.html
 https://blog.goodboyboy.top/posts/2372224366.html
 https://blog.goodboyboy.top/posts/1103572792.html
 https://blog.goodboyboy.top/posts/1702715019.html
 https://blog.goodboyboy.top/posts/3886469628.html
 https://blog.goodboyboy.top/link/index.html
 https://blog.goodboyboy.top/posts/3656384274.html
-https://blog.goodboyboy.top/about/index.html
 https://blog.goodboyboy.top/agreement/index.html
 https://blog.goodboyboy.top/posts/968844717.html
 https://blog.goodboyboy.top/posts/913837489.html
@@ -88,7 +89,6 @@ https://blog.goodboyboy.top/posts/1370916158.html
 https://blog.goodboyboy.top/posts/3797806559.html
 https://blog.goodboyboy.top/posts/2080601846.html
 https://blog.goodboyboy.top/posts/136461003.html
-https://blog.goodboyboy.top/music/index.html
 https://blog.goodboyboy.top/manifest.json
 https://blog.goodboyboy.top/msg/index.html
 https://blog.goodboyboy.top/emotion/%E9%98%BF%E9%B2%81.json
