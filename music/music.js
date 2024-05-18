@@ -56,9 +56,9 @@ function checkaplayer() {
                     theme: "#000000"
                 },
                 {
-                    name: "Lost Ember-Announcement Trailer",
+                    name: "Lost Ember-Come Back Home",
                     artist: "Lost Ember (Original Game Soundtrack)",
-                    url: "/uploads/music/Lost Ember/Announcement Trailer.mp3",
+                    url: "/uploads/music/Lost Ember/Come Back Home.mp3",
                     artist: "Will Morton, Julie Wemyss",
                     cover: "/uploads/music/Lost Ember/Lost Ember (Original Game Soundtrack) Cover.jpg",
                     theme: "#7b2b38"
