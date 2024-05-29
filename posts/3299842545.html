@@ -317,8 +317,8 @@ document.addEventListener('pjax:send', () => {
   const loadArtalk = async () => {
     if (typeof Artalk === 'object') initArtalk()
     else {
-      await getCSS('2.8.6')
-      await getScript('2.8.6')
+      await getCSS('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.6/dist/Artalk.min.css')
+      await getScript('https://jsdelivr.goodboyboy.top/npm/artalk@2.8.6/dist/Artalk.min.js')
       initArtalk()
     }
   }
