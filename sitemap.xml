@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.goodboyboy.top/agreement/index.html</loc>
+    
+    <lastmod>2024-05-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/posts/1060178899.html</loc>
+    
+    <lastmod>2024-05-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/posts/856108556.html</loc>
     
     <lastmod>2024-05-28</lastmod>
@@ -86,15 +104,6 @@
     <loc>https://blog.goodboyboy.top/posts/3656384274.html</loc>
     
     <lastmod>2024-05-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/agreement/index.html</loc>
-    
-    <lastmod>2024-05-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2759,6 +2768,13 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/xbox/</loc>
+    <lastmod>2024-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

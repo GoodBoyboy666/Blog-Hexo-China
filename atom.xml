@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-05-28T14:39:16.000Z</updated>
+  <updated>2024-05-29T19:16:05.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[公告]博客评论系统启用邮箱验证功能</title>
+    <link href="https://blog.goodboyboy.top/posts/1060178899.html"/>
+    <id>https://blog.goodboyboy.top/posts/1060178899.html</id>
+    <published>2024-05-29T19:16:05.000Z</published>
+    <updated>2024-05-29T19:16:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>即日起本博客将试行评论系统邮箱验证功能。</p><h2 id="FAQ">FAQ</h2><h3 id="我能不使用邮箱登录吗？">我能不使用邮箱登录吗？</h3><p>可以，我们仍然开放匿名评论功能，在登录页面只需要点击<code>跳过，不验证</code>即可。</p><p><img src="https://pic.goodboyboy.top/imgs/2024/05/30/5fkuok.webp" alt="图片"></p><h3 id="我能绑定其他登录方式吗？例如GitHub，Google等">我能绑定其他登录方式吗？例如GitHub，Google等</h3><p>暂时不能，由于该功能目前Bug过多，我们现仅开放邮箱登录功能，后续可能会根据功能完成度逐步开放。</p><h3 id="我没有收到邮箱验证码">我没有收到邮箱验证码</h3><p>您的邮件提供商可能误将我们的邮件标记为垃圾邮件，您可以在<code>垃圾邮件</code>文件夹内寻找您的邮箱验证码邮件。</p><h3 id="登录与不登录的区别是什么">登录与不登录的区别是什么</h3><p>登录后，评论框顶部的昵称邮箱输入框将被隐藏，您可以不必重复输入这些内容。并且，用户发表的评论将展示「邮箱已验证」的蓝色小勾标识。</p><h3 id="我拥有多个用户名怎么办">我拥有多个用户名怎么办</h3><p>登录后如果检测到相同的邮箱下有多个不同用户名的账号，将会弹出账号合并工具，您可以选择保留其中一个用户名，该邮箱下的所有评论等数据合并到保留的账号下。原有的账号将被删除，评论显示的用户名将会变更为保留的用户名。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;即日起本博客将试行评论系统邮箱验证功能。&lt;/p&gt;
+&lt;h2 id=&quot;FAQ&quot;&gt;FAQ&lt;/h2&gt;
+&lt;h3 id=&quot;我能不使用邮箱登录吗？&quot;&gt;我能不使用邮箱登录吗？&lt;/h3&gt;
+&lt;p&gt;可以，我们仍然开放匿名评论功能，在登录页面只需要点击&lt;co</summary>
+      
+    
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
+    
+    <category term="评论系统" scheme="https://blog.goodboyboy.top/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>自己动手，丰衣足食——微软商店土区消费指南</title>
