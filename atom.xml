@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-06-05T05:04:09.000Z</updated>
+  <updated>2024-06-07T13:54:22.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>上海交通大学Docker镜像服务器下架</title>
+    <link href="https://blog.goodboyboy.top/posts/2414559632.html"/>
+    <id>https://blog.goodboyboy.top/posts/2414559632.html</id>
+    <published>2024-06-07T13:54:22.000Z</published>
+    <updated>2024-06-07T13:54:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面为消息截图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/07/zo9r80.webp" alt="mmexport1717768545124"></p><p>目前已确认<code>上海交通大学</code>与<code>中国科技技术大学</code>的Docker Hub 镜像缓存服务已关闭</p><blockquote><p><a href="https://mirrors.ustc.edu.cn/help/dockerhub.html">中国科技技术大学</a></p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2024/06/07/10ek9iv.webp" alt="2024-06-07_220045"></p><blockquote><p><a href="https://sjtug.org/post/mirror-news/2024-06-06-takedown-dockerhub/">上海交通大学</a></p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2024/06/07/10fa1nq.webp" alt="2024-06-07_220219"></p><p>下方为使用Cloudflare Worker自建Docker Hub镜像加速教程</p><p><a href="https://bbs.fit2cloud.com/t/topic/5902">使用Cloudflare Workers自建docker镜像加速</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;下面为消息截图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2024/06/07/zo9r80.webp&quot; alt=&quot;mmexport1717768545124&quot;&gt;&lt;/p&gt;
+&lt;p&gt;目前已确认&lt;code&gt;上海交通大学&lt;/c</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="Docker" scheme="https://blog.goodboyboy.top/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>免费领取Xbox PC Game Pass 3个月！！！</title>
