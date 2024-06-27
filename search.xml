@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>有些海外爬虫是真nm傻逼，忍不了一点</title>
+      <!--<link href="/posts/1911030434.html"/>
+      <url>/posts/1911030434.html</url>-->
+      <link href="posts/1911030434.html"/>
+      <url>posts/1911030434.html</url>
+      
+        <content type="html"><![CDATA[<div class="note warning flat"><p>本文包含大量辱骂性词汇，请酌情观看，如有不适请立即退出。</p></div><p>话不多说，直接上图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1oclg8.webp" alt="2024-06-28_010023"></p><p>MD 总共 5 天时间跑了我将近 40G 的流量，860K 的请求，而且要是是真人还好，结果全 TM 是爬虫，我一个自托管的 Gitea 站要你这么爬？？？</p><p>IP 不打码，全 TM 是 Azure，AWS，CloudFlare 的 IP，没有一点必要。</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1r7jcd.webp" alt="2024-06-28_010602"></p><p>37.8G 全 TM 是爬虫，快给我气炸了，有你这么爬的么？？？</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1sbnat.webp" alt="2024-06-28_010751"></p><p>服务器流量也是用了 10%（平常一个月能用 2% 就不得了了）</p><p>714K 请求来自傻逼 Facebook 脑瘫爬虫，你 TM 乱封号就算了，爬虫也是真 nm 的逆天</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1t4s2f.webp" alt="2024-06-28_010909"></p><p>是真的棒啊，给我 5 天整出 190 多 MB 的日志</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1uvv6i.webp" alt="2024-06-28_011210"></p><p>整个服务器资源使用率看看给我干到多少了，最高给我干到 900% 以上（正常情况下不会超过 20%）</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1wj5dn.webp" alt="2024-06-28_011439"></p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1wjbv9.webp" alt="2024-06-28_011458"></p><p>CPU 也给我干满好几次，如图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1xsr7r.webp" alt="2024-06-28_011714"></p><p>IO 读写直接被干废，延迟爆炸</p><p><img src="https://pic.goodboyboy.top/imgs/2024/06/28/1z1wk7.webp" alt="2024-06-28_011916"></p><p>Redis 也是直接被干爆，内存干到 300 多 M（md 这家伙平常能干到 30M 以上的内存就已经是奇迹了）</p><p>我说这几天怎么服务器这么奇怪，状态监控老是给我推服务下线的邮件，进面板也是慢，随便抽了一天的日志看了下我还以为被打了，结果是 nm 机器人泛滥，指着我的 git 站就是框框一顿扫。。。</p><p>进 cloudflare 把 under attack 一开世界直接清净了，内存，IO 延迟什么的瞬间就正常，但也不可能一直开 under attack，于是调整了一下 cf waf 策略，把除了已知的搜索引擎爬虫全给拦截，（看了下日志发现还有 OpenAI 的爬虫，真是服了，不给 CN 提供服务还有脸来爬 CN 站，你爬集贸啊，搁这又当又立是吧😅），所以可以看到 CPU 占用，IO 在 24 号后出现断层。</p><p>本来以为没事了，结果 CF 还是把 Facebook 这个脑瘫 Bot 放出来了。。。😅</p><p>最后整烦了直接把海外 IP 全屏蔽了，反正海外有 GitHub，repo 也会同步至 GitHub。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>傻逼 Facebook，你妈死了😅</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 说说 </tag>
+            
+            <tag> 爬虫 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>六月近况</title>
       <!--<link href="/posts/1871625487.html"/>
       <url>/posts/1871625487.html</url>-->
