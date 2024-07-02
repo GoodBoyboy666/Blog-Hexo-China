@@ -1,3 +1,4 @@
+https://blog.goodboyboy.top/posts/3733040568.html
 https://blog.goodboyboy.top/posts/1716769968.html
 https://blog.goodboyboy.top/posts/3112347634.html
 https://blog.goodboyboy.top/posts/1911030434.html
@@ -361,6 +362,8 @@ https://blog.goodboyboy.top/tags/kopia/
 https://blog.goodboyboy.top/tags/SDN/
 https://blog.goodboyboy.top/tags/%E7%BD%91%E7%BB%9C/
 https://blog.goodboyboy.top/tags/%E6%91%98%E5%BD%95/
+https://blog.goodboyboy.top/tags/OpenSSH/
+https://blog.goodboyboy.top/tags/%E6%BC%8F%E6%B4%9E/
 https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/
 https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/
 https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/

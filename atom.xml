@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-06-30T12:34:52.000Z</updated>
+  <updated>2024-07-02T04:12:57.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenSSH 远程代码执行漏洞</title>
+    <link href="https://blog.goodboyboy.top/posts/3733040568.html"/>
+    <id>https://blog.goodboyboy.top/posts/3733040568.html</id>
+    <published>2024-07-02T04:12:57.000Z</published>
+    <updated>2024-07-02T04:12:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一大早起来就看见这么劲爆的消息。。。如图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/02/k34sew.webp" alt="mmexport1719892039561"></p><p>修补方法：<a href="https://learnku.com/articles/87482">针对 OpenSSH CVE-2024-6387 漏洞的升级</a></p><p>四台 Linux 主机三台中招也是麻了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;一大早起来就看见这么劲爆的消息。。。如图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2024/07/02/k34sew.webp&quot; alt=&quot;mmexport1719892039561&quot;&gt;&lt;/p&gt;
+&lt;p&gt;修补方法：&lt;a</summary>
+      
+    
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
+    
+    <category term="OpenSSH" scheme="https://blog.goodboyboy.top/tags/OpenSSH/"/>
+    
+    <category term="漏洞" scheme="https://blog.goodboyboy.top/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>一次有“原味”的搬寝经历</title>

@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>OpenSSH 远程代码执行漏洞</title>
+      <!--<link href="/posts/3733040568.html"/>
+      <url>/posts/3733040568.html</url>-->
+      <link href="posts/3733040568.html"/>
+      <url>posts/3733040568.html</url>
+      
+        <content type="html"><![CDATA[<p>一大早起来就看见这么劲爆的消息。。。如图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/02/k34sew.webp" alt="mmexport1719892039561"></p><p>修补方法：<a href="https://learnku.com/articles/87482">针对 OpenSSH CVE-2024-6387 漏洞的升级</a></p><p>四台 Linux 主机三台中招也是麻了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 公告 </tag>
+            
+            <tag> OpenSSH </tag>
+            
+            <tag> 漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一次有“原味”的搬寝经历</title>
       <!--<link href="/posts/1716769968.html"/>
       <url>/posts/1716769968.html</url>-->
