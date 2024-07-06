@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-07-02T04:12:57.000Z</updated>
+  <updated>2024-07-06T12:01:09.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -17,13 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>升级OpenSSH的正确姿势！！！</title>
+    <link href="https://blog.goodboyboy.top/posts/1937457134.html"/>
+    <id>https://blog.goodboyboy.top/posts/1937457134.html</id>
+    <published>2024-07-06T12:01:09.000Z</published>
+    <updated>2024-07-06T12:01:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="note warning flat"><p>最近 OpenSSH CVE-2024-6387 闹得沸沸扬扬，网上也流传出了升级教程，但有些教程是错误的！！！</p></div><h2 id="错误做法"><a class="markdownIt-Anchor" href="#错误做法">#</a> 错误做法</h2><p>错误示例：只 <code>make install</code>  后就不管了</p><p>这里 <code>make install</code>  完后需要替换二进制文件才能真正完成升级！！！</p><p>当然有些人可能会说为什么我 <code>make install</code>  后使用 <code>sshd -V</code>  输出版本号是 9.8p1，那是因为环境变量的锅！！！</p><p>检查方法很简单</p><p>输入 <code>ls /usr/local/sbin -la | grep sshd</code>  可以发现该二进制文件是 make install 时生成的（日期），然后输入 <code>ls /usr/sbin -la | grep sshd</code> ，可以发现这个 sshd 文件创建日期远落后于第一个 sshd 文件（当然你也可以通过绝对路径运行 <code>/usr/sbin/sshd -V</code>  输出版本信息查看），接着我们输入 <code>ps aux | grep sshd</code>  可以发现当前正在运行的是 <code>/usr/sbin</code>  下的 sshd！！！并且通过 <code>cat /etc/systemd/system/sshd.service</code>  也可以看出 sshd 服务是使用的 <code>/usr/sbin</code>  下的 sshd，跟新版本的 sshd 半毛钱关系没有！！！</p><p>人话来说就是如升</p><p>原因分析：环境变量的锅</p><p>输入 <code>echo $PATH</code>  可以看到自己当前的环境变量</p><p>这是我的环境变量： <code>/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></p><p>我也不知道是 make install 时添加了环境变量还是我之前自己添加了环境变量，导致当我输入 <code>sshd -V</code>  时系统将文件定位到了 <code>/usr/local/sbin</code>  目录下的 sshd， <code>ssh -V</code>  则定位到了 <code>/usr/local/bin</code>  下的 ssh 二进制文件，因此输出了 9.8p1 的版本信息，让我误以为升级完成（网上部分教程害人不浅），但其实根本没有完成升级！！！</p><h2 id="正确做法"><a class="markdownIt-Anchor" href="#正确做法">#</a> 正确做法</h2><p>前面的步骤都是一样的</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y build-essential zlib1g-dev libssl-dev</span><br><span class="line"></span><br><span class="line">wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.8p1.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xzf openssh-9.8p1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssh-9.8p1</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure><p>然后这里我们需要替换二进制文件</p><p>这里因为我使用软连接好像有点问题因此选择直接把二进制文件 copy 过来（这里先把 sshd 的写了，openssh 其他组件可以依葫芦画瓢进行替换）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份原来的sshd</span></span><br><span class="line"><span class="built_in">mv</span> /usr/sbin/sshd /usr/sbin/sshd.old</span><br><span class="line"><span class="comment">#复制二进制文件</span></span><br><span class="line"><span class="built_in">cp</span> /usr/local/sbin/sshd /usr/sbin/sshd</span><br><span class="line"><span class="comment">#重启sshd服务</span></span><br><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure><p>重新连接后会提示密钥指纹变更的情况，同意接受即可</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;note warning flat&quot;&gt;&lt;p&gt;最近 OpenSSH CVE-2024-6387 闹得沸沸扬扬，网上也流传出了升级教程，但有些教程是错误的！！！&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;错误做法&quot;&gt;&lt;a class=&quot;markdownIt-Anc</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/Software/"/>
+    
+    
+    <category term="OpenSSH" scheme="https://blog.goodboyboy.top/tags/OpenSSH/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenSSH 远程代码执行漏洞</title>
     <link href="https://blog.goodboyboy.top/posts/3733040568.html"/>
     <id>https://blog.goodboyboy.top/posts/3733040568.html</id>
     <published>2024-07-02T04:12:57.000Z</published>
     <updated>2024-07-02T04:12:57.000Z</updated>
     
-    <content type="html"><![CDATA[<p>一大早起来就看见这么劲爆的消息。。。如图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/02/k34sew.webp" alt="mmexport1719892039561"></p><p>修补方法：<a href="https://learnku.com/articles/87482">针对 OpenSSH CVE-2024-6387 漏洞的升级</a></p><p>四台 Linux 主机三台中招也是麻了</p>]]></content>
+    <content type="html"><![CDATA[<p>一大早起来就看见这么劲爆的消息。。。如图</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/02/k34sew.webp" alt="mmexport1719892039561"></p><p>修补方法：<a href="/posts/1937457134.html">升级 OpenSSH 的正确姿势！！！</a></p><p>四台 Linux 主机三台中招也是麻了</p>]]></content>
     
     
       
