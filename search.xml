@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>WebGAL | 一个开源免费的galgame maker</title>
+      <!--<link href="/posts/3465108413.html"/>
+      <url>/posts/3465108413.html</url>-->
+      <link href="posts/3465108413.html"/>
+      <url>posts/3465108413.html</url>
+      
+        <content type="html"><![CDATA[<p>最近发现一个新奇的东西 ——WebGal</p><p>它的特点是无需编程，可视化操作，还可以把作品输出成全静态的 Web 网页，因此 github page 或者 vercel 就可以托管！</p><p>这是项目地址：<a href="https://github.com/OpenWebGAL/WebGAL">https://github.com/OpenWebGAL/WebGAL</a>，目前有 2.6k 的 star</p><p>这是官网地址：<a href="https://openwebgal.com/zh-cn/">https://openwebgal.com/zh-cn/</a></p><p>使用体验上感觉还行，基本的都有，但完（hua）善（shao）度肯定不如 renpy 或者 unity 之类的。</p><p>我自己也用它做了一个小 Demo，欢迎大家来玩～</p><p><a href="https://galgame.foxsay.top/">https://galgame.foxsay.top/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> galgame </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[转载]七七事变 | 勿忘国耻</title>
       <!--<link href="/posts/1249580640.html"/>
       <url>/posts/1249580640.html</url>-->

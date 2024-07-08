@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-07-07T05:23:38.000Z</updated>
+  <updated>2024-07-08T06:59:43.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebGAL | 一个开源免费的galgame maker</title>
+    <link href="https://blog.goodboyboy.top/posts/3465108413.html"/>
+    <id>https://blog.goodboyboy.top/posts/3465108413.html</id>
+    <published>2024-07-08T06:59:43.000Z</published>
+    <updated>2024-07-08T06:59:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近发现一个新奇的东西 ——WebGal</p><p>它的特点是无需编程，可视化操作，还可以把作品输出成全静态的 Web 网页，因此 github page 或者 vercel 就可以托管！</p><p>这是项目地址：<a href="https://github.com/OpenWebGAL/WebGAL">https://github.com/OpenWebGAL/WebGAL</a>，目前有 2.6k 的 star</p><p>这是官网地址：<a href="https://openwebgal.com/zh-cn/">https://openwebgal.com/zh-cn/</a></p><p>使用体验上感觉还行，基本的都有，但完（hua）善（shao）度肯定不如 renpy 或者 unity 之类的。</p><p>我自己也用它做了一个小 Demo，欢迎大家来玩～</p><p><a href="https://galgame.foxsay.top/">https://galgame.foxsay.top/</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近发现一个新奇的东西 ——WebGal&lt;/p&gt;
+&lt;p&gt;它的特点是无需编程，可视化操作，还可以把作品输出成全静态的 Web 网页，因此 github page 或者 vercel 就可以托管！&lt;/p&gt;
+&lt;p&gt;这是项目地址：&lt;a href=&quot;https://github.co</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="galgame" scheme="https://blog.goodboyboy.top/tags/galgame/"/>
+    
+  </entry>
   
   <entry>
     <title>[转载]七七事变 | 勿忘国耻</title>
