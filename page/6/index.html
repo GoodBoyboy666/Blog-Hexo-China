@@ -54,7 +54,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-09 15:00:48'
+  postUpdate: '2024-07-09 15:28:10'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -229,28 +229,32 @@ document.addEventListener('pjax:send', () => {
 当时受限于自己的经济状况以及知识水平，所以也就没钱来买服务器和接触那些免费托管静态页面的平台
 之后的日子里，我开始接触 C#，从前端转向后端，学着网上的代码，自己也做了许多小程序来填补丢失的乐趣
 毕竟写程序没有任何金钱成本，visual studio 我都还是拿网上序列号激活的😂
-到高一的时候，我拥有了自己的小金库，也有了自己的手机，而 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/997178865.html" title="清除有安全风险的CA根证书">清除有安全风险的CA根证书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-25T05:52:04.000Z" title="发表于 2023-08-25 13:52:04">2023-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/">软件</a></span></div><div class="content"># 前言
-什么是 CA 根证书，这篇文章讲的很详细
-CA 证书详解
-CA 根证书一般都会预装在我们的系统中，构建信任体系的基础
-但如果有第三方有风险的 CA 根证书被添加至计算机的根证书受信列表之中，那么整个整个信任体系则可能随时会崩塌
-一切基于 PKI 体系的证书信任就会变成一个笑话，最经典的攻击则是 “中间人攻击”
-看似加密传输，实则在攻击者的监控下已是和明文传输没什么两样
-这里就不得不提一下 CNNIC 证书事件了（反复鞭尸），有兴趣的朋友可以自行去搜索
-并且在国内很多流氓软件都会将自己的根证书在未经用户允许的情况下安装进用户计算机中
-而这些流氓软件背后的团队很多都是没有维护 CA 根证书的资质，一旦根证书密钥泄露，用户将面临巨大的安全风险
+到高一的时候，我拥有了自己的小金库，也有了自己的手机，而 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/997178865.html" title="清除有安全风险的CA根证书">清除有安全风险的CA根证书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-25T05:52:04.000Z" title="发表于 2023-08-25 13:52:04">2023-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/">软件</a></span></div><div class="content">
+    
+    
+    
+            文章摘要
+            
+        
+        GoodBoyboyGPT
+    
+    
+      
+      
+      文章主要内容是关于 CA 根证书的详细解释和在 Windows、Linux 等系统下如何检查和删除风险证书的方法。还包括作者对 Android、iOS 和 macOS 平台上也可能遇到的情况所做出的建议。
+      
+    
+    
+    
+        此内容根据文章生成，并经过人工审核，仅用于文章内容的解释与总结
+    
 
-tips：本教程将着重讲述 Windows 系统下的方法
 
-# Windows
-我们这里采用微软提供的证书检查工具 Sigcheck
-
-tips: 使用此工具就意味着你需要信任微软，但话说回来如果你不信任微软，我觉得也就没必要使用 Windows 了😂
-
-Sigcheck
-下载完工具后运行
-1sigcheck.exe -tuv
-1sigc ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3299842545.html" title="Hexo安知鱼主题修改背景折腾记录">Hexo安知鱼主题修改背景折腾记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-23T07:51:43.000Z" title="发表于 2023-08-23 15:51:43">2023-08-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Web/">Web</a></span></div><div class="content"># 前言
+function checkTyped() {
+    if (typeof Typed !== 'undefined') {
+      var typed = new Typed('.ai-typed-text', {stringsElement: '.ai-source-text',typeSpeed: 25,startDelay:1000,fadeOut:false,});
+    } else {
+        setTime ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3299842545.html" title="Hexo安知鱼主题修改背景折腾记录">Hexo安知鱼主题修改背景折腾记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-23T07:51:43.000Z" title="发表于 2023-08-23 15:51:43">2023-08-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Web/">Web</a></span></div><div class="content"># 前言
 我一开始还觉得奇怪，安知鱼既然是基于 butterfly 修改而来的，为什么 butterfly 有背景的选择，但是安知鱼却选择将其删除掉了
 后面等我修改完一切我就知道为什么这样做了 ———— 设计理念冲突
 安知鱼这个主题给我的整体感官就是果味十足，高对比度设计，颜色亮度大
@@ -344,22 +348,30 @@ VSCode（当然如果你有更方便的工具也行）
 
 双击 json 文件
 表情包的 json 结构大致应该为以下结构
-1234567891011121314&#123;&quot;XXX&quot;: &#123;        &quot;type&quot;: &quot;image&quot;,        &quot;container&quot;: [            &#123;               ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1419044079.html" title="初步试玩ChatGLM2-6B">初步试玩ChatGLM2-6B</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-26T10:39:09.000Z" title="发表于 2023-07-26 18:39:09">2023-07-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/">软件</a></span></div><div class="content"># 前言
-最近玩上了 AI 对话模型，就想着自己在本地也部署一个，比起 AI 绘画，感觉还是语言对话模型更有用一点
-这个是 ChatGLM-6B 模型的二代，一代项目地址 https://github.com/THUDM/ChatGLM-6B
-# 准备
-此教程基于我电脑的配置而写，硬件有出入的（特别是显卡不是 N 卡的）此教程可能不那么适用（当然大部分也通用）
+1234567891011121314&#123;&quot;XXX&quot;: &#123;        &quot;type&quot;: &quot;image&quot;,        &quot;container&quot;: [            &#123;               ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1419044079.html" title="初步试玩ChatGLM2-6B">初步试玩ChatGLM2-6B</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-26T10:39:09.000Z" title="发表于 2023-07-26 18:39:09">2023-07-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/">软件</a></span></div><div class="content">
+    
+    
+    
+            文章摘要
+            
+        
+        GoodBoyboyGPT
+    
+    
+      
+      
+      这篇文章介绍了该模型的自我介绍、特性和安装过程，还强调了人工智能技术的重要进展以及对话系统领域取得的成果。文章指出机器学习和深度学习技术虽然发展迅猛但也面临一定挑战，并建议需加强监管和规范确保其安全可靠性。同时提供部署方法并呼吁准备良好网络环境，在项目地址可以查阅更多信息。
+      
+    
+    
+    
+        此内容根据文章生成，并经过人工审核，仅用于文章内容的解释与总结
+    
 
-系统：Windows11 x86_64
-CPU：12th Gen Intel® Core™ i7-12700H
-RAM：16.0 GB
-显卡：NVIDIA GeForce RTX 3060 Laptop GPU
-VRAM：6GB
 
-本次使用的模型是 ChatGLM2-6B，下面是它的 1000 字自我介绍（然鹅我觉得根本没有一千字）
-ChatGLM2-6B: 人工智能技术的先锋
-近年来，随着人工智能技术的飞速发展，我们见证了许多令人瞩目的成果。 ChatGLM2-6B 是其中最引人注目的成果之一，它标志着中国在人工智能领域取得了重要的突破。
-ChatGLM2-6B 是由清华大学 KEG 实验室与智谱 AI 公司于 2023 年 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1143225785.html" title="一个博客，一个人生">一个博客，一个人生</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-24T05:03:30.000Z" title="发表于 2023-07-24 13:03:30">2023-07-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 前言
+function checkTyped() {
+    if (typeof Typed !== 'undefined') {
+      var typed = new Typed('.ai-typed-text', {stringsElement: '.ai-source-text',typeSpeed: 25,startDelay:1000,fadeOut:fal ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1143225785.html" title="一个博客，一个人生">一个博客，一个人生</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-24T05:03:30.000Z" title="发表于 2023-07-24 13:03:30">2023-07-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 前言
 不知从何时开始，我开始喜欢上用博客表达自己的情感，记录自己的学习历程。用博客来作为自己在互联网中的一个小窝
 我不喜欢微博那种碎片化，商业化的平台。一切流量均以资本为准，在里面上演各种虚伪的演出，如同小丑一般令我不适
 我不喜欢小红书，抖音等短视频平台。这些平台过于大众化、去精英化，以至于内容有时候可以低俗到突破下限。并且各种千篇一律的模板、音乐也让我审美疲劳
@@ -379,8 +391,8 @@ ChatGLM2-6B 是由清华大学 KEG 实验室与智谱 AI 公司于 2023 年 ...<
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Software/"><span class="card-category-list-name">Software</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Web/"><span class="card-category-list-name">Web</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%AC%E5%91%8A/"><span class="card-category-list-name">公告</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E8%AF%B4/"><span class="card-category-list-name">小说</span><span class="card-category-list-count">10</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E8%AF%B4/%E6%9A%AE%E8%89%B2%E9%81%97%E6%A2%A6/"><span class="card-category-list-name">暮色遗梦</span><span class="card-category-list-count">10</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">应用</span><span class="card-category-list-count">9</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BA%94%E7%94%A8/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BA%94%E7%94%A8/Windows/"><span class="card-category-list-name">Windows</span><span class="card-category-list-count">8</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CC/" style="font-size: 1.15em; color: rgb(144, 144, 113)">CC</a><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.15em; color: rgb(56, 112, 74)">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.35em; color: rgb(45, 5, 179)">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.15em; color: rgb(140, 123, 110)">每日一图</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.45em; color: rgb(188, 132, 140)">公告</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.15em; color: rgb(178, 23, 113)">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.15em; color: rgb(90, 71, 24)">评论系统</a><a href="/tags/Blog/" style="font-size: 1.15em; color: rgb(33, 170, 127)">Blog</a><a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 1.25em; color: rgb(185, 10, 125)">升级</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.25em; color: rgb(199, 87, 46)">服务器</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">156</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2015-09-04T07:25:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">218.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-09T07:00:48.003Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(27, 31, 35, .05)"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2024 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CC/" style="font-size: 1.15em; color: rgb(83, 157, 90)">CC</a><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.15em; color: rgb(135, 189, 25)">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.35em; color: rgb(68, 147, 31)">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.15em; color: rgb(24, 64, 12)">每日一图</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.45em; color: rgb(170, 96, 2)">公告</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.15em; color: rgb(40, 106, 118)">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.15em; color: rgb(90, 108, 123)">评论系统</a><a href="/tags/Blog/" style="font-size: 1.15em; color: rgb(164, 76, 5)">Blog</a><a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 1.25em; color: rgb(157, 185, 31)">升级</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.25em; color: rgb(74, 13, 147)">服务器</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">156</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2015-09-04T07:25:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">220.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-09T07:28:09.672Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(27, 31, 35, .05)"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2024 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://jsdelivr.goodboyboy.top/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://jsdelivr.goodboyboy.top/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
