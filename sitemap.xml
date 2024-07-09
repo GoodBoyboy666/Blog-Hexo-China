@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.goodboyboy.top/agreement/index.html</loc>
+    
+    <lastmod>2024-07-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/posts/1804641324.html</loc>
     
     <lastmod>2024-07-09</lastmod>
@@ -212,15 +221,6 @@
     <loc>https://blog.goodboyboy.top/posts/405019757.html</loc>
     
     <lastmod>2024-06-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/agreement/index.html</loc>
-    
-    <lastmod>2024-06-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
