@@ -223,33 +223,33 @@ document.addEventListener('pjax:send', () => {
 <h3 id="gcore-cdn"><a class="markdownIt-Anchor" href="#gcore-cdn">#</a> Gcore CDN</h3>
 <p>首先我们来部署 Gcore CDN。Gcore CDN 支持对静态资源进行缓存，例如 css、js 和图片等等，我们可以用来加速网站上的静态资源</p>
 <p>Gcore CDN 给每个账户每个月有 1T 的流量，一亿次请求，基本的 WAF 保护，我想这对于一般的个人博客来说完全够用</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/81fddf3adc9bc57d.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/81fddf3adc9bc57d.webp" alt="图片"></p>
 <p>以上是 Free Plan 的全部信息</p>
 <p>我们打开 Gcore CDN 的网站 <a target="_blank" rel="noopener" href="https://cdn.gcore.com/">https://cdn.gcore.com/</a></p>
 <p>并在其中完成注册</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/5563d95889d87622.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/5563d95889d87622.webp" alt="图片"></p>
 <p>注册完成我们进入仪表盘</p>
 <p>点击右上角的<mark class="hl-label blue">创建CDN资源按钮</mark> </p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/3708045581af944e.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/3708045581af944e.webp" alt="图片"></p>
 <p>点击之后我们选择第二个选项，用于加速站点的静态资源（第一个是全站加速，我们要留着给 cloudflare）</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/d927f7bc20d0776e.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/d927f7bc20d0776e.webp" alt="图片"></p>
 <p>然后点击右上角的<mark class="hl-label blue">confirm</mark> 继续</p>
 <p>接下来的配置根据图片里的填</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/2c52763625d5d57f.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/2c52763625d5d57f.webp" alt="图片"></p>
 <p>origin 里填源站的 ip，不要填网址，不然之后套 cloudflare 后回源流量还要过一遍 cloudflare</p>
 <p>custom domain 里面填想要用于访问资源的二级域名</p>
 <p>例如我的网站是 <code>test.com</code> ，下面有个 1.jpg，正常访问是 <code>test.com/1.jpg</code></p>
 <p>这个域名假设是 <code>cdn1.test.com</code> ，那么我要从 cdn 访问该资源只需要访问 <code>cdn1.test.com/1.jpg</code>  即可</p>
 <p>然后下方那个 enable https 开着，继续</p>
 <p>之后把 cdn1 cname 到下个页面 Gcore 指定地址</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/8c118911220fd6c8.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/8c118911220fd6c8.webp" alt="图片"></p>
 <p>解析完成点击继续</p>
 <p>第四步问你是否是在使用 cms，其实就是要你替换原来资源的地址</p>
 <p>把 <code>test.com/1.jpg</code>  替换为 <code>cdn1.test.com/1.jpg</code></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/b823811a4a2f2535.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/b823811a4a2f2535.webp" alt="图片"></p>
 <p>这里我用的 wordpress，用的<mark class="hl-label green">WP_Super_cache</mark> 这个插件，可以一键替换，挺方便的</p>
 <p>最后第五步就是选择 CDN 的功能，根据自己需求选择</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/b38b7de295988bd3.webp" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://pic.goodboyboy.top/imgs/2023/03/b38b7de295988bd3.webp" alt="图片"></p>
 <p>Gzip 和 basic WAF 建议开这，websocket 自己选择</p>
 <p>完成添加 CDN 操作后进入资源面板自己根据自己的需求开关设置即可</p>
 <div class="note warning no-icon flat"><p>注：主机标头不要随便乱动，除非你知道自己在干什么，否则可能会出现 404 请求不到资源</p>

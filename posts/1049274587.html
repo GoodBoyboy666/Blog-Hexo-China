@@ -232,6 +232,16 @@ document.addEventListener('pjax:send', () => {
         <div class="ai-tips">此内容根据文章生成，并经过人工审核，仅用于文章内容的解释与总结</div>
     </div>
 </div>
+<script data-pjax defer>
+function checkTyped() {
+    if (typeof Typed !== 'undefined') {
+      var typed = new Typed('.ai-typed-text', {stringsElement: '.ai-source-text',typeSpeed: 25,startDelay:1000,fadeOut:false,});
+    } else {
+        setTimeout(checkTyped, 100);
+    }
+}
+checkTyped();
+</script>
 <h2 id="前因"><a class="markdownIt-Anchor" href="#前因">#</a> 前因</h2>
 <p>因为笔记本对于我自己来说方便很多，所以当初就买的笔记本当我的主力生产工具。</p>
 <p>平时写代码，看电影，玩游戏都是用的自己的笔记本，屏幕是 15.6 英寸的。</p>
