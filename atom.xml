@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-07-09T07:45:38.000Z</updated>
+  <updated>2024-07-14T09:17:08.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian开启临时IPv6并使用ddns-go进行动态解析</title>
+    <link href="https://blog.goodboyboy.top/posts/1418836805.html"/>
+    <id>https://blog.goodboyboy.top/posts/1418836805.html</id>
+    <published>2024-07-14T09:17:08.000Z</published>
+    <updated>2024-07-14T09:17:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>今天使用 Debian 的 IPv6 时发现 Debian 没有 Windows 那样的临时 IPv6 地址。</p><p>因为正常未使用 NAT 的 IPv6 地址可以被全球访问，临时 IPv6 地址可以起到一定的隐私作用（确信）</p><h2 id="临时ipv6"><a class="markdownIt-Anchor" href="#临时ipv6">#</a> 临时 IPv6</h2><p>这里为了方便查看 IPv6，我们使用以下指令查看 IPv6 地址：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip -6 addr show</span><br></pre></td></tr></table></figure><p>下面是 ChatGPT 给出的解决方案</p><h3 id="使用sysctl"><a class="markdownIt-Anchor" href="#使用sysctl">#</a> 使用 sysctl</h3><p>临时启用隐私扩展</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl net.ipv6.conf.all.use_tempaddr=2</span><br><span class="line">sudo sysctl net.ipv6.conf.default.use_tempaddr=2</span><br></pre></td></tr></table></figure><p>永久启用隐私扩展</p><p>编辑 <code>/etc/sysctl.conf</code>  文件，添加一下行：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">net.ipv6.conf.all.use_tempaddr</span> = <span class="number">2</span></span><br><span class="line"><span class="attr">net.ipv6.conf.default.use_tempaddr</span> = <span class="number">2</span></span><br></pre></td></tr></table></figure><p>应用更改：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure><h3 id="使用networkmanager"><a class="markdownIt-Anchor" href="#使用networkmanager">#</a> 使用 NetworkManager</h3><p>编辑 <code>/etc/NetworkManager/NetworkManager.conf</code>  文件，添加下面内容：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[connection]</span></span><br><span class="line"><span class="attr">ipv6.ip6-privacy</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure><p>重启 NetworkManager：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart NetworkManager</span><br></pre></td></tr></table></figure><h3 id="查看ipv6"><a class="markdownIt-Anchor" href="#查看ipv6">#</a> 查看 IPv6</h3><p>使用 ip 命令查看 IPv6</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip -6 addr show</span><br></pre></td></tr></table></figure><p>找到地址后有 <code>scope global temporary dynamic</code>  字样的地址则为临时 IPv6 地址</p><h2 id="ddns-go"><a class="markdownIt-Anchor" href="#ddns-go">#</a> ddns-go</h2><p>先去项目地址下载对应系统的二进制文件</p><p>项目地址：<a href="https://github.com/jeessy2/ddns-go">https://github.com/jeessy2/ddns-go</a></p><p>解压下载的压缩包，执行下方命令安装服务：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ddns-go -s install -l :9531</span><br></pre></td></tr></table></figure><p>然后本地访问 IP+9531 即可打开 WebUI</p><blockquote><p>Tips：最好端口限制，不建议公开端口至公网上，并设置相应的用户名与密码。</p></blockquote><p>然后找到自己对应的 DNS 解析服务商获取需要的 AC Key 即可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;今天使用 Debian 的 IPv6 时发现 Debian 没有 Windows 那样的临时 IPv6 地址。&lt;/p&gt;
+&lt;p&gt;因为正常未使用 </summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
+    
+    
+    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
+    
+    <category term="ipv6" scheme="https://blog.goodboyboy.top/tags/ipv6/"/>
+    
+    <category term="ddns-go" scheme="https://blog.goodboyboy.top/tags/ddns-go/"/>
+    
+  </entry>
   
   <entry>
     <title>自由地给文章添加文章总结</title>
