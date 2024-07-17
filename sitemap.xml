@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.goodboyboy.top/about/index.html</loc>
+    
+    <lastmod>2024-07-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/free/index.html</loc>
+    
+    <lastmod>2024-07-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/agreement/index.html</loc>
     
     <lastmod>2024-07-17</lastmod>
@@ -48,15 +66,6 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/posts/970157876.html</loc>
-    
-    <lastmod>2024-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/about/index.html</loc>
     
     <lastmod>2024-07-09</lastmod>
     
@@ -201,15 +210,6 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/posts/1911030434.html</loc>
-    
-    <lastmod>2024-06-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.goodboyboy.top/free/index.html</loc>
     
     <lastmod>2024-06-27</lastmod>
     
