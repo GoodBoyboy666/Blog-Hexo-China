@@ -3900,7 +3900,7 @@
     <published>2023-04-01T05:26:54.000Z</published>
     <updated>2023-04-01T05:26:54.000Z</updated>
     
-    <content type="html"><![CDATA[<div class="note success flat"><p>喜欢的话就快下载吧~</p></div><h2 id="微软每日一图">微软每日一图</h2><p><img src="https://api.goodboyboy.top/bing/" alt="图片"></p><h2 id="微软近七天的图片">微软近七天的图片</h2><p><img src="https://api.goodboyboy.top/bing/?day=0" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=1" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=2" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=3" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=4" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=5" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=6" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=7" alt="图片"></p><h2 id="超清UHD版">超清UHD版</h2><div class="gallery-group-main"><figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://api.goodboyboy.top/bing/' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">微软每日一图</div>  <p>近七天原图</p>  <a href='/Gallery/bingpic'></a>  </figcaption>  </figure>  </div><h2 id="API接口">API接口</h2><blockquote><p><a href="https://api.goodboyboy.top/">https://api.goodboyboy.top/</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="note success flat"><p>喜欢的话就快下载吧~</p></div><h2 id="微软每日一图">微软每日一图</h2><p><img src="https://api.goodboyboy.top/bing/?direct=false" alt="图片"></p><h2 id="微软近七天的图片">微软近七天的图片</h2><p><img src="https://api.goodboyboy.top/bing/?day=0&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=1&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=2&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=3&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=4&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=5&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=6&amp;direct=false" alt="图片"><br><img src="https://api.goodboyboy.top/bing/?day=7&amp;direct=false" alt="图片"></p><h2 id="超清UHD版">超清UHD版</h2><div class="gallery-group-main"><figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://api.goodboyboy.top/bing/?direct=false' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">微软每日一图</div>  <p>近七天原图</p>  <a href='/Gallery/bingpic'></a>  </figcaption>  </figure>  </div><h2 id="API接口">API接口</h2><blockquote><p><a href="https://api.goodboyboy.top/">https://api.goodboyboy.top/</a></p></blockquote>]]></content>
     
     
       
@@ -3908,7 +3908,7 @@
     <summary type="html">&lt;div class=&quot;note success flat&quot;&gt;&lt;p&gt;喜欢的话就快下载吧~&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;微软每日一图&quot;&gt;微软每日一图&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://api.goodboyboy.top/bing/&quot; alt=&quot;图片&quot;&gt;</summary>
+&lt;p&gt;&lt;img src=&quot;https://api.goodboyboy.top/bing/?direct=fal</summary>
       
     
     
