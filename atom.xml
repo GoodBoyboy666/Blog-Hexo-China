@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-07-19T14:26:28.000Z</updated>
+  <updated>2024-07-20T13:19:26.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吐槽OPPO Passkey服务</title>
+    <link href="https://blog.goodboyboy.top/posts/4216752310.html"/>
+    <id>https://blog.goodboyboy.top/posts/4216752310.html</id>
+    <published>2024-07-20T13:19:26.000Z</published>
+    <updated>2024-07-20T13:19:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="省流"><a class="markdownIt-Anchor" href="#省流">#</a> 省流</h2><p>答辩的要命，狗都不用。。。</p><h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>之前不知道在哪篇文章看到 OPPO 支持 passkey 了，并且支持扫码认证（就是浏览器中的使用 Android 或者 iOS 设备认证的选项）</p><p>因为苦于 Google 服务想要扫码认证必须双端都拥有 “良好” 的网络环境（因为挑战响应需要经过 Google 服务器），所以局限性太大了，并且我至今还没成功过一次。</p><p>今天没事打算好好折腾一下。</p><h2 id="踩雷经历"><a class="markdownIt-Anchor" href="#踩雷经历">#</a> 踩雷经历</h2><h3 id="扫码"><a class="markdownIt-Anchor" href="#扫码">#</a> 扫码</h3><p>为了测试，我用 Windows 上的 Edge 访问 GitHub 添加 Passkey 生成出二维码。但当我用相机里的扫一扫扫这个二维码时却直接解析了二维码内容并且跳到自带浏览器进行百度搜索。</p><p>想了一会可能是我启动的软件不对，于是我又用设置 -&gt; 账户里的扫码入口（平常用来登录 OPPO 账号）进行扫描，这会倒是跳出了询问是否添加通行密钥的提示，但当我选择创建后界面卡死，等半天也没什么反应，返回了一下发现又可以动了，盲猜是有一层遮罩，不知道是怎么回事。。。</p><p>去网上搜结果搜出一堆什么 “国内首发” 之类的营销文。。。</p><p>最后好不容易找到了 ColorOS 的文档，发现是直接开相机对着二维码就行，也不要点照相按钮，等一会就有通行密钥的提示。</p><p>当我以为终于万事大吉的时候，直接给我显示 “设备不支持创建通行密钥”？？？</p><p>而且显示的提示内容说系统需要 ColorOS14，然鹅我系统就是 ColorOS14 啊。。。</p><h3 id="接口调用"><a class="markdownIt-Anchor" href="#接口调用">#</a> 接口调用</h3><p>并且我发现每次通过手机上的 Edge 或者 chrome 创建通行密钥时都是调用的 Google 的通行密钥服务，没有调用 OPPO 的通行密钥服务。</p><p>一开始我还以为可能是 Google 的服务接管了 OPPO 的，于是把 Google Service 关了，并且把密码本打开，自动填充也打开，结果发现无法创建通信密钥。。。</p><p>最后想着用自带的浏览器试一下，发现调用的就是 OPPO 的通行密钥服务了。。。</p><p>好嘛，你这接口就给你自家那究极大便广告多的垃圾浏览器用是吧，那你使劲珍藏。</p><h3 id="设备支持"><a class="markdownIt-Anchor" href="#设备支持">#</a> 设备支持</h3><p>然后我就发现了整个折腾下来最逆天的环节了，也就是为什么设备不支持的原因。</p><p>当我用默认浏览器进 GitHub 添加 Passkey 时提示设备不支持，然后我看到了一行 “支持的设备”，一打开发现 Find X 系列最低支持 Find X6，而我是 X5。。。</p><p>让我无语的是，为什么 Google 都支持，就你不支持，你是想干嘛，让用户买你的新款？？？并且我用软件检查了一下，我手机是支持 TEE 的，保存 Passkey 完全没问题，Google 都可以，就你不可以，真是服了。。。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>Google 的 Passkey 服务也逆天，我不想要让他给我保存云端同步但他就是要给我保存，云端删了手机上也自动没了。把账号登出后还不能使用通行密钥的功能。。。</p><p>不知道有没有好用的第三方 passkey 服务推荐一下。</p><p>不过 OPPO 的通行密钥也不是一无是处，至少可以有几率可以正确读取和使用 NFC 物理硬件，Google 的通行密钥服务对于 NFC 物理硬件则是完全用不了，只能通过 USB 接入。。。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;省流&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#省流&quot;&gt;#&lt;/a&gt; 省流&lt;/h2&gt;
+&lt;p&gt;答辩的要命，狗都不用。。。&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="OPPO" scheme="https://blog.goodboyboy.top/tags/OPPO/"/>
+    
+    <category term="Passkey" scheme="https://blog.goodboyboy.top/tags/Passkey/"/>
+    
+  </entry>
   
   <entry>
     <title>暮色遗梦 | 第十章 入会</title>
