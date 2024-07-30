@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-07-21T11:26:58.000Z</updated>
+  <updated>2024-07-30T12:42:49.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Minecraft Server TCP 状态获取详解</title>
+    <link href="https://blog.goodboyboy.top/posts/1942751423.html"/>
+    <id>https://blog.goodboyboy.top/posts/1942751423.html</id>
+    <published>2024-07-30T12:42:49.000Z</published>
+    <updated>2024-07-30T12:42:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>测试版本为 1.20.6，插件服务器，理论上适用于 1.7 + 版本服务器，已知 forge 服务器在测试延迟时会出现未收到 Server response 的情况</p></blockquote><h2 id="数据包结构"><a class="markdownIt-Anchor" href="#数据包结构">#</a> 数据包结构</h2><p>在 wiki.vg 上我们可以看到，Minecraft 数据包的格式如下图：</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/30/10dyuh4.webp" alt="图片"></p><p>整个数据包格式采用 <code>数据包长度</code>  + <code>Packet ID</code> + <code>数据</code> 的格式。</p><p><code>数据包长度</code> 和 <code>Packet ID</code>  均使用 <code>VarInt</code>  数据类型，具体可以看 <a href="https://cloud.tencent.com/developer/article/1669786">varint 是啥你真的知道么？</a></p><p>这里的 <code>数据包长度</code> 仅包含 <code>Packet ID</code> + <code>数据</code> 的长度，不包含 <code>数据包长度</code> 自身的长度。</p><h2 id="握手"><a class="markdownIt-Anchor" href="#握手">#</a> 握手</h2><blockquote><p>TCP 三次握手不再赘述，这里主要讲与 Minecraft Server 之间的握手</p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2024/07/30/10e4brj.webp" alt="图片"></p><p>从上图中可以看出 HandShake 包的大致结构： <code>Packet ID</code> + <code>Protocol Version</code> + <code>Server Address</code> + <code>Server Port</code> + <code>Next state</code> 。</p><p>HandShake 包的 ID 为 <code>0x00</code> ， <code>Protocol Version</code>  具体可以参考<a href="https://wiki.vg/Protocol_version_numbers"> Protocol version numbers</a>， <code>Server Address</code>  与 <code>Server Port</code>  则为服务器地址和端口， <code>Next state</code>  为下一步状态， <code>1</code>  为获取状态， <code>2</code>  为登录。</p><p>因此参考 wiki 后 <code>理论上</code> 整个完整的 HandShake 包结构为：</p><p><code>VarInt类型的Pakect Length</code> + <code>Packet ID</code> + <code>VarInt类型的Protocol Version</code> + <code>String类型的Server Address</code> + <code>Unsigned Short类型的Server Port</code> + <code>VarInt类型的Next state</code></p><p>但实际上通过抓包后发现 <code>Protocol Version</code>  与 <code>Server Address</code>  仍存在字节，经过测试后发现为 <code>Server Address</code>  的 VarInt 类型的长度数值，因此正确完整的 HandShake 包结构为：</p><p><code>VarInt类型的Pakect Length</code> + <code>Packet ID</code> + <code>VarInt类型的Protocol Version</code> + <code>VarInt类型的Server Address Length</code> + <code>String类型的Server Address</code> + <code>Unsigned Short类型的Server Port</code> + <code>VarInt类型的Next state</code></p><blockquote><p>受大小端影响， <code>Server Port</code>  部分转换为 byte 内容后顺序可能会受影响，但不影响服务器响应，实测 MC 客户端以大端排序和模拟客户端以小端排序发送包后均可以得到服务器正确响应。</p></blockquote><p>例如一次抓包得到客户端 HandShake 十六进制数据为： <code>18 00 fe 05 11 6d 63 2e 67 6f 6f 64 62 6f 79 62 6f 79 2e 74 6f 70 63 dd 01</code></p><p>拆分后可以得到：</p><p><code>18</code>  为 VarInt 类型的整个数据包长度（不包含 <code>18</code> ）——24 字节</p><p><code>00</code>  为 Packet ID——0x00</p><p><code>fe 05</code>  为 VarInt 类型的 Protocol Version——766</p><p><code>11</code>  为 VarInt 类型的 Server Address 的长度 ——17 字节</p><p><code>6d 63 2e 67 6f 6f 64 62 6f 79 62 6f 79 2e 74 6f 70</code>  为 Server Address——mc.goodboyboy.top</p><p><code>63 dd</code>  为 Unsigned Short 类型的 Server Port——25565（大端排序）</p><p><code>01</code>  为 VarInt 类型的 Next state——0x01</p><h2 id="获取状态"><a class="markdownIt-Anchor" href="#获取状态">#</a> 获取状态</h2><p>通过下图可以看到 Status Request 包的结构：</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/30/10ej0lh.webp" alt="图片"></p><p>因此整个完整的 Status Request 包为：</p><p><code>VarInt类型的Pakect Length</code> + <code>Packet ID</code></p><p>无需带任何数据</p><p>通过抓包可以得到 <code>01 00</code></p><p><code>01</code>  为整个包长度（不包含 <code>01</code> ）——1 个字节</p><p><code>00</code>  为 Packet ID，请求服务器状态。</p><h2 id="状态响应"><a class="markdownIt-Anchor" href="#状态响应">#</a> 状态响应</h2><p>从下图可以看出主要的数据载体为 JSON</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/30/10em43r.webp" alt="图片"></p><p>服务器状态响应包结构在 wiki 上没有很直观展示，只对返回的 json 进行了展示，经过测试后得出下面结构：</p><p><code>VarInt类型的Pakect Length</code> + <code>Packet ID</code> + <code>VarInt类型的JSON数据长度</code>  + <code>JSON数据</code></p><p>将 JSON 数据解析出来即可得到服务器状态 Motd</p><h2 id="ping"><a class="markdownIt-Anchor" href="#ping">#</a> Ping</h2><p>在获取完服务器状态后可以直接进行 Ping 测试，测试精度取决于当前计算机以及实现代码。</p><p>从下图中可以看出 Ping 包的结构：</p><p><img src="https://pic.goodboyboy.top/imgs/2024/07/30/10ep82y.webp" alt="图片"></p><p>结构同样是：</p><p><code>VarInt类型的Pakect Length</code> + <code>Packet ID</code> + <code>数据</code></p><p>因为只是进行延迟测试，所以数据具体内容不重要，但不能没有。</p><p>抓包数据： <code>09 01 00 00 00 00 00 00 2e 5d</code></p><p>通过抓包发现客户端的 Ping 包包含了 8 个字节数据，加上 1 位 Pakect Length 与 Packet ID，总数据包大小为 10 字节。</p><p>推荐使用客户端格式使用 8 位任意数据。</p><p>在发送 Ping 包后服务器会返回同样的数据包以做应答</p><p>在 wireshark 上可以看到</p><p><code>1849 → 25565 [PSH, ACK] Seq=28 Ack=13939 Win=263424 Len=10</code> <br> <code>25565 → 1849 [PSH, ACK] Seq=13939 Ack=38 Win=42496 Len=10</code></p><p>数据 Data 均为 <code>09010000000000002e5d</code> 。</p><h2 id="参考"><a class="markdownIt-Anchor" href="#参考">#</a> 参考</h2><p><a href="https://www.bilibili.com/read/cv4243015/">MineCraft 协议 —— 握手篇（讲解 + 实现）</a></p><p><a href="https://wiki.vg/Protocol_version_numbers">Protocol version numbers</a></p><p><a href="https://wiki.vg/Server_List_Ping#Status_Response">Server List Ping</a></p><p><a href="https://wiki.vg/Protocol#Status_Response">Status Response</a></p><p><a href="https://wiki.vg/Protocol#Clientbound">Clientbound</a></p><p><a href="https://wiki.vg/Protocol_FAQ#What_does_the_normal_status_ping_sequence_look_like.3F">What does the normal status ping sequence look like?</a></p><p><a href="https://wiki.vg/Protocol">Protocol</a></p><p><a href="https://wiki.vg/Data_types#VarInt_and_VarLong">VarInt and VarLong</a></p><p><a href="https://cloud.tencent.com/developer/article/1669786">varint 是啥你真的知道么？</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;测试版本为 1.20.6，插件服务器，理论上适用于 1.7 + 版本服务器，已知 forge 服务器在测试延迟时会出现未收到 Server response 的情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;数据包结构&quot;&gt;&lt;a class</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/Software/"/>
+    
+    
+    <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
+    
+    <category term="TCP" scheme="https://blog.goodboyboy.top/tags/TCP/"/>
+    
+  </entry>
   
   <entry>
     <title>SSL证书之ECC算法</title>
