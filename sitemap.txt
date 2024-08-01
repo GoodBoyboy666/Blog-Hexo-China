@@ -1,3 +1,4 @@
+https://blog.goodboyboy.top/posts/2111486279.html
 https://blog.goodboyboy.top/posts/1942751423.html
 https://blog.goodboyboy.top/posts/773857817.html
 https://blog.goodboyboy.top/posts/4216752310.html
@@ -389,6 +390,7 @@ https://blog.goodboyboy.top/tags/Passkey/
 https://blog.goodboyboy.top/tags/SSL/
 https://blog.goodboyboy.top/tags/ECC/
 https://blog.goodboyboy.top/tags/TCP/
+https://blog.goodboyboy.top/tags/Mojang-API/
 https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/
 https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/
 https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/
