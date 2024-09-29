@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'customfont';
+    src: local('customfont'), local('customfont'), url(/fonts/1.woff) format('truetype');
+  }
+
+  #footer {
+    font-family: "customfont";
+    font-size: 17px
+  }

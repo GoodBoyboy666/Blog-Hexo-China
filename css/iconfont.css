@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4087324 */
+  src: url('iconfont.eot?t=1687785343411'); /* IE9 */
+  src: url('iconfont.eot?t=1687785343411#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPoAAsAAAAAB+QAAAObAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDBgqDQIM/ATYCJAMMCwgABCAFhGcHNBsZB8gOJUHBwABgIAdAPPy3H+u+mfmCiXYaWZIkaCSxUKgkTt+zKWzqmrwErt65X8Q8FcTSohrUE/DKpeLp8UTDExOZfz6Z/s81+WJF8G0AEFUWmXhg50s9HHVT0Gg60L35BH3D2AUt8R6BTvuK2R9XNXSA960MGyGcI5McJJlxq1HJwJXrlYbM0Ap1143VjN0ycCK92T8C8B58Pv5DeriSVJl5zNlNpRKu/Zn138nh1caD/BU8kgAnJ1TI2N6YMa6a7ZccouA2B51VckeUWCtCmtRjswEEfE1aW394JEHUzPRusI60yUUJHDaJv07CqxY8obJGvZ8B/JrgRirR7xnk69Ws4489cl/w5o3dyMmnHgtfv2b4VxnpWybtxH7gD507VatZ8MrlVnBMB73gyYlwlMfCx8eBf/WKXvjaly3oHvN2clyXe5Qd29mh71jwqsPMk0Ji1923FB3HMuARm+40dDZ3QKeS0SWkaY9O6qazBJ1Y12VXehht1/XdImxIESVXlQmYJGFfpCilMhpM3yhOlVBMbUk8k0QSFl33wm/h1CaTekt5uFDaGRY3L6NuaXqyuj2tZMKAfBx1cbwopUGYLKAry1JEkX3CJAFTVfagIEVCkUnxU0gYyExN5sD3B/VL/M35HSH36hME/lWr+lsjtvv2rR+Kb23XD1WOJWPVNjYbCk88mOyecQ35EQ4Hkz+TnuWpbZ+sSzp32ak/2O9PedweXXPfivpQ74j3F8k++wPJn1sCq2t+nxrdtqN6be2jdWVT21eHrNhRtayL92gaKNuZDqUAH/fzJ4ecv/sb158mrBv0KRx19Sjg59USW7Dhg29oBx5AK9GZ/y/762sYAJoLPo5cUNBYGchOOb0krU7LwM/LhkFfhquHXpU1tBkBg6QxBVlrESm0Tah0OYRa6wg6banc3mWImYMoHVg1E0Dotx+SXl8g63cXKbS3UBn1F2r9xqDTeXgd1mU1FBSHZBgpCflEQqMwGVlbhQOqbUg1rJdxZb4uxFk10EOkkdJ8pBoZETfGEus4VTrGLMFyJgNRRa9Der2JMHMmLVJgUo2xOV8iYaueQipMBqBwEBkMUSLITUTQUDAxYj1inP2+NojKMD0ZriPSZeVYMQ9RJ6QhSTsg1XJjp4YbOcZqHJV0GMYisDgQNiBUcSuiV4MmBHP1OC1EASOpB/jN8kksIrarnFxeaXi5TdDJPCVHihxFfpSNd9TLjCoAAA==') format('woff2'),
+       url('iconfont.woff?t=1687785343411') format('woff'),
+       url('iconfont.ttf?t=1687785343411') format('truetype'),
+       url('iconfont.svg?t=1687785343411#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-paw:before {
+  content: "\e905";
+}
+
+.icon-lang:before {
+  content: "\e684";
+}
+
