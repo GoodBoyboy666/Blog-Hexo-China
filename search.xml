@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>狠狠白嫖了——宿舍X86服务器</title>
+      <!--<link href="/posts/1612666407.html"/>
+      <url>/posts/1612666407.html</url>-->
+      <link href="posts/1612666407.html"/>
+      <url>posts/1612666407.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>因为托管的高性能服务器价格特别贵，一直以来玩服务器也玩的不爽，所以很久之前就想自己组装个服务器。</p><p>但是仔细算下来就算用 E5 洋垃圾成本也至少要 500 以上，以至于计划一直搁置。</p><p>然而 —— 等等党永不为奴！</p><p>刚好自己舍友最近把他的洋垃圾电脑换了，多出了一堆配件，于是我眼疾手快表示 20 收了（doge</p><p>而且他还真的卖给我了！😍</p><p>虽然是洋垃圾，但光 CPU 就值 40！！！（稳赚不赔的好吧）</p><h2 id="白嫖配件"><a class="markdownIt-Anchor" href="#白嫖配件">#</a> 白嫖配件</h2><p>总共收（白嫖）的配件如下：</p><ul><li>不知名的 X99 主板</li><li>E5-2673 V3</li><li>三星 DDR3 16G 内存 * 4</li><li>一个不匹配的散热器</li><li>一坨硅脂</li></ul><h2 id="补齐配件"><a class="markdownIt-Anchor" href="#补齐配件">#</a> 补齐配件</h2><h3 id="电源"><a class="markdownIt-Anchor" href="#电源">#</a> 电源</h3><p>因为考虑到本来就是当服务器使用，所以电源就花了 133 买了个航嘉的 300w 电源（电源不能省，不然变定时炸弹）</p><h3 id="显卡"><a class="markdownIt-Anchor" href="#显卡">#</a> 显卡</h3><p>本来是不打算买显卡的，不过想到虽然之后都是 ssh，但是没显卡也不好进 BIOS，于是咬咬牙花 50 买了个 HD 5450 用来亮机。</p><h3 id="机箱"><a class="markdownIt-Anchor" href="#机箱">#</a> 机箱</h3><p>机箱什么的用纸壳代替一下就行了（doge</p><h3 id="硬盘"><a class="markdownIt-Anchor" href="#硬盘">#</a> 硬盘</h3><p>用 N 年前从朋友那里白嫖的一个 2T 西数紫盘当系统盘。</p><h3 id="网线"><a class="markdownIt-Anchor" href="#网线">#</a> 网线</h3><p>用寝室上届学长留下的网线，不过那根网线有点问题，可能是哪里断了，协商速度只有 100M</p><p>所以花了 15 买了个网线钳，打算用从学校计联搞活动那里白嫖的 10m 网线，自己打水晶头。</p><h2 id="开机"><a class="markdownIt-Anchor" href="#开机">#</a> 开机</h2><p>因为没有机箱，所以只能用螺丝刀手动短接跳线开机。</p><p>一开始我没买 CPU 散热器，觉得反正又不跑分，肯定不用散热器（来自第一次装机小白的幻想）</p><p>结果当第一次完成开机进 BIOS 后，我回头说个话的功夫，转头就发现显卡风扇停了。</p><p>我当时一脸问号，还以为是哪里没接好（没 led，看不到故障灯），后面重复几次开机都是开机三秒就关机。</p><p>直到我手不小心摸到了 CPU 把自己烫了一下才反应过来是 CPU 过热了。。。</p><p>当时其实打算补买个散热器，结果被我 20 收配件的舍友又给了我一个不匹配的散热器，虽然螺丝孔位不匹配，但是至少能凑合着用（doge</p><p>当我比划完散热器发现没硅脂，于是一不做二不休</p><p>我：“有硅脂嘛？”</p><p>舍友：“有”</p><p>我：“借一下嘛”</p><p>舍友：（递过来一管硅脂）</p><p>我：ヾ (≧▽≦*) o</p><h2 id="装系统"><a class="markdownIt-Anchor" href="#装系统">#</a> 装系统</h2><p>一开始装了 Debian 并且装了桌面，发现桌面好像没啥用，于是又装了 win11。</p><p>不得不说，win11 对机械硬盘是真的不友好。。。</p><p>所以最后就让他回归我一开始的打算 —— 做一台 X86 服务器。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>总计：20+133+50+15=218 元</p><p>没想到自己人生中第一台 X86 服务器是这么来的（doge</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 说说 </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> 白嫖 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>国庆长沙单人半日游</title>
       <!--<link href="/posts/3975943485.html"/>
       <url>/posts/3975943485.html</url>-->
