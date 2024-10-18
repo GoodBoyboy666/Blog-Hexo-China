@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-10-15T06:23:34.000Z</updated>
+  <updated>2024-10-18T14:53:40.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识BlueSky</title>
+    <link href="https://blog.goodboyboy.top/posts/313789330.html"/>
+    <id>https://blog.goodboyboy.top/posts/313789330.html</id>
+    <published>2024-10-18T14:53:40.000Z</published>
+    <updated>2024-10-18T14:53:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是bluesky"><a class="markdownIt-Anchor" href="#什么是bluesky">#</a> 什么是 BlueSky？</h2><blockquote><p>Bluesky 是一个去中心化的分布式微博客社交网络，使用自行开发的认证传输协议（AT Protocol），有别于使用 ActivityPub 协议的 Mastodon。</p></blockquote><p>以上来自于<a href="https://zh.wikipedia.org/wiki/Bluesky"> https://zh.wikipedia.org/wiki/Bluesky</a></p><p>整个界面给我的感觉 —— 简直是推特翻版</p><h2 id="起因"><a class="markdownIt-Anchor" href="#起因">#</a> 起因</h2><p>今天看到一个新闻，说推特更新用户协议，将使用用户作品训练 AI</p><p><a href="https://finance.sina.com.cn/roll/2024-10-17/doc-incswhzx5894611.shtml">用户权益受损引不满，X（推特）官方更新用户协议，将使用用户作品训练 AI</a></p><p><a href="https://www.sohu.com/a/817809304_121798711">马斯克 X 平台更新隐私政策：将用户数据授权给第三方 AI 公司</a></p><p><a href="https://www.msn.cn/zh-cn/news/other/%E6%8E%A8%E7%89%B9%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE-%E7%94%A8%E6%88%B7%E4%BD%9C%E5%93%81%E5%B0%86%E8%A2%AB%E7%94%A8%E4%BA%8E%E8%AE%AD%E7%BB%83ai-%E5%BC%95%E5%8F%91%E7%83%AD%E8%AE%AE/ar-AA1sqNRA">推特更新用户协议，用户作品将被用于训练 AI，引发热议！</a></p><p>看完我只能说推特现在也开始花样作死，喜欢作死的大平台是越来越多了。</p><p>从之前的 Unity 到最近的 gotdot，我只能说垄断是这样的。（gotdot 纯属是没能力掌握这泼天的流量，结果就是流量怎么来的，最后还是怎么走的）</p><p>然后就注意到 BlueSky 这玩意，一个去中心化的平台，可谓是站到风口上了。</p><p>目前已经有部分画师开始从推特迁移到了 BlueSky，可以说如果这次 BlueSky 能把握好这次机会，绝对可以吸引一大波用户。</p><h2 id="对比"><a class="markdownIt-Anchor" href="#对比">#</a> 对比</h2><p>之前也不是没有去中心化的平台，像使用 ActivityPub 的 Mastodon。</p><p>但是这些平台多多少少有些问题。</p><p>像 Mastodon 太过于臃肿，没个好点的服务器就不要想搭建了。虽然有更轻量化的 misskey，但是纯二次元的风格对于我来说并不怎么喜欢。</p><p>而且说是说去中心化，但是你的所有账号信息仍然是绑定在你所使用的实例上（因为搭建成本高，很多用户仍然是使用的各个公共实例），那么你的所有数据仍然与当前实例强相关。当用户数量达到一定量级后，就会出现热门的少量的实例掌握大量的用户。</p><p>这对于去中心化来说其实是很不健康的。</p><p>而 BlueSky 则是采用 PDS (Personal Data Server) 的方式，将自己的数据托管于自己的服务器上（也可以使用官方的 PDS），而用户交互界面则使用官方的网站。</p><p>目前 BlueSky 已将 PDS 开源，从官方给出的要求上来看，1G1H20GB 就可以供 1-20 人使用，性能还是蛮不错的。</p><h2 id="缺点"><a class="markdownIt-Anchor" href="#缺点">#</a> 缺点</h2><p>不过仍有一定的缺点，一个是上层用户交互需要使用官网网站，如果哪天官方关闭网站，那么你有数据也没用。</p><p>另一个是貌似 PDS 使用的是 sqlite 数据库，一旦数据多起来后，会严重影响性能。</p><p><s>邀请制（目前官方已取消）</s></p><p>还有就是安装文档不完善</p><p>目前官方给了一个一键安装的脚本，但我仔细分析了一下脚本，发现脚本过于死板，自定义程度不高，具体表现为：</p><ul><li>Caddy 强绑定</li><li>Data 路径写死</li><li>安装 watchtower</li></ul><p>如果不是纯净系统，例如已经安装有 nginx 之类的程序，就会与 Caddy 出现冲突。</p><p>并且如果部署有其他容器，还可能会受到 watchtower 的影响导致意外更新</p><p>而且通过分析脚本，发现 PDS 实际上就是一个由 TS 写的纯粹的后端，脚本集成化过高反而不易于在已有的环境上进行部署</p><h2 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h2><p>目前挺看好 BlueSky，要是能把 PDS 规范一下，并且能让用户自行部署前端页面，我觉得还是挺有看头的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;什么是bluesky&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#什么是bluesky&quot;&gt;#&lt;/a&gt; 什么是 BlueSky？&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bluesky 是一个去中心化的分布式微博客社交网络，使用自行开</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="BlueSky" scheme="https://blog.goodboyboy.top/tags/BlueSky/"/>
+    
+  </entry>
   
   <entry>
     <title>狠狠白嫖了——宿舍X86服务器</title>
