@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-10-18T14:53:40.000Z</updated>
+  <updated>2024-10-27T12:18:07.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -17,20 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>十月小结</title>
+    <link href="https://blog.goodboyboy.top/posts/3041198746.html"/>
+    <id>https://blog.goodboyboy.top/posts/3041198746.html</id>
+    <published>2024-10-27T12:18:07.000Z</published>
+    <updated>2024-10-27T12:18:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="开发手机版课表APP">开发手机版课表APP</h2><p>从国庆完回来后，教务系统的后台接口就改了，界面也同步更新，但这次貌似这次更新饱受大家诟病。</p><p>最诟病的是手机上打开会因为适配问题导致课表看不全，只看得到星期一的课，学校官方的手机app从今年暑假就看不到课表了，现在也是一样。。。</p><p>就导致大家都在手机上看不了课表，虽然之后又出了一个手机版的网页，但是前几天还老是服务器错误我也是服了（我自己PC版用的接口都比它稳定也是没谁了。。。）</p><p>所以我就萌生了一个做Android APP的想法（其实很久之前就想自己做个手机上的APP），先自己在网上跟着视频边学Java边写APP，结果Java写得我想骂人，真的不是一般啰嗦，同样是面向对象，C#就比他简单多了。。。</p><p>想着之前看到.NET也能跨平台写Android，于是试了一下，结果就是被喂了一嘴的答辩，VS你还是老老实实搞C/C++吧</p><p>后面转战Google主推的kotlin，感觉比Java简洁太多了，不过有些地方过于简洁还是有点不习惯哈哈哈。</p><p>经过3天的高强度视频学习以及3天的高强度使用ChatGPT，终于是吧它搓出来了。</p><p>其实主要时间还是花在熟悉Android UI和后端交互以及Android studio IDE上，核心的接口调用与实现在PC版上面已经完成过了，只需要GPT一下就能完成语言切换。</p><p>不得不说，开发课表APP这段时间ChatGPT还真帮了我不少忙，帮我理解代码，改写代码，查找错误，修正代码等等。而且GPT还便宜，这几天3.5总共才花我0.35美元额度，而淘宝上5刀额度只要几角钱，4.0-do-mini也便宜，有比3.5新的训练数据以及更好的输出，价格也没贵多少。</p><p>至于我为什么非要开发原生Android APP，而不是开发小程序或者使用electron这种框架，我只想说我不想每次看课表还要打开某个小而美的降智软件，以及再给自己手机塞个浏览器内核，毕竟做出来是自己吃，做成答辩自己吃大可不必。。。</p><h2 id="部门的事情">部门的事情</h2><p>首先就是招新，因为今年来报部门的人很少（主要是当时宣传没有做到位），所以稳妥起见我早早就和几个部门部长打好招呼，旁听一下他们面试，顺便挖挖人（doge）</p><p>于是那天从上午开始就一直在面试，上午是第二课堂部门，中午稍微休息一下，下午是自己部门，然后晚上是组织部，一天都在面试，回寝室后连游戏都不想打，直接滚床上了。。。</p><p>最近也要给新招的干事们安排工作，有些事情还没安排到位，还需要再培训一下（怎么感觉像是在写工作报告？？？）</p><p>不过也不是没有好处，认识了几个新部长，交了几个好朋友，也是挺快乐的。</p><p>昨天去和组织部他们一起去团建，看到那些新干事唯唯诺诺的样子让我不禁想到自己一开始进团学的样子，真的是如出一辙哈哈哈哈。</p><p>其实回过头来发现，自己当初进团学的目的，就是想要改变自己，这么看来，也算是走出了自己想要的路吧。</p><h2 id="自己的生活">自己的生活</h2><p>这个月总体来说比较忙，都没怎么出去逛一逛，本来打算去线下店逛一逛买双鞋子，最后还是在京东上买了。</p><p>另外那台白嫖的主机搭建完后发现自己好像并没有什么需求，目前就挂了一个mod整合包，也不知道有没有人玩。</p><p>最近快双十一了，发现致钛7100plus 1T居然降到450了，我只能说等等党永不为奴！！！</p><p>虽然自己有一定的需求，但是我觉得还可以忍忍，没到必买不可的底部，打算等双十一看看能不能降到430一下，如果叠券能够降到400一下当然是最好的。（23年的那个价格就不奢求了）</p><p>还有就是发现自己一个月完全用不到2500G的流量，今天刷新流量之前发现上个周期才用200多G，还是开了免费WiFi的情况下（这么好的5G免费热点怎么你们都不连啊，恼），不知道大家有什么可以大量消耗流量的服务没（PCDN就算了，封了得不偿失）</p><h2 id="小结">小结</h2><p>十月很快就要过去了，时间过得还是蛮快的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;开发手机版课表APP&quot;&gt;开发手机版课表APP&lt;/h2&gt;
+&lt;p&gt;从国庆完回来后，教务系统的后台接口就改了，界面也同步更新，但这次貌似这次更新饱受大家诟病。&lt;/p&gt;
+&lt;p&gt;最诟病的是手机上打开会因为适配问题导致课表看不全，只看得到星期一的课，学校官方的手机app从今年</summary>
+      
+    
+    
+    
+    <category term="十月" scheme="https://blog.goodboyboy.top/categories/%E5%8D%81%E6%9C%88/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="小结" scheme="https://blog.goodboyboy.top/tags/%E5%B0%8F%E7%BB%93/"/>
+    
+    <category term="十月" scheme="https://blog.goodboyboy.top/tags/%E5%8D%81%E6%9C%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初识BlueSky</title>
     <link href="https://blog.goodboyboy.top/posts/313789330.html"/>
     <id>https://blog.goodboyboy.top/posts/313789330.html</id>
     <published>2024-10-18T14:53:40.000Z</published>
     <updated>2024-10-18T14:53:40.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="什么是bluesky"><a class="markdownIt-Anchor" href="#什么是bluesky">#</a> 什么是 BlueSky？</h2><blockquote><p>Bluesky 是一个去中心化的分布式微博客社交网络，使用自行开发的认证传输协议（AT Protocol），有别于使用 ActivityPub 协议的 Mastodon。</p></blockquote><p>以上来自于<a href="https://zh.wikipedia.org/wiki/Bluesky"> https://zh.wikipedia.org/wiki/Bluesky</a></p><p>整个界面给我的感觉 —— 简直是推特翻版</p><h2 id="起因"><a class="markdownIt-Anchor" href="#起因">#</a> 起因</h2><p>今天看到一个新闻，说推特更新用户协议，将使用用户作品训练 AI</p><p><a href="https://finance.sina.com.cn/roll/2024-10-17/doc-incswhzx5894611.shtml">用户权益受损引不满，X（推特）官方更新用户协议，将使用用户作品训练 AI</a></p><p><a href="https://www.sohu.com/a/817809304_121798711">马斯克 X 平台更新隐私政策：将用户数据授权给第三方 AI 公司</a></p><p><a href="https://www.msn.cn/zh-cn/news/other/%E6%8E%A8%E7%89%B9%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE-%E7%94%A8%E6%88%B7%E4%BD%9C%E5%93%81%E5%B0%86%E8%A2%AB%E7%94%A8%E4%BA%8E%E8%AE%AD%E7%BB%83ai-%E5%BC%95%E5%8F%91%E7%83%AD%E8%AE%AE/ar-AA1sqNRA">推特更新用户协议，用户作品将被用于训练 AI，引发热议！</a></p><p>看完我只能说推特现在也开始花样作死，喜欢作死的大平台是越来越多了。</p><p>从之前的 Unity 到最近的 gotdot，我只能说垄断是这样的。（gotdot 纯属是没能力掌握这泼天的流量，结果就是流量怎么来的，最后还是怎么走的）</p><p>然后就注意到 BlueSky 这玩意，一个去中心化的平台，可谓是站到风口上了。</p><p>目前已经有部分画师开始从推特迁移到了 BlueSky，可以说如果这次 BlueSky 能把握好这次机会，绝对可以吸引一大波用户。</p><h2 id="对比"><a class="markdownIt-Anchor" href="#对比">#</a> 对比</h2><p>之前也不是没有去中心化的平台，像使用 ActivityPub 的 Mastodon。</p><p>但是这些平台多多少少有些问题。</p><p>像 Mastodon 太过于臃肿，没个好点的服务器就不要想搭建了。虽然有更轻量化的 misskey，但是纯二次元的风格对于我来说并不怎么喜欢。</p><p>而且说是说去中心化，但是你的所有账号信息仍然是绑定在你所使用的实例上（因为搭建成本高，很多用户仍然是使用的各个公共实例），那么你的所有数据仍然与当前实例强相关。当用户数量达到一定量级后，就会出现热门的少量的实例掌握大量的用户。</p><p>这对于去中心化来说其实是很不健康的。</p><p>而 BlueSky 则是采用 PDS (Personal Data Server) 的方式，将自己的数据托管于自己的服务器上（也可以使用官方的 PDS），而用户交互界面则使用官方的网站。</p><p>目前 BlueSky 已将 PDS 开源，从官方给出的要求上来看，1G1H20GB 就可以供 1-20 人使用，性能还是蛮不错的。</p><h2 id="缺点"><a class="markdownIt-Anchor" href="#缺点">#</a> 缺点</h2><p>不过仍有一定的缺点，一个是上层用户交互需要使用官网网站，如果哪天官方关闭网站，那么你有数据也没用。</p><p>另一个是貌似 PDS 使用的是 sqlite 数据库，一旦数据多起来后，会严重影响性能。</p><p><s>邀请制（目前官方已取消）</s></p><p>还有就是安装文档不完善</p><p>目前官方给了一个一键安装的脚本，但我仔细分析了一下脚本，发现脚本过于死板，自定义程度不高，具体表现为：</p><ul><li>Caddy 强绑定</li><li>Data 路径写死</li><li>安装 watchtower</li></ul><p>如果不是纯净系统，例如已经安装有 nginx 之类的程序，就会与 Caddy 出现冲突。</p><p>并且如果部署有其他容器，还可能会受到 watchtower 的影响导致意外更新</p><p>而且通过分析脚本，发现 PDS 实际上就是一个由 TS 写的纯粹的后端，脚本集成化过高反而不易于在已有的环境上进行部署</p><h2 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h2><p>目前挺看好 BlueSky，要是能把 PDS 规范一下，并且能让用户自行部署前端页面，我觉得还是挺有看头的。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="什么是BlueSky？">什么是BlueSky？</h2><blockquote><p>Bluesky是一个去中心化的分布式微博客社交网络，使用自行开发的认证传输协议（AT Protocol），有别于使用ActivityPub协议的Mastodon。</p></blockquote><p>以上来自于<a href="https://zh.wikipedia.org/wiki/Bluesky">https://zh.wikipedia.org/wiki/Bluesky</a></p><p>整个界面给我的感觉——简直是推特翻版</p><h2 id="起因">起因</h2><p>今天看到一个新闻，说推特更新用户协议，将使用用户作品训练AI</p><p><a href="https://finance.sina.com.cn/roll/2024-10-17/doc-incswhzx5894611.shtml">用户权益受损引不满，X（推特）官方更新用户协议，将使用用户作品训练AI</a></p><p><a href="https://www.sohu.com/a/817809304_121798711">马斯克X平台更新隐私政策：将用户数据授权给第三方AI公司</a></p><p><a href="https://www.msn.cn/zh-cn/news/other/%E6%8E%A8%E7%89%B9%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE-%E7%94%A8%E6%88%B7%E4%BD%9C%E5%93%81%E5%B0%86%E8%A2%AB%E7%94%A8%E4%BA%8E%E8%AE%AD%E7%BB%83ai-%E5%BC%95%E5%8F%91%E7%83%AD%E8%AE%AE/ar-AA1sqNRA">推特更新用户协议，用户作品将被用于训练AI，引发热议！</a></p><p>看完我只能说推特现在也开始花样作死，喜欢作死的大平台是越来越多了。</p><p>从之前的Unity到最近的gotdot，我只能说垄断是这样的。（gotdot纯属是没能力掌握这泼天的流量，结果就是流量怎么来的，最后还是怎么走的）</p><p>然后就注意到BlueSky这玩意，一个去中心化的平台，可谓是站到风口上了。</p><p>目前已经有部分画师开始从推特迁移到了BlueSky，可以说如果这次BlueSky能把握好这次机会，绝对可以吸引一大波用户。</p><h2 id="对比">对比</h2><p>之前也不是没有去中心化的平台，像使用ActivityPub的Mastodon。</p><p>但是这些平台多多少少有些问题。</p><p>像Mastodon太过于臃肿，没个好点的服务器就不要想搭建了。虽然有更轻量化的misskey，但是纯二次元的风格对于我来说并不怎么喜欢。</p><p>而且说是说去中心化，但是你的所有账号信息仍然是绑定在你所使用的实例上（因为搭建成本高，很多用户仍然是使用的各个公共实例），那么你的所有数据仍然与当前实例强相关。当用户数量达到一定量级后，就会出现热门的少量的实例掌握大量的用户。</p><p>这对于去中心化来说其实是很不健康的。</p><p>而BlueSky则是采用PDS (Personal Data Server)的方式，将自己的数据托管于自己的服务器上（也可以使用官方的PDS），而用户交互界面则使用官方的网站。</p><p>目前BlueSky已将PDS开源，从官方给出的要求上来看，1G1H20GB就可以供1-20人使用，性能还是蛮不错的。</p><h2 id="缺点">缺点</h2><p>不过仍有一定的缺点，一个是上层用户交互需要使用官网网站，如果哪天官方关闭网站，那么你有数据也没用。</p><p>另一个是貌似PDS使用的是sqlite数据库，一旦数据多起来后，会严重影响性能。</p><p><s>邀请制（目前官方已取消）</s></p><p>还有就是安装文档不完善</p><p>目前官方给了一个一键安装的脚本，但我仔细分析了一下脚本，发现脚本过于死板，自定义程度不高，具体表现为：</p><ul><li>Caddy强绑定</li><li>Data路径写死</li><li>安装watchtower</li></ul><p>如果不是纯净系统，例如已经安装有nginx之类的程序，就会与Caddy出现冲突。</p><p>并且如果部署有其他容器，还可能会受到watchtower的影响导致意外更新</p><p>而且通过分析脚本，发现PDS实际上就是一个由TS写的纯粹的后端，脚本集成化过高反而不易于在已有的环境上进行部署</p><h2 id="总结">总结</h2><p>目前挺看好BlueSky，要是能把PDS规范一下，并且能让用户自行部署前端页面，我觉得还是挺有看头的。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;什么是bluesky&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#什么是bluesky&quot;&gt;#&lt;/a&gt; 什么是 BlueSky？&lt;/h2&gt;
+    <summary type="html">&lt;h2 id=&quot;什么是BlueSky？&quot;&gt;什么是BlueSky？&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Bluesky 是一个去中心化的分布式微博客社交网络，使用自行开</summary>
+&lt;p&gt;Bluesky是一个去中心化的分布式微博客社交网络，使用自行开发的认证传输协议（AT Protocol），有别于使用ActivityPub协议的Mastodon。&lt;/p&gt;
+</summary>
       
     
     
