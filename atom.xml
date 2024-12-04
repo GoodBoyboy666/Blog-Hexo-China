@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-12-01T13:07:33.000Z</updated>
+  <updated>2024-12-04T12:46:12.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Canokey Canary到货咯</title>
+    <link href="https://blog.goodboyboy.top/posts/2076973366.html"/>
+    <id>https://blog.goodboyboy.top/posts/2076973366.html</id>
+    <published>2024-12-04T12:46:12.000Z</published>
+    <updated>2024-12-04T12:46:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="开箱"><a class="markdownIt-Anchor" href="#开箱">#</a> 开箱</h2><p>今天收到了新的 Canokey，版本名叫 Canary。</p><p>外包装上和上代差不多，因为是尝鲜版（139CNY），所以没有送配件。</p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/04/xw3xpf.webp" alt="外包装"></p><p>外观和上代好像差不多，触摸点面积变大了。</p><p>不过最大的改变就是由原来的 A 口变成了 C 口。</p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/04/xw1xo7.webp" alt="背面"></p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/04/xw2y27.webp" alt="正面"></p><h2 id="功能"><a class="markdownIt-Anchor" href="#功能">#</a> 功能</h2><p>功能上当前固件版本是 3.0.0，与我原来那个 1.6.2 的 Pigeon 相比，有了一些改变：</p><p>硬件上由原来的 A 口变为 C 口，并且 NFC 功能大幅改善，能够正常通过 NFC 进行操作</p><p>Webauthn（passkey）：</p><ul><li>支持 Credential Management, Credential Protection, Credential Blob, Large Blob Key 特性</li></ul><p>所以现在可以管理已经保存的 rk 凭据，当想删除某个凭据不必整个重置 key 了。</p><ul><li>实验性支持 SM2 算法</li></ul><p>这项我目前没有什么需求</p><p>OpenPGP：</p><ul><li>支持 GET CHALLENGE 命令，可用作随机数发生器</li></ul><p>目前没用到</p><p>Pass：</p><ul><li>新增静态密码存储和输入功能，触摸时模拟键盘输入密码</li></ul><p>两个密码槽，长按和短按，目前是没什么需求</p><p>PIV：</p><ul><li>扩展算法支持，RSA3072/4096，ED25519，SECP256K1</li></ul><p>看来可以玩 ed25519 的证书了</p><ul><li>新增 DO 两个，Fingerprints 和 Facial Images，可存储自定义数据</li></ul><p>very crypt 可以用得到，用于存储硬盘加密密钥文件（之前讨论的也是这个功能，感觉就是为这个功能准备的）</p><blockquote><p>完整 Log 请看官方 ChangeLog：<a href="https://github.com/canokeys/canokey-product/discussions/20">https://github.com/canokeys/canokey-product/discussions/20</a></p></blockquote><h2 id="需求"><a class="markdownIt-Anchor" href="#需求">#</a> 需求</h2><p>其实让我买它的最大动力还是完整版的 NFC 功能，以及 139 的价格！！！比我之前买的 Pigeon 还便宜，Pigeon 好像是花了 170。</p><p>至于为什么会这样，主要是不支持在 iOS（通过 type-c 接口）以及 macos 上（通过系统级 API）使用，所以价格打骨折了。</p><p>官方排查下来貌似是果子那边的问题（yubikey 也用不了了哈哈哈哈），阿三程序员果然总是能给人惊喜（玩梗勿喷）</p><p>不过反正我没使用苹果设备，所以直接入手也没问题。</p><h2 id="投入使用"><a class="markdownIt-Anchor" href="#投入使用">#</a> 投入使用</h2><p>目前打算两个 key 一起使用，Pigeon 主要负责 OpenPGP 的签名，Canary 负责 Passkey</p><h2 id="问题"><a class="markdownIt-Anchor" href="#问题">#</a> 问题</h2><p>测试了一下，发现使用 Google 的 Passkey 服务框架无法正常检测 key 的移除，导致完全用不了，手机自带的 Passkey 服务则是状态异常，已经完成写入却一直在写入中，不过好在 c 口可以直接插入手机，直接插入就没有任何问题。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>新 Key 的第一次签名，送给大家</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PGP SIGNED MESSAGE-----</span><br><span class="line">Hash: SHA512</span><br><span class="line"></span><br><span class="line">Hello world!</span><br><span class="line">-----BEGIN PGP SIGNATURE-----</span><br><span class="line"></span><br><span class="line">iHUEARYKAB0WIQSv0kw6czJN3BZXPkeOV9gL83kUUAUCZ1BO5AAKCRCOV9gL83kU</span><br><span class="line">UOT4AQDrp8otwBC630l9V9wHfOJd9JuxKygeb4wLih1EYResIwD+In6b3rhPwjRH</span><br><span class="line">b40UXwsxcB39yYce/kOiFDq96mAVuw8=</span><br><span class="line">=WErI</span><br><span class="line">-----END PGP SIGNATURE-----</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;开箱&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#开箱&quot;&gt;#&lt;/a&gt; 开箱&lt;/h2&gt;
+&lt;p&gt;今天收到了新的 Canokey，版本名叫 Canary。&lt;/p&gt;
+&lt;p&gt;外包装上和上代差不多，因为是尝鲜版（139CNY），所以没有送配件。&lt;</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="Canokey" scheme="https://blog.goodboyboy.top/tags/Canokey/"/>
+    
+    <category term="物理密钥" scheme="https://blog.goodboyboy.top/tags/%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>Follow订阅源认证</title>
