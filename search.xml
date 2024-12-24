@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>免费申请S/MIME邮箱证书</title>
+      <!--<link href="/posts/851058316.html"/>
+      <url>/posts/851058316.html</url>-->
+      <link href="posts/851058316.html"/>
+      <url>posts/851058316.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>使用邮件进行通信时，邮件一般情况下均为明文，即使自己的客户端与邮箱服务器通信使用 TLS 加密，但不能保证邮件在邮箱服务器存储时以及对方与邮箱服务器通信时同样以 TLS 加密。</p><p>因此目前有多种邮件签名加密方式，最常见的为 OpenPGP 和 S/MIME</p><p>OpenPGP 因安全，开源，便捷十分流行，但一个不可忽视的问题就是需要自己构建信任链。</p><p>也就是说，在进行公钥交换时需要自行确认对方的身份，最安全的方式是面交公钥并确定密钥指纹。</p><p>当然正常生活中对于网友大家更多的是选择在已有的信任链体系下进行公钥交换，例如发布在各大网站上，这些网站均会使用 TLS 对通信进行加密。</p><p>而 TLS 所依赖的信任链则由全球各大 CA 证书机构负责，那么，是否有一步到位的方法，直接依赖 CA 证书机构构建的信任链来进行安全的通信呢？</p><p>答案肯定是有，就是本文的主角 ——S/MIME 证书。</p><p>当然便捷性和安全性呈负相关，为了便捷性肯定是会降低安全性的，例如国内早期某个 CA 伪造证书的事情，大家可以自行去搜索，不过<strong>目前</strong>各大 CA 还算是值得信任的（单独不信任某个 CA 也可以自行拉黑）。</p><h2 id="申请"><a class="markdownIt-Anchor" href="#申请">#</a> 申请</h2><p>S/MIME 证书就和网站 SSL 证书一样，由各大 CA 证书机构颁发，只是说不像网站 SSL 证书，免费的一抓一大把，很多 S/MIME 证书都需要收费，而且价格不便宜，不过今天发现一家免费提供 S/MIME 证书的机构：Actalis</p><p>Actalis 免费提供一年有效期的 S/MIME 证书，验证流程也很简单。</p><p>申请链接：<a href="https://www.actalis.com/request-s-mime-certificate">https://www.actalis.com/request-s-mime-certificate</a></p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/24/pdmovb.webp" alt="申请页面"></p><p>进入申请页面后首先需要注册账户，注册完成后回到这个页面，填写需要申请的邮箱地址，提交后会向邮箱发送确认链接，点击确认链接完成验证。</p><p>此时进入<a href="https://www.actalis.com/dashboard"> https://www.actalis.com/dashboard</a> 可以看到申请的记录，处于 <code>Verify</code>  状态，等待大约 10-30 分钟后，变成 <code>Active</code>  状态时则申请成功</p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/24/pg18vi.webp" alt="申请页面"></p><p>点击 <code>Download file .p12</code>  下载自己的 S/MIME 证书，证书密码将通过邮件发送至邮箱，密码需要妥善保管（证书文件可以一直下载，密码只会发送一次）。</p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/24/piec3w.webp" alt="发送的密码"></p><p>然后使用支持 S/MIME 的邮箱客户端就可以发送经过签名或者加密的邮件了。</p><p>从安全性考虑，我选择将证书导入我的 Canokey 中，如果有 yubikey 也可以导入 yubikey 中</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>不知道 thunderbird 抽什么风，就是死活用不了 Canokey 里的 S/MIME 证书，将证书直接导入 thunderbird 才能正常发邮件，之前 OpenPGP 也是这个毛病，用不了外置智能卡。。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 证书 </tag>
+            
+            <tag> S/MIME </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新鼠标到了ヾ(≧▽≦*)o</title>
       <!--<link href="/posts/3475145767.html"/>
       <url>/posts/3475145767.html</url>-->
