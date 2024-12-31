@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2024-12-26T15:58:28.000Z</updated>
+  <updated>2024-12-31T10:18:40.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再见 2024，你好 2025</title>
+    <link href="https://blog.goodboyboy.top/posts/648388619.html"/>
+    <id>https://blog.goodboyboy.top/posts/648388619.html</id>
+    <published>2024-12-31T10:18:40.000Z</published>
+    <updated>2024-12-31T10:18:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>今天终于考完大物，悬着的心放下了，顺便在 2024 最后一天更新一下年终总结。</p><h2 id="今年的事"><a class="markdownIt-Anchor" href="#今年的事">#</a> 今年的事</h2><h3 id="1月-3月"><a class="markdownIt-Anchor" href="#1月-3月">#</a> 1 月 - 3 月</h3><p>去年年末家里发生了一些事情，在当时对我的影响还是挺大的，所以发了一篇文来宣泄一下情绪，不过后来觉得大家也不是我的垃圾桶，不能把博客弄得都是我的情绪垃圾，所以那篇文章后来我就锁了。</p><p>可以说那几个月我的情绪都不怎么好，甚至怀疑自己是不是抑郁了，不过好在在后面的生活中慢慢调整了过来。</p><p>然后就是平时晚自习在学校的双创实验室学习，虽然说组的方向和我自己的专业方向不同（当时也是我自己要求加入的），也是抱着尝试一下的心态，现在觉得当初的决定十分正确。</p><p>至少在实验室中我学到了很多知识，拓宽了自己的视野，也参加了几项比赛，只是比赛方向不是自己的专业，有种有力使不出的感觉😂</p><p>接着就是开坑了《<a href="/posts/3886469628.html">暮色遗梦</a>》这本网文小说，刚开始激情满满，几乎是一天一更，到后面差点变成太监文，这学期课程太多目前还是处于断更状态，不过请放心，绝对不会变成太监文的（确信）</p><p>再之后读了《程序员的自我修养 —— 链接、装载与库》这本书。这本书写得真的很好，让我对程序的产生有了更细致的了解，很推荐计算机专业的同学去看看，我自己看完后觉得意犹未尽，写了《<a href="/posts/139612455.html">链接、装载与库</a>》这篇文章，算是一种读书笔记吧。</p><p>最后是开了属于自己的万事达卡，以后跨境支付再也不用愁了 ——《<a href="/posts/970157876.html">又双叒开新卡了 —— 长城跨境通国际借记卡（非人哉万事达借记卡）</a>》</p><h3 id="4月-6月"><a class="markdownIt-Anchor" href="#4月-6月">#</a> 4 月 - 6 月</h3><p>这段时间到没有什么其他特别令我印象深刻的事情，唯一一个就是搬寝室。——《<a href="/posts/1716769968.html">一次有 “原味” 的搬寝经历</a>》</p><p>当时真的是忍不了一点，不能我一个人难受，必须发出来让大家一起品鉴一下（逃）</p><p>我是完全想不出，这个寝室那三个人是怎么忍受他的，整个寝室都是一股霉味 + 空调的阴冷 + 他的狐臭，当时踏入新寝室我差点原地升天。</p><p>我当时搬东西的时候还看到他还一直瞅我，我没说破，你知我知大家都知。</p><h3 id="7月-9月"><a class="markdownIt-Anchor" href="#7月-9月">#</a> 7 月 - 9 月</h3><p>首先就是 OpenSSH 漏洞，当时闹得挺大的，代码投毒，全球很多服务器都中招了，我自己四台 Linux 服务器有三台都有该漏洞。——《<a href="/posts/3733040568.html">OpenSSH 远程代码执行漏洞</a>》</p><p>然后就是给家里服役了快 8 年的老路由器换了，换成了小米 AX3000T，虽然家里宽带没有千兆，但是更好的无线信号以及 ipv6 是老路由器没有的。——《<a href="/posts/2665159743.html">升级家中主路由设备 | 小米 AX3000T 体验</a>》</p><p>有了 ipv6，MC 联机直接爽玩。</p><p>不过老路由器并没有退休，而是继续当牛马挂在小米 AX3000T 的 Lan 口，给我卧室的空调提供联网服务（空调不适配 WiFi6，没办法）</p><p>属于是狠狠压榨了😂</p><p>接着就是 8 月末黑神话悟空发布，也终于有一款能打的国产 3A 游戏了😭——《<a href="/posts/3038933290.html">游玩《黑神话悟空》序章有感（有剧透）</a>》</p><p>最后就是把宿舍的网络从校园网换成了 5G CPE，受不了学校的垃圾校园网，本来就贵，性价比低得要命，新学期价格不降网速降，而且就老生降网速，新生不降，真的就 “老用户与狗不得入内”。</p><p>所以直接换成了 5G CPE，校园网爱咋折腾咋折腾，我摊牌了🙄</p><h3 id="10月-12月"><a class="markdownIt-Anchor" href="#10月-12月">#</a> 10 月 - 12 月</h3><p>国庆没怎么出去玩，约不到搭子，只能自己就近去长沙逛了半天，一个人逛也蛮有意思的 ——《<a href="/posts/3975943485.html">国庆长沙单人半日游</a>》</p><p>然后就是白嫖了人生第一台 X86 物理服务器啊😭——《<a href="/posts/1612666407.html">狠狠白嫖了 —— 宿舍 X86 服务器</a>》</p><p>这下自己也是有物理服务器的人了（叉腰）</p><p>后面到没啥了，就是一直在忙学业，每天课多的要命，周一至周五全是早八，排课的人真的就是左脑缺失指令集，右脑确实运行库。。。</p><p>回想起这一年，从年初自己还是实验室的组员，到现在成为实验室的组长（预），带着实验室的学弟们学习，时间过得越来越快咯</p><h2 id="博客数据"><a class="markdownIt-Anchor" href="#博客数据">#</a> 博客数据</h2><p>自己的博客不靠流量盈利，完全是为爱发电，所以我也没怎么看网站统计，不过看到每月还是有几 k 的浏览量，写博客的动力又多了一分，嗷呜！（不明意义的嚎叫）</p><p>下面给大家展示一下博客这一年的数据吧～</p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/31/vqtafm.webp" alt="访问数据"></p><p><img src="https://pic.goodboyboy.top/imgs/2024/12/31/vrdthm.webp" alt="博友圈数据"></p><p>最后</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;今天终于考完大物，悬着的心放下了，顺便在 2024 最后一天更新一下年终总结。&lt;/p&gt;
+&lt;h2 id=&quot;今年的事&quot;&gt;&lt;a class=&quot;mar</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="年终总结" scheme="https://blog.goodboyboy.top/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>对学校学生APP的一次抓包分析</title>
