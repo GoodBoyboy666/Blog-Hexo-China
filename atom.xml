@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-01-01T11:14:16.000Z</updated>
+  <updated>2025-01-20T06:07:28.364Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>续期Azure学生账户的曲折经历</title>
+    <link href="https://blog.goodboyboy.top/posts/3558250291.html"/>
+    <id>https://blog.goodboyboy.top/posts/3558250291.html</id>
+    <published>2025-01-20T05:08:13.000Z</published>
+    <updated>2025-01-20T06:07:28.364Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="起因"><a class="markdownIt-Anchor" href="#起因">#</a> 起因</h2><p>在 2023 年年末的时候用学校的教育邮箱申请了 Azure 的学生账户，到 2024 年年末时，收到了微软的续期提醒，就在我打算正常续期的时候，发现无法正常续期，提示 <code>We encountered an unexpected error. Try again later.</code> 。</p><p>于是到 Azure 后台创建 ticket 和客服掰扯。</p><h2 id="开始"><a class="markdownIt-Anchor" href="#开始">#</a> 开始</h2><p>时间按客服正式接手的 12 月 31 号开始算吧。</p><p>首先是收到正常的注册学生账户的流程，显而易见，无效。</p><p>然后按照客服要求提供了详细的教育信息：</p><ol><li>您的姓名：</li><li>登录电子邮件:</li><li>学校电子邮件：</li><li>学校名称（中英文）：</li><li>您所在的国家 / 地区：</li><li>学生证明：（可以提供学生证）</li><li>访问此网址查询剩余额度（提供截图）：  <a href="https://portal.azure.com/#view/Microsoft_Azure_Education/EducationMenuBlade/~/overview">https://portal.azure.com/#view/Microsoft_Azure_Education/EducationMenuBlade/~/overview</a></li><li>访问此网址查询剩余额度（提供截图）： Microsoft Azure Sponsorships | Welcome</li><li>访问此网址查询订阅状态（提供截图）：  <a href="https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade">https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade</a></li><li>两份 PSR 操作步骤截图 / 全面屏截图：（从登入   <a href="https://signup.azure.com/studentverification?offerType=1">https://signup.azure.com/studentverification?offerType=1</a> 起截图至报错页面）</li></ol><p>在等待客服核实信息后，1 月 6 号，收到了客服发来的验证码用于激活订阅。</p><p>当时还蛮开心的，结果把验证码填了激活的时候还是无法激活。。。</p><p>遂再次发邮件和客服白扯（微软客服每天只发一个邮件）</p><p>7 号客服回复我 <code>在学生验证页面，选择“验证码”作为验证方式 (请不要输入您的学校邮箱验证)</code></p><p>然而我看表单内容并没有 <code>选择“验证码”作为验证方式</code> ，并且学校邮箱是必填项，不填提交不了。</p><p>我当时就很疑惑，在网上找了找视频，发现确实有验证码这个验证方式，但是我的验证表单就没有，后面我又找了一下时间近一点的，发现和我一样确实是没有单独的 <code>选择“验证码”作为验证方式</code> 的选项了</p><p>我当时就懂了，应该是页面改版了，还是近期才改的。</p><p>8 号客服说因为我提供的 PSR（步骤记录器）不完整（因为我只展示没有验证码作为验证方式以及不填学校邮箱无法提交的界面），需要重新提供，重新提供后顺便附上了我的电话，不想再一天一封邮件了，太浪费时间。</p><p>9 号，微软客服来电，我远程共享屏幕给客服，然而因为 Azure 那边的问题，导致我重现不了目前的问题，也就是登录完成后直接就是 <code>正在确认您的账户</code> ，然后报错，展示不了没有 <code>选择“验证码”作为验证方式</code> 的界面</p><p>不过好在客服那边已经知道了并说会帮我处理。</p><p>13 号，微软发了一封邮件，表示后台还需要更多时间处理问题。</p><p>15 号，客服让我注册一个新的微软账户，并且强调 <code>您新的MSA帐户不能以qq邮箱或国内邮箱为您的网域后缀</code></p><p>懂了，看来是国内某些玩意滥用多了给微软整怕了，直接封了国内所有邮箱</p><p>但是当我用新的微软账户注册 Azure 学生账户时，仍然是没有 <code>选择“验证码”作为验证方式</code> ，当时就想算了，懒得用了，我也不差这个学生账户，不想折腾了。</p><p>17 号，微软客服给我打了个电话，发现我一直没发邮件，询问我是否已经完成了注册，我就简单说明了一下，客服表示应该是要填学校邮箱的，我就说好那我回去试一下。</p><p>就当我用新的微软账户，美美的打开学生账户注册链接进行注册时，最关键的学术验证都已经过了，到了勾选用户协议完成下一步时，提示 <code>你没有资格使用Azure免费账户</code> 。。。</p><p>我差点就想骂人了。。。</p><p>遂又双叒叕发邮件给微软客服。</p><p>20 号，微软解除账户订阅限制，完成 Azure 学生账户注册激活。</p><p>历时半个多月，终于是结束了。</p><h2 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h2><p><strong>账户注册初始邮箱不要用国内邮箱</strong>，这个应该是统一锁的，微软客服也没办法</p><p>国内 edu.cn 教育邮箱大概率被锁，被锁后直接和客服掰扯找客服要验证码（对接的都是中文客服，不要想着提供假信息）</p><p>拿到验证码大概率还是被锁，不过可以过学术验证环节，被锁后找客服解锁账户订阅限制</p><p>最后重复激活步骤即可完成激活</p><p><img src="https://pic.goodboyboy.top/imgs/2025/01/20/n6vjnt.webp" alt="激活成功"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#起因&quot;&gt;#&lt;/a&gt; 起因&lt;/h2&gt;
+&lt;p&gt;在 2023 年年末的时候用学校的教育邮箱申请了 Azure 的学生账户，到 2024 年年末时，收到了微软的续期提醒，就在我打算正常续期的时</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="Azure" scheme="https://blog.goodboyboy.top/tags/Azure/"/>
+    
+  </entry>
   
   <entry>
     <title>记忆中的烟花</title>
