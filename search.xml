@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>DeepSeek API挂了？SiliconFlow来救！</title>
+      <!--<link href="/posts/2942945809.html"/>
+      <url>/posts/2942945809.html</url>-->
+      <link href="posts/2942945809.html"/>
+      <url>posts/2942945809.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近，DeepSeek R1开源模型超火，我自己使用了一下，效果确实很棒，而且价格比OpenAI便宜很多。</p><p>这几天DeepSeek服务器一直受到境外IP攻击，API服务已经有很多天不可用，网页和APP服务倒是能正常用，只是有时候会不稳定。</p><p>不过既然是开源模型，当然可以自己部署不受影响，但官方完整的600多B的模型个人一般很难拿得出能跑的硬件，因此这里使用SiliconFlow部署来曲线救国</p><h2 id="正文">正文</h2><p><a href="https://siliconflow.cn/">SiliconFlow（硅基流动）</a>是一家大模型一站式云服务平台，目前该平台已部署有DeepSeek-R1，DeepSeek-V3，Qwen2.5-72B-Instruct-128K，Llama-3.3-70B-Instruct等模型。</p><blockquote><p>SiliconCloud 裂变活动火热开启，2000万Tokens送不停！北京时间2024年8月1日凌晨0时起您每邀请一位好友成为 SiliconCloud 新用户，您与好友均可获赠2000万Tokens（14元平台配额）。邀请越多，奖励越多，畅享体验SiliconCloud！</p></blockquote><p>图穷匕见（doge</p><p>我的邀请码是<code>jlrPRCGl</code>，注册的时候填写就可以获得2000M的Token</p><p>注册链接：<a href="https://cloud.siliconflow.cn/i/jlrPRCGl">https://cloud.siliconflow.cn/i/jlrPRCGl</a></p><p>目前R1定价和DeepSeek官方的API价格一致：</p><p>输入：￥4/ M Tokens<br>输出：￥16/ M Tokens</p><p>V3的价格和官网也是一致：</p><p>输入：￥1/ M Tokens<br>输出：￥2/ M Tokens</p><p>并且使用均无需实名（充值需要实名，并且需要绑定手机号）</p><p>而且最近发布的Janus-Pro-7B模型是限免状态</p><h3 id="注册">注册</h3><p>注册没有什么好说的，点击上面的注册链接注册即可</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdqxtk.webp" alt="注册"></p><h3 id="创建API">创建API</h3><p>注册完成后创建自己的API，如下图</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdyxlz.webp" alt="创建API"></p><h3 id="调用API">调用API</h3><p>SiliconFlow接口文档：<a href="https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions">https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions</a></p><p>这里我使用的是Cherry Studio，当然你也可以使用Next Web进行调用，但是体验没有Cherry Studio好用</p><p><a href="https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio">https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio</a></p><p>下载安装Cherry Studio，在左下角<code>设置</code>-&gt;<code>模型服务</code>-&gt;<code>硅基流动</code>填写创建的API密钥，添加想要的模型即可。</p><p>返回到主界面选择自己想要的模型就可以开始对话了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/si4h7t.webp" alt="主界面"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> DeepSeek </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>续期Azure学生账户的曲折经历</title>
       <!--<link href="/posts/3558250291.html"/>
       <url>/posts/3558250291.html</url>-->
