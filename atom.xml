@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-02-03T08:51:52.000Z</updated>
+  <updated>2025-02-07T05:09:55.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -17,20 +17,50 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>一指灵通安全硬件体验</title>
+    <link href="https://blog.goodboyboy.top/posts/3512270884.html"/>
+    <id>https://blog.goodboyboy.top/posts/3512270884.html</id>
+    <published>2025-02-07T05:09:55.000Z</published>
+    <updated>2025-02-07T05:09:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a class="markdownIt-Anchor" href="#介绍">#</a> 介绍</h2><p>一指灵通支持 WinHello、(Win7/8/10 等) 系统指纹登录、口令管理及鼠标中键自动填入用户密码、文件加解密等<br>支持 Windows、统信 UOS、银河麒麟等系统</p><p>主要有四大功能：指纹登录，口令密码管理，文件加密，USBKey（貌似仅开放给企业用户）</p><h2 id="开箱"><a class="markdownIt-Anchor" href="#开箱">#</a> 开箱</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/npwzjv.webp" alt="开箱"></p><p>一个硬件主体，一个说明书，一根 USB 延长线（赠送）</p><p>不过一指灵通盒子里也附赠有一根 USB 延长线，只不过会短一些。</p><p>下面是一指灵通本体，大小上比普通的鼠标 USB 接收器大一点点，一开始我还以为会有银行卡那么大，开箱后没想到居然这么小巧，如图：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/npsvmw.webp" alt="一指灵通"></p><h2 id="使用"><a class="markdownIt-Anchor" href="#使用">#</a> 使用</h2><h3 id="不使用配套软件"><a class="markdownIt-Anchor" href="#不使用配套软件">#</a> 不使用配套软件</h3><p>在不使用配套软件的情况下，一指灵通就是一个正常的指纹传感器，Windows 上支持即插即用（Linux 上没试过），对接 Windows Hello，指纹对比由操作系统负责，如图：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/lye388.webp" alt="调起Windows Hello验证"></p><p>在设备管理器中可以看到一个生物识别设备：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/lzeuv8.webp" alt="设备管理器"></p><p>在系统登录界面也可以代替 PIN 进行登录。</p><blockquote><p>Tips：因为在 Windows 10 及以上才有 Windows Hello，因此 win7 需要依靠配套软件才能实现指纹登录系统。</p></blockquote><h4 id="添加指纹"><a class="markdownIt-Anchor" href="#添加指纹">#</a> 添加指纹</h4><p>在不使用配套软件的情况下，指纹对比由 Windows Hello 负责，因此添加指纹需要进入系统设置：</p><p>依次点击 <code>账户</code>  -&gt; <code>登录选项</code>  -&gt; <code>指纹识别</code></p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/m3hqlu.webp" alt="添加指纹"></p><p>根据提示添加指纹即可：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/m4odek.webp" alt="添加指纹"></p><p>最后就可以愉快的玩耍了（doge</p><blockquote><p>Tips：Windows Hello 每个账户支持添加十个指纹</p></blockquote><h3 id="使用配套软件"><a class="markdownIt-Anchor" href="#使用配套软件">#</a> 使用配套软件</h3><p>使用配套软件后一指灵通支持口令密码管理和文件加密</p><blockquote><p>Tips：安装配套软件后软件默认会接管 Windows Hello，如果不想接管需要进入软件设置关闭（关闭后不影响其他功能）</p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/mamscb.webp" alt="软件登录界面"></p><p>一开始软件会要求录入指纹和设置管理员密码，该指纹保存在一指灵通硬件内，指纹对比由硬件处理。</p><p>默认管理员密码有 8 次尝试机会，机会用完后硬件会锁死，不过指纹尝试次数不限，并且使用指纹解锁过一次后又会重置尝试机会（doge</p><h4 id="口令密码箱"><a class="markdownIt-Anchor" href="#口令密码箱">#</a> 口令密码箱</h4><p>我手上的这个一指灵通支持添加 984 个密码，如图：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/n67sf0.webp" alt="口令密码箱"></p><p>使用时点击鼠标中键（可自定义）呼出候选框，点击即可自动填充：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/07/n80zg8.webp" alt="候选框"></p><h4 id="指纹登录"><a class="markdownIt-Anchor" href="#指纹登录">#</a> 指纹登录</h4><p>安装配套软件后 win7 系统支持使用指纹登录，win10 及其以上 Windows Hello 默认被接管。</p><p>如果使用软件接管，解锁时指纹对比由硬件完成，对比存储在硬件内的指纹，默认一指灵通的指纹容量为 20 个。</p><p>个人建议当系统为 win7 时，由软件接管登录系统，当系统为 win10 及其以上时，不用使用软件接管 Windows Hello。</p><h4 id="文件加解密"><a class="markdownIt-Anchor" href="#文件加解密">#</a> 文件加解密</h4><p>这个功能在软件主界面没有，入口藏在鼠标右键里</p><p>右键文件，选择 <code>Kika文档加密</code> ，即可完成对文件的加密。</p><p>这里使用的是 SM4 国密对称加密算法对文件进行加密，对称加密使用的密钥由硬件的 SM2 非对称加密算法的公钥进行加密并附加在已加密的文件中。</p><p>加密完成后生成 <code>.kik</code>  后缀的加密文件</p><p>解密只需要双击 <code>.kik</code>  文件，将会自动调起软件，验证完指纹后进行解密。</p><p>信创采购狂喜（doge</p><h4 id="usbkey功能"><a class="markdownIt-Anchor" href="#usbkey功能">#</a> USBKey 功能</h4><p>因为没对个人用户开放，暂时未知（几年前买的域天 USBKey 还在吃灰中 doge）</p><h2 id="其他系统"><a class="markdownIt-Anchor" href="#其他系统">#</a> 其他系统</h2><p>因为平时还是使用 Windows 居多，国产的一些 Linux 系统我就没测试了（不想再装一遍 NVIDIA 驱动了，逃），使用上应该也大差不差</p><h2 id="配套软件有待改进的地方"><a class="markdownIt-Anchor" href="#配套软件有待改进的地方">#</a> 配套软件有待改进的地方</h2><div class="note info flat"><ul><li>没有配套的浏览器插件，浏览器自动填充时需要手动搜索</li><li>候选框对于微软输入法兼容性欠佳，出现输入重复字符情况</li><li>不能便捷重新生成硬件的 SM2 密钥对</li><li>添加密码时密码生成功能生成的密码长度不能自定义</li><li>大文件加密后解密出现异常（测试样本为 3.9G 的镜像文件）</li></ul></div><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>整体还不错，99 的价位能做到这些已经算是很可以了，期待软件之后的更新。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#介绍&quot;&gt;#&lt;/a&gt; 介绍&lt;/h2&gt;
+&lt;p&gt;一指灵通支持 WinHello、(Win7/8/10 等) 系统指纹登录、口令管理及鼠标中键自动填入用户密码、文件加解密等&lt;br&gt;
+支持 Wi</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Hardware" scheme="https://blog.goodboyboy.top/categories/Hardware/"/>
+    
+    
+    <category term="安全硬件" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E5%85%A8%E7%A1%AC%E4%BB%B6/"/>
+    
+    <category term="一指灵通" scheme="https://blog.goodboyboy.top/tags/%E4%B8%80%E6%8C%87%E7%81%B5%E9%80%9A/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DeepSeek API挂了？SiliconFlow来救！</title>
     <link href="https://blog.goodboyboy.top/posts/2942945809.html"/>
     <id>https://blog.goodboyboy.top/posts/2942945809.html</id>
     <published>2025-02-03T08:51:52.000Z</published>
     <updated>2025-02-03T08:51:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近，DeepSeek R1开源模型超火，我自己使用了一下，效果确实很棒，而且价格比OpenAI便宜很多。</p><p>这几天DeepSeek服务器一直受到境外IP攻击，API服务已经有很多天不可用，网页和APP服务倒是能正常用，只是有时候会不稳定。</p><p>不过既然是开源模型，当然可以自己部署不受影响，但官方完整的600多B的模型个人一般很难拿得出能跑的硬件，因此这里使用SiliconFlow部署来曲线救国</p><h2 id="正文">正文</h2><p><a href="https://siliconflow.cn/">SiliconFlow（硅基流动）</a>是一家大模型一站式云服务平台，目前该平台已部署有DeepSeek-R1，DeepSeek-V3，Qwen2.5-72B-Instruct-128K，Llama-3.3-70B-Instruct等模型。</p><blockquote><p>SiliconCloud 裂变活动火热开启，2000万Tokens送不停！北京时间2024年8月1日凌晨0时起您每邀请一位好友成为 SiliconCloud 新用户，您与好友均可获赠2000万Tokens（14元平台配额）。邀请越多，奖励越多，畅享体验SiliconCloud！</p></blockquote><p>图穷匕见（doge</p><p>我的邀请码是<code>jlrPRCGl</code>，注册的时候填写就可以获得2000M的Token</p><p>注册链接：<a href="https://cloud.siliconflow.cn/i/jlrPRCGl">https://cloud.siliconflow.cn/i/jlrPRCGl</a></p><p>目前R1定价和DeepSeek官方的API价格一致：</p><p>输入：￥4/ M Tokens<br>输出：￥16/ M Tokens</p><p>V3的价格和官网也是一致：</p><p>输入：￥1/ M Tokens<br>输出：￥2/ M Tokens</p><p>并且使用均无需实名（充值需要实名，并且需要绑定手机号）</p><p>而且最近发布的Janus-Pro-7B模型是限免状态</p><h3 id="注册">注册</h3><p>注册没有什么好说的，点击上面的注册链接注册即可</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdqxtk.webp" alt="注册"></p><h3 id="创建API">创建API</h3><p>注册完成后创建自己的API，如下图</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdyxlz.webp" alt="创建API"></p><h3 id="调用API">调用API</h3><p>SiliconFlow接口文档：<a href="https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions">https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions</a></p><p>这里我使用的是Cherry Studio，当然你也可以使用Next Web进行调用，但是体验没有Cherry Studio好用</p><p><a href="https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio">https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio</a></p><p>下载安装Cherry Studio，在左下角<code>设置</code>-&gt;<code>模型服务</code>-&gt;<code>硅基流动</code>填写创建的API密钥，添加想要的模型即可。</p><p>返回到主界面选择自己想要的模型就可以开始对话了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/si4h7t.webp" alt="主界面"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>最近，DeepSeek R1 开源模型超火，我自己使用了一下，效果确实很棒，而且价格比 OpenAI 便宜很多。</p><p>这几天 DeepSeek 服务器一直受到境外 IP 攻击，API 服务已经有很多天不可用，网页和 APP 服务倒是能正常用，只是有时候会不稳定。</p><p>不过既然是开源模型，当然可以自己部署不受影响，但官方完整的 600 多 B 的模型个人一般很难拿得出能跑的硬件，因此这里使用 SiliconFlow 部署来曲线救国</p><h2 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h2><p><a href="https://siliconflow.cn/">SiliconFlow（硅基流动）</a>是一家大模型一站式云服务平台，目前该平台已部署有 DeepSeek-R1，DeepSeek-V3，Qwen2.5-72B-Instruct-128K，Llama-3.3-70B-Instruct 等模型。</p><blockquote><p>SiliconCloud 裂变活动火热开启，2000 万 Tokens 送不停！北京时间 2024 年 8 月 1 日凌晨 0 时起您每邀请一位好友成为 SiliconCloud 新用户，您与好友均可获赠 2000 万 Tokens（14 元平台配额）。邀请越多，奖励越多，畅享体验 SiliconCloud！</p></blockquote><p>图穷匕见（doge</p><p>我的邀请码是 <code>jlrPRCGl</code> ，注册的时候填写就可以获得 2000M 的 Token</p><p>注册链接：<a href="https://cloud.siliconflow.cn/i/jlrPRCGl">https://cloud.siliconflow.cn/i/jlrPRCGl</a></p><p>目前 R1 定价和 DeepSeek 官方的 API 价格一致：</p><p>输入：￥4/ M Tokens<br> 输出：￥16/ M Tokens</p><p>V3 的价格和官网也是一致：</p><p>输入：￥1/ M Tokens<br> 输出：￥2/ M Tokens</p><p>并且使用均无需实名（充值需要实名，并且需要绑定手机号）</p><p>而且最近发布的 Janus-Pro-7B 模型是限免状态</p><h3 id="注册"><a class="markdownIt-Anchor" href="#注册">#</a> 注册</h3><p>注册没有什么好说的，点击上面的注册链接注册即可</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdqxtk.webp" alt="注册"></p><h3 id="创建api"><a class="markdownIt-Anchor" href="#创建api">#</a> 创建 API</h3><p>注册完成后创建自己的 API，如下图</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/sdyxlz.webp" alt="创建API"></p><h3 id="调用api"><a class="markdownIt-Anchor" href="#调用api">#</a> 调用 API</h3><p>SiliconFlow 接口文档：<a href="https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions">https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions</a></p><p>这里我使用的是 Cherry Studio，当然你也可以使用 Next Web 进行调用，但是体验没有 Cherry Studio 好用</p><p><a href="https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio">https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio</a></p><p>下载安装 Cherry Studio，在左下角 <code>设置</code>  -&gt; <code>模型服务</code>  -&gt; <code>硅基流动</code> 填写创建的 API 密钥，添加想要的模型即可。</p><p>返回到主界面选择自己想要的模型就可以开始对话了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/03/si4h7t.webp" alt="主界面"></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近，DeepSeek R1开源模型超火，我自己使用了一下，效果确实很棒，而且价格比OpenAI便宜很多。&lt;/p&gt;
-&lt;p&gt;这几天DeepSeek服务器一直受到境外IP攻击，API服务已经有很多天不可用，网页和APP服务倒是能正常用，只</summary>
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;最近，DeepSeek R1 开源模型超火，我自己使用了一下，效果确实很棒，而且价格比 OpenAI 便宜很多。&lt;/p&gt;
+&lt;p&gt;这几天 Dee</summary>
       
     
     
