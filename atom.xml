@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-02-07T05:09:55.000Z</updated>
+  <updated>2025-02-25T06:42:45.833Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！</title>
+    <link href="https://blog.goodboyboy.top/posts/1550451800.html"/>
+    <id>https://blog.goodboyboy.top/posts/1550451800.html</id>
+    <published>2025-02-25T06:31:00.000Z</published>
+    <updated>2025-02-25T06:42:45.833Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>DeepSeek 服务器繁忙这几天已经见怪不怪了，但是第三方的 SiliconFlow 也卡的不成样，于是在网上找了找，又发现了一家可以白嫖的第三方部署 —— 火山引擎</p><p>虽然我不怎么喜欢它旗下的豆包，但是不得不说，它部署的 DeepSeek 模型响应速度以及 TPM 限制可以说是很用户友好的了</p><h2 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h2><p>每个模型默认有 30000 RPM 的 5000000 的 TPM，这下只要钱包不瘪，想怎么请求就怎么请求</p><p>目前每个模型赠送有 50 万的 Token，每千 tokens 的价格和官方一致，通过邀请码注册并完成实名认证还可以获得 15 元的代金券，同样可以用来白嫖</p><p>我的邀请码是：GXJYPZL7 （图穷匕见 doge）</p><p>邀请链接如下：<a href="https://www.volcengine.com/experience/ark?ac=DSASUQY5&amp;rc=GXJYPZL7">https://www.volcengine.com/experience/ark?ac=DSASUQY5&amp;rc=GXJYPZL7</a></p><p>而且就我近日的使用体验来看，出 token 的速度很快，比阿里云都快一些，吊打 SiliconFlow</p><h3 id="使用教程"><a class="markdownIt-Anchor" href="#使用教程">#</a> 使用教程</h3><p>进入火山方舟</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/25/nsguvu.webp" alt="控制台"></p><p>在左边菜单栏找到 “开通管理” 并点击，</p><p>然后找到 DeepSeek-R1 和 V3，点击最右边的 “开通服务”（这里我已经开通了所以显示的是关闭服务），</p><p>开通完成后在左边菜单栏找到 “在线推理”，这里有预制推理接入点和自定义推理接入点，</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/25/nsvu6v.webp" alt="在线推理"></p><p>我一开始用的是自定义，但是现在貌似预置的简单些，这里就用预置做演示：</p><p>点击创建 API Key，然后我们可以看到完整的 API 请求地址为：<a href="https://ark.cn-beijing.volces.com/api/v3/chat/completions">https://ark.cn-beijing.volces.com/api/v3/chat/completions</a></p><p>选择对应的模型，我们可以看到 curl 请求命令里 model 对应的值，就是我们请求时需要填写的模型名称</p><p>注：完成一次请求后这个页面会变，想要再次看到这个页面可以点击 “查看 API Key” 旁边的 “快速入门”，然后选择我们的 R1 模型，得到 R1 模型对应的模型名称，或者在请求前都记住也可以。</p><p>最后来到我们喜闻乐见的 Cherry Studio（chatbox 同理）</p><p><img src="https://pic.goodboyboy.top/imgs/2025/02/25/nu6nwk.webp" alt="Cherry Studio"></p><p>在模型服务里找到火山引擎，因为 Cherry Studio 已经内置的火山引擎服务商，所以这里上文的 API 请求地址用不着，</p><p>填写之前创建的 API Key，然后点击 “添加” 按钮添加模型，模型 ID 就为之前看到的 curl 请求命令里 model 对应的值，</p><p>添加完模型就可以愉快的玩耍了</p><p>chatbox 貌似没有内置火山引擎，因此需要自己创建自定义提供方，将 API 请求地址拆分为 “API 域名” 和 “API 路径”，</p><p>API 域名填写 <a href="https://ark.cn-beijing.volces.com/api/v3">https://ark.cn-beijing.volces.com/api/v3</a></p><p>API 路径则不用变</p><p>最后就可以愉快的玩耍啦～</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;DeepSeek 服务器繁忙这几天已经见怪不怪了，但是第三方的 SiliconFlow 也卡的不成样，于是在网上找了找，又发现了一家可以白嫖的</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
+    
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
+    
+    <category term="DeepSeek" scheme="https://blog.goodboyboy.top/tags/DeepSeek/"/>
+    
+  </entry>
   
   <entry>
     <title>一指灵通安全硬件体验</title>
