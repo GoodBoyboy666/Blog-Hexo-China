@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-02-25T06:42:45.833Z</updated>
+  <updated>2025-03-08T13:05:18.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jetpack Compose数据库Room异步协程大坑记录</title>
+    <link href="https://blog.goodboyboy.top/posts/3103902958.html"/>
+    <id>https://blog.goodboyboy.top/posts/3103902958.html</id>
+    <published>2025-03-08T13:05:18.000Z</published>
+    <updated>2025-03-08T13:05:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>俗话说得好，写代码一小时，修 bug 八小时。</p><p>今天在处理 Room 异步数据更新与 StateFlow 观察时出了一点 bug，这里浅浅记录一下。</p><blockquote><p>Jetpack Compose 学习曲线还是陡啊……</p></blockquote><h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述">#</a> 问题描述</h2><p>一个控件的回调函数中，使用 <code>rememberCoroutineScope</code>  进行异步执行 ViewModel 中的 <code>从Room中删除指定Id记录</code> 的函数，然后调用 Compose 中的 <code>allItems</code>  变量（该变量值为 ViewModel 内 Room <code>Flow&lt;List&lt;T&gt;&gt;</code>  类型的数据流通过 <code>collectAsState</code>  转化后的数据），判断 <code>allItems</code>  集合是否为空。</p><p>测试时 allItems 仅有一条记录，当执行完删除代码后按理说 allItems 的 isNotEmpty () 应该为 false，但测试后发现为 true</p><p>代码结构如下：</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scope.launch &#123;</span><br><span class="line">    viewModel.delete(item)</span><br><span class="line">    <span class="keyword">if</span> (viewModel.allItem.isNotEmpty()) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="问题排查"><a class="markdownIt-Anchor" href="#问题排查">#</a> 问题排查</h2><p>一开始没注意是协程同步的问题，以为是 Room 异步 Delete 太慢，导致判断 isNotEmpty () 时还没删除完成，于是换了判断用的数据源，新增 Room 查询函数，直接从 Room 返回 <code>List&lt;T&gt;</code>  实例，结果还是出现问题。</p><p>问了一下 DeepSeek，排查总结如下：</p><ol><li>确保 DAO 的 delete 方法是挂起函数</li><li>修改 Repository 中的删除方法为挂起函数</li><li>修改 ViewModel 中的删除方法为挂起函数</li><li>在 Compose 中调用时，确保使用协程作用域</li></ol><p>按照 DeepSeek 给出的思路一步步排查，终于发现问题所在：</p><p>ViewModel 中用于删除记录的删除函数 <code>viewModel.delete(item)</code>  没有使用 <code>suspend</code>  进行修饰来将该函数设置为挂起函数，而是作为普通函数使用 <code>viewModelScope.launch</code>  将数据库异步删除操作给包裹了起来，导致协程不同步</p><p>也就是说，在 scope.launch 这个异步操作内， <code>viewModel.delete(item)</code>  对于 <code>viewModel.allItem.isNotEmpty()</code>  也是一个异步操作而不是同步操作，导致还未完成删除就进入判断环节。</p><h2 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法</h2><p>将 <code>viewModel.delete(item)</code>  函数添加 <code>suspend</code>  修饰符并直接调用 Room 的异步删除操作，统一由最外围的 rememberCoroutineScope（scope.launch）来控制协程，使得协程同步。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>这几天都在学 Jetpack Compose，从传统的 Android XML 结构的 app 转向 Android Jetpack Compose 还是有点难度。以前更新控件直接用 binding 就可以，现在要用回调函数通过状态提升来更新控件，还有 Flow 与 State 之间的处理（头秃）</p><p>以前 ViewModel 除了用于延长 UI 属性的生命周期外都不带用的，现在 Jetpack Compose 不用 ViewModel 玩不了一点。不过设计理念还是蛮先进的，不知道是不是过于先进，网上中文资料少得可怜，幸好有 DeepSeek 来帮忙（躺）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;俗话说得好，写代码一小时，修 bug 八小时。&lt;/p&gt;
+&lt;p&gt;今天在处理 Room 异步数据更新与 StateFlow 观察时出了一点 bug</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/categories/Jetpack-Compose/"/>
+    
+    
+    <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/tags/Jetpack-Compose/"/>
+    
+    <category term="协程" scheme="https://blog.goodboyboy.top/tags/%E5%8D%8F%E7%A8%8B/"/>
+    
+    <category term="Room" scheme="https://blog.goodboyboy.top/tags/Room/"/>
+    
+  </entry>
   
   <entry>
     <title>DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！</title>
