@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-03-08T13:05:18.000Z</updated>
+  <updated>2025-03-13T15:42:10.607Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -17,20 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jetpack Compose Flow、StateFlow与State</title>
+    <link href="https://blog.goodboyboy.top/posts/2311624373.html"/>
+    <id>https://blog.goodboyboy.top/posts/2311624373.html</id>
+    <published>2025-03-13T14:50:02.000Z</published>
+    <updated>2025-03-13T15:42:10.607Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><div class="note info flat"><p>以下内容为学习笔记，不保证内容的准确性！</p></div><p>虽然 Jetpack Compose 的状态管理很容易让人血压升高，但如果用不好状态管理会让人血压更高。</p><h2 id="flow与stateflow"><a class="markdownIt-Anchor" href="#flow与stateflow">#</a> Flow 与 StateFlow</h2><p>下面表格来自 DeepSeek：</p><table><thead><tr><th>特性</th><th>Flow</th><th>StateFlow</th></tr></thead><tbody><tr><td>冷流 vs 热流</td><td><strong>冷流（Cold Stream）</strong></td><td><strong>热流（Hot Stream）</strong></td></tr><tr><td>数据发射时机</td><td>每次调用 collect 时从头开始发射数据</td><td>持有当前值，立即发送给新收集者</td></tr><tr><td>适用场景</td><td>异步数据流（如网络请求、数据库查询）</td><td>UI 状态管理（如主题、登录状态）</td></tr><tr><td>值的保留</td><td>无状态，不保留数据</td><td>始终持有最新值</td></tr><tr><td>值的更新触发条件</td><td>每次 collect 都会触发数据发射</td><td>仅当新值与旧值不同时触发更新（equals 比较）</td></tr></tbody></table><h2 id="flow转stateflow"><a class="markdownIt-Anchor" href="#flow转stateflow">#</a> Flow 转 StateFlow</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> stateFlow: StateFlow&lt;Data&gt; = someFlow.stateIn(</span><br><span class="line">    scope = viewModelScope, <span class="comment">//使用ViewModel的作用域</span></span><br><span class="line">    started = SharingStarted.WhileSubscribed(<span class="number">5000</span>), <span class="comment">//当有活跃订阅者时启动（也可以使用SharingStarted.Lazily）</span></span><br><span class="line">    initialValue = Data() <span class="comment">//初始值</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><h3 id="使用"><a class="markdownIt-Anchor" href="#使用">#</a> 使用</h3><p>两者均可以通过 <code>collectAsStateWithLifecycle()</code>  或者 <code>collectAsState()</code>  转换为 <code>State</code>  供 Compose UI 使用。</p><p>如果需要在收集时处理数据，也可以使用 <code>collect()</code> :</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stateFlow.collect&#123;item-&gt;</span><br><span class="line">    <span class="comment">//对接收的item进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>需要注意的是，当使用 collect 后会持续订阅，因此只需订阅一次即可。在 Compose 中可以使用 <code>LaunchedEffect(Unit)</code>  来进行订阅操作， <code>LaunchedEffect(Unit)</code>  在整个生命周期中只会执行一次，适合于这种只需执行一次的代码。当然，重复执行 collect 进行订阅也没问题，stateFlow 会自动停止之前的订阅然后重新开始新的订阅。</p><h2 id="stateflow与state"><a class="markdownIt-Anchor" href="#stateflow与state">#</a> StateFlow 与 State</h2><h3 id="设计目的"><a class="markdownIt-Anchor" href="#设计目的">#</a> 设计目的</h3><p>由 DeepSeek 分析：</p><ul><li><p><strong>State</strong></p></li><li><p>专为 Compose 设计，用于在可组合函数（Composable）中跟踪和响应<strong>局部 UI 状态</strong>的变化。</p></li><li><p>通过 mutableStateOf 创建，当值变化时，会自动触发 UI 重组（Recomposition）。</p></li><li><p>适用于<strong>简单的 UI 状态管理</strong>，例如按钮的选中状态、文本输入值等。</p></li><li><p><strong>StateFlow</strong></p></li><li><p>属于 Kotlin 的响应式流（Flow）的一部分，用于在应用的<strong>不同层之间共享状态</strong>（如 ViewModel 到 UI 层）。</p></li><li><p>需要手动通过 collect 或 collectAsState 订阅数据流，适合处理<strong>跨组件或跨生命周期的状态共享</strong>。</p></li><li><p>更适用于复杂业务逻辑的状态管理，例如从网络请求或数据库加载数据。</p></li></ul><h3 id="适用场景"><a class="markdownIt-Anchor" href="#适用场景">#</a> 适用场景</h3><p><code>State</code>  比较适合 UI 内的临时变量，如 TextField 的 text 的值，Switch 的 checked 的值等</p><p>因为 Compose 设计为单向数据流，所以需要使用 State 来保存重组前上一次的值。</p><p><code>StateFlow</code>  适合于共享状态，特别是在 ViewModel 中供多个 UI 控件进行观察。</p><p>并且使用 <code>remember</code>  的 <code>State</code>  在退出组合时数据将被丢弃，而 <code>StateFlow</code>  的生命周期通常跟随 ViewModel，在退出组合时数据不会出现丢失。</p><p>有点像传统 Android xml 开发里将数据保存在 ViewModel 中防止因切换主题暗色模式或者切换横竖屏而导致 UI 状态丢失。</p><h3 id="使用-2"><a class="markdownIt-Anchor" href="#使用-2">#</a> 使用</h3><p><code>State</code>  结合 <code>remember</code>  和 <code>mutableStateOf</code> ，就像普通变量一样使用即可</p><p><code>StateFlow</code>  则需要使用 <code>collect</code>  或 <code>collectAsState()</code>  订阅状态:</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> stateFlow <span class="keyword">by</span> ViewModel.stateFlow.collectAsState()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;以下内容为学习笔记，不保证内容的准确性！&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;虽然 Jetpa</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/categories/Jetpack-Compose/"/>
+    
+    
+    <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/tags/Jetpack-Compose/"/>
+    
+    <category term="StateFlow" scheme="https://blog.goodboyboy.top/tags/StateFlow/"/>
+    
+    <category term="Flow" scheme="https://blog.goodboyboy.top/tags/Flow/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jetpack Compose数据库Room异步协程大坑记录</title>
     <link href="https://blog.goodboyboy.top/posts/3103902958.html"/>
     <id>https://blog.goodboyboy.top/posts/3103902958.html</id>
     <published>2025-03-08T13:05:18.000Z</published>
     <updated>2025-03-08T13:05:18.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>俗话说得好，写代码一小时，修 bug 八小时。</p><p>今天在处理 Room 异步数据更新与 StateFlow 观察时出了一点 bug，这里浅浅记录一下。</p><blockquote><p>Jetpack Compose 学习曲线还是陡啊……</p></blockquote><h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述">#</a> 问题描述</h2><p>一个控件的回调函数中，使用 <code>rememberCoroutineScope</code>  进行异步执行 ViewModel 中的 <code>从Room中删除指定Id记录</code> 的函数，然后调用 Compose 中的 <code>allItems</code>  变量（该变量值为 ViewModel 内 Room <code>Flow&lt;List&lt;T&gt;&gt;</code>  类型的数据流通过 <code>collectAsState</code>  转化后的数据），判断 <code>allItems</code>  集合是否为空。</p><p>测试时 allItems 仅有一条记录，当执行完删除代码后按理说 allItems 的 isNotEmpty () 应该为 false，但测试后发现为 true</p><p>代码结构如下：</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scope.launch &#123;</span><br><span class="line">    viewModel.delete(item)</span><br><span class="line">    <span class="keyword">if</span> (viewModel.allItem.isNotEmpty()) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="问题排查"><a class="markdownIt-Anchor" href="#问题排查">#</a> 问题排查</h2><p>一开始没注意是协程同步的问题，以为是 Room 异步 Delete 太慢，导致判断 isNotEmpty () 时还没删除完成，于是换了判断用的数据源，新增 Room 查询函数，直接从 Room 返回 <code>List&lt;T&gt;</code>  实例，结果还是出现问题。</p><p>问了一下 DeepSeek，排查总结如下：</p><ol><li>确保 DAO 的 delete 方法是挂起函数</li><li>修改 Repository 中的删除方法为挂起函数</li><li>修改 ViewModel 中的删除方法为挂起函数</li><li>在 Compose 中调用时，确保使用协程作用域</li></ol><p>按照 DeepSeek 给出的思路一步步排查，终于发现问题所在：</p><p>ViewModel 中用于删除记录的删除函数 <code>viewModel.delete(item)</code>  没有使用 <code>suspend</code>  进行修饰来将该函数设置为挂起函数，而是作为普通函数使用 <code>viewModelScope.launch</code>  将数据库异步删除操作给包裹了起来，导致协程不同步</p><p>也就是说，在 scope.launch 这个异步操作内， <code>viewModel.delete(item)</code>  对于 <code>viewModel.allItem.isNotEmpty()</code>  也是一个异步操作而不是同步操作，导致还未完成删除就进入判断环节。</p><h2 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法</h2><p>将 <code>viewModel.delete(item)</code>  函数添加 <code>suspend</code>  修饰符并直接调用 Room 的异步删除操作，统一由最外围的 rememberCoroutineScope（scope.launch）来控制协程，使得协程同步。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>这几天都在学 Jetpack Compose，从传统的 Android XML 结构的 app 转向 Android Jetpack Compose 还是有点难度。以前更新控件直接用 binding 就可以，现在要用回调函数通过状态提升来更新控件，还有 Flow 与 State 之间的处理（头秃）</p><p>以前 ViewModel 除了用于延长 UI 属性的生命周期外都不带用的，现在 Jetpack Compose 不用 ViewModel 玩不了一点。不过设计理念还是蛮先进的，不知道是不是过于先进，网上中文资料少得可怜，幸好有 DeepSeek 来帮忙（躺）</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>俗话说得好，写代码一小时，修bug八小时。</p><p>今天在处理Room异步数据更新与StateFlow观察时出了一点bug，这里浅浅记录一下。</p><blockquote><p>Jetpack Compose学习曲线还是陡啊……</p></blockquote><h2 id="问题描述">问题描述</h2><p>一个控件的回调函数中，使用<code>rememberCoroutineScope</code>进行异步执行ViewModel中的<code>从Room中删除指定Id记录</code>的函数，然后调用Compose中的<code>allItems</code>变量（该变量值为ViewModel内Room<code>Flow&lt;List&lt;T&gt;&gt;</code>类型的数据流通过<code>collectAsState</code>转化后的数据），判断<code>allItems</code>集合是否为空。</p><p>测试时allItems仅有一条记录，当执行完删除代码后按理说allItems的isNotEmpty()应该为false，但测试后发现为true</p><p>代码结构如下：</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scope.launch &#123;</span><br><span class="line">    viewModel.delete(item)</span><br><span class="line">    <span class="keyword">if</span> (viewModel.allItem.isNotEmpty()) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="问题排查">问题排查</h2><p>一开始没注意是协程同步的问题，以为是Room异步Delete太慢，导致判断isNotEmpty()时还没删除完成，于是换了判断用的数据源，新增Room查询函数，直接从Room返回<code>List&lt;T&gt;</code>实例，结果还是出现问题。</p><p>问了一下DeepSeek，排查总结如下：</p><ol><li>确保DAO的delete方法是挂起函数</li><li>修改Repository中的删除方法为挂起函数</li><li>修改ViewModel中的删除方法为挂起函数</li><li>在Compose中调用时，确保使用协程作用域</li></ol><p>按照DeepSeek给出的思路一步步排查，终于发现问题所在：</p><p>ViewModel中用于删除记录的删除函数<code>viewModel.delete(item)</code>没有使用<code>suspend</code>进行修饰来将该函数设置为挂起函数，而是作为普通函数使用<code>viewModelScope.launch</code>将数据库异步删除操作给包裹了起来，导致协程不同步</p><p>也就是说，在scope.launch这个异步操作内，<code>viewModel.delete(item)</code>对于<code>viewModel.allItem.isNotEmpty()</code>也是一个异步操作而不是同步操作，导致还未完成删除就进入判断环节。</p><h2 id="解决方法">解决方法</h2><p>将<code>viewModel.delete(item)</code>函数添加<code>suspend</code>修饰符并直接调用Room的异步删除操作，统一由最外围的rememberCoroutineScope（scope.launch）来控制协程，使得协程同步。</p><h2 id="后记">后记</h2><p>这几天都在学Jetpack Compose，从传统的Android XML结构的app转向Android Jetpack Compose还是有点难度。以前更新控件直接用binding就可以，现在要用回调函数通过状态提升来更新控件，还有Flow与State之间的处理（头秃）</p><p>以前ViewModel除了用于延长UI属性的生命周期外都不带用的，现在Jetpack Compose不用ViewModel玩不了一点。不过设计理念还是蛮先进的，不知道是不是过于先进，网上中文资料少得可怜，幸好有DeepSeek来帮忙（躺）</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
-&lt;p&gt;俗话说得好，写代码一小时，修 bug 八小时。&lt;/p&gt;
-&lt;p&gt;今天在处理 Room 异步数据更新与 StateFlow 观察时出了一点 bug</summary>
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;俗话说得好，写代码一小时，修bug八小时。&lt;/p&gt;
+&lt;p&gt;今天在处理Room异步数据更新与StateFlow观察时出了一点bug，这里浅浅记录一下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jetpack Compose学习曲线还是陡</summary>
       
     
     
