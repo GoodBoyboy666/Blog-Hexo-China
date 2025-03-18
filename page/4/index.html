@@ -9,16 +9,123 @@
 <meta property="article:author" content="GoodBoyboy">
 <meta property="article:tag" content="GoodBoyboy,blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="shortcut icon" href="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="canonical" href="https://blog.goodboyboy.top/page/4/index.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lib.baomitu.com/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="shortcut icon" href="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="canonical" href="https://blog.goodboyboy.top/page/4/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 8 || hour >= 22
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
-  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章距离最后一次更新已有","messageNext":"天, 文章内容可能已经过时."},
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -33,15 +140,15 @@
     day: '天前',
     month: '个月前'
   },
-  copyright: {"limitCount":50,"languages":{"author":"作者: GoodBoyboy","link":"链接: ","source":"来源: GoodBoyboy 's Blog｜惬意小屋-点滴记忆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  copyright: {"limitCount":150,"languages":{"author":"作者: GoodBoyboy","link":"链接: ","source":"来源: GoodBoyboy 's Blog｜惬意小屋-点滴记忆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
   infinitegrid: {
-    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
-  isPhotoFigcaption: true,
-  islazyload: false,
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
   isAnchor: false,
   percent: {
     toc: true,
@@ -50,127 +157,10 @@
   autoDarkmode: true
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'GoodBoyboy \'s Blog｜惬意小屋-点滴记忆',
-  isPost: false,
-  isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-03-15 14:55:30'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-          if (t === undefined) {
-            if (isLightMode) activateLightMode()
-            else if (isDarkMode) activateDarkMode()
-            else if (isNotSpecified || hasNoSupport) {
-              const now = new Date()
-              const hour = now.getHours()
-              const isNight = hour <= 8 || hour >= 22
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/font.css" media="none" onload="this.media='all'"><link rel="stylesheet" type="text/css" href="/css/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/APlayer.min.css"><style type="text/css">
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/font.css" media="none" onload="this.media='all'"><link rel="stylesheet" type="text/css" href="/css/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/APlayer.min.css"><style type="text/css">
 .spoiler {
   display: inline-flex;
 }
@@ -205,164 +195,105 @@ p.spoiler {
   restartOnPushState: false
 }
 
-document.addEventListener('pjax:send', () => {
+btf.addGlobalFn('pjaxSend', () => {
   Pace.restart()
-})
-</script><link rel="stylesheet" href="https://lib.baomitu.com/pace/1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://lib.baomitu.com/pace/1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">206</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">248</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: rgba(255,255,255,0)"><nav id="nav"><span id="blog-info"><a href="/" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆"><img class="site-icon" src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" alt="logo"/><span class="site-name">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/fcircle/"><i class="fa-fw fa-solid fa-circle-user"></i><span> 朋友圈</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1751367411.html" title="[转载] 医保怎样用最省钱？2023最清晰实用医保指南，适配全国，先收藏！">[转载] 医保怎样用最省钱？2023最清晰实用医保指南，适配全国，先收藏！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-19T10:09:57.000Z" title="发表于 2024-09-19 18:09:57">2024-09-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></span></div><div class="content">
-原文地址：https://chaiknows.feishu.cn/docx/IbTBdjiQWoi2cvx21SmcrL1pn3f
+}, 'pace_restart')
 
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/1007863497.html" title="飞跃13号房—— 一部具有“游戏”性的影视作品"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/09/15/1103qr9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="飞跃13号房—— 一部具有“游戏”性的影视作品"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/1007863497.html" title="飞跃13号房—— 一部具有“游戏”性的影视作品">飞跃13号房—— 一部具有“游戏”性的影视作品</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-15T14:35:21.000Z" title="发表于 2024-09-15 22:35:21">2024-09-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content">
-飞跃 13 号房，与其称它是一部优秀的游戏，我更愿意称它为一部优秀的影视作品。
-
-
-
-《飞越 13 号房》是一款「烧脑」逃脱互动影像作品。这是一个有关叛逆的你与戒网瘾中心的故事，基于真实事件改编。这里「有电危险」！这里「麻痹神经」！你，能改变这一切吗？
-
-购买地址：https://store.steampowered.com/app/2095300/13/
-# 初识
-我最开始了解到这部游戏，是在 B 站上游戏官方发视频说自己的官网被他人恶意攻击，然后我便知道了这款游戏。
-下面为该视频：揭露戒网瘾学校真相，却遭黑客攻击！谁急了？【Tap 纪录片 飞越 13 号房】
-
-# 感触
-这款游戏真的给我感触很大，从一步步的努力到各种抉择，最后带领大家一起逃离这个地方。
-它或许会让你感受到自身的渺小，也或许会让你感受到友情的力量，你可能会迷茫与彷徨，也可能坚持自己，找到真正的出路。
-
-“如果只是离开这里，这恐惧将伴随我一生，我必须要证明他是错的，我们才能真正的，回家。”
-
-# 流程
-整个游戏流程大概为 6-7 个小时，建议一次性玩完，如果中途有空白期太久可能会影响游戏效果。
-# 后记
-最后，给大家 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2339958211.html" title="鲲鹏C8 600关闭IPv6、开启UPNP等教程">鲲鹏C8 600关闭IPv6、开启UPNP等教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-11T03:00:38.000Z" title="发表于 2024-09-11 11:00:38">2024-09-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hardware/">Hardware</a></span></div><div class="content"># 前言
-因为后台的对于路由器相关的设置实在有点少，于是打算登录 ssh 后自己改。
-# 准备
-
-鲲鹏 CPE
-已开启 ssh 权限
-
-# 关闭 IPv6
-鲲鹏后台没有提供相关设置，唯一的蜂窝网络设置 APN 也只能关闭 CPE 本身的 IPv6，对于内网网设备仍然无法关闭，因此这里我们手动关闭内网的 IPv6。
-编辑 /etc/sysctl.conf  文件
-1vim /etc/sysctl.conf
-在文件中添加下面两行：
-12net.ipv6.conf.all.disable_ipv6=1net.ipv6.conf.default.disable_ipv6=1
-保存后应用配置：
-1sysctl -p
-然后我们关闭 DHCPv6
-12/etc/init.d/odhcpd stop/etc/init.d/odhcpd disable
-最后，重启网络：
-1/etc/init.d/network restart
-# 开启 UPNP
-
-其实没有开启的必要，毕竟流量一般都是 NAT3 或者 NAT4，很难打洞成功。
-
-因为 C8 600 没有自带 upnp 服务，所以我们需要安装一个 min ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3793241763.html" title="鲲鹏5G CPE开箱体验">鲲鹏5G CPE开箱体验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-10T11:12:37.000Z" title="发表于 2024-09-10 19:12:37">2024-09-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 前言
-受不了学校的黑宽带，本来上学期是 100M，结果这学期未经过我们同意就私自改成了 50M，忍不了一点，刚好一直在看的 CPE 打折了，遂干脆下单。
-# 正文
-这次买的是鲲鹏的 C8-600，如图：
-
-价格 500 多块钱倒也还能接受，其实本来看上的是 650，但是没货了，在海鲜市场逛了几天也没看见有出的（md 有个挂 650 的问成色的时候说是全新结果拍了给我说没货），660 就太贵了，自用有点划不来。
-内置了两张卡，一张联通一张移动，我寝室这边移动的信号稍微好一点，但是受限于基站，也都大差不差，最多只跑得到 200 多 M，按理说全速下可以跑到 700M。
-两张内置物联网卡套餐如下：
-联通卡：
-
-
-
-移动的稍微贵一点：
-
-
-
-有个一分钱 300G7 天的体验包，体验了几天感觉还行（毕竟基站限速了，没跑满）。
-感觉内置的物联网卡够我使用了，性价比也还可以，就不打算自己插卡了。
-# 折腾
-首先是折腾 IPv6。
-路由器和内网设备能够正常获得 IPv6，内网设备 ping 公网 IP 可以 ping 通，但是从外部 ping 就 ping 不通。
-折腾半天，一开始以为是 CPE  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/887080028.html" title="有时候卡太安全了也是一种罪过">有时候卡太安全了也是一种罪过</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-07T08:11:34.000Z" title="发表于 2024-09-07 16:11:34">2024-09-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 起因
-在网上没事逛的时候突然发现一家性价比很高的土耳其 VPS 提供商，然后就剁手买了一台。结果才过去半天，就被发送邮件通知机子被 suspend 的了。
-
-# 事情原委
-
-一开始邮件中并没有什么有效信息，只提到 Suspension Reason: Auth Failed ，但是我并不明白所谓的 Auth Failed  是什么意思，于是开工单和客服交流，使用蹩脚的英文 + 翻译了解到了具体问题：
-
-大致意思就是我的卡不支持 AVS，需要进一步验证我的身份。
-中行的万事达卡确实是不支持 AVS，因为 AVS 安全性太低了，而是使用更安全的 3D Secure 验证（和国内一样向预留手机号发送一次性验证码），结果反而让客服认为是盗刷的了
-然后我就按照要求提交了实体卡的照片，因为账单信息要等大概 2 天左右才拿得到，所以我就顺便说明了一下，但 ID Card 照片我是肯定不打算提供的。
-下面是我和客服对线的截图
-
-然后今天收到了账单提醒，顺便把账单截图也提交了，结果就被告知还是需要 ID Card。
-
-没办法，那只能放弃走退款了。
-
-# 后记
-国外盗刷银行卡太容易了客服这么敏感能理解 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3038933290.html" title="游玩《黑神话悟空》序章有感（有剧透）">游玩《黑神话悟空》序章有感（有剧透）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-23T08:53:42.000Z" title="发表于 2024-08-23 16:53:42">2024-08-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 前言
-最近黑神话悟空不是发布了嘛，各个社交媒体上都是相关信息，奈何自己钱包瘪瘪，所以一直没入手。
-今天看到和同学一起组建的家庭库里突然多了个黑神话悟空，我直接反手就是挂机下载（感谢义父啊）。
-# 配置
-目前只玩到了序章，不同场景可能会有不同，但是只要不开光追，我 3060laptop 完全压得住。
-硬盘上一定要用 SSD 固态硬盘，一开始整机械硬盘上体验感太差了。
-# 正文
-剧情上来看，整个剧情逻辑连贯，很好的交代了故事背景，主要矛盾，剧情目标。
-其实一开始我还以为是孙悟空是主角，怎么想都想不出来这具体是个什么剧情走向，因为西游记几乎是已经把故事写完了，总不可能强行开辟吧。
-玩完序章就发现原来主角并不是孙悟空，而是另外一只猴子，为了寻找宝物来复苏孙悟空而踏上冒险旅程。这么看的话那就完全合理了。
-从画面上来看，整个游戏画面的打击效果非常好，没有某些国产 3d 的那种软弱无力感，并且人物面部表情没有僵硬感，嘴型和对话可以对得上，不过还是有一两个画面人物表情有些许僵硬。
-从交互性来看，整个序章多半还是以电影的方式进行叙述，中间穿插人物之间的打斗交互，既可以很好的完成故事剧情叙述，也可以带 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2999427519.html" title="自由地给文章添加文章总结 | butterfly版">自由地给文章添加文章总结 | butterfly版</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-21T10:39:41.000Z" title="发表于 2024-08-21 18:39:41">2024-08-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Web/">Web</a></span></div><div class="content"># 前言
-之前写过《自由地给文章添加文章总结》，但是每次添加总结都需要粘贴十多行代码，十分麻烦，这里将代码与 butterfly 主题进行整合，因此本教程只适合 butterfly 或 butterfly 魔改的主题。
-# 开始
-首先在主题文件夹下的 /layout/includes/  新建一个 custom  文件夹，然后在此文件夹下新建文件 ai.pug 。
-文件内容如下，可根据实际情况进行修改：
-12345678910111213141516171819.post-ai    .ai-title        i.fa-solid.fa-robot        a.ai-title-left(data-pjax-state=&#x27;&#x27;)            .ai-title-text 文章摘要            .ai-link                i.heofont.icon-arrow-right-s-line        .ai-tag#ai-tag GoodBoyboyGPT    .ai-explanation(style=&#x2 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3047485723.html" title="有些人能不能不要小丑了"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/08/18/jypa3v.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="有些人能不能不要小丑了"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3047485723.html" title="有些人能不能不要小丑了">有些人能不能不要小丑了</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-18T03:33:47.000Z" title="发表于 2024-08-18 11:33:47">2024-08-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%AC%E5%91%8A/">公告</a></span></div><div class="content"># DDOS
-今天早上起来收到 Cloudflare 的 DDOS 邮件通知，直接给我整乐了。不是哥们儿，怎么都 d 到 cf 上了，你是不知道 cf 专抗 d 吗？属实是乐死我了。
-
-看了一下 cf 日志，都是在请求 https://pic.goodboyboy.top/imgs/2024/08/15/upv63y.webp 这张图片，我说我的小破站一直没怎么被打过，原来是前几天发的一篇推荐文（丘盾 CDN 免备案高性价比 CDN）啊。
-不得不说 cf 确实可以，到我服务器的就 140 个请求，23661 个请求全被 cf 拦了，我只能说你这如打。。。连我服务器服务商的垃圾黑洞都没触发。。。
-
-可能是发现 cf D 不动，又用国内 IP D 我国内的 CDN（前天推荐的 QiuDN），听负责人说总共是 400g 吧，反正没扣我套餐流量。而且看了一下监控我服务器负载是一点没上去。。。
-
-# CC
-后面可能是发现 DDOS 没效果，开始直接向我服务器用你那少得可怜的两个 IP 刷 CC 了（我服务器 IP 早就公开过，终于是聪明了一回），总共 2300 多次，但不好意思的是，我服务器也有 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/83304714.html" title="浅谈WebAuthn与Passkey">浅谈WebAuthn与Passkey</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-15T12:05:39.000Z" title="发表于 2024-08-15 20:05:39">2024-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"># 介绍
-# U2F
-通用第二因素 （U2F） 是一种开放标准，它使用基于智能卡中类似安全技术的专用通用串行总线 （USB） 或近场通信 （NFC） 设备来增强和简化双因素身份验证 （2FA）。它被 FIDO2 项目所取代，该项目包括 W3C Web 认证（WebAuthn）标准和 FIDO 联盟的客户端到认证器协议 2（CTAP2）。
-虽然该标准最初由 Google 和 Yubico 开发，并得到了 NXP Semiconductors 的贡献，但现在由 FIDO 联盟托管。
-
-以上来自 Universal 2nd Factor
-
-所以 U2F 也有 FIDO1 或者 FIDO U2F 之称。
-# FIDO2
-FIDO2 项目是 FIDO 联盟和万维网联盟 （W3C） 之间的共同努力，其目标是为 Web 创建强大的身份验证。FIDO2 的核心由 W3C Web 身份验证 （WebAuthn） 标准和 FIDO 客户端到身份验证器协议 2 （CTAP2） 组成。FIDO2 基于 FIDO 联盟之前所做的工作，特别是通用第二因素 （U2F） 身份验证标准。
-
-以上来自 FIDO Alli ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/2990838122.html" title="丘盾CDN 免备案高性价比CDN"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/08/15/upv63y.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="丘盾CDN 免备案高性价比CDN"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/2990838122.html" title="丘盾CDN 免备案高性价比CDN">丘盾CDN 免备案高性价比CDN</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-15T10:54:07.000Z" title="发表于 2024-08-15 18:54:07">2024-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8E%A8%E5%B9%BF/">推广</a></span></div><div class="content"># 介绍
-
-官方网站：https://www.qiudcdn.cn
-
-
-CDN 是什么我就不多说了，重点 QiuDN 是免备案，并且个别节点大陆使用香港 CN2+CMI+CUG 节点。
-众所周知，在免备案里，CloudFlare 绝对是数一数二的，但在大陆访问使用 CloudFlare 的站点速度并不理想，甚至有 “减速器” 的效果。
-# 公益套餐
-QiuDN 为博客站点提供免费 CDN。
-具体详情请参考：https://koxiuqiu.cn/2024/04/06/qiudn/
-# 付费套餐
-截止于写稿前价格如下：
-
-Tips：虽然有站点限制，但是可以通过泛域名的方式实现无限站点（类似 CloudFlare 的自定义主机名那个功能）。
-# 实际测速
-下面为 itdog 实际测速结果：
-
-此结果为我的博客的速度，受源站优化影响，不同站点速度可能会有区别，例如不做优化的 wordpress 站点。
-# WAF
-内置 WAF，包含多种预置规则可供选择：
-
-# 后记
-本文不恰饭，纯做推荐。
-</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">GoodBoyboy</div><div class="author-info__description">看朝霞万里，石头花开</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">206</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">248</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><a id="card-info-btn" href="https://blog.goodboyboy.top/atom.xml"><i class="fa-solid fa-rss"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">愿每个生命，都能被温柔对待</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2366358045.html" title="欢迎中信万事达双币借记卡加入卡包大家庭！"><img src="https://pic.goodboyboy.top/imgs/2025/03/15/m5w5je.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欢迎中信万事达双币借记卡加入卡包大家庭！"/></a><div class="content"><a class="title" href="/posts/2366358045.html" title="欢迎中信万事达双币借记卡加入卡包大家庭！">欢迎中信万事达双币借记卡加入卡包大家庭！</a><time datetime="2025-03-15T05:06:51.000Z" title="发表于 2025-03-15 13:06:51">2025-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2311624373.html" title="Jetpack Compose Flow、StateFlow与State">Jetpack Compose Flow、StateFlow与State</a><time datetime="2025-03-13T14:50:02.000Z" title="发表于 2025-03-13 22:50:02">2025-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3103902958.html" title="Jetpack Compose数据库Room异步协程大坑记录">Jetpack Compose数据库Room异步协程大坑记录</a><time datetime="2025-03-08T13:05:18.000Z" title="发表于 2025-03-08 21:05:18">2025-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1550451800.html" title="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！"><img src="https://pic.goodboyboy.top/imgs/2025/02/25/nscoo6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！"/></a><div class="content"><a class="title" href="/posts/1550451800.html" title="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！">DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！</a><time datetime="2025-02-25T06:31:00.000Z" title="发表于 2025-02-25 14:31:00">2025-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3512270884.html" title="一指灵通安全硬件体验"><img src="https://pic.goodboyboy.top/imgs/2025/02/07/lq0a0i.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一指灵通安全硬件体验"/></a><div class="content"><a class="title" href="/posts/3512270884.html" title="一指灵通安全硬件体验">一指灵通安全硬件体验</a><time datetime="2025-02-07T05:09:55.000Z" title="发表于 2025-02-07 13:09:55">2025-02-07</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+</script><link rel="stylesheet" href="https://unpkg.com/pace-js@1.2.4/themes/blue/pace-theme-minimal.css"/><script src="https://unpkg.com/pace-js@1.2.4/pace.min.js"></script><div id="web_bg" style="background-image: url(https://api.goodboyboy.top/bing/?rand=true);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">205</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">247</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-color: rgba(255,255,255,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" alt="Logo"><span class="site-name">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1751367411.html" title="[转载] 医保怎样用最省钱？2023最清晰实用医保指南，适配全国，先收藏！">[转载] 医保怎样用最省钱？2023最清晰实用医保指南，适配全国，先收藏！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-19T10:09:57.000Z" title="发表于 2024-09-19 18:09:57">2024-09-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></span></div><div class="content"> 原文地址：https://chaiknows.feishu.cn/docx/IbTBdjiQWoi2cvx21SmcrL1pn3f  </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/1007863497.html" title="飞跃13号房—— 一部具有“游戏”性的影视作品"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/09/15/1103qr9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="飞跃13号房—— 一部具有“游戏”性的影视作品"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/1007863497.html" title="飞跃13号房—— 一部具有“游戏”性的影视作品">飞跃13号房—— 一部具有“游戏”性的影视作品</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-15T14:35:21.000Z" title="发表于 2024-09-15 22:35:21">2024-09-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content"> 飞跃13号房，与其称它是一部优秀的游戏，我更愿意称它为一部优秀的影视作品。    《飞越13号房》是一款「烧脑」逃脱互动影像作品。这是一个有关叛逆的你与戒网瘾中心的故事，基于真实事件改编。这里「有电危险」！这里「麻痹神经」！你，能改变这一切吗？  购买地址：https://store.steampowered.com/app/2095300/13/ 初识 我最开始了解到这部游戏，是在B站上游戏官方发视频说自己的官网被他人恶意攻击，然后我便知道了这款游戏。 下面为该视频：揭露戒网瘾学校真相，却遭黑客攻击！谁急了?【Tap纪录片...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2339958211.html" title="鲲鹏C8 600关闭IPv6、开启UPNP等教程">鲲鹏C8 600关闭IPv6、开启UPNP等教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-11T03:00:38.000Z" title="发表于 2024-09-11 11:00:38">2024-09-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hardware/">Hardware</a></span></div><div class="content">前言 因为后台的对于路由器相关的设置实在有点少，于是打算登录ssh后自己改。 准备  鲲鹏CPE 已开启ssh权限  关闭IPv6 鲲鹏后台没有提供相关设置，唯一的蜂窝网络设置APN也只能关闭CPE本身的IPv6，对于内网网设备仍然无法关闭，因此这里我们手动关闭内网的IPv6。 编辑/etc/sysctl.conf文件 1vim /etc/sysctl.conf 在文件中添加下面两行： 12net.ipv6.conf.all.disable_ipv6=1net.ipv6.conf.default.disable_ipv6=1 保存后应用配置： 1sysctl -p 然后我们关闭DHCPv6 12/etc/init.d/odhcpd stop/etc/init.d/odhcpd disable 最后，重启网络： 1/etc/init.d/network restart 开启UPNP  其实没有开启的必要，毕竟流量一般都是NAT3或者NAT4，很难打洞成功。  因为C8 600没有自带upnp服务，所以我们需要安装一个miniupnp 12opkg updateopkg...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3793241763.html" title="鲲鹏5G CPE开箱体验">鲲鹏5G CPE开箱体验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-10T11:12:37.000Z" title="发表于 2024-09-10 19:12:37">2024-09-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/887080028.html" title="有时候卡太安全了也是一种罪过">有时候卡太安全了也是一种罪过</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-07T08:11:34.000Z" title="发表于 2024-09-07 16:11:34">2024-09-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content">起因 在网上没事逛的时候突然发现一家性价比很高的土耳其VPS提供商，然后就剁手买了一台。结果才过去半天，就被发送邮件通知机子被suspend的了。  事情原委  一开始邮件中并没有什么有效信息，只提到Suspension Reason: Auth Failed，但是我并不明白所谓的Auth Failed是什么意思，于是开工单和客服交流，使用蹩脚的英文+翻译了解到了具体问题：  大致意思就是我的卡不支持AVS，需要进一步验证我的身份。 中行的万事达卡确实是不支持AVS，因为AVS安全性太低了，而是使用更安全的3D Secure 验证（和国内一样向预留手机号发送一次性验证码），结果反而让客服认为是盗刷的了 然后我就按照要求提交了实体卡的照片，因为账单信息要等大概2天左右才拿得到，所以我就顺便说明了一下，但ID Card照片我是肯定不打算提供的。 下面是我和客服对线的截图  然后今天收到了账单提醒，顺便把账单截图也提交了，结果就被告知还是需要ID...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3038933290.html" title="游玩《黑神话悟空》序章有感（有剧透）">游玩《黑神话悟空》序章有感（有剧透）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-23T08:53:42.000Z" title="发表于 2024-08-23 16:53:42">2024-08-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2999427519.html" title="自由地给文章添加文章总结 | butterfly版">自由地给文章添加文章总结 | butterfly版</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-21T10:39:41.000Z" title="发表于 2024-08-21 18:39:41">2024-08-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Web/">Web</a></span></div><div class="content">前言 之前写过《自由地给文章添加文章总结》，但是每次添加总结都需要粘贴十多行代码，十分麻烦，这里将代码与butterfly主题进行整合，因此本教程只适合butterfly或butterfly魔改的主题。 开始 首先在主题文件夹下的/layout/includes/新建一个custom文件夹，然后在此文件夹下新建文件ai.pug。 文件内容如下，可根据实际情况进行修改： 12345678910111213141516171819.post-ai    .ai-title        i.fa-solid.fa-robot        a.ai-title-left(data-pjax-state=&#x27;&#x27;)            .ai-title-text 文章摘要            .ai-link                i.heofont.icon-arrow-right-s-line        .ai-tag#ai-tag GoodBoyboyGPT    .ai-explanation(style=&#x27;display:...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/3047485723.html" title="有些人能不能不要小丑了"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/08/18/jypa3v.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="有些人能不能不要小丑了"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3047485723.html" title="有些人能不能不要小丑了">有些人能不能不要小丑了</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-18T03:33:47.000Z" title="发表于 2024-08-18 11:33:47">2024-08-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%AC%E5%91%8A/">公告</a></span></div><div class="content">DDOS 今天早上起来收到Cloudflare的DDOS邮件通知，直接给我整乐了。不是哥们儿，怎么都d到cf上了，你是不知道cf专抗d吗？属实是乐死我了。  看了一下cf日志，都是在请求https://pic.goodboyboy.top/imgs/2024/08/15/upv63y.webp这张图片，我说我的小破站一直没怎么被打过，原来是前几天发的一篇推荐文（丘盾CDN 免备案高性价比CDN）啊。 不得不说cf确实可以，到我服务器的就140个请求，23661个请求全被cf拦了，我只能说你这如打。。。连我服务器服务商的垃圾黑洞都没触发。。。  可能是发现cf D不动，又用国内IP...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/83304714.html" title="浅谈WebAuthn与Passkey">浅谈WebAuthn与Passkey</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-15T12:05:39.000Z" title="发表于 2024-08-15 20:05:39">2024-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></span></div><div class="content">介绍 U2F 通用第二因素 （U2F） 是一种开放标准，它使用基于智能卡中类似安全技术的专用通用串行总线 （USB） 或近场通信 （NFC） 设备来增强和简化双因素身份验证 （2FA）。它被FIDO2项目所取代，该项目包括W3C Web认证（WebAuthn）标准和FIDO联盟的客户端到认证器协议2（CTAP2）。 虽然该标准最初由Google和Yubico开发，并得到了NXP Semiconductors的贡献，但现在由FIDO联盟托管。  以上来自 Universal 2nd Factor  所以U2F也有FIDO1或者FIDO U2F之称。 FIDO2 FIDO2 项目是 FIDO 联盟和万维网联盟 （W3C） 之间的共同努力，其目标是为 Web 创建强大的身份验证。FIDO2 的核心由 W3C Web 身份验证 （WebAuthn） 标准和 FIDO 客户端到身份验证器协议 2 （CTAP2） 组成。FIDO2 基于 FIDO 联盟之前所做的工作，特别是通用第二因素 （U2F） 身份验证标准。  以上来自 FIDO Alliance  WebAuthn WebAuthn...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/2990838122.html" title="丘盾CDN 免备案高性价比CDN"><img class="post-bg" src="https://pic.goodboyboy.top/imgs/2024/08/15/upv63y.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="丘盾CDN 免备案高性价比CDN"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/2990838122.html" title="丘盾CDN 免备案高性价比CDN">丘盾CDN 免备案高性价比CDN</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-15T10:54:07.000Z" title="发表于 2024-08-15 18:54:07">2024-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8E%A8%E5%B9%BF/">推广</a></span></div><div class="content">介绍  官方网站：https://www.qiudcdn.cn   CDN是什么我就不多说了，重点QiuDN是免备案，并且个别节点大陆使用香港CN2+CMI+CUG节点。 众所周知，在免备案里，CloudFlare绝对是数一数二的，但在大陆访问使用CloudFlare的站点速度并不理想，甚至有“减速器”的效果。 公益套餐 QiuDN为博客站点提供免费CDN。 具体详情请参考：https://koxiuqiu.cn/2024/04/06/qiudn/ 付费套餐 截止于写稿前价格如下：  Tips：虽然有站点限制，但是可以通过泛域名的方式实现无限站点（类似CloudFlare的自定义主机名那个功能）。 实际测速 下面为itdog实际测速结果：  此结果为我的博客的速度，受源站优化影响，不同站点速度可能会有区别，例如不做优化的wordpress站点。 WAF 内置WAF，包含多种预置规则可供选择：  后记 本文不恰饭，纯做推荐。 </div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#content-inner">17</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">GoodBoyboy</div><div class="author-info-description">看朝霞万里，石头花开</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">205</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">247</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://blog.goodboyboy.top/atom.xml"><i class="fa-solid fa-rss"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">愿每个生命，都能被温柔对待</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2366358045.html" title="欢迎中信万事达双币借记卡加入卡包大家庭！"><img src="https://pic.goodboyboy.top/imgs/2025/03/15/m5w5je.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欢迎中信万事达双币借记卡加入卡包大家庭！"/></a><div class="content"><a class="title" href="/posts/2366358045.html" title="欢迎中信万事达双币借记卡加入卡包大家庭！">欢迎中信万事达双币借记卡加入卡包大家庭！</a><time datetime="2025-03-15T05:06:51.000Z" title="发表于 2025-03-15 13:06:51">2025-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2311624373.html" title="Jetpack Compose Flow、StateFlow与State">Jetpack Compose Flow、StateFlow与State</a><time datetime="2025-03-13T14:50:02.000Z" title="发表于 2025-03-13 22:50:02">2025-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3103902958.html" title="Jetpack Compose数据库Room异步协程大坑记录">Jetpack Compose数据库Room异步协程大坑记录</a><time datetime="2025-03-08T13:05:18.000Z" title="发表于 2025-03-08 21:05:18">2025-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1550451800.html" title="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！"><img src="https://pic.goodboyboy.top/imgs/2025/02/25/nscoo6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！"/></a><div class="content"><a class="title" href="/posts/1550451800.html" title="DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！">DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！</a><time datetime="2025-02-25T06:31:00.000Z" title="发表于 2025-02-25 14:31:00">2025-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3512270884.html" title="一指灵通安全硬件体验"><img src="https://pic.goodboyboy.top/imgs/2025/02/07/lq0a0i.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一指灵通安全硬件体验"/></a><div class="content"><a class="title" href="/posts/3512270884.html" title="一指灵通安全硬件体验">一指灵通安全硬件体验</a><time datetime="2025-02-07T05:09:55.000Z" title="发表于 2025-02-07 13:09:55">2025-02-07</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a>
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Code/"><span class="card-category-list-name">Code</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Csharp/"><span class="card-category-list-name">Csharp</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hardware/"><span class="card-category-list-name">Hardware</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Jetpack-Compose/"><span class="card-category-list-name">Jetpack Compose</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Software/"><span class="card-category-list-name">Software</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Web/"><span class="card-category-list-name">Web</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%AC%E5%91%8A/"><span class="card-category-list-name">公告</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%81%E6%9C%88/"><span class="card-category-list-name">十月</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%B4%E8%AF%B4/" style="font-size: 1.45em; color: rgb(170, 47, 194)">说说</a><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.15em; color: rgb(83, 81, 12)">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.3em; color: rgb(13, 70, 45)">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.15em; color: rgb(149, 163, 195)">每日一图</a><a href="/tags/CC/" style="font-size: 1.15em; color: rgb(198, 52, 154)">CC</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.38em; color: rgb(148, 81, 41)">公告</a><a href="/tags/OpenSSH/" style="font-size: 1.22em; color: rgb(140, 126, 70)">OpenSSH</a><a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 1.15em; color: rgb(102, 40, 136)">漏洞</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.15em; color: rgb(120, 52, 178)">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.15em; color: rgb(24, 64, 158)">评论系统</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">9</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">206</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2015-09-04T07:25:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">266.4k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-15T06:55:29.774Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: rgba(27, 31, 35, .05)"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2025 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="show-music" type="button" title="显示音乐控件" onclick="showmusic()"><i class="fa-solid fa-music"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://lib.baomitu.com/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="https://lib.baomitu.com/node-snackbar/0.1.16/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.15em; color: rgb(150, 153, 50);">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.24em; color: rgb(139, 50, 131);">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.15em; color: rgb(189, 173, 187);">每日一图</a><a href="/tags/CC/" style="font-size: 1.15em; color: rgb(143, 173, 50);">CC</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.36em; color: rgb(50, 50, 193);">公告</a><a href="/tags/OpenSSH/" style="font-size: 1.19em; color: rgb(195, 58, 160);">OpenSSH</a><a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 1.15em; color: rgb(83, 121, 120);">漏洞</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.15em; color: rgb(117, 167, 50);">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.15em; color: rgb(130, 180, 134);">评论系统</a><a href="/tags/Blog/" style="font-size: 1.15em; color: rgb(190, 96, 78);">Blog</a><a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 1.19em; color: rgb(74, 70, 164);">升级</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.28em; color: rgb(54, 50, 132);">服务器</a><a href="/tags/IPv6/" style="font-size: 1.19em; color: rgb(155, 92, 150);">IPv6</a><a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 1.19em; color: rgb(135, 96, 112);">软件</a><a href="/tags/%E5%97%B7%E5%91%9C/" style="font-size: 1.19em; color: rgb(195, 50, 51);">嗷呜</a><a href="/tags/c/" style="font-size: 1.19em; color: rgb(192, 50, 166);">c#</a><a href="/tags/QiuDN/" style="font-size: 1.15em; color: rgb(50, 50, 57);">QiuDN</a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.41em; color: rgb(102, 153, 171);">笔记</a><a href="/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/" style="font-size: 1.15em; color: rgb(50, 106, 111);">电子电路</a><a href="/tags/%E5%BA%94%E7%94%A8/" style="font-size: 1.15em; color: rgb(63, 94, 150);">应用</a><a href="/tags/Canokey/" style="font-size: 1.15em; color: rgb(52, 175, 134);">Canokey</a><a href="/tags/%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5/" style="font-size: 1.15em; color: rgb(60, 50, 132);">物理密钥</a><a href="/tags/%E8%AF%B4%E8%AF%B4/" style="font-size: 1.45em; color: rgb(131, 56, 52);">说说</a><a href="/tags/Follow/" style="font-size: 1.15em; color: rgb(50, 108, 95);">Follow</a><a href="/tags/galgame/" style="font-size: 1.15em; color: rgb(50, 66, 63);">galgame</a><a href="/tags/Ubuntu/" style="font-size: 1.15em; color: rgb(176, 65, 135);">Ubuntu</a><a href="/tags/Linux/" style="font-size: 1.15em; color: rgb(60, 66, 178);">Linux</a><a href="/tags/%E5%90%8E%E9%97%A8/" style="font-size: 1.15em; color: rgb(138, 88, 156);">后门</a><a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.19em; color: rgb(50, 115, 50);">安全</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.24em; color: rgb(50, 104, 136);">博客</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.32em; color: rgb(50, 72, 50);">生活</a><a href="/tags/%E5%94%A0%E5%97%91/" style="font-size: 1.19em; color: rgb(50, 149, 83);">唠嗑</a><a href="/tags/%E6%90%AC%E5%AF%9D/" style="font-size: 1.15em; color: rgb(184, 125, 196);">搬寝</a><a href="/tags/%E5%8E%9F%E5%91%B3/" style="font-size: 1.15em; color: rgb(198, 135, 171);">原味</a><a href="/tags/%E4%B8%AD%E7%A7%8B/" style="font-size: 1.15em; color: rgb(113, 133, 50);">中秋</a><a href="/tags/%E5%90%90%E6%A7%BD/" style="font-size: 1.15em; color: rgb(50, 50, 50);">吐槽</a><a href="/tags/%E4%B8%83%E4%B8%83%E4%BA%8B%E5%8F%98/" style="font-size: 1.15em; color: rgb(50, 134, 61);">七七事变</a><a href="/tags/%E5%8B%BF%E5%BF%98%E5%9B%BD%E8%80%BB/" style="font-size: 1.15em; color: rgb(122, 91, 172);">勿忘国耻</a><a href="/tags/%E4%B8%87%E4%BA%8B%E8%BE%BE%E5%8D%A1/" style="font-size: 1.19em; color: rgb(103, 99, 55);">万事达卡</a><a href="/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/" style="font-size: 1.19em; color: rgb(99, 50, 50);">长城跨境通</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/08/">
+            <span class="card-archive-list-date">
+              八月 2024
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">205</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2015-09-04T07:25:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">265.1k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-18T08:28:10.757Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-color: rgba(27, 31, 35, .05);"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2025 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" target="_blank">萌ICP备20236007号</a></br><--- <i class="iconfont icon-lang"></i> 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="iconfont icon-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="show-music" type="button" title="显示音乐控件" onclick="showmusic()"><i class="fa-solid fa-music"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
       startDelay: 300,
@@ -371,197 +302,362 @@ Tips：虽然有站点限制，但是可以通过泛域名的方式实现无限�
       backSpeed: 50,
     }, null))
   },
-  run: (subtitleType) => {
+  run: subtitleType => {
     if (true) {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
-        getScript('https://lib.baomitu.com/typed.js/2.1.0/typed.umd.min.js').then(subtitleType)
+        btf.getScript('https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
       }
     } else {
       subtitleType()
     }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["Welcome to my Blog ~"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
   }
 }
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 </script><script>function subtitleType () {
   fetch('https://v1.hitokoto.cn')
     .then(response => response.json())
     .then(data => {
-      if (true) {
-        const from = '出自 ' + data.from
-        const sub = ["Welcome to my Blog ~"]
-        sub.unshift(data.hitokoto, from)
-        typedJSFn.init(sub)
-      } else {
-        document.getElementById('subtitle').textContent = data.hitokoto
-      }
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle(["Welcome to my Blog ~"])
     })
 }
 typedJSFn.run(subtitleType)
-</script></div><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
+</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://unpkg.com/chart.js@4.4.8/dist/chart.umd.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
     if (content === '') return content
 
     content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
     content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
     content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g,"") // remove html tag
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
 
     if (content.length > 150) {
-      content = content.substring(0,150) + '...'
+      content = content.substring(0, 150) + '...'
     }
     return content
-  }
+  },
 
-  const generateHtml = array => {
+  generateHtml: (array, ele) => {
     let result = ''
 
     if (array.length) {
       for (let i = 0; i < array.length; i++) {
-        result += '<div class=\'aside-list-item\'>'
+        result += '<div class="aside-list-item">'
 
-        if (true) {
-          const name = 'src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
         }
 
-        result += `<div class='content'>
-        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
-        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
         </div></div>`
       }
     } else {
-      result += '没有评论'
+      result += '暂无评论'
     }
 
-    let $dom = document.querySelector('#card-newest-comments .aside-list')
-    $dom && ($dom && ($dom.innerHTML= result))
+    ele.innerHTML = result
     window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh($dom)
-  }
+    window.pjax && window.pjax.refresh(ele)
+  },
 
-  const getSetting = async () => {
-    try {
-      const res = await fetch('https://artalk.goodboyboy.top/api/v2/conf', { method: 'GET' })
-      return await res.json()
-    } catch (e) {
-      console.log(e)
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
     }
-  }
+  },
 
-  const headerList = {
-    method: 'GET',
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'artalk-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getAvatarValue = async () => {
+    const predefinedAvatarCdn = ''
+    const predefinedAvatarDefault = ''
+
+    const avatarDefaultFormat = e => e.startsWith('d=') ? e : `d=${e}`
+
+    if (predefinedAvatarCdn && predefinedAvatarDefault) {
+      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
+    }
+
+    try {
+      const res = await fetch('https://artalk.goodboyboy.top/api/v2/conf')
+      const result = await res.json()
+      const { mirror, params, default: defaults } = result.frontend_conf.gravatar
+      const avatarCdn = predefinedAvatarCdn || mirror
+      let avatarDefault = avatarDefaultFormat(predefinedAvatarDefault || params || defaults)
+      return { avatarCdn, avatarDefault}
+    } catch (e) {
+      console.error(e)
+      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
+    }
   }
 
   const searchParams = new URLSearchParams({
     'site_name': 'GoodBoyboyBlog',
-    'limit': '6',
+    'limit': '12', // Fetch more comments to filter pending comments
   })
 
-  const getComment = async () => {
+  const getComment = async (ele) => {
     try {
-      const res = await fetch(`https://artalk.goodboyboy.top/api/v2/stats/latest_comments?${searchParams}`, headerList)
+      const res = await fetch(`https://artalk.goodboyboy.top/api/v2/stats/latest_comments?${searchParams}`)
       const result = await res.json()
-      const avatarStr = await getSetting()
-      const { mirror, params, default:defaults } = avatarStr.frontend_conf.gravatar
-      const avatarCdn = false || mirror
-      let avatarDefault = false || params || defaults
-      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
-      const artalk = result.data.map(function (e) {
-        return {
-          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
-          'content': changeContent(e.content_marked),
-          'nick': e.nick,
-          'url': e.page_url,
-          'date': e.date,
-        }
-      })
-      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
-      generateHtml(artalk)
+      const { avatarCdn, avatarDefault } = await getAvatarValue()
+      const artalk = result.data
+        .filter(e => !e.is_pending) // Filter pending comments
+        .slice(0, 6) // Limit the number of comments
+        .map(e => {
+          const avatar = avatarCdn && e.email_encrypted ? `${avatarCdn}${e.email_encrypted}?${avatarDefault}` : ''
+          return {
+            'avatar': avatar,
+            'content': changeContent(e.content_marked),
+            'nick': e.nick,
+            'url': e.page_url,
+            'date': e.date,
+          }
+        })
+      btf.saveToLocal.set(keyName, JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk, ele)
     } catch (e) {
       console.log(e)
-      const $dom = document.querySelector('#card-newest-comments .aside-list')
-      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
     }
   }
 
-  const newestCommentInit = () => {
-    if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('artalk-newest-comments')
-      if (data) {
-        generateHtml(JSON.parse(data))
-      } else {
-        getComment()
-      }
-    }
-  }
+  run(keyName, getComment)
+})</script><script data-pjax async src="/advance_script.js"></script><script async src="/js/APlayer.min.js"></script><div id="aplayerdiv" class="no-destroy"></div><script src="https://www.goodboyboy.top/uploads/music/music.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc@1.1.4/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://unpkg.com/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax@0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-  newestCommentInit()
-  document.addEventListener('pjax:complete', newestCommentInit)
-})</script><script async src="https://umami.foxsay.top/script.js" data-website-id="21f60885-f721-40e3-89b5-0940bab42e68"></script><script data-pjax async src="/advance_script.js"></script><script async src="/js/APlayer.min.js"></script><div id="aplayerdiv" class="no-destroy"></div><script src="https://www.goodboyboy.top/uploads/music/music.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://lib.baomitu.com/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://lib.baomitu.com/butterfly-extsrc/1.1.3/canvas-fluttering-ribbon.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener
-  btf.removeGlobalFnEvent('pjax')
-  btf.removeGlobalFnEvent('themeChange')
-
-  document.getElementById('rightside').classList.remove('rightside-show')
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
   })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', e => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
   }
-})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script>(() => {
+  const option = null
+  const config = {"site_uv":false,"site_pv":false,"page_pv":false,"token":null}
+
+  const runTrack = () => {
+    umami.track(props => ({ ...props, url: window.location.pathname, title: GLOBAL_CONFIG_SITE.title }))
+  }
+
+  const loadUmamiJS = () => {
+    btf.getScript('https://umami.foxsay.top/script.js', {
+      'data-website-id': '21f60885-f721-40e3-89b5-0940bab42e68',
+      'data-auto-track': 'false',
+      ...option
+    }).then(runTrack)
+  }
+
+  const getData = async (isPost) => {
+    const now = Date.now()
+    const keyUrl = isPost ? `&url=${window.location.pathname}` : ''
+    const headerList = { 'Accept': 'application/json' }
+    if (true) headerList['Authorization'] = `Bearer ${config.token}`
+    else headerList['x-umami-api-key'] = config.token
+    const res = await fetch(`https://umami.foxsay.top/api/websites/21f60885-f721-40e3-89b5-0940bab42e68/stats?startAt=0000000000&endAt=${now}${keyUrl}`, {
+      method: "GET",
+      headers: headerList
+    })
+    return await res.json()
+  }
+
+  const insertData = async () => {
+    try {
+      if (GLOBAL_CONFIG_SITE.pageType === 'post' && config.page_pv) {
+        const pagePV = document.getElementById('umamiPV')
+        if (pagePV) {
+          const data = await getData(true)
+          pagePV.textContent = data.pageviews.value
+        }
+      } else {
+        const data = (config.site_uv || config.site_pv) && await getData()
+        if (config.site_uv) {
+          const siteUV = document.getElementById('umami-site-uv')
+          if (siteUV) siteUV.textContent = data.visitors.value
+        }
+        if (config.site_pv) {
+          const sitePV = document.getElementById('umami-site-pv')
+          if (sitePV) sitePV.textContent = data.pageviews.value
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load Umami Analytics:', e)
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', runTrack, 'umami_analytics_run_track')
+  btf.addGlobalFn('pjaxComplete', insertData, 'umami_analytics_insert')
+
+  loadUmamiJS()
+  insertData()
+})()</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.3.5"></script></div></div></body></html>
