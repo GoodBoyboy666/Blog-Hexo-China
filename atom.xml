@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-03-15T05:06:51.000Z</updated>
+  <updated>2025-03-20T12:23:14.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机软件著作权登记申请</title>
+    <link href="https://blog.goodboyboy.top/posts/3138084601.html"/>
+    <id>https://blog.goodboyboy.top/posts/3138084601.html</id>
+    <published>2025-03-20T12:23:14.000Z</published>
+    <updated>2025-03-20T12:23:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>今天登录中国版权保护中心，发现之前申请的软著通过了，遂发个教程帮助有需要的朋友们😄</p><h2 id="登记费用"><a class="markdownIt-Anchor" href="#登记费用">#</a> 登记费用</h2><p>从 2017 年 4 月 1 日开始，软件著作权登记免费，无需任何费用。</p><p><a href="https://www.ccopyright.com.cn/index.php?optionid=1076">https://www.ccopyright.com.cn/index.php?optionid=1076</a></p><h2 id="登记流程"><a class="markdownIt-Anchor" href="#登记流程">#</a> 登记流程</h2><p>首先进入<a href="https://www.ccopyright.com.cn/">中国版权保护中心</a>，右上角完成账号注册，注册完成后完成实名认证，审核时间大约一两天。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xlwy3x.webp" alt="网站首页"></p><h3 id="填写申请表单"><a class="markdownIt-Anchor" href="#填写申请表单">#</a> 填写申请表单</h3><p>实名认证完成后进入申请页面<a href="https://register.ccopyright.com.cn/registration.html#/index">著作权登记业务办理</a>，按照页面提示</p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xlxfxl.webp" alt="申请页面"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xlxngn.webp" alt="申请页面"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xmi4pe.webp" alt="申请页面"></p><h4 id="软件申请信息"><a class="markdownIt-Anchor" href="#软件申请信息">#</a> 软件申请信息</h4><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xn4zvn.webp" alt="软件申请信息"></p><p><code>权利取得方式</code> 一般都是原始取得</p><p><code>软件全称</code> 这里就填写软件全称，虽然网上有些人说要以 xxx 软件结尾，但是我没按照这个来也申请下来了，所以见仁见智吧。</p><p><code>软件简称</code> 这里填写软件的简称</p><p><code>版本号</code> 这里填写软件的版本号，不一定要写 V1.0，根据实际来就行</p><blockquote><p>注：软著仅保护软件本身的代码，不保护软件名</p></blockquote><p><code>权利范围</code> 为全部权利</p><h4 id="软件开发信息"><a class="markdownIt-Anchor" href="#软件开发信息">#</a> 软件开发信息</h4><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xqkj79.webp" alt="软件申请信息"></p><p><code>软件分类</code> 就按照自己软件实际情况来</p><p><code>软件说明</code> 一般都为原创，根据实际情况来</p><p><code>开发方式</code> 根据实际情况来，我是独立开发就选择的单独开发，要是是几个人一起开发就选择合作开发</p><p><code>开发完成日期</code> 看自己吧，听说蛮重要的，我是选择的我那版本发布的日期</p><p><code>发表状态</code> 根据实际来，我当时已经开源了，所以选择的已发表。</p><h4 id="软件功能与特点重要"><a class="markdownIt-Anchor" href="#软件功能与特点重要">#</a> 软件功能与特点（重要）</h4><p><img src="https://pic.goodboyboy.top/imgs/2025/03/20/xuae6w.webp" alt="软件功能与特点"></p><p>这一页内容特别重要</p><p><code>开发的硬件环境</code> 就写你开发时用的设备配置，例如 CPU 型号，内存大小等</p><p><code>运行的硬件环境</code> 就写你软件运行的设备的配置要求，例如 CPU 型号，内存大小等</p><p><code>开发该软件的操作系统</code> 按实际来，我是 Windows 11，你是 Linux 或者 macos 都行</p><p><code>软件开发环境 / 开发工具</code> 就写你是用什么软件开发的，例如我是 Android Studio、OpenJDK</p><p><code>该软件的运行平台 / 操作系统</code> 就写你软件运行的操作系统，例如我是 Android 8.0 以上</p><p><code>软件运行支撑环境/支持软件</code> 我写的是 Android（大差不差吧）</p><p><code>编程语言</code> 根据实际来，没有就直接填写，例如里面没有 Kotlin，我就填写的 kotlin</p><p><code>源程序量</code> 大致计算一下吧。</p><p><code>开发目的</code> 按你自己的来</p><p><code>面向领域 / 行业</code> 按实际来</p><p><code>软件的主要功能</code> 阐述你的软件的主要功能，有最低字数限制，好像最低是 100 字</p><p><code>软件的技术特点</code> 按你自己的来</p><p><code>程序鉴别材料（关键）</code> 一般选择 <code>一般交存</code> ，总共 60 页，内容为源程序的连续前 30 页和连续后 30 页，每页不少于 50 行。</p><p>我的文档格式如下：</p><p>页眉居中填写软件全称与版本号，页尾为当前页数（第 x 页）</p><p>中间为程序源代码，如果程序有多个文件（现在谁还全塞一个文件啊），可以标注一下（反正我强迫症必须要标注一下）</p><p>凑齐 60 页做成 pdf</p><blockquote><p>一定要保留原始 word 文档，如果后面审核没通过需要补齐可以直接接着补齐</p></blockquote><p><code>文档鉴别材料（重要）</code> 一般选择 <code>一般交存</code> ，内容为程序使用文档（感觉像大作业实验报告了。。。），虽然写着需要 <code>连续的前30页和连续的后30页</code> ，但是我只有 6 页也过了（功能有点简陋没什么可写的，代码倒是长 doge）</p><p>文档格式可以参考如下：</p><p>居中标题</p><ol><li>软件描述</li><li>软件模块介绍</li><li>软件环境要求</li><li>软件安装</li><li>软件卸载</li></ol><p>软件描述就和之前填写的表单上差不多，你要是有详细的可以写也行</p><p>软件模块介绍就是介绍自己软件各个模块的功能以及如何使用，搭配软件截图</p><p>软件环境要求和之前的差不多</p><p>软件安装就介绍一下怎么安装软件，同样可以搭配截图</p><p>软件卸载就是填写如何卸载软件</p><p>其实篇幅最大的应该还是软件模块介绍</p><p><code>其他相关证明文件</code> 有就交，没有就过</p><h4 id="确认信息"><a class="markdownIt-Anchor" href="#确认信息">#</a> 确认信息</h4><p>就是看一下自己填写的信息有没有问题</p><p>没有就可以提交填报完成了。</p><h3 id="签名确认"><a class="markdownIt-Anchor" href="#签名确认">#</a> 签名确认</h3><p>填报完成后会要求下载一个签章 pdf，在个人中心的软件登记一栏里也看得到</p><p>下载该 pdf 表后打印，然后在 <code>申请人签章</code> 那里签名，然后扫描成 pdf（我这里用的全能扫描王，你要是有扫描仪也可以用扫描仪）</p><blockquote><p>注：右上角流水号条码一定要清晰！</p></blockquote><p>最后提交签名的签章 pdf 后就可以开始等待了</p><h2 id="等待时间"><a class="markdownIt-Anchor" href="#等待时间">#</a> 等待时间</h2><p>从提交到受理大概需要一周的时间，从受理到审查完成大概需要一个月时间（普通）</p><p>如果办理加急的话应该时间会缩短很多（得加钱），而且一般加急都是从代理那里办理的，个人没有加急渠道</p><h2 id="证书发放"><a class="markdownIt-Anchor" href="#证书发放">#</a> 证书发放</h2><p>现在都是电子证书发放，发放后在个人中心下载即可。</p><p>发放貌似没有短信提醒？需要自己时不时登录平台看一看</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>这个软件也是自己上学期期末以及寒假时没事做的，想着反正申请不要钱，不如申请一个来玩玩，结果还真申请下来了，算是一个小惊喜吧😁</p><p>因为证书有隐私信息，就不放出来了（doge</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;今天登录中国版权保护中心，发现之前申请的软著通过了，遂发个教程帮助有需要的朋友们😄&lt;/p&gt;
+&lt;h2 id=&quot;登记费用&quot;&gt;&lt;a class=&quot;</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="软著申请" scheme="https://blog.goodboyboy.top/tags/%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>欢迎中信万事达双币借记卡加入卡包大家庭！</title>
