@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-03-20T12:23:14.000Z</updated>
+  <updated>2025-03-29T03:53:55.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Android] 开启R8优化下如何获得原始异常堆栈跟踪</title>
+    <link href="https://blog.goodboyboy.top/posts/895802776.html"/>
+    <id>https://blog.goodboyboy.top/posts/895802776.html</id>
+    <published>2025-03-29T03:53:55.000Z</published>
+    <updated>2025-03-29T03:53:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是r8"><a class="markdownIt-Anchor" href="#什么是r8">#</a> 什么是 R8</h2><p>以下介绍来自 DeepSeek</p><div class="note info flat"><p>R8 是 Android 平台上的代码优化和混淆工具，它是 ProGuard 的替代品，专门为 Kotlin 和 Java 代码设计。以下是关于 R8 优化的关键信息：</p><p>主要功能：</p><ol><li><p>代码缩减 (Shrinking)：<br>移除未使用的类、字段、方法和属性<br>减小应用体积</p></li><li><p>优化 (Optimization)：<br>内联方法<br>移除死代码<br>简化类结构<br>优化控制流</p></li><li><p>混淆 (Obfuscation)：<br>重命名类和成员为短名称<br>增加逆向工程难度</p></li><li><p>资源缩减：<br>与资源缩减工具配合移除未使用的资源</p></li></ol></div><p>总而言之，就是能够缩减安装包体积，优化代码以及提高应用运行速度</p><p>但同样的，因为使用混淆，在捕捉异常时会受到混淆的影响导致无法定位到具体代码行</p><p>一般来说，开发时所编译的 debug 版不开启 R8，而用于发布的 release 版适合开启 R8。但当 release 版出现崩溃收集日志时就会受到 R8 的影响。</p><h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案">#</a> 解决方案</h2><p>在开启 R8 优化后编译 release 版时会生成一个 mapping 文件，该文件记录了混淆时所有对应的方法，使用该文件即可对记录的堆栈跟踪信息进行反混淆。</p><p>文件一般位于 <code>app/build/outputs/mapping/release/mapping.txt</code></p><p>在 clean build 后会重新生成，建议按版本妥善保管</p><p>反混淆会使用到 <code>retrace</code>  工具，该工具为 Android sdk 自带工具，位于 <code>$ANDROID_HOME%\cmdline-tools\latest\bin\retrace.bat</code>  或者 <code>$ANDROID_HOME%\tools\proguard\bin\retrace.bat</code> （旧版）</p><p>如果没有找到可能是没有安装该工具，进入 Android studio <code>设置</code>  -&gt; <code>语言和框架</code>  -&gt; <code>Android SDK</code> ，在 <code>SDK Tool</code>  标签下勾选 <code>Android SDK Command-line Tools（latest）</code> 进行安装。</p><p>然后进行反混淆，命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">retrace.bat -verbose mapping.txt crash_logs.txt &gt; deobfuscated.txt</span><br></pre></td></tr></table></figure><p>反混淆完成后打开 <code>deobfuscated.txt</code>  即可看到正常的堆栈跟踪信息。</p><p>在 Android studio 内打开 <code>分析堆栈跟踪或线程转储</code> 对话框，将反混淆的内容粘贴进去即可让 Android studio 快速定位到代码行</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>这下既可以享受 R8 的优化也不怕日志收集受到混淆的干扰了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;什么是r8&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#什么是r8&quot;&gt;#&lt;/a&gt; 什么是 R8&lt;/h2&gt;
+&lt;p&gt;以下介绍来自 DeepSeek&lt;/p&gt;
+&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;R8 是 Andro</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Android" scheme="https://blog.goodboyboy.top/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机软件著作权登记申请</title>
