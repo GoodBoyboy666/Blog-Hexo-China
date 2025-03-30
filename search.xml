@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>设计了一张博客明信片</title>
+      <!--<link href="/posts/243612221.html"/>
+      <url>/posts/243612221.html</url>-->
+      <link href="posts/243612221.html"/>
+      <url>posts/243612221.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>之前看到<a href="https://www.iczrx.cn">晚夜</a>发了一篇<a href="https://www.iczrx.cn/archives/150/">[BQSL]BLOG QSL卡片详解及免费申领（附预览图</a>，感觉挺不错的，不过我个人更喜欢明信片的格式，再加上最近也在玩明信片，于是自己设计了博客的专属明信片</p><h2 id="展示">展示</h2><p>目前暂时还没定制实体明信片，不过设计图已经完成了，同时收集一下大家意见</p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vu4k0.webp" alt="正面"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vukqx.webp" alt="反面"></p><p>字体使用的是可免费商用的<a href="https://github.com/lxgw/LxgwWenKai/">LXGW WenKai 霞鹜文楷</a>与<a href="https://github.com/adobe-fonts/source-han-sans">思源宋体 VF</a></p><h2 id="说明">说明</h2><h3 id="正面">正面</h3><p>正面图片来自Minecraft游戏中的截图，整合包：地球三</p><blockquote><p>其他好看的图片也有，但是就是选了这张（doge</p></blockquote><h3 id="反面">反面</h3><p>反面按照明信片基本布局设计，预留邮编、邮票位置，留出收信地址位置</p><p>额外预留条形码位置，避免遮挡布局</p><blockquote><p>Tips：国内平信会粘贴条码，如果没有预留位置可能会导致部分信息被意外覆盖（一般工作人员贴的时候都会尽量避免盖住信的内容，但是自己的设计也不想被盖啊doge）</p></blockquote><p>新增内含OpenPGP Key ID的PDF417条码，用于交换OpenPGP公钥时校对ID</p><h2 id="申请明信片">申请明信片</h2><p>将收信人，收信地址发送至我的邮箱即可</p><div class="note info flat"><p>建议同时附上用于接收收信通知的手机号，减少丢件概率。（信件到达收信地址后邮递员会发短信给明信片上预留的手机号）<br>同一收信地址或收信人因未提供手机号导致的丢件，博主将不提供免费的补寄</p></div><div class="note warning flat"><p>因为包含隐私信息，强烈建议发送邮件时使用博主公开的OpenPGP公钥对其进行加密，已和博主有邮件往来的也可以使用博主的S/MIME证书对其进行加密。</p></div><div class="note success flat"><p>提供的信息仅用于发送明信片，预计会保留一周左右，用于补寄等特殊情况。</p></div><h2 id="申请空白明信片">申请空白明信片</h2><p>暂时没有提供空白明信片的打算</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 明信片 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[Android] 开启R8优化下如何获得原始异常堆栈跟踪</title>
       <!--<link href="/posts/895802776.html"/>
       <url>/posts/895802776.html</url>-->
