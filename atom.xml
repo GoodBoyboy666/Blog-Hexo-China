@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-04-14T11:47:36.000Z</updated>
+  <updated>2025-04-15T15:23:55.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>试用新来的打印机</title>
+    <link href="https://blog.goodboyboy.top/posts/2518449653.html"/>
+    <id>https://blog.goodboyboy.top/posts/2518449653.html</id>
+    <published>2025-04-15T15:23:55.000Z</published>
+    <updated>2025-04-15T15:23:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>今天学长的纸到了，刚好自己也要打印一些材料，于是开始第一次正式使用</p><h2 id="开始使用"><a class="markdownIt-Anchor" href="#开始使用">#</a> 开始使用</h2><p>打开打印界面，看了一下，在打印机属性里找到了双面打印的选项，但是打印机看起来不是那种自动双面打印机，所以也不知道到底会怎么双面打印。</p><p>调整好打印机属性后（窗口是 HP 的打印程序），word 里打印界面的选项也跟着变成了双面打印，不管了，先打印看看。</p><p>点击打印后，复印纸开始进纸，从上方出纸，然后纸就掉到了下面？？？</p><p>我：WTF？这就是双面打印？？？</p><p>感觉有点不对头，记忆中应该有个挡板在下面垫着的，看着复印纸连续掉了几张，突然发现出纸口有块突起的地方，翻过来</p><p>啪，挡板出现了。。。</p><p>好吧被自己蠢到了。。。</p><p>这下纸没再掉下来了，不过这时看电脑屏幕，发现弹出一个提示，教我怎么手动双面打印</p><p>是把打印出来的纸再放进进纸口，点击打印机上的继续打印按钮</p><p>但问题是，一开始纸掉下来，我手动把纸收集了起来，忘记了原来在出纸口纸张的方向。。。</p><p>好吧，先打了再说，把纸塞回进纸口，继续打印，然后，不出意外的打印反了。。。</p><p>想了一会，还是打算重新打印一份</p><p>这次先不打印全部，先打印 4 页看看，然后在打印页那里填了个 4，接着打印机就打印了第四页。。。</p><p>好吧，再一次被自己蠢到</p><p>再再再次尝试，填入 1-4，点击打印，然后又出了问题。。。</p><p>打印时在 word 里设置了双面打印（自动），应该是 word 接管双面打印服务，此时打印机应该是只收到奇数页内容的单面打印指令，没有继续打印的提示，点继续后会发送偶数页的单面打印，然后我的点了个取消。。。</p><p>不过无所谓了，反正也是测试😂</p><p>最后，终于是完成了双面打印</p><h2 id="纸张"><a class="markdownIt-Anchor" href="#纸张">#</a> 纸张</h2><p>学长买的纸貌似质量一般般，单面打印还好，双面打印就感觉效果一般般了</p><p>自己重新在网上买了得力的佳铂 80g 的复印纸，打算之后不重要的内容就用学长买的纸，重要的内容就用得力的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;今天学长的纸到了，刚好自己也要打印一些材料，于是开始第一次正式使用&lt;/p&gt;
+&lt;h2 id=&quot;开始使用&quot;&gt;&lt;a class=&quot;markdownI</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="打印机" scheme="https://blog.goodboyboy.top/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>实验室组里添了一台打印机</title>
