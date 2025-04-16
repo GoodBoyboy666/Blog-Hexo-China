@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>博客明信片打样完成</title>
+      <!--<link href="/posts/1538506451.html"/>
+      <url>/posts/1538506451.html</url>-->
+      <link href="posts/1538506451.html"/>
+      <url>posts/1538506451.html</url>
+      
+        <content type="html"><![CDATA[<p>今天明信片快递到了，下面是打印的效果：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yzxki.webp" alt="外包装"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yx537.webp" alt="明信片"></p><p>看了一下，背面还有需要调整的地方，1.2 元的邮票会挡住收信地址栏一部分，还可能挡住 OpenPGP Key 的条码，另外邮编框也有点小了，打算先把第一批申请的发出去，然后准备打第二版。</p><p>第二版的话会增加其他封面，敬请期待～😁</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 明信片 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>试用新来的打印机</title>
       <!--<link href="/posts/2518449653.html"/>
       <url>/posts/2518449653.html</url>-->
@@ -70,12 +97,12 @@
       <link href="posts/2963289823.html"/>
       <url>posts/2963289823.html</url>
       
-        <content type="html"><![CDATA[<h2 id="明信片进度展示">明信片进度展示</h2><blockquote><p>明信片申请详情请看《<a href="/posts/243612221.html">设计了一张博客明信片</a>》</p></blockquote><div class="timeline "><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>03-30</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-02</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计细节调整</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-12</p></div>        </div>        <div class='timeline-item-content'><p>打样印刷下单</p></div>      </div></div>]]></content>
+        <content type="html"><![CDATA[<h2 id="明信片进度展示"><a class="markdownIt-Anchor" href="#明信片进度展示">#</a> 明信片进度展示</h2><blockquote><p>明信片申请详情请看《<a href="/posts/243612221.html">设计了一张博客明信片</a>》</p></blockquote><div class="timeline "><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>03-30</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-02</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计细节调整</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-12</p></div>        </div>        <div class='timeline-item-content'><p>打样印刷下单</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-16</p></div>        </div>        <div class='timeline-item-content'><p>打样完成</p></div>      </div></div>]]></content>
       
       
       <categories>
           
-          <category> 说说 </category>
+          <category> 公告 </category>
           
       </categories>
       
