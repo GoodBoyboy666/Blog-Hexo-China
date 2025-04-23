@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>OAuth 2.0 Client Secret 模式和 PKCE 模式区别</title>
+      <!--<link href="/posts/873069865.html"/>
+      <url>/posts/873069865.html</url>-->
+      <link href="posts/873069865.html"/>
+      <url>posts/873069865.html</url>
+      
+        <content type="html"><![CDATA[<div class="note info flat"><p>本文由 DeepSeek 生成，仅用于博主学习笔记记录</p></div><h2 id="关键区别对比"><a class="markdownIt-Anchor" href="#关键区别对比">#</a> <strong>关键区别对比</strong></h2><table><thead><tr><th>特性</th><th>传统 Client Secret 模式</th><th>PKCE 模式（无 Client Secret）</th></tr></thead><tbody><tr><td><strong>适用场景</strong></td><td>机密客户端（有后端服务器）</td><td>公开客户端（SPA、移动端、无后端）</td></tr><tr><td><strong>是否需要  <code>client_secret</code> </strong></td><td>✅ 需要（后端存储）</td><td>❌ 不需要</td></tr><tr><td><strong>令牌请求方</strong></td><td>由<strong>应用后端</strong>向授权服务器换取令牌</td><td>由<strong>应用后端</strong>或<strong>前端</strong>换取令牌（但无需  <code>client_secret</code> ）</td></tr><tr><td><strong>核心安全机制</strong></td><td>依赖  <code>client_secret</code>  的保密性</td><td>依赖动态的  <code>code_verifier</code>  和  <code>code_challenge</code></td></tr><tr><td><strong>攻击防护</strong></td><td>需防止  <code>client_secret</code>  泄露</td><td>防止授权码截获（即使泄露  <code>code</code>  也无法换令牌）</td></tr></tbody></table><hr><h2 id="详细流程对比"><a class="markdownIt-Anchor" href="#详细流程对比">#</a> <strong>详细流程对比</strong></h2><h3 id="1-client-secret-模式传统后端换令牌"><a class="markdownIt-Anchor" href="#1-client-secret-模式传统后端换令牌">#</a> <strong>1. Client Secret 模式（传统后端换令牌）</strong></h3><pre><code class="highlight mermaid">sequenceDiagram    participant 用户    participant 前端    participant 后端    participant 授权服务器    用户-&gt;&gt;前端: 点击登录    前端-&gt;&gt;授权服务器: 重定向授权页面（带 client_id）    用户-&gt;&gt;授权服务器: 登录并授权    授权服务器-&gt;&gt;前端: 返回 code 到 redirect_uri    前端-&gt;&gt;后端: 发送 code    后端-&gt;&gt;授权服务器: 用 code + client_secret 换 token    授权服务器-&gt;&gt;后端: 返回 access_token    后端-&gt;&gt;前端: 返回 token 或用户数据</code></pre><ul><li><strong>关键点</strong>： <code>client_secret</code>  由后端安全存储，前端不接触。</li></ul><h3 id="2-pkce-模式无-client-secret适合公开客户端"><a class="markdownIt-Anchor" href="#2-pkce-模式无-client-secret适合公开客户端">#</a> <strong>2. PKCE 模式（无 Client Secret，适合公开客户端）</strong></h3><pre><code class="highlight mermaid">sequenceDiagram    participant 用户    participant 前端    participant 授权服务器    用户-&gt;&gt;前端: 点击登录    前端-&gt;&gt;前端: 生成 code_verifier 和 code_challenge    前端-&gt;&gt;授权服务器: 重定向授权页面（带 code_challenge）    用户-&gt;&gt;授权服务器: 登录并授权    授权服务器-&gt;&gt;前端: 返回 code 到 redirect_uri    前端-&gt;&gt;授权服务器: 用 code + code_verifier 换 token    授权服务器-&gt;&gt;前端: 返回 access_token</code></pre><ul><li><strong>关键点</strong>：全程无需  <code>client_secret</code> ，依赖  <code>code_verifier</code>  的临时性和唯一性。</li></ul><hr><h2 id="为什么-pkce-更安全"><a class="markdownIt-Anchor" href="#为什么-pkce-更安全">#</a> <strong>为什么 PKCE 更安全？</strong></h2><ol><li><p><strong>防御授权码截获攻击</strong></p><ul><li>即使攻击者截获  <code>authorization_code</code> ，也无法使用它（缺少  <code>code_verifier</code> ）。</li></ul></li><li><p><strong>无需长期密钥</strong></p><ul><li><code>client_secret</code>  是长期有效的，一旦泄露风险极大；而  <code>code_verifier</code>  仅单次有效。</li></ul></li><li><p><strong>适应公开客户端限制</strong></p><ul><li>移动端或 SPA 无法安全存储  <code>client_secret</code> ，PKCE 提供了替代方案。</li></ul></li></ol><hr><h2 id="何时用哪种模式"><a class="markdownIt-Anchor" href="#何时用哪种模式">#</a> <strong>何时用哪种模式？</strong></h2><table><thead><tr><th>客户端类型</th><th>推荐模式</th><th>原因</th></tr></thead><tbody><tr><td>传统 Web 应用（有后端）</td><td>Client Secret + 授权码模式</td><td>后端可安全存储  <code>client_secret</code></td></tr><tr><td>单页应用（SPA）</td><td>PKCE（无 Client Secret）</td><td>前端无法保密  <code>client_secret</code></td></tr><tr><td>移动端应用</td><td>PKCE + 后端代理换令牌</td><td>避免前端直接处理  <code>access_token</code> （即使使用 PKCE，令牌也应尽量由后端管理）</td></tr></tbody></table><hr><h2 id="常见误解澄清"><a class="markdownIt-Anchor" href="#常见误解澄清">#</a> <strong>常见误解澄清</strong></h2><h3 id="误解1pkce-不需要后端"><a class="markdownIt-Anchor" href="#误解1pkce-不需要后端">#</a> ❌ 误解 1：PKCE 不需要后端</h3><ul><li><p><strong>事实</strong>：PKCE 可以完全在前端实现（如 SPA），但如果有后端，仍推荐由后端换令牌（避免前端暴露  <code>access_token</code> ）。</p></li><li><p><strong>安全增强</strong>：即使使用 PKCE，最佳实践仍是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前端拿到 code → 发给后端 → 后端用 code_verifier 换 token → 返回 token 给前端</span><br></pre></td></tr></table></figure></li></ul><hr><h3 id="误解2oauth2-只是用来做第三方登录的"><a class="markdownIt-Anchor" href="#误解2oauth2-只是用来做第三方登录的">#</a> ❌ 误解 2：OAuth2 只是用来做 “第三方登录” 的</h3><ul><li><strong>事实</strong>：<br>OAuth2 的核心是 <strong>授权委托</strong>（Authorization Delegation），而不仅仅是登录。<ul><li><strong>登录（认证）</strong> 是 OpenID Connect（OAuth2 的扩展协议）的功能。</li><li><strong>原生用途</strong>：控制资源访问权限（如允许 GitHub 应用访问你的仓库）。</li></ul></li></ul><hr><h3 id="误解3pkce-只用于移动端或-spa"><a class="markdownIt-Anchor" href="#误解3pkce-只用于移动端或-spa">#</a> ❌ 误解 3：PKCE 只用于移动端或 SPA</h3><ul><li><strong>事实</strong>：<br>PKCE <strong>对所有客户端类型均有益</strong>，包括传统 Web 应用：<ul><li>可防止授权码截获攻击（即使有机密客户端也应启用 PKCE）。</li><li>例如：GitHub 的 OAuth2 已强制要求所有客户端使用 PKCE。</li></ul></li></ul><hr><h3 id="误解4state-参数是可选的"><a class="markdownIt-Anchor" href="#误解4state-参数是可选的">#</a> ❌ 误解 4： <code>state</code>  参数是可选的</h3><ul><li><strong>事实</strong>：<br> <code>state</code>  是 <strong>防御 CSRF 攻击的必备参数</strong>，必须满足：<ul><li><p><strong>随机性</strong>：每次请求生成唯一值（如 UUID）。</p></li><li><p><strong>绑定会话</strong>：校验回调时是否与初始请求一致。</p></li><li><p><strong>错误示例</strong>：</p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/authorize?response_type=code&amp;client_id=xxx  </span><br><span class="line"># ❌ 缺少 state 参数！</span><br></pre></td></tr></table></figure></li></ul></li></ul><hr><h3 id="误解5前端可以直接用-access_token-调用-api"><a class="markdownIt-Anchor" href="#误解5前端可以直接用-access_token-调用-api">#</a> ❌ 误解 5：前端可以直接用  <code>access_token</code>  调用 API</h3><ul><li><strong>事实</strong>：<ul><li><strong>风险</strong>：前端暴露  <code>access_token</code>  可能导致 XSS 攻击窃取令牌。</li><li><strong>正确做法</strong>：<ul><li>通过后端代理 API 请求（前端传  <code>token</code>  给后端，后端校验后转发）。</li><li>使用 <strong>短期有效的  <code>access_token</code> </strong> +  <code>refresh_token</code> （存储在后端）。</li></ul></li></ul></li></ul><hr><h3 id="误解6refresh_token-可以无限期使用"><a class="markdownIt-Anchor" href="#误解6refresh_token-可以无限期使用">#</a> ❌ 误解 6： <code>refresh_token</code>  可以无限期使用</h3><ul><li><strong>事实</strong>：<ul><li><code>refresh_token</code>  应有 <strong>有效期</strong> 和 <strong>使用限制</strong>：<ul><li>例如：GitHub 的  <code>refresh_token</code>  默认 6 个月过期。</li></ul></li><li>必须配合  <code>client_secret</code>  或 PKCE 使用（不能裸奔）。</li></ul></li></ul><hr><h3 id="误解7oauth2-的-implicit-流程适合-spa"><a class="markdownIt-Anchor" href="#误解7oauth2-的-implicit-流程适合-spa">#</a> ❌ 误解 7：OAuth2 的  <code>implicit</code>  流程适合 SPA</h3><ul><li><strong>事实</strong>：<ul><li><code>implicit</code>  流程（直接返回  <code>token</code>  到前端）<strong>已被废弃</strong>（RFC 6749 附录 10.3）。</li><li><strong>现代替代方案</strong>：PKCE + 授权码模式（即使 SPA 也应通过后端换令牌）。</li></ul></li></ul><hr><h3 id="误解8oauth2-不需要-https"><a class="markdownIt-Anchor" href="#误解8oauth2-不需要-https">#</a> ❌ 误解 8：OAuth2 不需要 HTTPS</h3><ul><li><strong>事实</strong>：<ul><li><p><strong>所有 OAuth2 流量必须通过 HTTPS</strong>：</p><ul><li>防止  <code>code</code> 、 <code>token</code>  被中间人窃取。</li><li>例外：仅限  <code>localhost</code>  环回地址（如开发环境）。</li></ul></li><li><p><strong>致命错误</strong>：</p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://gitea.com/login/oauth/authorize?...  </span><br><span class="line"># ❌ 非 HTTPS 的授权端点！</span><br></pre></td></tr></table></figure></li></ul></li></ul><hr><h2 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> <strong>总结</strong></h2><ul><li><strong>Client Secret 模式</strong>：依赖后端保护的静态密钥，适合有机密存储能力的应用。</li><li><strong>PKCE 模式</strong>：通过动态临时密钥实现安全，专为无法保密  <code>client_secret</code>  的公开客户端设计。</li><li><strong>核心原则</strong>：无论哪种模式，都应确保  <code>access_token</code>  不暴露给不可信的上下文（如前端页面 URL）。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OAuth2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客明信片v2版发布啦，喜欢就快来申请一张吧！</title>
       <!--<link href="/posts/1630314981.html"/>
       <url>/posts/1630314981.html</url>-->
@@ -41,7 +70,7 @@
       <link href="posts/1538506451.html"/>
       <url>posts/1538506451.html</url>
       
-        <content type="html"><![CDATA[<p>今天明信片快递到了，下面是打印的效果：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yzxki.webp" alt="外包装"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yx537.webp" alt="明信片"></p><p>看了一下，背面还有需要调整的地方，1.2元的邮票会挡住收信地址栏一部分，还可能挡住OpenPGP Key的条码，另外邮编框也有点小了，打算先把第一批申请的发出去，然后准备打第二版。</p><p>第二版的话会增加其他封面，敬请期待~😁</p>]]></content>
+        <content type="html"><![CDATA[<p>今天明信片快递到了，下面是打印的效果：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yzxki.webp" alt="外包装"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yx537.webp" alt="明信片"></p><p>看了一下，背面还有需要调整的地方，1.2 元的邮票会挡住收信地址栏一部分，还可能挡住 OpenPGP Key 的条码，另外邮编框也有点小了，打算先把第一批申请的发出去，然后准备打第二版。</p><p>第二版的话会增加其他封面，敬请期待～😁</p>]]></content>
       
       
       <categories>
@@ -130,7 +159,7 @@
       <link href="posts/2963289823.html"/>
       <url>posts/2963289823.html</url>
       
-        <content type="html"><![CDATA[<h2 id="明信片进度展示">明信片进度展示</h2><blockquote><p>明信片申请详情请看《<a href="/posts/243612221.html">设计了一张博客明信片</a>》</p></blockquote><div class="timeline "><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>03-30</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-02</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计细节调整</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-12</p></div>        </div>        <div class='timeline-item-content'><p>打样印刷下单</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-16</p></div>        </div>        <div class='timeline-item-content'><p>打样完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-16</p></div>        </div>        <div class='timeline-item-content'><p>第一批已投递</p></div>      </div></div>]]></content>
+        <content type="html"><![CDATA[<h2 id="明信片进度展示"><a class="markdownIt-Anchor" href="#明信片进度展示">#</a> 明信片进度展示</h2><blockquote><p>明信片申请详情请看《<a href="/posts/243612221.html">设计了一张博客明信片</a>》</p></blockquote><div class="timeline "><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>03-30</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-02</p></div>        </div>        <div class='timeline-item-content'><p>明信片设计细节调整</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-12</p></div>        </div>        <div class='timeline-item-content'><p>打样印刷下单</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-16</p></div>        </div>        <div class='timeline-item-content'><p>打样完成</p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>04-16</p></div>        </div>        <div class='timeline-item-content'><p>第一批已投递</p></div>      </div></div>]]></content>
       
       
       <categories>
@@ -217,7 +246,7 @@
       <link href="posts/243612221.html"/>
       <url>posts/243612221.html</url>
       
-        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>之前看到<a href="https://www.iczrx.cn">晚夜</a>发了一篇<a href="https://www.iczrx.cn/archives/150/">[BQSL]BLOG QSL卡片详解及免费申领（附预览图</a>，感觉挺不错的，不过我个人更喜欢明信片的格式，再加上最近也在玩明信片，于是自己设计了博客的专属明信片</p><h2 id="展示">展示</h2><p>目前暂时还没定制实体明信片，不过设计图已经完成了，同时收集一下大家意见</p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vu4k0.webp" alt="正面"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vukqx.webp" alt="反面"></p><p>字体使用的是可免费商用的<a href="https://github.com/lxgw/LxgwWenKai/">LXGW WenKai 霞鹜文楷</a>与<a href="https://github.com/adobe-fonts/source-han-sans">思源宋体 VF</a></p><h2 id="说明">说明</h2><h3 id="正面">正面</h3><p>正面图片来自Minecraft游戏中的截图，整合包：地球三</p><blockquote><p>其他好看的图片也有，但是就是选了这张（doge</p></blockquote><h3 id="反面">反面</h3><p>反面按照明信片基本布局设计，预留邮编、邮票位置，留出收信地址位置</p><p>额外预留条形码位置，避免遮挡布局</p><blockquote><p>Tips：国内平信会粘贴条码，如果没有预留位置可能会导致部分信息被意外覆盖（一般工作人员贴的时候都会尽量避免盖住信的内容，但是自己的设计也不想被盖啊doge）</p></blockquote><p>新增内含OpenPGP Key ID的PDF417条码，用于交换OpenPGP公钥时校对ID</p><h2 id="申请明信片">申请明信片</h2><p>将收信人，收信地址发送至我的邮箱即可</p><div class="note info flat"><p>建议同时附上用于接收收信通知的手机号，减少丢件概率。（信件到达收信地址后邮递员会发短信给明信片上预留的手机号）<br>同一收信地址或收信人因未提供手机号导致的丢件，博主将不提供免费的补寄</p></div><div class="note warning flat"><p>因为包含隐私信息，强烈建议发送邮件时使用博主公开的OpenPGP公钥对其进行加密，已和博主有邮件往来的也可以使用博主的S/MIME证书对其进行加密。</p></div><div class="note success flat"><p>提供的信息仅用于发送明信片，在投递后预计会保留一周左右，用于补寄等特殊情况。</p></div><h2 id="申请空白明信片">申请空白明信片</h2><p>暂时没有提供空白明信片的打算</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>之前看到<a href="https://www.iczrx.cn">晚夜</a>发了一篇<a href="https://www.iczrx.cn/archives/150/"> [BQSL] BLOG QSL 卡片详解及免费申领（附预览图</a>，感觉挺不错的，不过我个人更喜欢明信片的格式，再加上最近也在玩明信片，于是自己设计了博客的专属明信片</p><h2 id="展示"><a class="markdownIt-Anchor" href="#展示">#</a> 展示</h2><p>目前暂时还没定制实体明信片，不过设计图已经完成了，同时收集一下大家意见</p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vu4k0.webp" alt="正面"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/03/30/12vukqx.webp" alt="反面"></p><p>字体使用的是可免费商用的<a href="https://github.com/lxgw/LxgwWenKai/"> LXGW WenKai 霞鹜文楷</a>与<a href="https://github.com/adobe-fonts/source-han-sans">思源宋体 VF</a></p><h2 id="说明"><a class="markdownIt-Anchor" href="#说明">#</a> 说明</h2><h3 id="正面"><a class="markdownIt-Anchor" href="#正面">#</a> 正面</h3><p>正面图片来自 Minecraft 游戏中的截图，整合包：地球三</p><blockquote><p>其他好看的图片也有，但是就是选了这张（doge</p></blockquote><h3 id="反面"><a class="markdownIt-Anchor" href="#反面">#</a> 反面</h3><p>反面按照明信片基本布局设计，预留邮编、邮票位置，留出收信地址位置</p><p>额外预留条形码位置，避免遮挡布局</p><blockquote><p>Tips：国内平信会粘贴条码，如果没有预留位置可能会导致部分信息被意外覆盖（一般工作人员贴的时候都会尽量避免盖住信的内容，但是自己的设计也不想被盖啊 doge）</p></blockquote><p>新增内含 OpenPGP Key ID 的 PDF417 条码，用于交换 OpenPGP 公钥时校对 ID</p><h2 id="申请明信片"><a class="markdownIt-Anchor" href="#申请明信片">#</a> 申请明信片</h2><p>将收信人，收信地址发送至我的邮箱即可</p><div class="note info flat"><p>建议同时附上用于接收收信通知的手机号，减少丢件概率。（信件到达收信地址后邮递员会发短信给明信片上预留的手机号）<br>同一收信地址或收信人因未提供手机号导致的丢件，博主将不提供免费的补寄</p></div><div class="note warning flat"><p>因为包含隐私信息，强烈建议发送邮件时使用博主公开的 OpenPGP 公钥对其进行加密，已和博主有邮件往来的也可以使用博主的 S/MIME 证书对其进行加密。</p></div><div class="note success flat"><p>提供的信息仅用于发送明信片，在投递后预计会保留一周左右，用于补寄等特殊情况。</p></div><h2 id="申请空白明信片"><a class="markdownIt-Anchor" href="#申请空白明信片">#</a> 申请空白明信片</h2><p>暂时没有提供空白明信片的打算</p>]]></content>
       
       
       <categories>
@@ -688,9 +717,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -1346,9 +1375,9 @@
       
         <tags>
             
-            <tag> 文章总结 </tag>
-            
             <tag> butterfly </tag>
+            
+            <tag> 文章总结 </tag>
             
         </tags>
       
@@ -3206,9 +3235,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3241,9 +3270,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3276,9 +3305,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3311,9 +3340,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3346,9 +3375,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3381,9 +3410,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3416,9 +3445,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3451,9 +3480,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3486,9 +3515,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3521,9 +3550,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -3951,9 +3980,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -6293,11 +6322,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
