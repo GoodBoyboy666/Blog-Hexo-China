@@ -1,3 +1,4 @@
+https://blog.goodboyboy.top/posts/3034134255.html
 https://blog.goodboyboy.top/posts/873069865.html
 https://blog.goodboyboy.top/posts/1630314981.html
 https://blog.goodboyboy.top/agreement/index.html
@@ -500,6 +501,8 @@ https://blog.goodboyboy.top/tags/%E5%8F%8B%E6%83%85/
 https://blog.goodboyboy.top/tags/SDN/
 https://blog.goodboyboy.top/tags/%E7%BD%91%E7%BB%9C/
 https://blog.goodboyboy.top/tags/%E6%91%98%E5%BD%95/
+https://blog.goodboyboy.top/tags/OpenID-Connect/
+https://blog.goodboyboy.top/tags/oidc/
 https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/
 https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/
 https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/
