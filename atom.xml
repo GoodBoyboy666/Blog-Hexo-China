@@ -106,14 +106,14 @@
     <published>2025-04-25T12:55:33.000Z</published>
     <updated>2025-04-25T12:55:33.000Z</updated>
     
-    <content type="html"><![CDATA[<div class="note info flat"><p>本文使用最常用的Authorization Code的Code认证方式，IdP采用ZITADEL</p></div><p>首先依赖方会要求提供<code>discovery endpoint</code>，具体地址由IdP提供，一般为<code>&#123;idp_domain&#125;/.well-known/openid-configuration</code>，该链接包含认证所需的很多endpoint。</p><p>然后在授权服务器注册应用，注册完成后会得到<code>Client ID</code>与<code>Client Secret</code>，注册时填写的callback地址由依赖方提供，用于用户完成授权后客户端调用callback地址传递授权码。</p><h2 id="认证流程">认证流程</h2><h3 id="重定向授权页面">重定向授权页面</h3><p>由依赖方在登录页面发起授权请求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/authorize</span><br><span class="line">?response_type=code</span><br><span class="line">&amp;client_id=CLIENT_ID</span><br><span class="line">&amp;redirect_uri=REDIRECT_URI</span><br><span class="line">&amp;scope=SCOPE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中<code>CLIENT_ID</code>为注册应用时获得的Client ID，<code>REDIRECT_URI</code>为注册应用时填写的callback地址，<code>SCOPE</code>为授权范围，具体范围需要参考IdP，在<code>discovery endpoint</code>中<code>scopes_supported</code>也可以看到可以申请的授权范围，<code>STATE</code>为由依赖方产生的随机值，用于防止CSRF攻击，在授权完成调用callback地址时会附加在链接中，便于依赖方校对。</p><h3 id="重定向callback地址">重定向callback地址</h3><p>用户授权完成后重定向至callback url</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;callback_url&#125;</span><br><span class="line">?code=CODE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中<code>CODE</code>为授权码，<code>STATE</code>与上文一致</p><h3 id="请求Access-Token">请求Access Token</h3><p>依赖方后端收到授权码，校验state后向<code>token endpoint</code>请求Access Token</p><p>后端构建Authorization头：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: &quot;Basic &quot; + base64( formUrlEncode(client_id) + &quot;:&quot; + formUrlEncode(client_secret) )</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/token</span><br><span class="line"></span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Authorization: Basic xxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code</span><br><span class="line">code=CODE</span><br><span class="line">redirect_uri=REDIRECT_URI</span><br><span class="line">scope=SCOPE</span><br></pre></td></tr></table></figure><p><code>CODE</code>，<code>REDIRECT_URI</code>，<code>SCOPE</code>同上文一致</p><p>返回如下Json：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;access_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;token_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bearer&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;expires_in&quot;</span><span class="punctuation">:</span> <span class="number">43199</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;id_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><div class="note info flat"><p>ZITADEL<code>refresh_token</code>需要在scope内添加<code>offline_access</code>，否则返回内容不会有refresh_token<br>ZITADEL<code>id_token</code>默认不会含有email，profile之类的信息（即使scope已声明），需要在应用设置，令牌设置内勾选<code>在 ID Token 中包含用户信息</code>，或者直接向<code>userinfo_endpoint</code>请求用户信息。</p></div><h3 id="获取用户信息">获取用户信息</h3><p>后端向<code>userinfo_endpoint</code>请求用户信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oidc/v1/userinfo</span><br><span class="line">Authorization: Bearer ACCESS_TOKEN</span><br></pre></td></tr></table></figure><p>其中<code>ACCESS_TOKEN</code>为上文拿到的Access Token</p><p>返回如下Json</p><div class="note info flat"><p>不同IdP可能不一样</p></div><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;000000000000000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;given_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;family_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;locale&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="number">0000000000000000</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;preferred_username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxx@xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxx@xxxxxxxxx.xxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email_verified&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<div class="note info flat"><p>本文使用最常用的 Authorization Code 的 Code 认证方式，IdP 采用 ZITADEL</p></div><p>首先依赖方会要求提供 <code>discovery endpoint</code> ，具体地址由 IdP 提供，一般为 <code>&#123;idp_domain&#125;/.well-known/openid-configuration</code> ，该链接包含认证所需的很多 endpoint。</p><p>然后在授权服务器注册应用，注册完成后会得到 <code>Client ID</code>  与 <code>Client Secret</code> ，注册时填写的 callback 地址由依赖方提供，用于用户完成授权后客户端调用 callback 地址传递授权码。</p><h2 id="认证流程"><a class="markdownIt-Anchor" href="#认证流程">#</a> 认证流程</h2><h3 id="重定向授权页面"><a class="markdownIt-Anchor" href="#重定向授权页面">#</a> 重定向授权页面</h3><p>由依赖方在登录页面发起授权请求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/authorize</span><br><span class="line">?response_type=code</span><br><span class="line">&amp;client_id=CLIENT_ID</span><br><span class="line">&amp;redirect_uri=REDIRECT_URI</span><br><span class="line">&amp;scope=SCOPE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中 <code>CLIENT_ID</code>  为注册应用时获得的 Client ID， <code>REDIRECT_URI</code>  为注册应用时填写的 callback 地址， <code>SCOPE</code>  为授权范围，具体范围需要参考 IdP，在 <code>discovery endpoint</code>  中 <code>scopes_supported</code>  也可以看到可以申请的授权范围， <code>STATE</code>  为由依赖方产生的随机值，用于防止 CSRF 攻击，在授权完成调用 callback 地址时会附加在链接中，便于依赖方校对。</p><h3 id="重定向callback地址"><a class="markdownIt-Anchor" href="#重定向callback地址">#</a> 重定向 callback 地址</h3><p>用户授权完成后重定向至 callback url</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;callback_url&#125;</span><br><span class="line">?code=CODE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中 <code>CODE</code>  为授权码， <code>STATE</code>  与上文一致</p><h3 id="请求access-token"><a class="markdownIt-Anchor" href="#请求access-token">#</a> 请求 Access Token</h3><p>依赖方后端收到授权码，校验 state 后向 <code>token endpoint</code>  请求 Access Token</p><p>后端构建 Authorization 头：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: &quot;Basic &quot; + base64( formUrlEncode(client_id) + &quot;:&quot; + formUrlEncode(client_secret) )</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/token</span><br><span class="line"></span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Authorization: Basic xxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code</span><br><span class="line">code=CODE</span><br><span class="line">redirect_uri=REDIRECT_URI</span><br><span class="line">scope=SCOPE</span><br></pre></td></tr></table></figure><p><code>CODE</code> ， <code>REDIRECT_URI</code> ， <code>SCOPE</code>  同上文一致</p><p>返回如下 Json：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;access_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;token_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bearer&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;expires_in&quot;</span><span class="punctuation">:</span> <span class="number">43199</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;id_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><div class="note info flat"><p>ZITADEL <code>refresh_token</code>  需要在 scope 内添加 <code>offline_access</code> ，否则返回内容不会有 refresh_token<br>ZITADEL <code>id_token</code>  默认不会含有 email，profile 之类的信息（即使 scope 已声明），需要在应用设置，令牌设置内勾选 <code>在 ID Token 中包含用户信息</code> ，或者直接向 <code>userinfo_endpoint</code>  请求用户信息。</p></div><h3 id="获取用户信息"><a class="markdownIt-Anchor" href="#获取用户信息">#</a> 获取用户信息</h3><p>后端向 <code>userinfo_endpoint</code>  请求用户信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oidc/v1/userinfo</span><br><span class="line">Authorization: Bearer ACCESS_TOKEN</span><br></pre></td></tr></table></figure><p>其中 <code>ACCESS_TOKEN</code>  为上文拿到的 Access Token</p><p>返回如下 Json</p><div class="note info flat"><p>不同 IdP 可能不一样</p></div><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;000000000000000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;given_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;family_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;locale&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="number">0000000000000000</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;preferred_username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxx@xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxx@xxxxxxxxx.xxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email_verified&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
     
     
       
       
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;本文使用最常用的Authorization Code的Code认证方式，IdP采用ZITADEL&lt;/p&gt;
+    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;本文使用最常用的 Authorization Code 的 Code 认证方式，IdP 采用 ZITADEL&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;首先依赖方会要求提供&lt;code&gt;discovery endpoint&lt;/code&gt;，具体地址</summary>
+&lt;p&gt;首先依赖方会要求提供 &lt;code&gt;discovery endpoint&lt;/cod</summary>
       
     
     
@@ -123,11 +123,11 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
+    
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
@@ -682,9 +682,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -717,9 +717,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
     
   </entry>
   
@@ -835,9 +835,9 @@
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
-    
     <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
     
   </entry>
   
@@ -1462,9 +1462,9 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="butterfly" scheme="https://blog.goodboyboy.top/tags/butterfly/"/>
-    
     <category term="文章总结" scheme="https://blog.goodboyboy.top/tags/%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93/"/>
+    
+    <category term="butterfly" scheme="https://blog.goodboyboy.top/tags/butterfly/"/>
     
   </entry>
   
@@ -2819,9 +2819,9 @@
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
-    
     <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
+    
+    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
     
   </entry>
   
@@ -3262,9 +3262,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3295,9 +3295,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3329,9 +3329,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3363,9 +3363,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3396,9 +3396,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3430,9 +3430,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3466,9 +3466,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3499,9 +3499,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3534,9 +3534,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3571,9 +3571,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="计算机网络" scheme="https://blog.goodboyboy.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3987,9 +3987,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
@@ -6320,11 +6320,11 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
     <category term="openssl" scheme="https://blog.goodboyboy.top/tags/openssl/"/>
     
     <category term="根证书" scheme="https://blog.goodboyboy.top/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
