@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Fast Auth——2FA APP开发进度汇报</title>
+      <!--<link href="/posts/3598556359.html"/>
+      <url>/posts/3598556359.html</url>-->
+      <link href="posts/3598556359.html"/>
+      <url>posts/3598556359.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="开发进度"><a class="markdownIt-Anchor" href="#开发进度">#</a> 开发进度</h2><p>目前开发进度已达到 70% 左右（整个项目进度），已实现核心功能</p><h2 id="已开发功能"><a class="markdownIt-Anchor" href="#已开发功能">#</a> 已开发功能</h2><ul class="task-list"><li class="task-list-item"><input type="checkbox" id="cbx_0" checked="true" disabled="true"><label for="cbx_0"> TOTP</label></li><li class="task-list-item"><input type="checkbox" id="cbx_1" disabled="true"><label for="cbx_1"> HTOP</label></li><li class="task-list-item"><input type="checkbox" id="cbx_2" disabled="true"><label for="cbx_2"> STEAM 令牌</label></li><li class="task-list-item"><input type="checkbox" id="cbx_3" checked="true" disabled="true"><label for="cbx_3"> 使用 Android 密钥库加密存储 Secret</label></li><li class="task-list-item"><input type="checkbox" id="cbx_4" disabled="true"><label for="cbx_4"> 导出</label><ul class="task-list"><li class="task-list-item"><input type="checkbox" id="cbx_5" disabled="true"><label for="cbx_5"> 明文导出</label></li></ul></li><li class="task-list-item"><input type="checkbox" id="cbx_6" disabled="true"><label for="cbx_6"> 端到端迁移</label><ul class="task-list"><li class="task-list-item"><input type="checkbox" id="cbx_7" disabled="true"><label for="cbx_7"> NFC 迁移</label></li><li class="task-list-item"><input type="checkbox" id="cbx_8" disabled="true"><label for="cbx_8"> QR 迁移</label></li></ul></li></ul><h2 id="界面"><a class="markdownIt-Anchor" href="#界面">#</a> 界面</h2><div class="note info flat"><p>该演示图不代表最终效果（不过也大差不差了 doge）</p></div><blockquote><p>亮色模式下</p></blockquote><div class="gallery-container" data-type="data" data-button="" data-limit="10" data-first="10">    <div class="gallery-items">[{"url":"https://pic.goodboyboy.top/imgs/2025/05/08/5g0v2.webp","alt":"首页","title":""},{"url":"https://pic.goodboyboy.top/imgs/2025/05/08/7h6t7.webp","alt":"设置页面","title":""}]</div>  </div><blockquote><p>暗色模式下</p></blockquote><div class="gallery-container" data-type="data" data-button="" data-limit="10" data-first="10">    <div class="gallery-items">[{"url":"https://pic.goodboyboy.top/imgs/2025/05/08/5pakd.webp","alt":"首页","title":""},{"url":"https://pic.goodboyboy.top/imgs/2025/05/08/5oz36.webp","alt":"设置页面","title":""}]</div>  </div><h2 id="存储加密逻辑"><a class="markdownIt-Anchor" href="#存储加密逻辑">#</a> 存储加密逻辑</h2><h3 id="masterkey存储"><a class="markdownIt-Anchor" href="#masterkey存储">#</a> MasterKey 存储</h3><pre><code class="highlight mermaid">sequenceDiagram    participant App as 客户端/应用    participant AndroidKeystore as Android密钥库系统    participant MasterKey as MasterKey    App-&gt;&gt;AndroidKeystore: 1. 创建密钥库(KeyStore)    App-&gt;&gt;MasterKey: 2. 生成MasterKey        App-&gt;&gt;AndroidKeystore: 3.发起生物认证        AndroidKeystore-&gt;&gt;MasterKey: 4. 使用AES-256加密MasterKey    MasterKey--&gt;&gt;App: 返回加密后的MasterKey</code></pre><h3 id="加密secret"><a class="markdownIt-Anchor" href="#加密secret">#</a> 加密 Secret</h3><pre><code class="highlight mermaid">sequenceDiagram    participant App as 客户端/应用    participant AndroidKeystore as Android密钥库系统    participant MasterKey as MasterKey    participant OTPSecrete as OTPSecrete    App-&gt;&gt;AndroidKeystore: 1. 发起生物认证    AndroidKeystore-&gt;&gt;MasterKey: 2. 解密MasterKey        MasterKey-&gt;&gt;OTPSecrete: 3.使用AES-256加密OTPSecrete        OTPSecrete--&gt;&gt;App: 返回加密后的OTPSecrete</code></pre><h3 id="解密secret"><a class="markdownIt-Anchor" href="#解密secret">#</a> 解密 Secret</h3><pre><code class="highlight mermaid">sequenceDiagram    participant App as 客户端/应用    participant AndroidKeystore as Android密钥库系统    participant MasterKey as MasterKey    participant OTPSecrete as OTPSecrete    App-&gt;&gt;AndroidKeystore: 1. 发起生物认证    AndroidKeystore-&gt;&gt;MasterKey: 2. 解密MasterKey        MasterKey-&gt;&gt;OTPSecrete: 3.使用解密OTPSecrete        OTPSecrete--&gt;&gt;App: 返回解密后的OTPSecrete</code></pre><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>本来是打算走 QR 迁移的，突然灵光一闪想着 NFC 不也是可以传输数据，并且安全性比 QR 高很多。</p><p>查了一下，不同的 NFC tag 的容量不一样，但是如果使用 Android NFC 的点对点功能，NDEF Push Protocol 对 NDEF 消息长度并没有严格的上限，Payload Length 允许为 4 字节长度。</p><p>所以理论上可以传输<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{32}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 字节的数据，约 4GB（雾），不过貌似实际超过几十 KB 到上百 KB 的消息就容易出现传输失败。</p><p>到时候可以做个选项，要是数据少的可以直接通过 NFC 传完，要是数据多的话就通过 NFC 交换 AES 加密密钥</p><p>如果有闲心的话弄个 ECC 也不是不行，用 QR 或者 NFC 传递公钥，不过目前 Android 密钥库貌似只支持 ECDSA，并且没有像 OpenPGP 那样支持使用基于 Curve25519 的加密功能（我宁可用国密也不想用 ECDSA），到时候找找有没有什么靠谱的实现</p><p>另外暂时没有找到好的图标来源，到时候再看吧</p><p>自己做软件的好处之一就是想加什么功能自己加就完事了（doge</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 应用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 2FA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>五一单日长沙游</title>
       <!--<link href="/posts/3427455399.html"/>
       <url>/posts/3427455399.html</url>-->
