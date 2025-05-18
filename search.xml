@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>好用的CloudFlare Tunnel，使我大脑旋转</title>
+      <!--<link href="/posts/3954763362.html"/>
+      <url>/posts/3954763362.html</url>-->
+      <link href="posts/3954763362.html"/>
+      <url>posts/3954763362.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="致谢"><a class="markdownIt-Anchor" href="#致谢">#</a> 致谢</h2><p>CloudFlare 真的是赛博活佛😍</p><h2 id="起因"><a class="markdownIt-Anchor" href="#起因">#</a> 起因</h2><p>无聊看了几篇写 CF Tunnel 的文章，发现用来内外穿透效果还不错？（仅对于 Web 网站，游戏联机就不要想了）</p><p>虽然自己也有服务器可以搭建 Frp 进行穿透，但一个是配置麻烦，更改配置还需要重启 Frpc，另外也不想什么都通过主服务器穿透，万一哪天主服务器被打进黑洞了超麻烦（阿里云的鸡一摸就死，服务还没死呢就给你扔黑洞去了）</p><p>更何况有些服务自带的验证安全程度还达不到我的要求，例如 cockpit，仅仅是验证主机的 Linux 账户密码（为了防止自己锁自己，宿舍服务器密码没有用 keepass 生成），1panel 还好，我用 keepass，但是为了方便没开 2fa。</p><p>这就导致离开寝室局域网后将无法控制我的宿舍服务器，只能使用部分映射出来的服务。</p><p>前几天就因为宿舍忘记交电费意外断电后我忘记启动 kvm 上挂的实验环境，导致实验室的学弟用不了虚拟机，当时在实验室也没办法远程启动，只能等我回寝室后登录后台启动</p><h2 id="play"><a class="markdownIt-Anchor" href="#play">#</a> play</h2><p>CF Tunnel 现在被归类到 Zero Trust 内</p><p>目前我用过的就 3 个大块：Gateway，Access，网络</p><p>Gateway 管理的就是原来的 warp 以及 warp+，不过现在大陆已经用不了了</p><p>CF Tunnel 则在网络内</p><h3 id="安装客户端与创建隧道"><a class="markdownIt-Anchor" href="#安装客户端与创建隧道">#</a> 安装客户端与创建隧道</h3><p>首先需要安装 cloudflared，这里为了方便管理我选择的 docker 安装</p><p>按照官方给出的含 token 的命令创建好容器后，将容器网络改为 <code>host</code>  方便访问主机内各个服务</p><p>建议一个隧道对应一个主机，一个主机只需要创建一个隧道就行</p><h3 id="创建公共主机名"><a class="markdownIt-Anchor" href="#创建公共主机名">#</a> 创建公共主机名</h3><p>这里就是配置具体服务（有点类似配置反向代理）</p><p><strong>子域</strong>配置的是公共访问地址，访问内网服务就访问该地址</p><p><strong>类型</strong>配置的是内网具体是什么服务，cloudflare 如何访问你的内网服务，和设置 CDN 差不多，只是说 CDN 的话如果设置 HTTP，那 cf 到你源服务器的流量就真的是完全未加密，而 Tunnel 默认是完全加密的</p><blockquote><p>Tips: 一个常见小坑是，源服务开启 HTTPS 并开启 HTTP 自动跳转 HTTPS，但 CF 后端地址却填写的 HTTP 协议，这会造成无限跳转，无论用户访问是 HTTPS 还是 HTTP。因为当流量从 cf 流向源服务器时进入的是 80 端口，源服务器会返回一个 301 跳转指向 HTTPS，客户端收到 301 并继续跳转访问，然后流量继续从 cf 流向源服务器的 80 端口，无限循环。</p></blockquote><div class="note info flat"><p>一个大坑：如果你是用的 docker 部署，后端协议选的 HTTPS 的话，下发的配置默认不会带 originServerName，导致 cf 会把源服务器返回的证书 SNI 与你填写的后端地址进行对比。一般来说本地服务都会填写 127.0.0.1 或者 localhost，这就会导致 <code>remote error: tls: internal error&quot;</code> ，解决方案一个是开启 <code>noTLSVerify</code> ，不要验证 TLS 证书，一个是填写 <code>源服务器名称</code> ，而且我发现填写一次后哪怕之后删掉，也不会出现这个问题了。</p></div><p>创建完后就可以愉快的使用公共主机名地址访问了</p><h3 id="添加access"><a class="markdownIt-Anchor" href="#添加access">#</a> 添加 Access</h3><p>用来管理访问策略</p><h3 id="策略"><a class="markdownIt-Anchor" href="#策略">#</a> 策略</h3><p>可以先创建一些策略，例如 ban 掉海外 ip，仅允许自己的邮箱访问等等</p><h3 id="应用程序"><a class="markdownIt-Anchor" href="#应用程序">#</a> 应用程序</h3><p>这里就对应之前的公共主机名，一个公共主机名可以对应一个应用程序（虽然设置上可以对应多个）</p><p><code>应用程序名称</code> 爱怎么填怎么填</p><p><code>公共主机名</code> 内容和服务公共主机名一致</p><p>然后在策略一栏选择自己创建的策略</p><p><code>登录方法</code> 默认的只有向邮箱发送一次性 OTP 代码的选项，不过支持很多第三方 OAuth，例如 github，google 等，还支持自定义 openid connect，可以对接我自己部署的 zitadel</p><p>不过自从隔壁博主的 casdoor 出现 <a href="https://blog.moeworld.tech/2025/05/09/cve-2025-4210-casdoor-v1-811-0-unauthenticated-scim-operations/">CVE-2025-4210 Casdoor &lt;=v1.811.0 - Unauthenticated SCIM Operations</a> 导致 <a href="https://blog.moeworld.tech/2025/05/08/%e3%80%90%e8%ad%a6%e5%91%8a%e3%80%91%e6%88%91%e4%bb%ac%e6%b3%a8%e6%84%8f%e5%88%b0moeworld-tech%e5%8f%91%e7%94%9f%e4%ba%86%e9%82%ae%e4%bb%b6%e7%9b%97%e7%94%a8%e7%8e%b0%e8%b1%a1/">【警告】我们注意到 moeworld.tech 发生了邮件盗用现象</a>后，我就有点不敢用自托管的统一身份认证了，在这种可能会危及到内网安全的重要服务上还是算了，邮件 OTP 也不是不行</p><p>目前市面上常见的 IAM 基本上都会有角色控制功能，不仅仅提供 IdP 的功能，也就是说应用开发可以完全不需要自己独立的账户权限管理功能而依赖 IAM，但一旦 IAM 出现问题那就不好玩了</p><p>创建完应用程序后在 Tunnel 内的公共主机名进行绑定即可</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>这下内网一些私密服务可以通过 Tunnel+Access 暴露出来了🥰</p><p>至于网站访问速度，虽然延迟有点高，但至少可以正常访问，不像 CF 的 CDN，正常访问都是挑战</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CloudFlare </tag>
+            
+            <tag> Tunnel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新注册furwolf.com域名</title>
       <!--<link href="/posts/2975776194.html"/>
       <url>/posts/2975776194.html</url>-->
