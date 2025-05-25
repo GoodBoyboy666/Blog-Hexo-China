@@ -718,7 +718,7 @@ WebAuthn 解决了传统基于密码的身份验证中的许多固有问题：</
   const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
+    elements: 'a:not([target="_blank"]):not([href="/music/"])',
     selectors: pjaxSelectors,
     cacheBust: false,
     analytics: false,

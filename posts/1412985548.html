@@ -715,7 +715,7 @@ Steps: 24, Sampler: Euler a, CFG scale: 9, Seed: 1119134113, Size: 512x512, Mode
   const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
+    elements: 'a:not([target="_blank"]):not([href="/music/"])',
     selectors: pjaxSelectors,
     cacheBust: false,
     analytics: false,
