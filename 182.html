@@ -704,7 +704,7 @@ The edge encountered n2n’s protection against spoofing. It prevents that one e
   const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"]):not([href="/music/"])',
+    elements: 'a:not([target="_blank"])',
     selectors: pjaxSelectors,
     cacheBust: false,
     analytics: false,
