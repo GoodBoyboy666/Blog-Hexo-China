@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-05-31T12:23:15.000Z</updated>
+  <updated>2025-05-31T12:51:20.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>突然发现自己身体还是蛮脆弱的😂</title>
+    <link href="https://blog.goodboyboy.top/posts/4055500940.html"/>
+    <id>https://blog.goodboyboy.top/posts/4055500940.html</id>
+    <published>2025-05-31T12:51:20.000Z</published>
+    <updated>2025-05-31T12:51:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h2><p>今天和学弟在一个郊区的公园散步，结果在过一个拱桥的时候，往下走那个阶梯的时候一脚踩空，直接摔了个狗吃屎（悲）</p><p>两脚的膝盖直接撞在阶梯拐角那，疼死我了。。。</p><p>不过当时穿的长裤，看不到伤情，继续和学弟逛了一会。</p><p>晚上回去感觉越来越痛，每动一下裤子布料就磨一下那个地方。回到寝室，看了一下，不出意外的青了😢，还有一片被磕出来的红斑，腿肚子上的红斑更长。</p><p>一个普通的平地摔就磕成这样，果然人的身体还是不耐造（悲</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#正文&quot;&gt;#&lt;/a&gt; 正文&lt;/h2&gt;
+&lt;p&gt;今天和学弟在一个郊区的公园散步，结果在过一个拱桥的时候，往下走那个阶梯的时候一脚踩空，直接摔了个狗吃屎（悲）&lt;/p&gt;
+&lt;p&gt;两脚的膝盖直接撞在</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>完成GitHub学生认证</title>
@@ -406,11 +432,11 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
+    
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
@@ -467,9 +493,9 @@
     <category term="明信片" scheme="https://blog.goodboyboy.top/categories/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
     
-    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
+    
+    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -580,9 +606,9 @@
     <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
     
     
-    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
+    
+    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -664,9 +690,9 @@
     <category term="明信片" scheme="https://blog.goodboyboy.top/categories/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
     
-    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
+    
+    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -1453,9 +1479,9 @@
     <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
     
     
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
     <category term="服务器" scheme="https://blog.goodboyboy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
     
     <category term="白嫖" scheme="https://blog.goodboyboy.top/tags/%E7%99%BD%E5%AB%96/"/>
     
@@ -1628,11 +1654,11 @@
     <category term="Hardware" scheme="https://blog.goodboyboy.top/categories/Hardware/"/>
     
     
+    <category term="IPv6" scheme="https://blog.goodboyboy.top/tags/IPv6/"/>
+    
     <category term="CPE" scheme="https://blog.goodboyboy.top/tags/CPE/"/>
     
     <category term="鲲鹏" scheme="https://blog.goodboyboy.top/tags/%E9%B2%B2%E9%B9%8F/"/>
-    
-    <category term="IPv6" scheme="https://blog.goodboyboy.top/tags/IPv6/"/>
     
     <category term="UPNP" scheme="https://blog.goodboyboy.top/tags/UPNP/"/>
     
@@ -3102,9 +3128,9 @@
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
-    
     <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
+    
+    <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
     
   </entry>
   
@@ -5024,11 +5050,11 @@
     <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
     
     
-    <category term="服务器" scheme="https://blog.goodboyboy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
     <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
     
     <category term="升级" scheme="https://blog.goodboyboy.top/tags/%E5%8D%87%E7%BA%A7/"/>
+    
+    <category term="服务器" scheme="https://blog.goodboyboy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
@@ -5054,11 +5080,11 @@
     <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
     
     
-    <category term="服务器" scheme="https://blog.goodboyboy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
     <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
     
     <category term="升级" scheme="https://blog.goodboyboy.top/tags/%E5%8D%87%E7%BA%A7/"/>
+    
+    <category term="服务器" scheme="https://blog.goodboyboy.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
