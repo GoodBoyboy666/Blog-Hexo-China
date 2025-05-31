@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>完成GitHub学生认证</title>
+      <!--<link href="/posts/1315496079.html"/>
+      <url>/posts/1315496079.html</url>-->
+      <link href="posts/1315496079.html"/>
+      <url>posts/1315496079.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>前几天发现 GitHub Pro 好像可以免费使用 GitHub Copilot，然后学生认证的话可以免费使用 GitHub Pro 计划，打算认证一下尝尝咸淡。</p><h2 id="认证"><a class="markdownIt-Anchor" href="#认证">#</a> 认证</h2><p>感觉认证也不麻烦（前提是你是真学生），教育邮箱 + 学生证照片 + 允许网站定位就可以了。完全不需要像网上那种搞个学信网学籍证明，还整个英文版的什么的。</p><p>我学生证上面的章都模糊的看不清是哪个学校了😂，只隐隐约约看得出是个章</p><p>不过从 approve 状态转变为 Coupon applied 花了实实在在的三天（说最长要 72 小时还真用了 72 小时啊😂）</p><p><img src="https://pic.goodboyboy.top/imgs/2025/05/31/xh7wx0.webp" alt="认证成功"></p><h2 id="github-copilot"><a class="markdownIt-Anchor" href="#github-copilot">#</a> GitHub Copilot</h2><p>美美使用 GitHub Copilot</p><p><img src="https://pic.goodboyboy.top/imgs/2025/05/31/xlaieg.webp" alt="GitHub Copilot"></p><p>Copilot Pro 除了 GPT-4.5 和 o3 用不了，其他都可以用（GPT-4.5 的定价属实是有的癫了）</p><p>每个月有 300 次的高级请求</p><p>请求乘数如下：</p><table><thead><tr><th>模型</th><th>高级请求</th></tr></thead><tbody><tr><td>基本模型（当前为 GPT-4.1）</td><td>0（付费用户），1（Copilot Free）</td></tr><tr><td>高级 GPT-4.1</td><td>1</td></tr><tr><td>GPT-4o</td><td>1</td></tr><tr><td>GPT-4.5</td><td>50</td></tr><tr><td>Claude 3.5 Sonnet</td><td>1</td></tr><tr><td>Claude 3.7 Sonnet</td><td>1</td></tr><tr><td>Claude 3.7 Sonnet Thinking</td><td>1.25</td></tr><tr><td>Gemini 2.0 Flash</td><td>0.25</td></tr><tr><td>Gemini 2.5 Pro</td><td>1</td></tr><tr><td>o1</td><td>10</td></tr><tr><td>o3</td><td>5</td></tr><tr><td>o3-mini</td><td>0.33</td></tr><tr><td>o4-mini</td><td>0.33</td></tr></tbody></table><p>也就是说一个月差不多可以免费使用 300 次 Claude 3.7 Sonnet 模型，使用基本模型的话（目前是 GPT-4.1）则是无限次😎</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GitHub </tag>
+            
+            <tag> 学生认证 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[公告]音乐馆重新上线</title>
       <!--<link href="/posts/1639439830.html"/>
       <url>/posts/1639439830.html</url>-->
@@ -369,11 +398,11 @@
       
         <tags>
             
+            <tag> OAuth2 </tag>
+            
             <tag> OpenID Connect </tag>
             
             <tag> oidc </tag>
-            
-            <tag> OAuth2 </tag>
             
         </tags>
       
@@ -431,9 +460,9 @@
       
         <tags>
             
-            <tag> 明信片 </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> 明信片 </tag>
             
         </tags>
       
@@ -549,9 +578,9 @@
       
         <tags>
             
-            <tag> 明信片 </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> 明信片 </tag>
             
         </tags>
       
@@ -638,9 +667,9 @@
       
         <tags>
             
-            <tag> 明信片 </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> 明信片 </tag>
             
         </tags>
       
@@ -1629,11 +1658,11 @@
       
         <tags>
             
-            <tag> IPv6 </tag>
-            
             <tag> CPE </tag>
             
             <tag> 鲲鹏 </tag>
+            
+            <tag> IPv6 </tag>
             
             <tag> UPNP </tag>
             
@@ -3003,9 +3032,9 @@
       
         <tags>
             
-            <tag> 清明 </tag>
-            
             <tag> 游玩 </tag>
+            
+            <tag> 清明 </tag>
             
         </tags>
       
@@ -5130,11 +5159,11 @@
       
         <tags>
             
+            <tag> 服务器 </tag>
+            
             <tag> 公告 </tag>
             
             <tag> 升级 </tag>
-            
-            <tag> 服务器 </tag>
             
         </tags>
       
@@ -5161,11 +5190,11 @@
       
         <tags>
             
+            <tag> 服务器 </tag>
+            
             <tag> 公告 </tag>
             
             <tag> 升级 </tag>
-            
-            <tag> 服务器 </tag>
             
         </tags>
       
