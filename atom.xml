@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-05-31T12:51:20.000Z</updated>
+  <updated>2025-06-02T05:27:39.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>暑假任务安排</title>
+    <link href="https://blog.goodboyboy.top/posts/1255618844.html"/>
+    <id>https://blog.goodboyboy.top/posts/1255618844.html</id>
+    <published>2025-06-02T05:27:39.000Z</published>
+    <updated>2025-06-02T05:27:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h2><p>今年暑假打算留校不回去了，暂且安排一下暑假的任务免得忘记</p><div class="note info flat"><p>Fast Auth 可能要暑假才能继续开工，<s>最近没动力写（逃</s></p></div><h2 id="任务"><a class="markdownIt-Anchor" href="#任务">#</a> 任务</h2><ul class="task-list"><li class="task-list-item"><input type="checkbox" id="cbx_0" disabled="true"><label for="cbx_0"> Fast Auth 开发</label></li><li class="task-list-item"><input type="checkbox" id="cbx_1" disabled="true"><label for="cbx_1"> 工大助手开发</label></li><li class="task-list-item"><input type="checkbox" id="cbx_2" disabled="true"><label for="cbx_2"> Mojang API 重构</label></li><li class="task-list-item"><input type="checkbox" id="cbx_3" disabled="true"><label for="cbx_3"> Minecraft Launcher Library 重构</label></li><li class="task-list-item"><input type="checkbox" id="cbx_4" disabled="true"><label for="cbx_4"> 市政府实习</label></li><li class="task-list-item"><input type="checkbox" id="cbx_5" disabled="true"><label for="cbx_5"> 中级软件工程师备考</label></li><li class="task-list-item"><input type="checkbox" id="cbx_6" disabled="true"><label for="cbx_6"> 教资备考</label></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#正文&quot;&gt;#&lt;/a&gt; 正文&lt;/h2&gt;
+&lt;p&gt;今年暑假打算留校不回去了，暂且安排一下暑假的任务免得忘记&lt;/p&gt;
+&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;Fast Au</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="任务安排" scheme="https://blog.goodboyboy.top/tags/%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/"/>
+    
+    <category term="暑假" scheme="https://blog.goodboyboy.top/tags/%E6%9A%91%E5%81%87/"/>
+    
+  </entry>
   
   <entry>
     <title>突然发现自己身体还是蛮脆弱的😂</title>
@@ -3128,9 +3158,9 @@
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
-    
     <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
+    
+    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
     
   </entry>
   
@@ -3264,9 +3294,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -3988,9 +4018,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -4296,9 +4326,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
@@ -6012,11 +6042,11 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
     <category term="https" scheme="https://blog.goodboyboy.top/tags/https/"/>
     
     <category term="web面板" scheme="https://blog.goodboyboy.top/tags/web%E9%9D%A2%E6%9D%BF/"/>
-    
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
@@ -6595,13 +6625,13 @@
     
     <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
     
-    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
-    
-    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
-    
     <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
     
+    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
+    
     <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
+    
+    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
     
   </entry>
   
@@ -6629,11 +6659,11 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
     <category term="openssl" scheme="https://blog.goodboyboy.top/tags/openssl/"/>
     
     <category term="根证书" scheme="https://blog.goodboyboy.top/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
