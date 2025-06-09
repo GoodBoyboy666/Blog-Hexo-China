@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Debian KDE使用指纹传感器验证身份</title>
+      <!--<link href="/posts/2384332514.html"/>
+      <url>/posts/2384332514.html</url>-->
+      <link href="posts/2384332514.html"/>
+      <url>posts/2384332514.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装依赖"><a class="markdownIt-Anchor" href="#安装依赖">#</a> 安装依赖</h2><p>Debian 默认没有安装指纹依赖包，需要手动安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install fprintd libpam-fprintd</span><br></pre></td></tr></table></figure><p><code>fprintd</code>  库用于让系统支持指纹传感器<br> <code>libpam-fprintd</code>  库用于配置系统身份认证方式</p><h2 id="安装指纹传感器驱动"><a class="markdownIt-Anchor" href="#安装指纹传感器驱动">#</a> 安装指纹传感器驱动</h2><p>一般传感器厂商会提供 deb 包或者使用通用驱动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install deb驱动包文件路径</span><br></pre></td></tr></table></figure><h2 id="添加指纹"><a class="markdownIt-Anchor" href="#添加指纹">#</a> 添加指纹</h2><p>在 <code>设置</code>  -&gt; <code>用户</code> 中，点击用户后会有一栏 <code>配置指纹身份认证</code> ，点击后即可添加指纹。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/d5jfy.webp" alt="添加指纹"></p><p>当然也可以通过 <code>fprintd-enroll</code>  命令来添加指纹。</p><h2 id="添加身份认证方式"><a class="markdownIt-Anchor" href="#添加身份认证方式">#</a> 添加身份认证方式</h2><p>输入下面命令进入 pam 管理页面</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pam-auth-update</span><br></pre></td></tr></table></figure><p>使用方向键以及空格键勾选 <code>Fingerprint authentication</code> ，回车完成设置。</p><h2 id="修改登陆逻辑kde桌面需要"><a class="markdownIt-Anchor" href="#修改登陆逻辑kde桌面需要">#</a> 修改登陆逻辑（KDE 桌面需要）</h2><p>因为登陆界面认证时会将密码用于解锁系统密码库，指纹认证没有提供密码，导致卡登陆界面（无论指纹或者密码是否正确）。</p><p>可能是 KDE 的 SDDM 逻辑问题，即使注释掉解锁密码库，在登陆界面指纹验证失败后也会导致卡登陆界面（不会再次调起指纹并且输入正确密码无效），指纹认证成功则不会卡。</p><p>整个逻辑就像并没有为多认证方式进行设计，或者根本没有考虑指纹登陆的情况一样（虽然设置界面确实是写了 <code>暂不支持使用指纹登陆系统</code> ）。</p><p>不过系统终端以及锁屏界面均可以通过指纹或密码的方式完成身份验证。</p><p>因此这里需要手动取消掉登陆界面的指纹功能来避免卡登陆。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/pam.d/sddm</span><br></pre></td></tr></table></figure><p>找到 <code>@include common-auth</code>  一行注释掉，该行引用的配置包括了指纹认证的逻辑</p><p>因为 <code>common-auth</code>  被很多 pam 配置引用，因此我们这里不动它，而是为 <code>sddm</code>  手动构建一个 auth 流程。</p><p>在被注释的 common-auth 一行下添加下面内容</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auth    <span class="section">[success=1 default=ignore]</span>      pam_unix.so nullok try_first_pass</span><br><span class="line">auth    requisite                       pam_deny.so</span><br><span class="line">auth    required                        pam_permit.so</span><br></pre></td></tr></table></figure><p>内容其实就是未开启指纹认证的时候 common-auth 的文件内容。</p><p>这样在开机登陆时使用原先的密码进行登陆，在终端和锁屏界面，或者其他需要身份认证的地方都可以使用指纹和密码进行认证。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Debian </tag>
+            
+            <tag> KDE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浅尝Debian KDE桌面</title>
       <!--<link href="/posts/1593855977.html"/>
       <url>/posts/1593855977.html</url>-->
@@ -1211,9 +1242,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -4251,9 +4282,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> AI </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> LLaMA </tag>
             
@@ -4352,9 +4383,9 @@
       
         <tags>
             
-            <tag> Orange pi </tag>
-            
             <tag> 折腾 </tag>
+            
+            <tag> Orange pi </tag>
             
         </tags>
       
@@ -4410,11 +4441,11 @@
       
         <tags>
             
-            <tag> Orange pi </tag>
-            
             <tag> 折腾 </tag>
             
             <tag> 教程 </tag>
+            
+            <tag> Orange pi </tag>
             
         </tags>
       
@@ -4664,11 +4695,11 @@
             
             <tag> 主题 </tag>
             
+            <tag> 安知鱼 </tag>
+            
             <tag> 折腾 </tag>
             
             <tag> 教程 </tag>
-            
-            <tag> 安知鱼 </tag>
             
         </tags>
       
@@ -5153,9 +5184,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> AI </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> ChatGLM </tag>
             
@@ -6816,11 +6847,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
