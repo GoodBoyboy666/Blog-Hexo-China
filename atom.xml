@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-06-10T05:05:06.000Z</updated>
+  <updated>2025-06-10T17:21:56.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian KDE Plasma 5调整外接显示器亮度</title>
+    <link href="https://blog.goodboyboy.top/posts/950775551.html"/>
+    <id>https://blog.goodboyboy.top/posts/950775551.html</id>
+    <published>2025-06-10T17:21:56.000Z</published>
+    <updated>2025-06-10T17:21:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="note info flat"><p>KDE Plasma 6.2 已支持调整 DDC/CI 协议的显示器</p></div><p>但是 Debian12 用的是 Plasma 5.27.5，还不支持这个功能（悲</p><p>找到了一个好用的小插件，特地来分享记录一下</p><p>该插件可以像作为小组件集成到 Plasma 中，就像 windows 下的 Twinkle Tray 一样。</p><p>项目地址：<a href="https://github.com/davidhi7/ddcci-plasmoid">https://github.com/davidhi7/ddcci-plasmoid</a></p><h2 id="安装ddcutil"><a class="markdownIt-Anchor" href="#安装ddcutil">#</a> 安装 ddcutil</h2><p>ddcutil 为实际控制显示器的工具，用于和显示器通信</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ddcutil</span><br></pre></td></tr></table></figure><p>安装完成后检测显示器，看是否能正常识别到显示器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ddcutil detect</span><br></pre></td></tr></table></figure><p>正常情况下应该能读取到类似下面的信息（这是我的显示器信息）</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Display 1</span><br><span class="line">   I2C bus:  /dev/i2c-32</span><br><span class="line">   DRM connector:           card0-DP-1</span><br><span class="line">   EDID synopsis:</span><br><span class="line">      Mfg id:               AOC - UNK</span><br><span class="line">      Model:                Q27G2S</span><br><span class="line">      Product code:         9986  (0x2702)</span><br><span class="line">      Serial number:        xxxxxxxxxxxxx</span><br><span class="line">      Binary serial number: xxxx (0xxxxxxxxx)</span><br><span class="line">      Manufacture year:     2024,  Week: 8</span><br><span class="line">   VCP version:         2.2</span><br></pre></td></tr></table></figure><p>如果返回的是下面的信息，说明没有加载内核模块（Debian 一般都会出现这种情况）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">No /dev/i2c devices exist.</span><br><span class="line">ddcutil requires module i2c-dev.</span><br></pre></td></tr></table></figure><p>这里加载一下内核模块就行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe i2c-dev</span><br></pre></td></tr></table></figure><p>验证是否加载成功</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /dev/i2c-*</span><br></pre></td></tr></table></figure><p>正常加载会显示 <code>/dev/i2c-0</code>  等设备文件</p><p>如果正确加载我们将配置写入模块列表确保开机自动加载</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;i2c-dev&quot;</span> | sudo <span class="built_in">tee</span> /etc/modules-load.d/i2c-dev.conf</span><br></pre></td></tr></table></figure><p>然后更新 initramfs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure><h2 id="调整亮度"><a class="markdownIt-Anchor" href="#调整亮度">#</a> 调整亮度</h2><p>先尝试查询亮度</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ddcutil getvcp 10</span><br></pre></td></tr></table></figure><p>设置亮度为 50%（按自己喜欢来，只是做测试）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ddcutil getvcp 10 50</span><br></pre></td></tr></table></figure><p>如果发现显示器可以正常响应亮度修改则进入下一步</p><h2 id="安装backend"><a class="markdownIt-Anchor" href="#安装backend">#</a> 安装 backend</h2><p>这个是小组件的后端，一个 python 包，可以通过 pip 或者 pipx 安装</p><p>pip：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --user ddcci-plasmoid-backend</span><br></pre></td></tr></table></figure><p>pipx：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipx install ddcci-plasmoid-backend</span><br></pre></td></tr></table></figure><h2 id="安装小组件"><a class="markdownIt-Anchor" href="#安装小组件">#</a> 安装小组件</h2><p>下载小组建<a href="https://store.kde.org/p/2015475"> https://store.kde.org/p/2015475</a></p><p>下载后解压，然后安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kpackagetool5 --install plasmoid</span><br></pre></td></tr></table></figure><div class="note warning flat"><p>如果您在上一步中使用了 <code>pipx</code>  来安装 backend，则小部件设置 <code>Backend executable command</code>  必须设置为 <code>~/.local/bin/ddcci_plasmoid_backend</code> （前面不带 python3 或其他任何内容）。</p></div><h2 id="显示小组件"><a class="markdownIt-Anchor" href="#显示小组件">#</a> 显示小组件</h2><p>系统托盘的箭头 -&gt; 配置系统托盘 -&gt; 项目 -&gt; 找到 <code>显示器亮度</code>  并根据您的偏好设置可见性</p><p>如果使用 pipx 安装的 backend，则点击小组件后点击右上角的设置按钮，按照前面的提示 <code>后端命令行</code> 的内容，最后应用即可。</p><p>Enjoy！😘</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;KDE Plasma 6.2 已支持调整 DDC/CI 协议的显示器&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;但是 Debian12 用的是 Plasma 5.27.5，还不支持这个功能（悲&lt;/p&gt;
+&lt;p&gt;找到了一个好用的小插件，</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/Software/"/>
+    
+    
+    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
+    
+    <category term="KDE" scheme="https://blog.goodboyboy.top/tags/KDE/"/>
+    
+  </entry>
   
   <entry>
     <title>Debian开玩Minecraft</title>
@@ -1259,9 +1290,9 @@
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
     <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
+    
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
@@ -3243,9 +3274,9 @@
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
-    
     <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
+    
+    <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
     
   </entry>
   
@@ -6744,11 +6775,11 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
     <category term="openssl" scheme="https://blog.goodboyboy.top/tags/openssl/"/>
     
     <category term="根证书" scheme="https://blog.goodboyboy.top/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/"/>
-    
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
