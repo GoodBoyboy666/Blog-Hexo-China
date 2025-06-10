@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-06-09T15:34:39.000Z</updated>
+  <updated>2025-06-10T05:05:06.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian开玩Minecraft</title>
+    <link href="https://blog.goodboyboy.top/posts/3464924544.html"/>
+    <id>https://blog.goodboyboy.top/posts/3464924544.html</id>
+    <published>2025-06-10T05:05:06.000Z</published>
+    <updated>2025-06-10T05:05:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>虽然装 Debian 确实是为了外出方便省电，但还是需要劳逸结合的（逃</p><h2 id="官方启动器"><a class="markdownIt-Anchor" href="#官方启动器">#</a> 官方启动器</h2><p>在官方下载页面<a href="https://www.minecraft.net/zh-hans/download"> https://www.minecraft.net/zh-hans/download</a> 找到 <code>Debian 版及基于 Debian 的版本</code> ，下载 deb 包然后安装即可。</p><p>界面区别和 windows 版不大</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lv9mrt.webp" alt="官方启动器"></p><h2 id="labymod"><a class="markdownIt-Anchor" href="#labymod">#</a> LabyMod</h2><p>第三方 PvP 客户端 LabyMod 也支持 Debian，在下载页面<a href="https://www.labymod.net/en/download"> https://www.labymod.net/en/download</a> 选择 <code>other</code> ，找到 Debian 下载 deb 包安装即可。</p><p>界面和 windows 版区别也不大</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lv9zov.webp" alt="LabyMod启动器"></p><h2 id="hmcl"><a class="markdownIt-Anchor" href="#hmcl">#</a> HMCL</h2><p>第三方 MC 客户端由 java 编写，同时也适配了 Linux 系统，在下载页面<a href="https://hmcl.huangyuhui.net/download/"> https://hmcl.huangyuhui.net/download/</a> 下载 <code>.jar</code>  文件</p><p>需要注意的是，稳定版貌似提供的是一个 sh 脚本文件，但是我运行出了问题，下面开发版则是可以直接下载到.jar</p><p>另外系统需要先安装 java 环境才能启动 HMCL，不过如果先安装了官方启动器，官方启动器会将环境配置好，因此直接使用命令就能启动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar HMCL jar文件的位置</span><br></pre></td></tr></table></figure><p>界面和 windows 版没有区别。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lvaab0.webp" alt="HMCL"></p><h2 id="后继"><a class="markdownIt-Anchor" href="#后继">#</a> 后继</h2><p>虽然没装独显驱动，但是不打光影用核显跑还是没问题的，180fps 跑满</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;虽然装 Debian 确实是为了外出方便省电，但还是需要劳逸结合的（逃&lt;/p&gt;
+&lt;h2 id=&quot;官方启动器&quot;&gt;&lt;a class=&quot;markdo</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
+    
+    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
+    
+  </entry>
   
   <entry>
     <title>Debian KDE使用指纹传感器验证身份</title>
@@ -1231,9 +1259,9 @@
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
-    
     <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
     
   </entry>
   
@@ -4165,9 +4193,9 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="LLaMA" scheme="https://blog.goodboyboy.top/tags/LLaMA/"/>
     
@@ -4265,9 +4293,9 @@
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
-    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
+    
+    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
   </entry>
   
@@ -4321,11 +4349,11 @@
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
+    <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
+    
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
     
   </entry>
   
@@ -4570,11 +4598,11 @@
     
     <category term="主题" scheme="https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/"/>
     
-    <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
-    
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
     
   </entry>
   
@@ -5048,9 +5076,9 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="ChatGLM" scheme="https://blog.goodboyboy.top/tags/ChatGLM/"/>
     
@@ -6716,11 +6744,11 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
     <category term="openssl" scheme="https://blog.goodboyboy.top/tags/openssl/"/>
     
     <category term="根证书" scheme="https://blog.goodboyboy.top/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
