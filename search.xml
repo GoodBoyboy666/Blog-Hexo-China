@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Debian补全办公常用字体</title>
+      <!--<link href="/posts/1487564320.html"/>
+      <url>/posts/1487564320.html</url>-->
+      <link href="posts/1487564320.html"/>
+      <url>posts/1487564320.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>linux 上 WPS 教育版用起来还不错，比 libreOFFICE 好用，但是缺少部分常用字体（楷体，黑体等）</p><div class="note warning flat"><p>因为版权问题，Debian 并没有内置这些字体，需要自行安装，建议仅个人使用，商业使用请先获得版权方授权。</p></div><p>因为我一般只用于课设、团学内部文档、比赛等等，没有商业用途，所以就直接装了</p><h2 id="安装"><a class="markdownIt-Anchor" href="#安装">#</a> 安装</h2><p>从网上或者 windows 下（ <code>C:\Windows\Fonts\</code> ）复制</p><p>windows 对应的字体表：<a href="https://learn.microsoft.com/en-us/typography/fonts/windows_10_font_list">https://learn.microsoft.com/en-us/typography/fonts/windows_10_font_list</a></p><p>一般常用的有：</p><ul><li>楷体（simkai.ttf）</li><li>黑体（simhei.ttf）</li><li>仿宋（simfang.ttf）</li><li>仿宋_G2312</li><li>宋体（WPS 还是 Linux 已自带）</li><li>方正小标宋简</li><li>微软雅黑（msyh.ttc）</li></ul><p><code>方正小标宋简</code> 以及 <code>仿宋_G2312</code>  可以从<a href="https://life.scnu.edu.cn/a/20220309/5508.html"> https://life.scnu.edu.cn/a/20220309/5508.html</a> 下载</p><p>字体下载完后，和 windows 安装字体一样，把字体文件移动到 <code>/usr/local/share/fonts/windows</code>  目录下即可</p><div class="note info flat"><p>不推荐移动到 <code>/usr/share/fonts</code>  目录下，该目录受系统包管理器维护，在系统更新时可能被覆盖</p></div><p>这里为了方便管理，可以创建一个文件夹来集中这些有版权风险的字体（雾</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /usr/local/share/fonts/windows</span><br></pre></td></tr></table></figure><p>然后将这些字体全部移动到这个文件夹下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> 字体文件路径 /usr/local/share/fonts/windows</span><br></pre></td></tr></table></figure><p>然后就可以在 wps 上看到字体了。</p><p>除了中文的字体，还有 <code>Arial</code> ， <code>Times New Roman</code>  等英文字体，这里采用软件包的方式安装</p><p>首先启用 <code>contrib</code>  和 <code>non-free</code>  软件源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository contrib non-free</span><br></pre></td></tr></table></figure><p>然后安装字体</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ttf-mscorefonts-installer</span><br></pre></td></tr></table></figure><p>安装完后即可在 WPS 上看到相关字体</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Debian </tag>
+            
+            <tag> 字体 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Debian12 KDE Edge输入法问题</title>
       <!--<link href="/posts/1016592383.html"/>
       <url>/posts/1016592383.html</url>-->
