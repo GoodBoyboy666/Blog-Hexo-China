@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Debian12 KDE Edge输入法问题</title>
+      <!--<link href="/posts/1016592383.html"/>
+      <url>/posts/1016592383.html</url>-->
+      <link href="posts/1016592383.html"/>
+      <url>posts/1016592383.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>因为部分网页可能 Chromium 内核渲染更好，而且也打算把两个主流内核都补齐，Chrome 因为墙的原因数据同步比较麻烦，于是打算用 Edge。</p><h2 id="输入法问题"><a class="markdownIt-Anchor" href="#输入法问题">#</a> 输入法问题</h2><p>已知在最新版 Edge（microsoft-edge-stable_137.0.3296.68-1_amd64）上出现输入法问题</p><p>具体表现为 fcitx5 在英文状态下无法输入任何内容，而在非英文状态下则正常输入。</p><p>ubuntu ask 上也有人提了相关问题：<a href="https://askubuntu.com/questions/1550458/cannot-type-in-ms-edge-and-chrome-with-fcitx5-english-under-x11-fcitx5-chinese">https://askubuntu.com/questions/1550458/cannot-type-in-ms-edge-and-chrome-with-fcitx5-english-under-x11-fcitx5-chinese</a></p><p>该问题说包含 Chrome 浏览器，但是经过我测试 Chrome 浏览器没有出现该情况，我使用的是 Wayland，可能是在 x11 上 chrome 也表现不佳？</p><p>目前在 Debian 的官方应用商店上也有相关评论：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/11/nwyblu.webp" alt="问题"></p><p>该问题应该不是个例</p><h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案">#</a> 解决方案</h2><p>降级 Edge 浏览器，经过测试， <code>136.0.3240.92-1</code>  版本没有该问题，其他版本未知</p><p>历史版本下载地址：<a href="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/">https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/</a></p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>虽然该问题对中文用户影响较小，但我平时输入英文还是更喜欢切换到英文输入法，用中文输入法输入中文感觉好别扭。</p><p>Debian 安装 deb 包需要 sudo, 因此一般不会像 windows 上那样偷偷自动更新（微软怕不是对自动更新有什么执念）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Edge </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Debian KDE Plasma 5调整外接显示器亮度</title>
       <!--<link href="/posts/950775551.html"/>
       <url>/posts/950775551.html</url>-->
@@ -3369,9 +3396,9 @@
             
             <tag> 长城跨境通 </tag>
             
-            <tag> 借记卡 </tag>
-            
             <tag> 中国银行 </tag>
+            
+            <tag> 借记卡 </tag>
             
         </tags>
       
