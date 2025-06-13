@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>为Debian KDE更换显示字体为思源黑体</title>
+      <!--<link href="/posts/2641633329.html"/>
+      <url>/posts/2641633329.html</url>-->
+      <link href="posts/2641633329.html"/>
+      <url>posts/2641633329.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>因为感觉默认的 note sans 字体有点瘦和细，显示屏上看着有点难受，打算换个养眼一点的字体，感觉思源黑体不错，免费商用，不用担心版权问题，而且字体也好看。</p><h2 id="下载"><a class="markdownIt-Anchor" href="#下载">#</a> 下载</h2><p>思源字体 repo：<a href="https://github.com/adobe-fonts/source-han-sans">https://github.com/adobe-fonts/source-han-sans</a></p><p>在下载向导页面可以看到多种字体类型：<a href="https://github.com/adobe-fonts/source-han-sans/tree/release">https://github.com/adobe-fonts/source-han-sans/tree/release</a></p><p>因为是用于系统显示，因此这里推荐使用包括了五种语言的字体，不推荐使用语言特定（Language-specific）和区域特定（Region-specific）的字体，避免出现字体不一致的情况。</p><p>至于是下载非 VF 字体还是 VF 字体可以自己根据实际情况决定</p><div class="note info flat"><p>可变字体（Variable Font，VF）相较于传统字体支持 <code>无限可调字重（100-900，任意粗细）</code> ，但目前系统设置里貌似不能调整，只能选择预设的字重</p></div><p>为了方便在设计时使用可变字体（不想装一个非 VF 一个 VF），干脆直接装了 VF 版</p><p>旧版 Debian 建议选 TTF，较新的 Debian 可以选 OTF</p><p>带有 HW 为使用半宽字形表示 ASCII，可以理解为等宽字体（用于写代码等格式要求严格的使用场景）</p><p>Variable OTF：<a href="https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.otf.ttc">https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.otf.ttc</a><br>Variable HW OTF：<a href="https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSansHW-VF.otf.ttc">https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSansHW-VF.otf.ttc</a></p><p>Variable TTF：<a href="https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc">https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc</a><br>Variable HW TTF：<a href="https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSansHW-VF.ttf.ttc">https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSansHW-VF.ttf.ttc</a></p><p>如果是装非 VF 字体，可以选择 super OTC, 包含了五种语言和七种字重</p><p>Super OTC：<a href="https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip">https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip</a></p><p>同样的，这只能在较新的系统上使用，较旧的系统只能一个一个装。</p><p>Static OTCs：<a href="https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansOTC.zip">https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansOTC.zip</a></p><h2 id="安装"><a class="markdownIt-Anchor" href="#安装">#</a> 安装</h2><p>字体下载完成后右键安装字体即可</p><div class="note info flat"><p>目前在 5.27.5 的 KDE 中，KFontView 仍然无法在 Wayland 下正常使用，请直接右键安装字体。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Debian </tag>
+            
+            <tag> 字体 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Debian补全办公常用字体</title>
       <!--<link href="/posts/1487564320.html"/>
       <url>/posts/1487564320.html</url>-->
@@ -1360,9 +1391,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -1896,9 +1927,9 @@
             
             <tag> IPv6 </tag>
             
-            <tag> CPE </tag>
-            
             <tag> 鲲鹏 </tag>
+            
+            <tag> CPE </tag>
             
             <tag> UPNP </tag>
             
@@ -1927,11 +1958,11 @@
       
         <tags>
             
-            <tag> 5G </tag>
+            <tag> 鲲鹏 </tag>
             
             <tag> CPE </tag>
             
-            <tag> 鲲鹏 </tag>
+            <tag> 5G </tag>
             
         </tags>
       
@@ -3567,9 +3598,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -4309,9 +4340,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -4623,9 +4654,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C++ </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -5612,9 +5643,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -5643,9 +5674,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -5674,9 +5705,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -5732,9 +5763,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -5763,9 +5794,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -6965,11 +6996,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
