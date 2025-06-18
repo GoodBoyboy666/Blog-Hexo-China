@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Debian GRUB踩坑记——out of memory</title>
+      <!--<link href="/posts/2924052970.html"/>
+      <url>/posts/2924052970.html</url>-->
+      <link href="posts/2924052970.html"/>
+      <url>posts/2924052970.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="起因"><a class="markdownIt-Anchor" href="#起因">#</a> 起因</h2><p>偶然在网上刷到一个很好看的 grub 引导界面，才发现原来 grub 也能设置主题，而且这种设置只是更改 grub 配置文件，不操作引导程序的二进制文件，因而不会影响 Secure Boot</p><p>于是找了一个超好看的主题给 grub 安排上</p><p>结果就是：</p><p>Error: out of memory<br>Press any key to continue…</p><p>然后进不去系统了。。。</p><h2 id="折腾"><a class="markdownIt-Anchor" href="#折腾">#</a> 折腾</h2><blockquote><p>解决方案可以直接去下一节</p></blockquote><p>首先出的问题是选择 Debian 引导后加载 initramfs 时提示内存耗尽</p><p>然后按下任意键提示： <code>Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</code></p><p>因为我启用了 luks 全盘加密，所以这种情况第一反应是引导找不到加密分区了</p><p>问了一下 ChatGPT，给出的方案是 GRUB 配置错误或者 initramfs 损坏</p><p>但是在此之前我都能正常启动系统，而且我也只是对 GRUB 进行了更改，没有动 initramfs, 所以排除 initramfs 损坏</p><p>然后我给 ChatGPT 拍了一下 GRUB 中 Debian 引导的引导脚本，ChatGPT 说是 initramfs 中没有包含 LVM 支持，但同样的，我根本没动 initramfs, 而且之前也能正常开机</p><p>给 ChatGPT 说了一下，并附上了引导脚本，然后给出了修改引导脚本的方法，这里就开始鬼畜起来了</p><p>让我给内核文件路径和 initramfs 文件路径加上 <code>/boot</code>  前缀，说如果 /boot 是独立分区，不加前缀是找不到内核和 initramfs 的（开始胡言乱语起来了）</p><p>按照它说的，加了前缀之后引导直接找不到内核文件了。。。</p><p>给 ChatGPT 反映了一下该情况，ChatGPT 马上改口，说不要加 <code>/boot</code>  前缀。。。</p><p>自己又怀疑了一下是不是存储介质的问题，毕竟是 U 盘，插到电脑上当作系统盘温度超高（把我的 USB Hub 连带着一起烫），没测过温度，反正手放在上面超过半秒就烫得受不了</p><p>引导到 windows 下用 dg 扫了一下，除了几十个严重，其他大多数都是良好，这种结果的话那就没什么参考价值了</p><p>没办法，只能拿另一个 U 盘装个 Live CD 来抢救</p><p>然后就是不知道自己是那根筋没对，把 Live CD 刻在 DVD 上折磨自己😅</p><p>好不容易把 iso 刻录完成，启动系统启动了十多分钟。。。</p><p>启动完成后解锁分区，挂载分区，update 了一下 grub（以为是 grub 损坏了）</p><p>reboot，很好，问题依旧</p><p>不想再浪费时间启动 DVD 了，重新拿个 U 盘把 Live CD 刻了上去。。。</p><p>继续深问，然后说最稳妥的启动配置是不加前缀的那个，那不就和原来一样的了，变成最开始的问题😂</p><p>然后 ChatGPT 继续复盘，又说是 initrd.img 缺少 luks 和 lvm 模块。。。</p><p>我都说了快八百遍了没动 initramfs</p><p>算了，选择怀疑一下自己，进 Live CD 挂载好原来的分区，执行 <code>update-initramfs -u</code>  重新生成一下</p><p>不出所料，还是一样的问题。。。</p><p>最后想着，看看把 grub 配置恢复成没安装主题的时候会怎么办（丝毫没怀疑是主题的问题）</p><p>注释掉主题配置行，执行 <code>update-grub</code></p><p>诶👆🙄，引导成功，进入系统</p><p>虽然成功进入系统，但是还是没搞懂原因，于是把解决方案给 ChatGPT 说了一下，又开始了胡言乱语。。。</p><p>说是主题会替换 grub.cfg 模板，阻断加密检测的执行云云</p><p>但我实际对比了一下启用主题和没启用主题下生成的 grub.cfg 的区别，就单纯多了一个加载主题资源的代码而已</p><p>而且整个主题都是我手动 cp 装的，根本没执行主题自带的安装脚本</p><p>后面继续胡言乱语，说要加入 <code>DRUB_ENABLE_CRYPTODISK=y</code>  来解锁 Boot 分区，但是我 tm 根本没加密 boot 分区啊啊啊。。。</p><p>启用 luks 全盘加密下根本不能加密 boot 分区，不然谁给你解密分区。。。</p><p>然后我给它 “善意” 的提醒了一下，马上又改口不用加。。。</p><p>还是得靠自己，控制变量法下找了另一个评级最高的主题试了一下，发现居然可以成功引导</p><p>间接证明 ChatGPT 前面一大堆都是废话。。。</p><p>突然灵光一现想着会不会有什么内存限制？</p><p>出问题的那个主题有 13MB 大小，没问题的那个主题只有 0.7MB 大小，并且最开始也是 <code>out of memory</code> ，或许根本不是什么找不到加密分区，一开始方向就错了！！！</p><p>问了一下 ChatGPT，发现确实是有内存限制，不过不同设备限制不同</p><p>以防万一，去 AI Studio 顺便问了问 Gemini, 也是肯定有相关限制，但是具体限制多少以及怎么解除限制说不出来</p><p>Gemini 留的链接:</p><p><a href="https://www.ibm.com/support/pages/system-boot-ends-grub-out-memory-oom">https://www.ibm.com/support/pages/system-boot-ends-grub-out-memory-oom</a></p><p><a href="https://forum.endeavouros.com/t/grub-out-of-memory/30967/38">https://forum.endeavouros.com/t/grub-out-of-memory/30967/38</a></p><p><a href="https://www.kubuntuforums.net/forum/currently-supported-releases/kubuntu-22-04-jammy-jellyfish/post-installation-ax/666407-fatal-out-of-memory-error-on-boot-grub-efi-problem">https://www.kubuntuforums.net/forum/currently-supported-releases/kubuntu-22-04-jammy-jellyfish/post-installation-ax/666407-fatal-out-of-memory-error-on-boot-grub-efi-problem</a></p><p>梳理了一下，得到了最终的结果</p><h2 id="结果"><a class="markdownIt-Anchor" href="#结果">#</a> 结果</h2><p>由于使用了较大的主题，导致 GRUB out of memory，然后由于 out of memory，导致 luks 模块和 lvm 模块没加载进内存，因此无法解密加密分区，出现 <code>Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</code></p><p>当主题换成较小的主题时未触发 out of memory，正常加载模块，解密加密分区，进入系统。</p><p>回想起来，设置那个有问题的主题的时候，第一次分辨率配置格式没配置正确，导致引导界面分辨率超低，但也使得没有 out of memory，成功引导进入系统，第二次正确配置成 2560x1440 的 2k 分辨率后就出现 out of memory 了（高分辨率特别占 memory）。</p><p>具体 memory 大小我也不知道怎么查，可能是 128MB？256MB？还是 512MB？</p><p>不过这个 memory 会加载系统内核，initrd，还有各种模块，我看网上有些人的 initrd 文件大小高达 100MB+，正常引导不设置主题都会出现 out of memory😂</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Debian </tag>
+            
+            <tag> GRUB </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>为Debian KDE更换显示字体为思源黑体</title>
       <!--<link href="/posts/2641633329.html"/>
       <url>/posts/2641633329.html</url>-->
@@ -1391,9 +1422,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> S/MIME </tag>
-            
             <tag> 证书 </tag>
+            
+            <tag> S/MIME </tag>
             
         </tags>
       
@@ -1927,9 +1958,9 @@
             
             <tag> IPv6 </tag>
             
-            <tag> 鲲鹏 </tag>
-            
             <tag> CPE </tag>
+            
+            <tag> 鲲鹏 </tag>
             
             <tag> UPNP </tag>
             
@@ -1958,11 +1989,11 @@
       
         <tags>
             
-            <tag> 鲲鹏 </tag>
+            <tag> 5G </tag>
             
             <tag> CPE </tag>
             
-            <tag> 5G </tag>
+            <tag> 鲲鹏 </tag>
             
         </tags>
       
@@ -3598,9 +3629,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -4340,9 +4371,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -4654,9 +4685,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -6996,11 +7027,11 @@
       
         <tags>
             
-            <tag> 证书 </tag>
-            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
