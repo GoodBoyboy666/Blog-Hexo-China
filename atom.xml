@@ -23,7 +23,7 @@
     <published>2025-06-26T04:44:54.000Z</published>
     <updated>2025-06-26T04:44:54.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>又是大早上被多线程折磨的一天</p></blockquote><p>先简单讲一下功能框架吧</p><pre><code class="highlight mermaid">flowchart TD    A(用户发起查询操作) --&gt; B&#123;查询cache&#125;    B -- 有 --&gt; C[返回cache内容给用户]    B -- 没有 --&gt; D[请求remote]    D --&gt; E[remote返回内容]    E --&gt; F[内容返回给用户]    E --&gt; G[remote内容写入cache]</code></pre><p>简单来说就是从两个数据源获取信息，先查 cache，cache 没有再查 remote，remote 得到数据后返回给用户并写入 cache</p><p>然后就出问题了，具体问题表现为出现重复插入情况</p><p>经过排查，发现 remote 请求返回的数据正常，但是到写入 Room 数据库的时候出现插入数量正确，但是部分 item 重复插入，部分 item 丢失的情况</p><p>问了一下 ChatGPT，在给出的几个可能性中锁定到多线程并发写入导致的竞态和异常。</p><p>不过虽然该保存数据的函数确实是 suspend 的异步函数，但是我在函数入口明明打了断点，断点只触发一次，不存在多线程的问题</p><p>把代码贴上来问了问 ChatGPT，结果给我整绷不住了：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/ktlzkw.webp" alt="问题"></p><p>不是，也没人给我说呀，怎么 kotlin 的 foreach 和 for 还有这大坑等着我的。。。</p><p>然而把 foreach 改成 for 后还是一样的问题，继续追问</p><p>在众多的可能性中，锁定协程作用域问题</p><p>指出 <code>确保你的suspend fun saveServiceList()不是在多个协程并发调用！否则即使方法内部串行，外部还是会并发插入，导致竞态。</code></p><p>但是之前说过，我打的断点明明只触发一次，怎么会出现外部多次调用呢？</p><p>没办法，按照 ChatGPT 说的老老实实打 Log 看输出，在 dao 的 insert 方法前后插 Log，发现确实是出现竟态问题。</p><p>然后 ChatGPT 再次指出确保整个 suspend 方法不在多个协程并发调用，提出用 Mutex 锁包裹整个 suspend 方法</p><p>结果发现居然没问题了？？？</p><p>所以还真是被多个协程调用了？？？我怎么不知道？？？</p><p>虽然用锁临时解决了该问题，但这个操作本质是不应该被多个协程调用的，说明代码本身有问题</p><p>本着不想写屎山的心态，继续问</p><p>然后 ChatGPT 指出：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnnu2i.webp" alt="原因"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnzvr8.webp" alt="原因"></p><p>所以断点在并发协程中并不适用来判断调用次数</p><p>我：多线程你太可爱了</p><p>给 suspend 方法第一行插个 Log，发现确实日志打印了两遍</p><p>然后就是顺藤摸瓜，给所有调用点全部插 Log，最后发现在 ViewModel 中的起始 loadService 函数被调用了两次</p><p>定位到 View 中发现在 UI 里有两处调用，一看代码就发现问题了。</p><p>一个来自 ViewModel 中的 loadServiceState 在 View 中监听，当 State 由 Idle 变为 Loading 后触发 loadService，加载数据</p><p>然后一个手动刷新按钮，首先清除数据，然后更改 loadServiceState 的 State 为 Loading，最后手动调用 loadService</p><p>因此当手动刷新时，就会出现 loadServiceState 改变而触发的 loadService 以及按钮自身调用的 loadService。。。</p><p>代码代码一多自己都忘记原来写的逻辑了，又是被多线程折腾的一天</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>又是大早上被多线程折磨的一天</p></blockquote><p>先简单讲一下功能框架吧</p><pre><code class="highlight mermaid">flowchart TD    A(用户发起查询操作) --&gt; B&#123;查询cache&#125;    B -- 有 --&gt; C[返回cache内容给用户]    B -- 没有 --&gt; D[请求remote]    D --&gt; E[remote返回内容]    E --&gt; F[内容返回给用户]    E --&gt; G[remote内容写入cache]</code></pre><p>简单来说就是从两个数据源获取信息，先查 cache，cache 没有再查 remote，remote 得到数据后返回给用户并写入 cache</p><p>然后就出问题了，具体问题表现为出现重复插入情况</p><p>经过排查，发现 remote 请求返回的数据正常，但是到写入 Room 数据库的时候出现插入数量正确，但是部分 item 重复插入，部分 item 丢失的情况</p><p>问了一下 ChatGPT，在给出的几个可能性中锁定到多线程并发写入导致的竞态和异常。</p><p>不过虽然该保存数据的函数确实是 suspend 的异步函数，但是我在函数入口明明打了断点，断点只触发一次，不存在多线程的问题</p><p>把代码贴上来问了问 ChatGPT，结果给我整绷不住了：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/ktlzkw.webp" alt="问题"></p><p>不是，也没人给我说呀，怎么 kotlin 的 foreach 和 for 还有这大坑等着我的。。。</p><p>然而把 foreach 改成 for 后还是一样的问题，继续追问</p><p>在众多的可能性中，锁定协程作用域问题</p><p>指出 <code>确保你的suspend fun saveServiceList()不是在多个协程并发调用！否则即使方法内部串行，外部还是会并发插入，导致竞态。</code></p><p>但是之前说过，我打的断点明明只触发一次，怎么会出现外部多次调用呢？</p><p>没办法，按照 ChatGPT 说的老老实实打 Log 看输出，在 dao 的 insert 方法前后插 Log，发现确实是出现竟态问题。</p><p>然后 ChatGPT 再次指出确保整个 suspend 方法不在多个协程并发调用，提出用 Mutex 锁包裹整个 suspend 方法</p><p>结果发现居然没问题了？？？</p><p>所以还真是被多个协程调用了？？？我怎么不知道？？？</p><p>虽然用锁临时解决了该问题，但这个操作本质是不应该被多个协程调用的，说明代码本身有问题</p><p>本着不想写屎山的心态，继续问</p><p>然后 ChatGPT 指出：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnnu2i.webp" alt="原因"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnzvr8.webp" alt="原因"></p><p>所以断点在并发协程中并不适用来判断调用次数</p><p>我：多线程你太可爱了</p><p>给 suspend 方法第一行插个 Log，发现确实日志打印了两遍</p><p>然后就是顺藤摸瓜，给所有调用点全部插 Log，最后发现在 ViewModel 中的起始 loadService 函数被调用了两次</p><p>定位到 View 中发现在 UI 里有两处调用，一看代码就发现问题了。</p><p>一个来自 ViewModel 中的 loadServiceState 在 View 中监听，当 State 由 Idle 变为 Loading 后触发 loadService，加载数据</p><p>然后一个手动刷新按钮，首先清除数据，然后更改 loadServiceState 的 State 为 Loading，最后手动调用 loadService</p><p>因此当手动刷新时，就会出现 loadServiceState 改变而触发的 loadService 以及按钮自身调用的 loadService。。。</p><p>代码一多自己都忘记原来写的逻辑了，又是被多线程折腾的一天</p>]]></content>
     
     
       
@@ -1313,9 +1313,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -1348,9 +1348,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
     
   </entry>
   
@@ -3586,9 +3586,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -4310,9 +4310,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -4400,9 +4400,9 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="LLaMA" scheme="https://blog.goodboyboy.top/tags/LLaMA/"/>
     
@@ -4500,9 +4500,9 @@
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
-    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
+    
+    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
   </entry>
   
@@ -4556,11 +4556,11 @@
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
+    <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
+    
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
     
   </entry>
   
@@ -4618,9 +4618,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
@@ -4805,11 +4805,11 @@
     
     <category term="主题" scheme="https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/"/>
     
-    <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
-    
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
     
   </entry>
   
@@ -5283,9 +5283,9 @@
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="ChatGLM" scheme="https://blog.goodboyboy.top/tags/ChatGLM/"/>
     
@@ -6334,9 +6334,9 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="https" scheme="https://blog.goodboyboy.top/tags/https/"/>
-    
     <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="https" scheme="https://blog.goodboyboy.top/tags/https/"/>
     
     <category term="web面板" scheme="https://blog.goodboyboy.top/tags/web%E9%9D%A2%E6%9D%BF/"/>
     
@@ -6917,13 +6917,13 @@
     
     <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
     
-    <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
-    
     <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
     
-    <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
-    
     <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
+    
+    <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
+    
+    <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
     
   </entry>
   
