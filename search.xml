@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Android第三方Passkey管理器探索</title>
+      <!--<link href="/posts/3009586281.html"/>
+      <url>/posts/3009586281.html</url>-->
+      <link href="posts/3009586281.html"/>
+      <url>posts/3009586281.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>相信经常在国际互联网冲浪的友友对 Passkey 一定不陌生，Google，GitHub 等网站均支持 Passkey 一键登录，国内手机厂商也有推行 Passkey 的趋势（？）</p><p>众所周知，国内很多手机厂商在以前都是管生不管养。基本上手机发售一年以后就别想着升级了，现在各大手机厂商稍微好一些。</p><p>然而，虽然系统是更新了，但是部分功能只有在新机型上才做适配，而本文的主角 Passkey 就是其中之一。</p><p>博主手中的 OPPO Find X5 虽然已经更新到 ColorOS 15，但是 Passkey 功能仍然无法使用，仅在 OPPO Find X6 及其以上的机型才支持。</p><p>虽然可以通过插入 Canokey 等物理安全硬件来实现 Passkey 登录，但是我日常外出一般是不带这些安全硬件的（怕丢）。</p><p>并且我之前也吐槽过，既然通过 Google 的 GMS 都可以让我手机使用 Passkey，为啥 OPPO 不支持。。。</p><h2 id="探索过程"><a class="markdownIt-Anchor" href="#探索过程">#</a> 探索过程</h2><p>偶然间，看到一篇文章，说在 Android 14 中引入了 Credential Manager API，该 API 可以用于集成密码管理工具，让密码管理工具来管理凭据，其中就提到了 Passkey</p><p><a href="https://developer.android.com/identity/sign-in/credential-provider?hl=zh-cn">https://developer.android.com/identity/sign-in/credential-provider?hl=zh-cn</a></p><p>在此之前 Android 的默认 Passkey 实现是在 Google 的 GMS 中，并且也是对接的 Google 的凭据管理器</p><p>当时看到这篇文章时博主手机系统还是 ColorOS 14，系统为 Android 14，但是在网上下载了一个测试 Demo 软件，发现并不支持 Credential Manager API，应该是厂商还没适配好</p><p>毕竟当时我也吐槽过，OPPO 自家的 Passkey 实现与凭据管理器只在系统自带的浏览器上能调用，在 Edge 和 Chrome 中均调用的 Google 的 Passkey 实现与凭据管理器。</p><p>但是 Google 的 Passkey 实现会将 Passkey 上传到云端，并不是保存在手机本地，因此对其安全性表示怀疑（虽然声称是使用屏锁进行端到端加密）</p><p>没办法，可以说手机的 Passkey 功能基本用不了（包括一些 Fido 的 2FA），如果实在要用 Passkey，只能临时拿 Canokey 捅手机 “屁股” 或者用 NFC（Canokey Canary 已解决 NFC 感应问题），调用 Google 的 Passkey 实现来通过认证。</p><blockquote><p>Tips：这个实现可以调用不同的凭据来源（保存密码的实现），Google 的 Passkey 实现可以通过 USB 和 NFC 读取我手中的 Canokey 硬件，而 OPPO 的 Passkey 实现 NFC 读不了，USB 处于半残状态（现在已经是完全残废的情况了）</p></blockquote><p>这个方案一直在用，直到 ColorOS 15 最近的一次更新，我发现现在无论是 OPPO 自家的浏览器，还是 Edge，Chrome 甚至是 Firefox，都会调用 OPPO 自家的 Passkey 实现</p><p>这就严重影响我的使用体验，因为 OPPO 自家的 Passkey 实现只会调用自家的凭据管理器（密码本），而且对于外置硬件也是半残状态（Google 的至少我还能用 Canokey 硬件）</p><p>但令我没想到的是，我在手机设置里找到了一个新页面 “登录信息自动填充服务”，这个页面有个 “密码管理服务”，包含 “密码本”（OPPO 用于保存密码的软件，包含存储 Passkey），“Authenticator”（微软的），“Google”</p><p>然后默认是打开了密码本的，Google 的没有打开。</p><p>我想，这会不会就是问题所在，于是我把密码本的关了，把 Google 的打开，发现 Edge 可以用 Google 的 Passkey 实现了</p><p>看到剩下微软的那个 authenticator，突然想到会不会更新后现在已经支持使用第三方凭据管理器了？</p><blockquote><p>Tips：微软的 authenticator 已经宣布即将停止对密码管理功能的支持</p></blockquote><p>于是下了个 Bitwarden，发现确实新增了该选项</p><p>众所又周知，Bitwarden 是可以自托管的，而且还有 vaultwarden 这种第三方项目来降低托管压力，所以临时先在本地服务器上建了个，尝试了一下，发现可以完美使用 Passkey 的</p><h2 id="现状"><a class="markdownIt-Anchor" href="#现状">#</a> 现状</h2><p>原先情况：</p><p>Edge，Chrome-&gt;Android Passkey 接口 -&gt; Google Passkey 实现（默认）-&gt;Google 密码管理器 / 外置硬件</p><p>OPPO 浏览器 -&gt;OPPO Passkey 实现（第三方）-&gt; 密码本（不支持）/ 外置硬件（残废）</p><p>现在：</p><p>Edge，Chrome-&gt; Android Passkey 接口 -&gt;OPPO Passkey 实现（默认）-&gt;Credential Manager API（在设置中选择）-&gt; 密码本 / Google/Bitwarden/ 外置硬件（残废）</p><blockquote><p>Tips：OPPO 浏览器仍然不支持 Credential Manager。另外如果仅开启 Google，则会调用到 Google Passkey 的实现</p></blockquote><p>并且由于调用的是 OPPO 的 Passkey 接口，现在还支持跨设备使用（手机扫描电脑上的 Fido 二维码在电脑上进行登录或注册）</p><p>因为该功能需要使用服务器，所以原先 Google 的 Passkey 就用不了（可能因为安全设计原因，挂了代理也会在最后一步失败）</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>主要是 Bitwarden 在断网情况下无法新增，读取 Passkey 好像也有点问题？感觉这点比 keepass 就差点</p><p>不过这也主要看客户端实现咯，像 PC 上的 KeepassXC 就不支持在无网情况下使用已连接过的远程的密码库，而在 Android 上的客户端 Keepass2Android 就支持无网使用已连接过的远程密码库</p><p>虽然现在 Keepass 本身已经支持保存 Passkey，但是 Keepass2Android 目前还不支持使用 Credential Manager API 来保存（悲）</p><p>目前打算先用着 Bitwarden，希望 Keepass2Android 作者能尽快更新这个功能吧</p><p>另外由于选择 Bitwarden 则会调用 OPPO Passkey 的实现，所以我的 Canokey 完全用不了，只能在要使用的时候再切换成 Google 的了（悲）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Passkey </tag>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程我太爱你了，你个“大可爱”</title>
       <!--<link href="/posts/1349596188.html"/>
       <url>/posts/1349596188.html</url>-->
@@ -1331,9 +1362,9 @@
       
         <tags>
             
-            <tag> 烟花 </tag>
-            
             <tag> 回忆 </tag>
+            
+            <tag> 烟花 </tag>
             
         </tags>
       
@@ -1362,9 +1393,9 @@
       
         <tags>
             
-            <tag> 回忆 </tag>
-            
             <tag> 理发店 </tag>
+            
+            <tag> 回忆 </tag>
             
         </tags>
       
@@ -1482,9 +1513,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> S/MIME </tag>
-            
             <tag> 证书 </tag>
+            
+            <tag> S/MIME </tag>
             
         </tags>
       
@@ -3549,9 +3580,9 @@
             
             <tag> 长城跨境通 </tag>
             
-            <tag> 中国银行 </tag>
-            
             <tag> 借记卡 </tag>
+            
+            <tag> 中国银行 </tag>
             
         </tags>
       
@@ -3689,9 +3720,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -4431,9 +4462,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -4745,9 +4776,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -7087,11 +7118,11 @@
       
         <tags>
             
-            <tag> 证书 </tag>
-            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
