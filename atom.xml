@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-06-30T09:10:49.000Z</updated>
+  <updated>2025-06-30T13:03:05.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>白嫖一年Gemini Pro</title>
+    <link href="https://blog.goodboyboy.top/posts/2967291241.html"/>
+    <id>https://blog.goodboyboy.top/posts/2967291241.html</id>
+    <published>2025-06-30T13:03:05.000Z</published>
+    <updated>2025-06-30T13:03:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>Google 先前发起～～<em> 大学生白嫖计划</em>～～Google One AI Pro 教育学生优惠，面向巴西、印度尼西亚、日本、英国和美国大学生，时间截止于 2025 年 6 月 30 日</p><p>链接：<a href="https://gemini.google/students/">https://gemini.google/students/</a></p><h2 id="白嫖"><a class="markdownIt-Anchor" href="#白嫖">#</a> 白嫖</h2><p>但是～～～经过很多人测试，国内教育邮箱也能通过，而且不限制卡 bin（国内万事达 / VISA 卡也行）</p><p>不过之前由于账号地区问题，一直卡在港区没转到日区，导致出现 <code>此账号无法订阅 Google AI Pro</code></p><p>然而今天晚上刷小黑盒突然又看到这个贴子（冥冥之中有感应？），打算再试一下</p><p>诶？地区转过来了？？？</p><p>然后就是一套验证邮箱流程，成功白嫖😄</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/30/yydjha.webp" alt="订阅成功"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/30/yyxcir.webp" alt="Gemini界面"></p><p>可以说是最后一天还剩三个小时的时候赶上车了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;Google 先前发起～～&lt;em&gt; 大学生白嫖计划&lt;/em&gt;～～Google One AI Pro 教育学生优惠，面向巴西、印度尼西亚、日本、</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="Gemini" scheme="https://blog.goodboyboy.top/tags/Gemini/"/>
+    
+  </entry>
   
   <entry>
     <title>突然发现自己可能乳糖不耐受？</title>
@@ -2152,9 +2177,9 @@
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="butterfly" scheme="https://blog.goodboyboy.top/tags/butterfly/"/>
-    
     <category term="文章总结" scheme="https://blog.goodboyboy.top/tags/%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93/"/>
+    
+    <category term="butterfly" scheme="https://blog.goodboyboy.top/tags/butterfly/"/>
     
   </entry>
   
@@ -3509,9 +3534,9 @@
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
-    
     <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
+    
+    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
     
   </entry>
   
@@ -3645,9 +3670,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -4369,9 +4394,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -4677,9 +4702,9 @@
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
