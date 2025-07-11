@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-06-30T13:03:05.000Z</updated>
+  <updated>2025-07-11T14:26:41.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云角色SSO对接authentik进行单点登录</title>
+    <link href="https://blog.goodboyboy.top/posts/3780326479.html"/>
+    <id>https://blog.goodboyboy.top/posts/3780326479.html</id>
+    <published>2025-07-11T14:26:41.000Z</published>
+    <updated>2025-07-11T14:26:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>好久没写一篇正经的教程文章了，今天来写如何让 authentik 对接阿里云的角色 SSO，实现单点登录指定角色</p><p>本质上任何支持 SAML 的第三方 IAM 都能完成，只不过大同小异，本教程采用 authentik 进行示例。</p><div class="note info flat"><p>本教程结合 Gemini 2.5 Pro+Deep Research 完成，截稿时间：2025-07-11</p></div><h2 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h2><h3 id="战略价值"><a class="markdownIt-Anchor" href="#战略价值">#</a> 战略价值</h3><div class="note info flat"><p>下面为 Gemini 套话，可以跳过不看</p></div><p>将 Authentik 作为身份提供商（IdP）与阿里云进行集成，不仅仅是技术上的对接，更是一项具有深远战略意义的举措，旨在构建一个现代化、安全且高效的身份管理体系。其核心价值主要体现在以下几个方面：</p><ul><li><p>集中式身份管理：将 Authentik 作为唯一的身份 “真理之源”（Single Source of Truth），企业可以在一个统一的平台上管理所有用户的身份、凭证及其生命周期 。这意味着无需在阿里云 RAM 中创建和维护大量的独立 IAM 用户及其静态密码或访问密钥，极大地简化了管理复杂性。</p></li><li><p>增强的安全态势：通过联合登录，用户不再需要长期有效的阿里云访问凭证。取而代之的是基于会话的、有时效性的临时安全令牌（STS Token）。这种模式消除了静态凭证泄露的风险，显著减少了攻击面，是云安全最佳实践的核心要求 。</p></li><li><p>简化的用户访问流程：用户只需登录一次 Authentik 门户，即可通过单击应用图标无缝跳转至阿里云管理控制台，无需再次输入密码 。这不仅提升了用户体验，也提高了开发和运维人员的工作效率。</p></li><li><p>统一的审计与合规：所有认证请求都将集中在 Authentik 进行记录和处理。这为安全审计提供了单一、全面的日志来源，有助于企业满足各类严格的合规性要求，如 SOX、PCI-DSS 等 。</p></li></ul><h3 id="登录流程"><a class="markdownIt-Anchor" href="#登录流程">#</a> 登录流程</h3><div class="note info flat"><p>虽然也是套话，但是建议了解一下</p></div><p>完整的 IdP 发起流程如下：</p><ol><li><p>用户发起登录（IdP-Initiated）：用户首先登录到其个人 Authentik 应用仪表板，然后点击代表阿里云控制台的应用程序图标 。</p></li><li><p>生成 SAML 断言：Authentik 接收到点击事件后，会生成一个经过数字签名的 SAML 断言（SAML Assertion）。这是一个 XML 格式的文档，其中包含了用户的身份信息（如用户名或邮箱）以及一系列特殊的属性，这些属性是阿里云用来确定用户应扮演何种角色的关键 。</p></li><li><p>浏览器重定向与 POST 请求：Authentik 将包含 SAML 断言的表单返回给用户的浏览器，并通过 JavaScript 自动提交此表单。浏览器向阿里云的断言消费服务（Assertion Consumer Service, ACS）端点发送一个 HTTP POST 请求，请求体中即为 SAML 断言 。</p></li><li><p>验证断言：阿里云的 SSO 服务接收到该 POST 请求后，首先会验证 SAML 断言的数字签名。它会使用预先配置好的、来自 Authentik 的 IdP 元数据中的公钥进行验签，以确保断言的完整性和来源可信性 。</p></li><li><p>解析属性：验签成功后，SSO 服务会解析 SAML 断言的内容，重点提取两个自定义的关键属性：Role 和 RoleSessionName 。</p></li><li><p>交换 STS 令牌：SSO 服务根据 Role 属性中指定的 RAM 角色 ARN 和 IdP ARN，调用阿里云的安全令牌服务（Security Token Service, STS），代表该用户请求扮演指定的 RAM 角色 。</p></li><li><p>创建控制台会话：STS 验证请求合法性后，会颁发一个包含临时访问凭证（AccessKey ID, SecretAccessKey, 和 SecurityToken）的 STS 令牌。阿里云 SSO 服务利用这个 STS 令牌生成一个预签名的、具有时效性的控制台登录 URL 。</p></li><li><p>重定向至控制台：最后，SSO 服务将此预签名 URL 返回给浏览器，浏览器自动跳转。用户最终无缝登录到阿里云管理控制台，并拥有了所扮演角色定义的全部权限。</p></li></ol><h3 id="创建签名证书"><a class="markdownIt-Anchor" href="#创建签名证书">#</a> 创建签名证书</h3><p>首先创建一个证书用于给 SAML 断言签名（当然你也可以用 Authentik 默认的证书，如果打算使用默认证书就可以跳过这节）</p><p>在侧边栏找到 <code>System</code> -&gt; <code>Certificates</code> ，点击 <code>生成</code> 按钮</p><p>常用名自己填就行，关键是 <code>私钥算法</code> 一定要选择 <code>RSA</code> ，千万不能选择 <code>ECDSA</code> （大坑），因为阿里云不支持 ECDSA 签名验证，选择 ECDSA 会造成 <code>NoPermission.NotTrusted</code></p><p>创建完成进入下一节</p><h3 id="创建provider"><a class="markdownIt-Anchor" href="#创建provider">#</a> 创建 Provider</h3><p>这里我们先创建 Provider</p><p>在侧边栏找到 <code>Application</code> -&gt; <code>Providers</code></p><p>点击 <code>创建</code> 按钮，选择 <code>SAML Provider</code>  类型</p><p><code>名称</code> ：自填<br> <code>授权流程</code> ：默认的两个哪个都行，explicit 的需要手动确认授权，implicit 为静默授权<br> <code>ACS URL</code> ：为阿里云固定链接 <a href="https://signin.aliyun.com/saml-role/sso">https://signin.aliyun.com/saml-role/sso</a>（国际站可能不同）来源：<a href="https://help.aliyun.com/zh/ram/user-guide/configure-alibaba-cloud-as-a-trusted-sp-for-role-based-sso">进行角色 SSO 时企业 IdP 的 SAML 配置_访问控制 (RAM)- 阿里云帮助中心</a><br> <code>颁发者（ EntityID）</code> ：为阿里云固定内容： <code>urn:alibaba:cloudcomputing</code> ，来源：<a href="https://help.aliyun.com/zh/ram/user-guide/configure-alibaba-cloud-as-a-trusted-sp-for-role-based-sso">进行角色 SSO 时企业 IdP 的 SAML 配置_访问控制 (RAM)- 阿里云帮助中心</a><br> <code>服务提供程序绑定</code> ：为固定选项 <code>POST</code> <br> <code>Audience</code> ：为阿里云固定内容： <code>urn:alibaba:cloudcomputing</code> ，来源：<a href="https://help.aliyun.com/zh/ram/user-guide/saml-response-for-role-based-sso">角色 SSO 的 SAML 响应_访问控制 (RAM)- 阿里云帮助中心</a></p><p>然后展开下面的 <code>高级协议设置</code> ，签名证书选择上一节创建的 RSA 证书，勾选 <code>签名断言</code></p><p>属性映射待会再设置</p><h3 id="创建阿里云身份提供商"><a class="markdownIt-Anchor" href="#创建阿里云身份提供商">#</a> 创建阿里云身份提供商</h3><p>来到阿里云的访问控制 RAM 控制台<a href="https://ram.console.aliyun.com/"> https://ram.console.aliyun.com/</a></p><p>在侧边栏找到 <code>集成管理</code>  -&gt; <code>SSO管理</code></p><p>选择 <code>角色SSO</code> -&gt; <code>SAML</code> ，选择 <code>创建身份提供商</code></p><p><code>身份提供商名称</code> ：自填，但是后面有参数会用到<br> <code>元数据文档</code> ：在 authentik 中刚刚创建的 Provider 的总览里，有个元数据下载按钮，下载该 xml 文档然后上传即可</p><p>创建完成后点击刚刚创建的身份提供商，找到 <code>ARN</code>  信息，复制备用，下文用 <code>Idp ARN</code>  代替该值</p><h3 id="创建阿里云角色"><a class="markdownIt-Anchor" href="#创建阿里云角色">#</a> 创建阿里云角色</h3><p>既然要扮演角色肯定要先创建角色</p><p>在侧边栏找到 <code>身份管理</code>  -&gt; <code>角色</code></p><p>点击 <code>创建角色</code> ， <code>信任主体类型</code> 选择 <code>身份提供商</code></p><p>提示 <code>如果需要信任身份提供商，切换编辑器到自定义模式后配置。</code> ，点击旁边的 <code>切换编辑器</code></p><p>这里我们采用可视化编辑即可</p><p><code>效果</code> ：选择允许<br> <code>主体</code> ：选择 <code>身份提供商</code> <br> <code>操作</code> ：勾选 <code>sts:AssumeRole</code> （旁边的 SetSourceIdentity 不知道有什么用）<br> <code>条件</code> ：用于实现更复杂的限制策略，可以自己设置（我没设置）</p><p>点击确定添加即可</p><p>然后赋予角色权限</p><p>点击刚刚添加的角色，在权限管理内新增授权，具体要什么权限自己定，然后记录 <code>ARN</code> ，后面备用，下文用 <code>角色 ARN</code>  代替</p><blockquote><p>Tips：这里信任策略阿里云已经正常生成好了，不用自己填写或者修改了</p></blockquote><h3 id="创建authentik的属性映射"><a class="markdownIt-Anchor" href="#创建authentik的属性映射">#</a> 创建 Authentik 的属性映射</h3><p>这里我们需要映射 <code>Role</code>  和 <code>RoleSessionName</code>  两个属性到 SAML 断言中</p><p><code>Role</code> ：让阿里云知道是扮演哪个角色以及来自哪个身份提供商<br> <code>RoleSessionName</code> ：让阿里云知道是哪个用户（IAM 的用户）进行了本次扮演（登录），用来作为登录用户信息的一部分显示在控制台上和操作审计日志</p><p>在 Authentik 侧边栏中找到 <code>Customization</code> -&gt; <code>Property Mappings</code></p><p>选择 <code>创建</code> ，两个都是 <code>SAML Provider Property Mapping</code>  类型的</p><p>先创建 Role</p><p><code>名称</code> ：自填<br> <code>SAML 属性名称</code> ：为阿里云固定内容：<a href="https://www.aliyun.com/SAML-Role/Attributes/Role">https://www.aliyun.com/SAML-Role/Attributes/Role</a><br> <code>表达式</code> ：python 写</p><p>表达式这里返回的内容会出现在断言中，而该部分内容组如下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">角色ARN,IdpARN</span><br></pre></td></tr></table></figure><p>简单的表达式直接返回这个内容即可，当然你可以写更复杂的表达式，具体请参考 Authentik 官方文档中表达式一节</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">&quot;角色 ARN,Idp ARN&quot;</span></span><br></pre></td></tr></table></figure><p>然后创建 RoleSessionName</p><p><code>名称</code> ：自填<br> <code>SAML 属性名称</code> ：为阿里云固定内容：<a href="https://www.aliyun.com/SAML-Role/Attributes/RoleSessionName">https://www.aliyun.com/SAML-Role/Attributes/RoleSessionName</a><br> <code>表达式</code> ：python 写</p><p>这里需要返回一个唯一标识用户的值，如员工 ID、Email 地址等，取值要求为： <code>长度不少于2个字符且不超过64个字符，只能是英文字母、数字和特殊字符-_.@=</code></p><p>我采用的是用户的 Email</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> request.user.email</span><br></pre></td></tr></table></figure><p>这里变量由 Authentik 提供，其他变量请看 Authentik 官方文档</p><p>还有个可选的 <code>SessionDuration</code> ，表示会话有效期（我懒得弄没弄）</p><p><code>名称</code> ：自填<br> <code>SAML 属性名称</code> ：为阿里云固定内容：<a href="https://www.aliyun.com/SAML-Role/Attributes/SessionDuration">https://www.aliyun.com/SAML-Role/Attributes/SessionDuration</a><br> <code>表达式</code> ：python 写，同理直接 return 或者自己写复杂的表达式</p><p>取值要求为整数，单位为秒，最小值为 900，最大值不能超过 Role 元素所代表的角色的最大会话时间。</p><p>有兴趣可以看看<a href="https://help.aliyun.com/zh/ram/user-guide/saml-response-for-role-based-sso">角色 SSO 的 SAML 响应_访问控制 (RAM)- 阿里云帮助中心</a></p><h3 id="进行属性映射"><a class="markdownIt-Anchor" href="#进行属性映射">#</a> 进行属性映射</h3><p>回到 Authentik 中，找到我们之前创建的 Provider，点一下进入总览，编辑一下</p><p>在 <code>高级协议设置</code> 中，找到 <code>属性映射</code> ，把预置的没用属性全部移除，把刚刚创建的两个属性移到右边，保存</p><p>然后重新下载元数据，在阿里云 SSO 管理里更新一下元数据文档（存疑，建议还是更新一下）</p><h3 id="创建application应用"><a class="markdownIt-Anchor" href="#创建application应用">#</a> 创建 Application（应用）</h3><p>在 Authentik 创建一个应用</p><p><code>名称</code> ：自填<br> <code>Slug</code> ：自填<br> <code>提供程序</code> ：选择我们之前创建的 Provider<br> 剩下的看自己喜好</p><h3 id="权限设置"><a class="markdownIt-Anchor" href="#权限设置">#</a> 权限设置</h3><p>默认创建的应用是所有用户都能访问的，如果不做权限控制，那么所有用户都能进你的阿里云😂</p><p>这里我们点击创建的应用，选择 <code>策略/组/用户绑定</code></p><p>然后点击 <code>绑定已存在的 策略/组/用户</code> （这里推荐先创建一个组，然后把能够使用该应用的用户拉到这个组里，然后赋予这个组使用这个应用的权限，方便管理）</p><p>看自己选择是策略，组还是用户</p><p>策略的话要自己写策略，灵活性更高</p><p>Tips：默认注册流程中注册的用户是外部用户，无法进入 Authentik 仪表盘，可以去改一下注册流程</p><h3 id="测试"><a class="markdownIt-Anchor" href="#测试">#</a> 测试</h3><p>进入 Authentik 主界面，点击应用，跳转到阿里云，右上角看到角色登录，即成功登录。</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>折腾死我了，不过，Gemini 2.5Pro+Deep Research 是真的好用😋</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;好久没写一篇正经的教程文章了，今天来写如何让 authentik 对接阿里云的角色 SSO，实现单点登录指定角色&lt;/p&gt;
+&lt;p&gt;本质上任何支持</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
+    
+    
+    <category term="阿里云" scheme="https://blog.goodboyboy.top/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    <category term="SSO" scheme="https://blog.goodboyboy.top/tags/SSO/"/>
+    
+    <category term="authentik" scheme="https://blog.goodboyboy.top/tags/authentik/"/>
+    
+  </entry>
   
   <entry>
     <title>白嫖一年Gemini Pro</title>
@@ -1397,9 +1429,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -1432,9 +1464,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
     
   </entry>
   
@@ -3380,9 +3412,9 @@
     <category term="日常" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
-    
     <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
+    
+    <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
     
   </entry>
   
@@ -7001,13 +7033,13 @@
     
     <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
     
-    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
-    
-    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
-    
     <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
     
+    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
+    
     <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
+    
+    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
     
   </entry>
   
