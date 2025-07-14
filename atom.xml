@@ -23,7 +23,7 @@
     <published>2025-07-13T17:22:59.000Z</published>
     <updated>2025-07-13T17:22:59.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>OIDC 的教程来了😁</p><p>在阿里云，OIDC 一般不用于登录 WEB 控制台，而是用于程序化访问，例如 CLI、SDK 或自定义应用程序，工作流程完全由 API 驱动，不过可以通过构造免登录 URL 来进行登录。</p><div class="note info flat"><p>OIDC 复杂很多，这里仅按照最基础的能完成授权的流程写，具体项目请根据具体实际情况设置。<br>部分 Authentik 操作这里不详细写了，可以去看看之前写的<a href="/posts/3780326479.html">阿里云角色 SSO 对接 authentik 进行单点登录</a></p></div><h2 id="创建-authentik-provider"><a class="markdownIt-Anchor" href="#创建-authentik-provider">#</a> 创建 Authentik Provider</h2><p>在 Authentik 的控制台侧边栏 <code>Applications</code> -&gt; <code>Providers</code>  中创建 provider，类型选 <code>OAuth2/OpenID Provider</code></p><p><code>名称</code> ：自填<br> <code>授权流程</code> ：自选或者自定义</p><p><code>客户端 ID</code>  和 <code>客户端 Secret</code>  自动生成，记不记无所谓，后面也看得到</p><p><code>重定向 URI/Origin（正则）</code> ：这里因为并不需要使用到重定向，填个 <code>http://localhost</code>  就行</p><p><code>签名密钥</code> ：这里用 Authentik 默认的或者自己生成都行，生成操作看之前的文章</p><p>在 <code>高级协议设置</code> 里</p><p><code>作用域</code> ：同样是先不用管，待会再回来映射</p><p>然后点击完成创建。</p><h2 id="创建-authentik-application"><a class="markdownIt-Anchor" href="#创建-authentik-application">#</a> 创建 Authentik Application</h2><p>其实 OIDC 创不创建都无所谓，没啥用，不是授权入口，只是创建一个 provider 不会显示警告而已</p><p>在同级菜单下的 <code>Applications</code>  中点击 <code>创建</code> ， <code>名称</code> 、 <code>slug</code>  随便取，用不到</p><p>提供程序选择刚刚创建的 provider 即可</p><h2 id="创建身份提供商"><a class="markdownIt-Anchor" href="#创建身份提供商">#</a> 创建身份提供商</h2><p>打开阿里云控制台，进入<a href="https://ram.console.aliyun.com/"> RAM 访问控制</a></p><p>找到 <code>集成管理</code>  -&gt; <code>SSO管理</code></p><p>选择 <code>角色SSO</code> ， <code>OIDC</code></p><p><code>身份提供商名称</code> ：顾名思义，按照下面灰色字要求填就行</p><p>然后回到 Authentik，点击创建的 provider，可以在右边看到一系列 URL 以及左边的 <code>客户端 ID</code></p><p>这里我们需要 <code>客户端 ID</code>  以及 <code>OpenID 配置颁发者</code> 的值</p><p>回到阿里云， <code>颁发者 URL</code>  填写 <code>OpenID 配置颁发者</code> 的值， <code>客户端 ID</code>  就填 <code>客户端 ID</code>  的值</p><p>填完后会有个 <code>获取指纹</code> 按钮，这个获取的是你 OIDC Endpoint 的 SSL 证书的 CA 的指纹，正式环境请仔细对比</p><p>完成创建即可</p><h2 id="创建角色"><a class="markdownIt-Anchor" href="#创建角色">#</a> 创建角色</h2><p>和前面那篇文章一样，想要扮演什么角色就创建什么角色，角色创建这里不重复写了，详情参考前面的文章，只是在 <code>身份提供商类型</code> 选项那里从 SAML 换成 OIDC 即可</p><p>然后选择刚刚创建的身份提供商</p><p>完成创建后会自动生成好信任策略，当然如果你有自定义的验证需求，可以自定义，这里就采用默认</p><h2 id="添加映射"><a class="markdownIt-Anchor" href="#添加映射">#</a> 添加映射</h2><p>阿里云要求 Id Token 中包含 <code>aud</code>  和 <code>iss</code></p><p><code>aud</code> ：客户端 ID 的值<br> <code>iss</code> ：颁发者 URL（OpenID 配置颁发者）的值</p><p>来到 Authentik 的 <code>Customization</code> -&gt; <code>Property Mappings</code> ，创建两个 map 用来映射这俩值，类型都选择 <code>Scope Mapping</code></p><p><code>名称</code> ：自填<br> <code>作用域名称</code> ：aud 或者 iss<br> <code>表达式</code> ：python 语言，我这里为了简单就直接返回了这俩值，自己可以根据官方文档表达式章节自定义怎么返回</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#xxx为返回的值</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&quot;xxxxxxxxxxx&quot;</span></span><br></pre></td></tr></table></figure><p>然后回到 provider，编辑一下，在作用域中将自定义的两个 map 添加进去，默认的 openid 和 email 什么的可以留着</p><h2 id="小插曲大致流程"><a class="markdownIt-Anchor" href="#小插曲大致流程">#</a> 小插曲：大致流程</h2><p>从 Authentik 获取 Id Token，用 Id Token 在阿里云拿到 STS Token，然后用 STS Token 换 SigninToken，用 SigninToken 进行登录</p><h2 id="获取id-token"><a class="markdownIt-Anchor" href="#获取id-token">#</a> 获取 Id Token</h2><p>这里就是标准的 OAuth2 流程，本教程采用 Authorization code 授权流程，其他流程请自行探索</p><p>首先构造授权请求页面 URL</p><p>在 provider 中可以看到 <code>授权 URL</code></p><p>这个就是 Base Url</p><p>给 Base Url 拼接下面几个参数</p><p><code>response_type</code> ：固定值 <code>code</code> （为 Authorization code 授权流程的固定值）<br> <code>client_id</code> ：顾名思义，客户端 ID<br> <code>redirect_uri</code> ：和创建 provider 时填的保持一致，上文填的是 <code>http://localhost</code>  这里就拼这个值<br> <code>state</code> ：防重放攻击的，可选，自己去查阅相关资料</p><p>拼接完成后访问该 url 即进入授权页面，完成登录后页面将重定向到 redirect_uri 所填的值</p><p>这里就是 <code>http://localhost</code> ，后面会接 <code>code</code>  和 <code>state</code> ，这里我们需要使用 code 来换取 Id Token</p><p>这里就需要使用 POST 请求，请求地址在 provider 中可以看到，名叫 <code>令牌 URL</code></p><p>然后向该地址 POST 如下参数</p><blockquote><p>Tips：Content-Type 必须是 application/x-www-form-urlencoded</p></blockquote><p><code>grant_type</code> ：该流程中为 <code>authorization_code</code> <br> <code>code</code> ：上面的 code 值<br> <code>redirect_uri</code> ：同理，之前填的 redirect_uri 值<br> <code>client_id</code> ：客户端 ID<br> <code>client_secret</code> ：客户端 Secret（编辑一下 provider 就看得到了）</p><p>发起 POST 请求后，会返回一个 json，包含 <code>access_token</code> ，和 <code>id_token</code></p><p>正常情况下我们会需要使用 <code>access_token</code> ，而 <code>id_token</code>  是给本地客户端用的，但是这里阿里云正是需要鉴别用户身份，因此需要使用 Id Token 而不是 access_token</p><h2 id="获取sts-token"><a class="markdownIt-Anchor" href="#获取sts-token">#</a> 获取 STS Token</h2><p>这里暂时没找到阿里云的 Endpoint，貌似只用用阿里云的 SDK 请求？</p><p>文档 -&gt;<a href="https://help.aliyun.com/zh/ram/developer-reference/api-sts-2015-04-01-assumerolewithoidc">AssumeRoleWithOIDC - OIDC 角色 SSO 时获取扮演角色的临时身份凭证</a></p><p>文档里面有个调试按钮，可以方便进行请求</p><p><code>OIDCProviderArn</code>  和 <code>RoleArn</code>  文档也写了在哪看，找不到也可以去看看之前的那篇文章</p><p><code>OIDCToken</code>  就是上文的 <code>Id Token</code></p><p><code>RoleSessionName</code>  用来让阿里云记录是谁在访问，用于日志审计，可以填用户邮箱之类的</p><p>然后就是发起调用</p><p>返回示例阿里云文档里有，这里就不展示了</p><h2 id="获取signintoken"><a class="markdownIt-Anchor" href="#获取signintoken">#</a> 获取 SigninToken</h2><p>这里同样是构造 URL</p><p>Base Url 为：<a href="https://signin.aliyun.com/federation">https://signin.aliyun.com/federation</a></p><p>拼接下面参数：</p><p><code>Action</code> ：固定值 <code>GetSigninToken</code> <br> <code>AccessKeyId</code> 、 <code>AccessKeySecret</code> 、 <code>SecurityToken</code> ：上文返回的 json 里有</p><p>发起 Get 请求后就会返回一个包含 SigninToken 的 json</p><h2 id="拼接免登录url"><a class="markdownIt-Anchor" href="#拼接免登录url">#</a> 拼接免登录 URL</h2><p>Base URL 同样是<a href="https://signin.aliyun.com/federation"> https://signin.aliyun.com/federation</a></p><p>拼接下面参数：</p><p><code>Action</code> ：固定值 <code>Login</code> <br> <code>LoginUrl</code> ：登录失效跳转的地址<br> <code>Destination</code> ：实际要访问的目标页面<br> <code>SigninToken</code> ：上文 json 中</p><blockquote><p>Tips：LoginUrl、Destination 和 SigninToken 都需要使用 encodeURL 进行编码处理</p></blockquote><p>访问该拼接的 URL 即可进入 Web 控制台</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>一般获取到 STS Token 后就可以对阿里云资源进行操作了，只是说要登录的话需要多一步获取 SigninToken</p><p>终于是写完了，累死我了。。。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>OIDC 的教程来了😁</p><p>在阿里云，OIDC 一般不用于登录 WEB 控制台，而是用于程序化访问，例如 CLI、SDK 或自定义应用程序，工作流程完全由 API 驱动，不过可以通过构造免登录 URL 来进行登录。</p><div class="note info flat"><p>OIDC 复杂很多，这里仅按照最基础的能完成授权的流程写，具体项目请根据具体实际情况设置。<br>部分 Authentik 操作这里不详细写了，可以去看看之前写的<a href="/posts/3780326479.html">阿里云角色 SSO 对接 authentik 进行单点登录</a></p></div><h2 id="创建-authentik-provider"><a class="markdownIt-Anchor" href="#创建-authentik-provider">#</a> 创建 Authentik Provider</h2><p>在 Authentik 的控制台侧边栏 <code>Applications</code> -&gt; <code>Providers</code>  中创建 provider，类型选 <code>OAuth2/OpenID Provider</code></p><p><code>名称</code> ：自填<br> <code>授权流程</code> ：自选或者自定义</p><p><code>客户端 ID</code>  和 <code>客户端 Secret</code>  自动生成，记不记无所谓，后面也看得到</p><p><code>重定向 URI/Origin（正则）</code> ：这里因为并不需要使用到重定向，填个 <code>http://localhost</code>  就行</p><p><code>签名密钥</code> ：这里用 Authentik 默认的或者自己生成都行，生成操作看之前的文章</p><p>在 <code>高级协议设置</code> 里</p><p><code>作用域</code> ：同样是先不用管，待会再回来映射</p><p>然后点击完成创建。</p><h2 id="创建-authentik-application"><a class="markdownIt-Anchor" href="#创建-authentik-application">#</a> 创建 Authentik Application</h2><div class="note info flat"><p>下方有一处勘误，已修改</p></div><p><s>其实 OIDC 创不创建都无所谓，没啥用，不是授权入口，只是创建一个 provider 不会显示警告而已</s></p><p>这里可以通过给 application 授权指定组来实现权限控制（当然你也可以自己写策略），非该组内用户访问会出现 <code>Request has been denied.</code></p><p>如果不做权限控制，任何人都可以通过构造认证链接发起请求</p><p>在同级菜单下的 <code>Applications</code>  中点击 <code>创建</code> ， <code>名称</code> 、 <code>slug</code>  随便取，用不到</p><p>提供程序选择刚刚创建的 provider 即可</p><h2 id="创建身份提供商"><a class="markdownIt-Anchor" href="#创建身份提供商">#</a> 创建身份提供商</h2><p>打开阿里云控制台，进入<a href="https://ram.console.aliyun.com/"> RAM 访问控制</a></p><p>找到 <code>集成管理</code>  -&gt; <code>SSO管理</code></p><p>选择 <code>角色SSO</code> ， <code>OIDC</code></p><p><code>身份提供商名称</code> ：顾名思义，按照下面灰色字要求填就行</p><p>然后回到 Authentik，点击创建的 provider，可以在右边看到一系列 URL 以及左边的 <code>客户端 ID</code></p><p>这里我们需要 <code>客户端 ID</code>  以及 <code>OpenID 配置颁发者</code> 的值</p><p>回到阿里云， <code>颁发者 URL</code>  填写 <code>OpenID 配置颁发者</code> 的值， <code>客户端 ID</code>  就填 <code>客户端 ID</code>  的值</p><p>填完后会有个 <code>获取指纹</code> 按钮，这个获取的是你 OIDC Endpoint 的 SSL 证书的 CA 的指纹，正式环境请仔细对比</p><p>完成创建即可</p><h2 id="创建角色"><a class="markdownIt-Anchor" href="#创建角色">#</a> 创建角色</h2><p>和前面那篇文章一样，想要扮演什么角色就创建什么角色，角色创建这里不重复写了，详情参考前面的文章，只是在 <code>身份提供商类型</code> 选项那里从 SAML 换成 OIDC 即可</p><p>然后选择刚刚创建的身份提供商</p><p>完成创建后会自动生成好信任策略，当然如果你有自定义的验证需求，可以自定义，这里就采用默认</p><h2 id="添加映射"><a class="markdownIt-Anchor" href="#添加映射">#</a> 添加映射</h2><p>阿里云要求 Id Token 中包含 <code>aud</code>  和 <code>iss</code></p><p><code>aud</code> ：客户端 ID 的值<br> <code>iss</code> ：颁发者 URL（OpenID 配置颁发者）的值</p><p>来到 Authentik 的 <code>Customization</code> -&gt; <code>Property Mappings</code> ，创建两个 map 用来映射这俩值，类型都选择 <code>Scope Mapping</code></p><p><code>名称</code> ：自填<br> <code>作用域名称</code> ：aud 或者 iss<br> <code>表达式</code> ：python 语言，我这里为了简单就直接返回了这俩值，自己可以根据官方文档表达式章节自定义怎么返回</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#xxx为返回的值</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&quot;xxxxxxxxxxx&quot;</span></span><br></pre></td></tr></table></figure><p>然后回到 provider，编辑一下，在作用域中将自定义的两个 map 添加进去，默认的 openid 和 email 什么的可以留着</p><h2 id="小插曲大致流程"><a class="markdownIt-Anchor" href="#小插曲大致流程">#</a> 小插曲：大致流程</h2><p>从 Authentik 获取 Id Token，用 Id Token 在阿里云拿到 STS Token，然后用 STS Token 换 SigninToken，用 SigninToken 进行登录</p><h2 id="获取id-token"><a class="markdownIt-Anchor" href="#获取id-token">#</a> 获取 Id Token</h2><p>这里就是标准的 OAuth2 流程，本教程采用 Authorization code 授权流程，其他流程请自行探索</p><p>首先构造授权请求页面 URL</p><p>在 provider 中可以看到 <code>授权 URL</code></p><p>这个就是 Base Url</p><p>给 Base Url 拼接下面几个参数</p><p><code>response_type</code> ：固定值 <code>code</code> （为 Authorization code 授权流程的固定值）<br> <code>client_id</code> ：顾名思义，客户端 ID<br> <code>redirect_uri</code> ：和创建 provider 时填的保持一致，上文填的是 <code>http://localhost</code>  这里就拼这个值<br> <code>state</code> ：防重放攻击的，可选，自己去查阅相关资料</p><p>拼接完成后访问该 url 即进入授权页面，完成登录后页面将重定向到 redirect_uri 所填的值</p><p>这里就是 <code>http://localhost</code> ，后面会接 <code>code</code>  和 <code>state</code> ，这里我们需要使用 code 来换取 Id Token</p><p>这里就需要使用 POST 请求，请求地址在 provider 中可以看到，名叫 <code>令牌 URL</code></p><p>然后向该地址 POST 如下参数</p><blockquote><p>Tips：Content-Type 必须是 application/x-www-form-urlencoded</p></blockquote><p><code>grant_type</code> ：该流程中为 <code>authorization_code</code> <br> <code>code</code> ：上面的 code 值<br> <code>redirect_uri</code> ：同理，之前填的 redirect_uri 值<br> <code>client_id</code> ：客户端 ID<br> <code>client_secret</code> ：客户端 Secret（编辑一下 provider 就看得到了）</p><p>发起 POST 请求后，会返回一个 json，包含 <code>access_token</code> ，和 <code>id_token</code></p><p>正常情况下我们会需要使用 <code>access_token</code> ，而 <code>id_token</code>  是给本地客户端用的，但是这里阿里云正是需要鉴别用户身份，因此需要使用 Id Token 而不是 access_token</p><h2 id="获取sts-token"><a class="markdownIt-Anchor" href="#获取sts-token">#</a> 获取 STS Token</h2><p>这里暂时没找到阿里云的 Endpoint，貌似只用用阿里云的 SDK 请求？</p><p>文档 -&gt;<a href="https://help.aliyun.com/zh/ram/developer-reference/api-sts-2015-04-01-assumerolewithoidc">AssumeRoleWithOIDC - OIDC 角色 SSO 时获取扮演角色的临时身份凭证</a></p><p>文档里面有个调试按钮，可以方便进行请求</p><p><code>OIDCProviderArn</code>  和 <code>RoleArn</code>  文档也写了在哪看，找不到也可以去看看之前的那篇文章</p><p><code>OIDCToken</code>  就是上文的 <code>Id Token</code></p><p><code>RoleSessionName</code>  用来让阿里云记录是谁在访问，用于日志审计，可以填用户邮箱之类的</p><p>然后就是发起调用</p><p>返回示例阿里云文档里有，这里就不展示了</p><h2 id="获取signintoken"><a class="markdownIt-Anchor" href="#获取signintoken">#</a> 获取 SigninToken</h2><p>这里同样是构造 URL</p><p>Base Url 为：<a href="https://signin.aliyun.com/federation">https://signin.aliyun.com/federation</a></p><p>拼接下面参数：</p><p><code>Action</code> ：固定值 <code>GetSigninToken</code> <br> <code>AccessKeyId</code> 、 <code>AccessKeySecret</code> 、 <code>SecurityToken</code> ：上文返回的 json 里有</p><p>发起 Get 请求后就会返回一个包含 SigninToken 的 json</p><h2 id="拼接免登录url"><a class="markdownIt-Anchor" href="#拼接免登录url">#</a> 拼接免登录 URL</h2><p>Base URL 同样是<a href="https://signin.aliyun.com/federation"> https://signin.aliyun.com/federation</a></p><p>拼接下面参数：</p><p><code>Action</code> ：固定值 <code>Login</code> <br> <code>LoginUrl</code> ：登录失效跳转的地址<br> <code>Destination</code> ：实际要访问的目标页面<br> <code>SigninToken</code> ：上文 json 中</p><blockquote><p>Tips：LoginUrl、Destination 和 SigninToken 都需要使用 encodeURL 进行编码处理</p></blockquote><p>访问该拼接的 URL 即可进入 Web 控制台</p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>一般获取到 STS Token 后就可以对阿里云资源进行操作了，只是说要登录的话需要多一步获取 SigninToken</p><p>终于是写完了，累死我了。。。</p>]]></content>
     
     
       
@@ -1522,9 +1522,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
     
   </entry>
   
@@ -1557,9 +1557,9 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -5795,9 +5795,9 @@
     <category term="旅游" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/"/>
     
     
-    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
-    
     <category term="旅游" scheme="https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
     
   </entry>
   
@@ -5826,9 +5826,9 @@
     <category term="旅游" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/"/>
     
     
-    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
-    
     <category term="旅游" scheme="https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
     
   </entry>
   
@@ -5857,9 +5857,9 @@
     <category term="旅游" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/"/>
     
     
-    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
-    
     <category term="旅游" scheme="https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
     
   </entry>
   
@@ -5915,9 +5915,9 @@
     <category term="旅游" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/"/>
     
     
-    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
-    
     <category term="旅游" scheme="https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
     
   </entry>
   
@@ -5944,9 +5944,9 @@
     <category term="旅游" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E6%B8%B8/"/>
     
     
-    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
-    
     <category term="旅游" scheme="https://blog.goodboyboy.top/tags/%E6%97%85%E6%B8%B8/"/>
+    
+    <category term="五一" scheme="https://blog.goodboyboy.top/tags/%E4%BA%94%E4%B8%80/"/>
     
   </entry>
   
@@ -7126,13 +7126,13 @@
     
     <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
     
-    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
-    
-    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
-    
     <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
     
+    <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
+    
     <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
+    
+    <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
     
   </entry>
   
