@@ -1763,9 +1763,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> S/MIME </tag>
-            
             <tag> 证书 </tag>
+            
+            <tag> S/MIME </tag>
             
         </tags>
       
@@ -3671,9 +3671,9 @@
       
         <tags>
             
-            <tag> 游玩 </tag>
-            
             <tag> 清明 </tag>
+            
+            <tag> 游玩 </tag>
             
         </tags>
       
@@ -3830,9 +3830,9 @@
             
             <tag> 长城跨境通 </tag>
             
-            <tag> 中国银行 </tag>
-            
             <tag> 借记卡 </tag>
+            
+            <tag> 中国银行 </tag>
             
         </tags>
       
@@ -4803,9 +4803,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> AI </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> LLaMA </tag>
             
@@ -4962,11 +4962,11 @@
       
         <tags>
             
+            <tag> 教程 </tag>
+            
             <tag> Orange pi </tag>
             
             <tag> 折腾 </tag>
-            
-            <tag> 教程 </tag>
             
         </tags>
       
@@ -5216,9 +5216,9 @@
             
             <tag> 主题 </tag>
             
-            <tag> 折腾 </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> 折腾 </tag>
             
             <tag> 安知鱼 </tag>
             
@@ -5705,9 +5705,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> AI </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> ChatGLM </tag>
             
@@ -6015,9 +6015,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -6046,9 +6046,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -6077,9 +6077,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -6135,9 +6135,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -6166,9 +6166,9 @@
       
         <tags>
             
-            <tag> 旅游 </tag>
-            
             <tag> 五一 </tag>
+            
+            <tag> 旅游 </tag>
             
         </tags>
       
@@ -7333,13 +7333,13 @@
             
             <tag> Minecraft </tag>
             
-            <tag> CustomSkinLoad </tag>
-            
-            <tag> 皮肤站 </tag>
-            
             <tag> blessing </tag>
             
+            <tag> CustomSkinLoad </tag>
+            
             <tag> skin </tag>
+            
+            <tag> 皮肤站 </tag>
             
         </tags>
       
@@ -7368,11 +7368,11 @@
       
         <tags>
             
-            <tag> 证书 </tag>
-            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -7593,11 +7593,11 @@
       
       <categories>
           
-          <category> 笔记 </category>
-          
           <category> 应用 </category>
           
           <category> Windows </category>
+          
+          <category> 笔记 </category>
           
           <category> Code </category>
           
