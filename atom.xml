@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-07-21T03:39:11.000Z</updated>
+  <updated>2025-07-22T01:41:40.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bing索引终于恢复了</title>
+    <link href="https://blog.goodboyboy.top/posts/3129869980.html"/>
+    <id>https://blog.goodboyboy.top/posts/3129869980.html</id>
+    <published>2025-07-22T01:41:40.000Z</published>
+    <updated>2025-07-22T01:41:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2><p>差不多半年前，不知道发生了什么，博客在 Bing 的索引直线下降，直到完全没有。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/flron3.webp" alt="索引情况"></p><p>URL 检查是能索引的，但是就是死活不索引。。。</p><p>后面看到有人也有这个情况，是需要向客服提交工单解决，于是大概一个月前我也向客服提了工单，中间陆陆续续收到几封客服邮件，今天收到客服邮件说已经解决了该问题</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/fnjh75.webp" alt="邮件"></p><p>上线 Webmaster Tools 看了一下，确实印象数上升了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/foietp.webp" alt="印象数"></p><p>去 bing 搜了一下 site:goodboyboy.top，也确实是能看见博客了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/fqgolt.webp" alt="搜索页面"></p><h2 id="后记"><a class="markdownIt-Anchor" href="#后记">#</a> 后记</h2><p>长达半年的丢失索引终于解决了😂，后面只能等排名慢慢恢复了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;差不多半年前，不知道发生了什么，博客在 Bing 的索引直线下降，直到完全没有。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.g</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="索引" scheme="https://blog.goodboyboy.top/tags/%E7%B4%A2%E5%BC%95/"/>
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>家里蹲大学开始招生！</title>
@@ -1638,9 +1666,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
     
   </entry>
   
@@ -1673,9 +1701,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -3621,9 +3649,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="日常" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
-    
     <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
+    
+    <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
     
   </entry>
   
@@ -3775,9 +3803,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="长城跨境通" scheme="https://blog.goodboyboy.top/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/"/>
     
-    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
-    
     <category term="中国银行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/"/>
+    
+    <category term="借记卡" scheme="https://blog.goodboyboy.top/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/"/>
     
   </entry>
   
@@ -3911,9 +3939,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
@@ -4635,9 +4663,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
-    
     <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="C" scheme="https://blog.goodboyboy.top/tags/C/"/>
     
   </entry>
   
@@ -4725,9 +4753,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
     <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
     <category term="LLaMA" scheme="https://blog.goodboyboy.top/tags/LLaMA/"/>
     
@@ -4881,11 +4909,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
+    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
     <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
     
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -4943,9 +4971,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="笔记" scheme="https://blog.goodboyboy.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="C++" scheme="https://blog.goodboyboy.top/tags/C/"/>
+    
+    <category term="学习" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -5130,9 +5158,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="主题" scheme="https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/"/>
     
-    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
     
@@ -5608,9 +5636,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
     <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
     <category term="ChatGLM" scheme="https://blog.goodboyboy.top/tags/ChatGLM/"/>
     
@@ -6256,9 +6284,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="Hexo" scheme="https://blog.goodboyboy.top/tags/Hexo/"/>
-    
     <category term="Git" scheme="https://blog.goodboyboy.top/tags/Git/"/>
+    
+    <category term="Hexo" scheme="https://blog.goodboyboy.top/tags/Hexo/"/>
     
   </entry>
   
