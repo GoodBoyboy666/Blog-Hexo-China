@@ -1107,11 +1107,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
+    
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
@@ -2446,9 +2446,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="文章总结" scheme="https://blog.goodboyboy.top/tags/%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93/"/>
-    
     <category term="butterfly" scheme="https://blog.goodboyboy.top/tags/butterfly/"/>
+    
+    <category term="文章总结" scheme="https://blog.goodboyboy.top/tags/%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
@@ -3649,9 +3649,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="日常" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
-    
     <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
+    
+    <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
     
   </entry>
   
@@ -4753,9 +4753,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="LLaMA" scheme="https://blog.goodboyboy.top/tags/LLaMA/"/>
     
@@ -4909,11 +4909,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="硬件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/"/>
     
     
-    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
     <category term="Orange pi" scheme="https://blog.goodboyboy.top/tags/Orange-pi/"/>
     
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -5158,9 +5158,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="主题" scheme="https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/"/>
     
-    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
     <category term="折腾" scheme="https://blog.goodboyboy.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
     <category term="安知鱼" scheme="https://blog.goodboyboy.top/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/"/>
     
@@ -5636,9 +5636,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
-    
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="AI" scheme="https://blog.goodboyboy.top/tags/AI/"/>
     
     <category term="ChatGLM" scheme="https://blog.goodboyboy.top/tags/ChatGLM/"/>
     
@@ -6284,9 +6284,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Web/"/>
     
     
-    <category term="Git" scheme="https://blog.goodboyboy.top/tags/Git/"/>
-    
     <category term="Hexo" scheme="https://blog.goodboyboy.top/tags/Hexo/"/>
+    
+    <category term="Git" scheme="https://blog.goodboyboy.top/tags/Git/"/>
     
   </entry>
   

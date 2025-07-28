@@ -1122,11 +1122,11 @@
       
         <tags>
             
-            <tag> OAuth2 </tag>
-            
             <tag> OpenID Connect </tag>
             
             <tag> oidc </tag>
+            
+            <tag> OAuth2 </tag>
             
         </tags>
       
@@ -2506,9 +2506,9 @@
       
         <tags>
             
-            <tag> 文章总结 </tag>
-            
             <tag> butterfly </tag>
+            
+            <tag> 文章总结 </tag>
             
         </tags>
       
@@ -3756,9 +3756,9 @@
       
         <tags>
             
-            <tag> 清明 </tag>
-            
             <tag> 游玩 </tag>
+            
+            <tag> 清明 </tag>
             
         </tags>
       
@@ -4888,9 +4888,9 @@
       
         <tags>
             
-            <tag> AI </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> AI </tag>
             
             <tag> LLaMA </tag>
             
@@ -5047,11 +5047,11 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> Orange pi </tag>
             
             <tag> 折腾 </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -5301,9 +5301,9 @@
             
             <tag> 主题 </tag>
             
-            <tag> 教程 </tag>
-            
             <tag> 折腾 </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> 安知鱼 </tag>
             
@@ -5790,9 +5790,9 @@
       
         <tags>
             
-            <tag> AI </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> AI </tag>
             
             <tag> ChatGLM </tag>
             
@@ -6445,9 +6445,9 @@
       
         <tags>
             
-            <tag> Git </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
