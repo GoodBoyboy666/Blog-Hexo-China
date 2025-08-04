@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-07-29T09:57:51.000Z</updated>
+  <updated>2025-08-04T08:35:09.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>现在小孩都这么早熟么。。。</title>
+    <link href="https://blog.goodboyboy.top/posts/1421567704.html"/>
+    <id>https://blog.goodboyboy.top/posts/1421567704.html</id>
+    <published>2025-08-04T08:35:09.000Z</published>
+    <updated>2025-08-04T08:35:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今年下午去医院取上午抽血的检查报告时，我在那里等电梯，一个小屁孩跑过来让我跟着他。我一脸懵逼的看着他，我问他干什么他也不说，就让我跟着他。</p><p>因为取结果只有我一个人，而且这会医院下午才上班，人还不是很多，所以我下意识的想着他会不会想拐我，于是站在那里没动。</p><p>不过转念一想，一个还没我一半高的小屁孩怎么拐我，看着他一直催，我又怕是真的有什么事情，他妈妈需要帮忙什么的（因为旁边就是儿科）</p><p>于是我就慢慢的跟在他后面。</p><p>我又想万一不止他一个呢？例如利用小孩让人放松警惕把我带到偏僻地方，然后出来几个大汉把我绑走什么的，或者未成年犯罪？而且看他那不怀好意的眼神（真的就是那种赤裸裸不怀好意的眼神），我又有点不想管了。</p><p>不过还没等我想完，他就已经往儿科里去了，我想那个地方怎么都不能发生绑架这种事吧，想看看他到底搞什么鬼，便和他一起进了儿科</p><p>然后令我无语的地方来了</p><p>他把我带到儿科护士值班的地方，指着那里的一个护士说让我嫁给她？？？？？？</p><p>什么跟什么？？？</p><p>然后那个护士对着我和那个小孩笑。。。</p><p>哪家小屁孩又放出来没人管了</p><p>我当即转身就准备走，懒得和这种小屁孩计较，虽然我不急但是我的时间也不是让这种人随意浪费的</p><p>然后那个小屁孩还拉着我的手在那里继续说让我嫁给她。。。</p><p>我无语的把手抽出来，对着他说我有自己的事情，然后就没理他自己走了。</p><p>真的是什么跟什么，这么屁大的孩子知道结婚的意义是什么么，也不知道是在哪学的这些。。。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今年下午去医院取上午抽血的检查报告时，我在那里等电梯，一个小屁孩跑过来让我跟着他。我一脸懵逼的看着他，我问他干什么他也不说，就让我跟着他。&lt;/p&gt;
+&lt;p&gt;因为取结果只有我一个人，而且这会医院下午才上班，人还不是很多，所以我下意识的想着他会不会想拐我，于是站在那里没动。&lt;/p</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>《动物迷城》二周目通关！</title>
@@ -1137,11 +1162,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
+    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
-    
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
@@ -1849,9 +1874,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="教程" scheme="https://blog.goodboyboy.top/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
-    
     <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
     
   </entry>
   
@@ -3679,9 +3704,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="日常" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
-    
     <category term="游玩" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E7%8E%A9/"/>
+    
+    <category term="清明" scheme="https://blog.goodboyboy.top/tags/%E6%B8%85%E6%98%8E/"/>
     
   </entry>
   
@@ -7300,13 +7325,13 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
     
-    <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
-    
     <category term="CustomSkinLoad" scheme="https://blog.goodboyboy.top/tags/CustomSkinLoad/"/>
     
-    <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
-    
     <category term="皮肤站" scheme="https://blog.goodboyboy.top/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/"/>
+    
+    <category term="blessing" scheme="https://blog.goodboyboy.top/tags/blessing/"/>
+    
+    <category term="skin" scheme="https://blog.goodboyboy.top/tags/skin/"/>
     
   </entry>
   
@@ -7334,11 +7359,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="软件" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E8%BD%AF%E4%BB%B6/"/>
     
     
-    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
     <category term="openssl" scheme="https://blog.goodboyboy.top/tags/openssl/"/>
     
     <category term="根证书" scheme="https://blog.goodboyboy.top/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="证书" scheme="https://blog.goodboyboy.top/tags/%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
