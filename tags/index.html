@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>tags | GoodBoyboy 's Blog｜惬意小屋-点滴记忆</title><meta name="author" content="GoodBoyboy"><meta name="copyright" content="GoodBoyboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="游走于互联网边缘的一只小狼">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="https://blog.goodboyboy.top/tags/index.html">
+<meta property="og:site_name" content="GoodBoyboy &#39;s Blog｜惬意小屋-点滴记忆">
+<meta property="og:description" content="游走于互联网边缘的一只小狼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g">
+<meta property="article:published_time" content="2023-03-21T07:17:40.000Z">
+<meta property="article:modified_time" content="2025-08-11T08:46:33.902Z">
+<meta property="article:author" content="GoodBoyboy">
+<meta property="article:tag" content="GoodBoyboy,blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="shortcut icon" href="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g"><link rel="canonical" href="https://blog.goodboyboy.top/tags/index.html"><link rel="preconnect" href="//jsd.foxsay.top"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://jsd.foxsay.top/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://jsd.foxsay.top/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://jsd.foxsay.top/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 8 || hour >= 22
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: GoodBoyboy","link":"链接: ","source":"来源: GoodBoyboy 's Blog｜惬意小屋-点滴记忆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://jsd.foxsay.top/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'tags',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/font.css" media="none" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/APlayer.min.css"><style type="text/css">
+.spoiler {
+  display: inline;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="GoodBoyboy 's Blog｜惬意小屋-点滴记忆" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://jsd.foxsay.top/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://jsd.foxsay.top/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg" style="background-image: url(https://api.goodboyboy.top/bing/?rand=true);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">258</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">292</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div></div></div><div class="page type-tags" id="body-wrap"><header class="not-home-page" id="page-header" style="background-color: rgba(255,255,255,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" alt="Logo"><span class="site-name">GoodBoyboy 's Blog｜惬意小屋-点滴记忆</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-list-ul"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/categories/%E7%94%9F%E6%B4%BB/"><i class="fa-fw fa fa-pencil"></i><span> 生活</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-file-alt"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/msg/"><i class="fa-fw fa fa-pencil"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/TimeLine/"><i class="fa-fw fa-solid fa-list"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/reports/"><i class="fa-fw fa-solid fa-flag"></i><span> 报告</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.goodboyboy.top/mikutap/"><i class="fa-fw fa-solid fa-tape"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 我的游戏库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E5%85%AC%E5%91%8A/"><i class="fa-fw fa fa-info-circle"></i><span> 公告</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/free/"><i class="fa-fw fas fa-heart"></i><span> 公益项目</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> Me</span></a></div><div class="menus_item"><a class="site-page" href="/agreement/"><i class="fa-fw fa fa-pencil"></i><span> 用户协议与隐私政策</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-bus-alt"></i><span> 开往/十年</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html"><span> 开往</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://foreverblog.cn/go.html"><span> 十年之约</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-battery-full"></i><span> 运行状态</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://status.goodboyboy.top/status/normal"><span> 主节点</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://stats.uptimerobot.com/Q7nWTIH07K"><span> 备用节点</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">tags</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list text-center"><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.2em; color: rgb(53, 53, 76);">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.25em; color: rgb(53, 163, 50);">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.2em; color: rgb(50, 60, 155);">每日一图</a><a href="/tags/CC/" style="font-size: 1.2em; color: rgb(50, 133, 50);">CC</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.41em; color: rgb(50, 77, 106);">公告</a><a href="/tags/OpenSSH/" style="font-size: 1.22em; color: rgb(119, 198, 106);">OpenSSH</a><a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 1.2em; color: rgb(50, 185, 55);">漏洞</a><a href="/tags/%E6%98%8E%E4%BF%A1%E7%89%87/" style="font-size: 1.32em; color: rgb(164, 140, 82);">明信片</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.32em; color: rgb(50, 179, 139);">博客</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.2em; color: rgb(50, 50, 172);">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.2em; color: rgb(50, 50, 50);">评论系统</a><a href="/tags/Blog/" style="font-size: 1.2em; color: rgb(50, 196, 50);">Blog</a><a href="/tags/IPv6/" style="font-size: 1.22em; color: rgb(114, 132, 55);">IPv6</a><a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 1.22em; color: rgb(104, 50, 50);">升级</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.29em; color: rgb(50, 74, 50);">服务器</a><a href="/tags/emoji/" style="font-size: 1.2em; color: rgb(50, 190, 50);">emoji</a><a href="/tags/%E9%9F%B3%E4%B9%90%E9%A6%86/" style="font-size: 1.2em; color: rgb(112, 118, 159);">音乐馆</a><a href="/tags/2FA/" style="font-size: 1.22em; color: rgb(50, 50, 192);">2FA</a><a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 1.22em; color: rgb(170, 168, 95);">软件</a><a href="/tags/%E5%97%B7%E5%91%9C/" style="font-size: 1.22em; color: rgb(50, 143, 170);">嗷呜</a><a href="/tags/c/" style="font-size: 1.22em; color: rgb(75, 197, 79);">c#</a><a href="/tags/%E5%BA%94%E7%94%A8/" style="font-size: 1.2em; color: rgb(50, 50, 148);">应用</a><a href="/tags/QiuDN/" style="font-size: 1.2em; color: rgb(199, 65, 189);">QiuDN</a><a href="/tags/%E5%BB%BA%E6%A0%A1/" style="font-size: 1.2em; color: rgb(116, 188, 165);">建校</a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.2em; color: rgb(50, 74, 50);">大学</a><a href="/tags/%E6%8B%9B%E7%94%9F/" style="font-size: 1.2em; color: rgb(50, 50, 119);">招生</a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.45em; color: rgb(167, 76, 167);">笔记</a><a href="/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/" style="font-size: 1.2em; color: rgb(200, 112, 187);">电子电路</a><a href="/tags/%E5%8C%BB%E4%BF%9D/" style="font-size: 1.2em; color: rgb(50, 110, 135);">医保</a><a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 1.2em; color: rgb(133, 145, 174);">转载</a><a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 1.2em; color: rgb(96, 80, 50);">杂谈</a><a href="/tags/%E8%AE%BA%E8%AF%B4/" style="font-size: 1.2em; color: rgb(50, 50, 147);">论说</a><a href="/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 1.2em; color: rgb(50, 57, 153);">哲学</a><a href="/tags/Hegel/" style="font-size: 1.2em; color: rgb(97, 50, 152);">Hegel</a><a href="/tags/%E5%AD%98%E5%9C%A8/" style="font-size: 1.2em; color: rgb(95, 200, 86);">存在</a><a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 1.2em; color: rgb(50, 50, 60);">索引</a><a href="/tags/%E8%AF%B4%E8%AF%B4/" style="font-size: 1.5em; color: rgb(50, 189, 170);">说说</a><a href="/tags/Canokey/" style="font-size: 1.2em; color: rgb(97, 85, 123);">Canokey</a><a href="/tags/%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5/" style="font-size: 1.2em; color: rgb(162, 180, 184);">物理密钥</a><a href="/tags/Edge/" style="font-size: 1.2em; color: rgb(50, 50, 152);">Edge</a><a href="/tags/Minecraft/" style="font-size: 1.32em; color: rgb(186, 116, 124);">Minecraft</a><a href="/tags/Debian/" style="font-size: 1.36em; color: rgb(196, 50, 127);">Debian</a><a href="/tags/Follow/" style="font-size: 1.2em; color: rgb(107, 57, 168);">Follow</a><a href="/tags/galgame/" style="font-size: 1.2em; color: rgb(50, 50, 50);">galgame</a><a href="/tags/Ubuntu/" style="font-size: 1.2em; color: rgb(198, 50, 50);">Ubuntu</a><a href="/tags/Linux/" style="font-size: 1.2em; color: rgb(50, 131, 154);">Linux</a><a href="/tags/%E5%90%8E%E9%97%A8/" style="font-size: 1.2em; color: rgb(80, 154, 90);">后门</a><a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.22em; color: rgb(50, 89, 104);">安全</a><a href="/tags/%E5%8A%A8%E7%89%A9%E8%BF%B7%E5%9F%8E/" style="font-size: 1.2em; color: rgb(50, 50, 50);">动物迷城</a><a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 1.22em; color: rgb(50, 112, 50);">游戏</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.34em; color: rgb(143, 184, 186);">生活</a><a href="/tags/%E5%94%A0%E5%97%91/" style="font-size: 1.22em; color: rgb(87, 50, 105);">唠嗑</a><a href="/tags/%E5%90%90%E6%A7%BD/" style="font-size: 1.2em; color: rgb(71, 173, 161);">吐槽</a><a href="/tags/%E6%90%AC%E5%AF%9D/" style="font-size: 1.2em; color: rgb(161, 57, 141);">搬寝</a><a href="/tags/%E5%8E%9F%E5%91%B3/" style="font-size: 1.2em; color: rgb(140, 85, 51);">原味</a><a href="/tags/%E4%B8%83%E4%B8%83%E4%BA%8B%E5%8F%98/" style="font-size: 1.2em; color: rgb(50, 173, 147);">七七事变</a><a href="/tags/%E5%8B%BF%E5%BF%98%E5%9B%BD%E8%80%BB/" style="font-size: 1.2em; color: rgb(58, 56, 183);">勿忘国耻</a><a href="/tags/%E4%B8%AD%E7%A7%8B/" style="font-size: 1.2em; color: rgb(107, 123, 50);">中秋</a><a href="/tags/%E4%B8%87%E4%BA%8B%E8%BE%BE%E5%8D%A1/" style="font-size: 1.22em; color: rgb(50, 91, 94);">万事达卡</a><a href="/tags/%E9%95%BF%E5%9F%8E%E8%B7%A8%E5%A2%83%E9%80%9A/" style="font-size: 1.22em; color: rgb(56, 135, 82);">长城跨境通</a><a href="/tags/%E5%B0%8F%E7%BB%93/" style="font-size: 1.22em; color: rgb(150, 89, 198);">小结</a><a href="/tags/%E4%B9%9D%E6%9C%88/" style="font-size: 1.2em; color: rgb(87, 124, 175);">九月</a><a href="/tags/%E8%BF%91%E5%86%B5/" style="font-size: 1.2em; color: rgb(50, 50, 50);">近况</a><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(50, 196, 50);">年终总结</a><a href="/tags/BlueSky/" style="font-size: 1.2em; color: rgb(150, 129, 120);">BlueSky</a><a href="/tags/%E4%B9%90%E5%AD%90/" style="font-size: 1.2em; color: rgb(107, 188, 133);">乐子</a><a href="/tags/%E9%93%B6%E8%A1%8C%E5%8D%A1/" style="font-size: 1.22em; color: rgb(84, 82, 172);">银行卡</a><a href="/tags/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/" style="font-size: 1.2em; color: rgb(91, 50, 159);">招商银行</a><a href="/tags/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9/" style="font-size: 1.2em; color: rgb(60, 82, 50);">哔哩哔哩</a><a href="/tags/%E5%8D%81%E6%9C%88/" style="font-size: 1.2em; color: rgb(50, 50, 67);">十月</a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 1.2em; color: rgb(50, 184, 50);">路由器</a><a href="/tags/%E5%B0%8F%E7%B1%B3AX3000T/" style="font-size: 1.2em; color: rgb(138, 117, 171);">小米AX3000T</a><a href="/tags/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C/" style="font-size: 1.22em; color: rgb(91, 146, 171);">中国银行</a><a href="/tags/B%E7%AB%99%E8%81%94%E5%90%8D/" style="font-size: 1.2em; color: rgb(87, 121, 183);">B站联名</a><a href="/tags/%E5%80%9F%E8%AE%B0%E5%8D%A1/" style="font-size: 1.25em; color: rgb(103, 178, 180);">借记卡</a><a href="/tags/RSS/" style="font-size: 1.2em; color: rgb(50, 50, 50);">RSS</a><a href="/tags/Reader/" style="font-size: 1.2em; color: rgb(129, 187, 50);">Reader</a><a href="/tags/OPPO/" style="font-size: 1.2em; color: rgb(183, 172, 123);">OPPO</a><a href="/tags/Passkey/" style="font-size: 1.22em; color: rgb(61, 50, 165);">Passkey</a><a href="/tags/Docker/" style="font-size: 1.2em; color: rgb(50, 50, 107);">Docker</a><a href="/tags/Apple-Music/" style="font-size: 1.2em; color: rgb(88, 91, 102);">Apple Music</a><a href="/tags/%E5%9C%9F%E5%8C%BA/" style="font-size: 1.2em; color: rgb(57, 142, 50);">土区</a><a href="/tags/Jetpack-Compose/" style="font-size: 1.25em; color: rgb(137, 57, 116);">Jetpack Compose</a><a href="/tags/Android/" style="font-size: 1.25em; color: rgb(164, 122, 197);">Android</a><a href="/tags/CloudFlare/" style="font-size: 1.22em; color: rgb(188, 52, 50);">CloudFlare</a><a href="/tags/Tunnel/" style="font-size: 1.2em; color: rgb(157, 50, 50);">Tunnel</a><a href="/tags/%E7%A7%AF%E5%88%86%E5%85%91%E6%8D%A2/" style="font-size: 1.2em; color: rgb(71, 50, 50);">积分兑换</a><a href="/tags/GitHub/" style="font-size: 1.22em; color: rgb(194, 148, 50);">GitHub</a><a href="/tags/%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81/" style="font-size: 1.2em; color: rgb(58, 50, 194);">学生认证</a><a href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/" style="font-size: 1.22em; color: rgb(73, 120, 94);">打印机</a><a href="/tags/%E5%AE%9E%E9%AA%8C%E5%AE%A4/" style="font-size: 1.22em; color: rgb(176, 68, 50);">实验室</a><a href="/tags/%E5%AE%B6%E6%9C%89%E5%A4%A7%E7%8C%AB/" style="font-size: 1.2em; color: rgb(153, 141, 159);">家有大猫</a><a href="/tags/%E6%B8%B8%E6%88%8FPV/" style="font-size: 1.2em; color: rgb(115, 155, 190);">游戏PV</a><a href="/tags/%E7%94%BB%E8%B4%A8%E4%BF%AE%E8%A1%A5/" style="font-size: 1.2em; color: rgb(69, 91, 50);">画质修补</a><a href="/tags/Audio-visualizer/" style="font-size: 1.2em; color: rgb(116, 128, 50);">Audio_visualizer</a><a href="/tags/Viper4/" style="font-size: 1.2em; color: rgb(85, 158, 50);">Viper4</a><a href="/tags/windows11/" style="font-size: 1.25em; color: rgb(64, 124, 50);">windows11</a><a href="/tags/%E4%B8%87%E4%BA%8B%E8%BE%BE/" style="font-size: 1.22em; color: rgb(125, 50, 50);">万事达</a><a href="/tags/%E9%82%AE%E5%82%A8%E9%93%B6%E8%A1%8C/" style="font-size: 1.22em; color: rgb(50, 76, 82);">邮储银行</a><a href="/tags/%E5%A4%96%E8%AE%BE/" style="font-size: 1.2em; color: rgb(50, 115, 59);">外设</a><a href="/tags/%E6%98%BE%E7%A4%BA%E5%99%A8/" style="font-size: 1.2em; color: rgb(50, 93, 50);">显示器</a><a href="/tags/%E6%96%B0%E5%B9%B4/" style="font-size: 1.2em; color: rgb(50, 180, 55);">新年</a><a href="/tags/%E6%B0%B4%E6%96%87/" style="font-size: 1.2em; color: rgb(146, 88, 58);">水文</a><a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 1.2em; color: rgb(147, 50, 50);">域名</a><a href="/tags/%E9%BC%A0%E6%A0%87/" style="font-size: 1.2em; color: rgb(91, 50, 50);">鼠标</a><a href="/tags/%E4%B8%BB%E9%A2%98/" style="font-size: 1.22em; color: rgb(50, 191, 69);">主题</a><a href="/tags/%E9%A9%AC%E7%94%B2/" style="font-size: 1.2em; color: rgb(50, 87, 139);">马甲</a><a href="/tags/%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/" style="font-size: 1.2em; color: rgb(142, 50, 50);">任务安排</a><a href="/tags/%E6%9A%91%E5%81%87/" style="font-size: 1.2em; color: rgb(69, 50, 50);">暑假</a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.2em; color: rgb(50, 50, 50);">爬虫</a><a href="/tags/%E4%B8%AD%E4%BF%A1/" style="font-size: 1.2em; color: rgb(182, 50, 50);">中信</a><a href="/tags/KDE/" style="font-size: 1.25em; color: rgb(146, 50, 118);">KDE</a><a href="/tags/webauthn/" style="font-size: 1.2em; color: rgb(82, 200, 50);">webauthn</a><a href="/tags/passkey/" style="font-size: 1.2em; color: rgb(182, 64, 50);">passkey</a><a href="/tags/emo/" style="font-size: 1.2em; color: rgb(177, 126, 144);">emo</a><a href="/tags/%E9%BB%91%E7%A5%9E%E8%AF%9D%E6%82%9F%E7%A9%BA/" style="font-size: 1.2em; color: rgb(167, 132, 105);">黑神话悟空</a><a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 1.2em; color: rgb(69, 63, 116);">白嫖</a><a href="/tags/Gemini/" style="font-size: 1.2em; color: rgb(183, 85, 191);">Gemini</a><a href="/tags/%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/" style="font-size: 1.2em; color: rgb(50, 138, 65);">独立博客</a><a href="/tags/%E9%97%AE%E5%8D%B7/" style="font-size: 1.2em; color: rgb(95, 139, 50);">问卷</a><a href="/tags/%E7%A0%B4%E9%98%B2%E5%93%A5/" style="font-size: 1.2em; color: rgb(50, 105, 81);">破防哥</a><a href="/tags/Azure/" style="font-size: 1.2em; color: rgb(131, 158, 50);">Azure</a><a href="/tags/%E8%AF%84%E8%AE%BA/" style="font-size: 1.2em; color: rgb(184, 50, 104);">评论</a><a href="/tags/PGP/" style="font-size: 1.22em; color: rgb(125, 103, 50);">PGP</a><a href="/tags/%E7%AD%BE%E5%90%8D/" style="font-size: 1.2em; color: rgb(50, 50, 50);">签名</a><a href="/tags/%E8%A3%85%E6%9C%BA/" style="font-size: 1.2em; color: rgb(108, 50, 98);">装机</a><a href="/tags/%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7/" style="font-size: 1.2em; color: rgb(122, 156, 50);">软著申请</a><a href="/tags/%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%BA%91/" style="font-size: 1.2em; color: rgb(68, 135, 137);">亚马逊云</a><a href="/tags/AWS/" style="font-size: 1.2em; color: rgb(147, 71, 72);">AWS</a><a href="/tags/%E5%AE%A2%E6%9C%8D/" style="font-size: 1.2em; color: rgb(50, 106, 190);">客服</a><a href="/tags/manus/" style="font-size: 1.2em; color: rgb(132, 66, 79);">manus</a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.25em; color: rgb(134, 95, 102);">阿里云</a><a href="/tags/%E9%AB%98%E6%A0%A1%E8%AE%A1%E5%88%92/" style="font-size: 1.2em; color: rgb(50, 80, 50);">高校计划</a><a href="/tags/%E9%A3%9E%E8%B7%8313%E5%8F%B7%E6%88%BF/" style="font-size: 1.2em; color: rgb(191, 50, 154);">飞跃13号房</a><a href="/tags/5G/" style="font-size: 1.2em; color: rgb(88, 176, 56);">5G</a><a href="/tags/CPE/" style="font-size: 1.22em; color: rgb(50, 50, 167);">CPE</a><a href="/tags/%E9%B2%B2%E9%B9%8F/" style="font-size: 1.22em; color: rgb(63, 63, 174);">鲲鹏</a><a href="/tags/%E6%98%BE%E5%8D%A1/" style="font-size: 1.2em; color: rgb(165, 96, 90);">显卡</a><a href="/tags/Aplayer/" style="font-size: 1.2em; color: rgb(50, 69, 132);">Aplayer</a><a href="/tags/%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 1.2em; color: rgb(101, 129, 149);">播放器</a><a href="/tags/%E7%BD%91%E9%A1%B5%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 1.2em; color: rgb(50, 156, 138);">网页播放器</a><a href="/tags/Canokey-Pigeon/" style="font-size: 1.22em; color: rgb(200, 166, 50);">Canokey Pigeon</a><a href="/tags/%E5%AE%89%E5%85%A8%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5/" style="font-size: 1.2em; color: rgb(154, 52, 50);">安全物理密钥</a><a href="/tags/OPENPGP/" style="font-size: 1.2em; color: rgb(112, 50, 50);">OPENPGP</a><a href="/tags/FIDO2-U2F/" style="font-size: 1.2em; color: rgb(196, 175, 149);">FIDO2/U2F</a><a href="/tags/PIV/" style="font-size: 1.2em; color: rgb(56, 168, 50);">PIV</a><a href="/tags/OATH/" style="font-size: 1.2em; color: rgb(50, 159, 184);">OATH</a><a href="/tags/Orange-pi/" style="font-size: 1.22em; color: rgb(82, 166, 123);">Orange pi</a><a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 1.25em; color: rgb(64, 50, 50);">折腾</a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.48em; color: rgb(50, 50, 50);">教程</a><a href="/tags/%E5%AE%89%E5%85%A8%E7%A1%AC%E4%BB%B6/" style="font-size: 1.2em; color: rgb(122, 70, 89);">安全硬件</a><a href="/tags/%E4%B8%80%E6%8C%87%E7%81%B5%E9%80%9A/" style="font-size: 1.2em; color: rgb(88, 180, 77);">一指灵通</a><a href="/tags/NV/" style="font-size: 1.2em; color: rgb(87, 50, 58);">NV</a><a href="/tags/qcn/" style="font-size: 1.2em; color: rgb(121, 156, 92);">qcn</a><a href="/tags/%E7%8E%A9%E5%AE%A2%E4%BA%91/" style="font-size: 1.2em; color: rgb(180, 184, 115);">玩客云</a><a href="/tags/%E5%88%B7%E6%9C%BA/" style="font-size: 1.2em; color: rgb(110, 162, 50);">刷机</a><a href="/tags/oppo/" style="font-size: 1.2em; color: rgb(123, 199, 75);">oppo</a><a href="/tags/%E4%B8%B2%E5%8F%B7/" style="font-size: 1.2em; color: rgb(50, 82, 154);">串号</a><a href="/tags/%E5%9F%BA%E5%B8%A6/" style="font-size: 1.2em; color: rgb(190, 85, 113);">基带</a><a href="/tags/UPNP/" style="font-size: 1.2em; color: rgb(50, 50, 71);">UPNP</a><a href="/tags/%E7%90%86%E5%8F%91%E5%BA%97/" style="font-size: 1.2em; color: rgb(113, 50, 50);">理发店</a><a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 1.22em; color: rgb(60, 50, 50);">回忆</a><a href="/tags/%E7%83%9F%E8%8A%B1/" style="font-size: 1.2em; color: rgb(122, 174, 190);">烟花</a><a href="/tags/BestCF/" style="font-size: 1.2em; color: rgb(194, 155, 187);">BestCF</a><a href="/tags/AI/" style="font-size: 1.29em; color: rgb(134, 127, 50);">AI</a><a href="/tags/LLaMA/" style="font-size: 1.2em; color: rgb(50, 127, 194);">LLaMA</a><a href="/tags/Alpaca/" style="font-size: 1.2em; color: rgb(100, 162, 97);">Alpaca</a><a href="/tags/GRUB/" style="font-size: 1.2em; color: rgb(50, 188, 81);">GRUB</a><a href="/tags/Nvidia/" style="font-size: 1.2em; color: rgb(62, 97, 199);">Nvidia</a><a href="/tags/Debian13/" style="font-size: 1.2em; color: rgb(56, 146, 50);">Debian13</a><a href="/tags/ipv6/" style="font-size: 1.2em; color: rgb(197, 59, 149);">ipv6</a><a href="/tags/ddns-go/" style="font-size: 1.2em; color: rgb(193, 156, 50);">ddns-go</a><a href="/tags/%E5%AD%97%E4%BD%93/" style="font-size: 1.22em; color: rgb(68, 151, 92);">字体</a><a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 1.2em; color: rgb(71, 144, 104);">虚拟机</a><a href="/tags/kvm/" style="font-size: 1.2em; color: rgb(180, 50, 171);">kvm</a><a href="/tags/Deepin/" style="font-size: 1.2em; color: rgb(60, 79, 74);">Deepin</a><a href="/tags/Gpg4win/" style="font-size: 1.2em; color: rgb(113, 50, 98);">Gpg4win</a><a href="/tags/GnuPG/" style="font-size: 1.22em; color: rgb(50, 119, 50);">GnuPG</a><a href="/tags/CanoKey/" style="font-size: 1.2em; color: rgb(142, 50, 79);">CanoKey</a><a href="/tags/TCP/" style="font-size: 1.2em; color: rgb(104, 190, 94);">TCP</a><a href="/tags/rclone/" style="font-size: 1.2em; color: rgb(110, 80, 155);">rclone</a><a href="/tags/Windows/" style="font-size: 1.2em; color: rgb(181, 62, 133);">Windows</a><a href="/tags/gpg/" style="font-size: 1.2em; color: rgb(72, 155, 50);">gpg</a><a href="/tags/ssh/" style="font-size: 1.2em; color: rgb(132, 50, 195);">ssh</a><a href="/tags/OpenSSL/" style="font-size: 1.2em; color: rgb(191, 119, 190);">OpenSSL</a><a href="/tags/X-509/" style="font-size: 1.2em; color: rgb(54, 76, 50);">X.509</a><a href="/tags/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/" style="font-size: 1.2em; color: rgb(199, 121, 72);">数字证书</a><a href="/tags/XCA/" style="font-size: 1.2em; color: rgb(121, 57, 50);">XCA</a><a href="/tags/n2n/" style="font-size: 1.22em; color: rgb(162, 166, 199);">n2n</a><a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 1.27em; color: rgb(175, 134, 199);">局域网</a><a href="/tags/%E8%81%94%E6%9C%BA/" style="font-size: 1.25em; color: rgb(50, 144, 195);">联机</a><a href="/tags/wiper4/" style="font-size: 1.2em; color: rgb(142, 50, 190);">wiper4</a><a href="/tags/cloudreve/" style="font-size: 1.22em; color: rgb(50, 50, 128);">cloudreve</a><a href="/tags/OneDrive/" style="font-size: 1.25em; color: rgb(50, 121, 50);">OneDrive</a><a href="/tags/%E5%90%8C%E6%AD%A5/" style="font-size: 1.2em; color: rgb(50, 115, 171);">同步</a><a href="/tags/openssl/" style="font-size: 1.2em; color: rgb(50, 103, 167);">openssl</a><a href="/tags/%E6%A0%B9%E8%AF%81%E4%B9%A6/" style="font-size: 1.22em; color: rgb(143, 115, 168);">根证书</a><a href="/tags/%E8%AF%81%E4%B9%A6/" style="font-size: 1.25em; color: rgb(78, 50, 50);">证书</a><a href="/tags/Stable-diffusion/" style="font-size: 1.2em; color: rgb(50, 158, 179);">Stable diffusion</a><a href="/tags/Authy/" style="font-size: 1.2em; color: rgb(50, 50, 88);">Authy</a><a href="/tags/TOTP/" style="font-size: 1.2em; color: rgb(113, 50, 102);">TOTP</a><a href="/tags/SoftEther/" style="font-size: 1.2em; color: rgb(104, 84, 53);">SoftEther</a><a href="/tags/VLAN/" style="font-size: 1.2em; color: rgb(58, 61, 193);">VLAN</a><a href="/tags/ChatGLM/" style="font-size: 1.2em; color: rgb(50, 61, 114);">ChatGLM</a><a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/" style="font-size: 1.2em; color: rgb(110, 50, 183);">校园网</a><a href="/tags/Gitea/" style="font-size: 1.2em; color: rgb(154, 194, 50);">Gitea</a><a href="/tags/adobe/" style="font-size: 1.22em; color: rgb(183, 83, 174);">adobe</a><a href="/tags/flash/" style="font-size: 1.2em; color: rgb(69, 77, 104);">flash</a><a href="/tags/ssr/" style="font-size: 1.2em; color: rgb(133, 81, 50);">ssr</a><a href="/tags/%E9%85%B8%E9%85%B8%E4%B9%B3/" style="font-size: 1.2em; color: rgb(149, 141, 60);">酸酸乳</a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.2em; color: rgb(98, 58, 128);">备份</a><a href="/tags/kopia/" style="font-size: 1.2em; color: rgb(55, 197, 199);">kopia</a><a href="/tags/pr/" style="font-size: 1.2em; color: rgb(50, 50, 50);">pr</a><a href="/tags/vhd/" style="font-size: 1.2em; color: rgb(83, 149, 100);">vhd</a><a href="/tags/%E6%8A%93%E5%8C%85/" style="font-size: 1.2em; color: rgb(119, 98, 78);">抓包</a><a href="/tags/APP/" style="font-size: 1.2em; color: rgb(163, 61, 62);">APP</a><a href="/tags/Rustdesk/" style="font-size: 1.2em; color: rgb(131, 181, 101);">Rustdesk</a><a href="/tags/%E4%BA%94%E4%B8%80/" style="font-size: 1.29em; color: rgb(67, 161, 50);">五一</a><a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 1.38em; color: rgb(93, 144, 129);">旅游</a><a href="/tags/%E9%95%BF%E6%B2%99/" style="font-size: 1.2em; color: rgb(98, 200, 169);">长沙</a><a href="/tags/%E5%8D%97%E6%98%8C/" style="font-size: 1.2em; color: rgb(173, 122, 50);">南昌</a><a href="/tags/%E5%9B%BD%E5%BA%86/" style="font-size: 1.2em; color: rgb(50, 70, 184);">国庆</a><a href="/tags/%E6%B9%98%E6%BD%AD/" style="font-size: 1.2em; color: rgb(147, 133, 101);">湘潭</a><a href="/tags/DeepSeek/" style="font-size: 1.22em; color: rgb(54, 169, 63);">DeepSeek</a><a href="/tags/Hexo/" style="font-size: 1.25em; color: rgb(50, 50, 50);">Hexo</a><a href="/tags/WebPush/" style="font-size: 1.2em; color: rgb(64, 197, 119);">WebPush</a><a href="/tags/%E5%AE%89%E7%9F%A5%E9%B1%BC/" style="font-size: 1.2em; color: rgb(86, 126, 57);">安知鱼</a><a href="/tags/Mojang-API/" style="font-size: 1.2em; color: rgb(172, 102, 174);">Mojang API</a><a href="/tags/OAuth2/" style="font-size: 1.25em; color: rgb(179, 114, 126);">OAuth2</a><a href="/tags/OpenID-Connect/" style="font-size: 1.2em; color: rgb(174, 197, 117);">OpenID Connect</a><a href="/tags/oidc/" style="font-size: 1.2em; color: rgb(190, 50, 50);">oidc</a><a href="/tags/SSL/" style="font-size: 1.2em; color: rgb(50, 145, 50);">SSL</a><a href="/tags/ECC/" style="font-size: 1.2em; color: rgb(50, 139, 55);">ECC</a><a href="/tags/%E7%BD%91%E7%AB%99/" style="font-size: 1.38em; color: rgb(167, 50, 76);">网站</a><a href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" style="font-size: 1.38em; color: rgb(119, 83, 119);">互联网</a><a href="/tags/S-MIME/" style="font-size: 1.2em; color: rgb(115, 58, 50);">S/MIME</a><a href="/tags/OIDC/" style="font-size: 1.2em; color: rgb(69, 72, 86);">OIDC</a><a href="/tags/Authentik/" style="font-size: 1.2em; color: rgb(62, 140, 50);">Authentik</a><a href="/tags/RAM/" style="font-size: 1.2em; color: rgb(141, 140, 162);">RAM</a><a href="/tags/Git/" style="font-size: 1.22em; color: rgb(67, 50, 143);">Git</a><a href="/tags/https/" style="font-size: 1.27em; color: rgb(50, 133, 50);">https</a><a href="/tags/web%E9%9D%A2%E6%9D%BF/" style="font-size: 1.2em; color: rgb(76, 50, 183);">web面板</a><a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 1.2em; color: rgb(50, 71, 67);">表情包</a><a href="/tags/CustomSkinLoad/" style="font-size: 1.22em; color: rgb(180, 169, 144);">CustomSkinLoad</a><a href="/tags/%E7%9A%AE%E8%82%A4%E7%AB%99/" style="font-size: 1.22em; color: rgb(50, 50, 132);">皮肤站</a><a href="/tags/blessing/" style="font-size: 1.2em; color: rgb(71, 199, 50);">blessing</a><a href="/tags/skin/" style="font-size: 1.2em; color: rgb(91, 79, 53);">skin</a><a href="/tags/Hypixel/" style="font-size: 1.2em; color: rgb(153, 50, 159);">Hypixel</a><a href="/tags/%E5%8A%A0%E9%80%9Fip/" style="font-size: 1.2em; color: rgb(137, 102, 195);">加速ip</a><a href="/tags/AdGuard-Home/" style="font-size: 1.2em; color: rgb(121, 171, 155);">AdGuard Home</a><a href="/tags/DNS/" style="font-size: 1.2em; color: rgb(178, 145, 80);">DNS</a><a href="/tags/Nginx/" style="font-size: 1.2em; color: rgb(50, 90, 130);">Nginx</a><a href="/tags/%E7%89%88%E6%9D%83/" style="font-size: 1.2em; color: rgb(54, 107, 116);">版权</a><a href="/tags/%E5%9C%9F%E8%80%B3%E5%85%B6%E5%8C%BA/" style="font-size: 1.2em; color: rgb(119, 158, 103);">土耳其区</a><a href="/tags/xbox/" style="font-size: 1.2em; color: rgb(183, 114, 161);">xbox</a><a href="/tags/%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93/" style="font-size: 1.22em; color: rgb(50, 50, 199);">文章总结</a><a href="/tags/butterfly/" style="font-size: 1.22em; color: rgb(106, 152, 99);">butterfly</a><a href="/tags/CDN/" style="font-size: 1.2em; color: rgb(66, 90, 150);">CDN</a><a href="/tags/Cloudflare/" style="font-size: 1.2em; color: rgb(172, 50, 189);">Cloudflare</a><a href="/tags/Gcore/" style="font-size: 1.2em; color: rgb(66, 188, 50);">Gcore</a><a href="/tags/SSO/" style="font-size: 1.2em; color: rgb(50, 107, 55);">SSO</a><a href="/tags/authentik/" style="font-size: 1.2em; color: rgb(50, 50, 185);">authentik</a><a href="/tags/%E9%A9%BE%E7%85%A7/" style="font-size: 1.2em; color: rgb(50, 50, 186);">驾照</a><a href="/tags/%E5%AD%A6%E8%BD%A6/" style="font-size: 1.2em; color: rgb(199, 114, 50);">学车</a><a href="/tags/%E7%A7%91%E4%B8%89/" style="font-size: 1.25em; color: rgb(70, 125, 122);">科三</a><a href="/tags/%E9%80%9B%E8%A1%97/" style="font-size: 1.2em; color: rgb(95, 50, 175);">逛街</a><a href="/tags/%E6%B8%B8%E7%8E%A9/" style="font-size: 1.22em; color: rgb(141, 112, 165);">游玩</a><a href="/tags/%E6%B8%85%E6%98%8E/" style="font-size: 1.2em; color: rgb(135, 200, 50);">清明</a><a href="/tags/%E7%BB%83%E8%BD%A6/" style="font-size: 1.22em; color: rgb(57, 138, 119);">练车</a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 1.2em; color: rgb(55, 50, 50);">日常</a><a href="/tags/%E4%B9%B3%E7%B3%96%E4%B8%8D%E8%80%90%E5%8F%97/" style="font-size: 1.2em; color: rgb(95, 78, 182);">乳糖不耐受</a><a href="/tags/%E6%99%AE%E9%80%9A%E8%AF%9D/" style="font-size: 1.2em; color: rgb(68, 125, 50);">普通话</a><a href="/tags/%E8%80%83%E8%AF%95/" style="font-size: 1.2em; color: rgb(50, 155, 188);">考试</a><a href="/tags/%E5%85%9C%E9%A3%8E/" style="font-size: 1.2em; color: rgb(150, 58, 190);">兜风</a><a href="/tags/%E9%AA%91%E8%BD%A6/" style="font-size: 1.2em; color: rgb(97, 50, 149);">骑车</a><a href="/tags/Postcrossing/" style="font-size: 1.2em; color: rgb(82, 143, 72);">Postcrossing</a><a href="/tags/C/" style="font-size: 1.2em; color: rgb(143, 165, 77);">C++</a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.43em; color: rgb(137, 169, 127);">学习</a><a href="/tags/C/" style="font-size: 1.22em; color: rgb(96, 100, 124);">C</a><a href="/tags/Git-Commit/" style="font-size: 1.2em; color: rgb(50, 81, 50);">Git Commit</a><a href="/tags/StateFlow/" style="font-size: 1.2em; color: rgb(125, 50, 89);">StateFlow</a><a href="/tags/Flow/" style="font-size: 1.2em; color: rgb(134, 118, 115);">Flow</a><a href="/tags/%E5%8D%8F%E7%A8%8B/" style="font-size: 1.2em; color: rgb(174, 52, 50);">协程</a><a href="/tags/Room/" style="font-size: 1.2em; color: rgb(187, 153, 50);">Room</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.38em; color: rgb(55, 50, 142);">计算机网络</a><a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 1.41em; color: rgb(50, 159, 50);">小说</a><a href="/tags/%E5%A5%87%E5%B9%BB/" style="font-size: 1.41em; color: rgb(50, 177, 123);">奇幻</a><a href="/tags/%E5%86%92%E9%99%A9/" style="font-size: 1.41em; color: rgb(50, 87, 119);">冒险</a><a href="/tags/%E5%8F%8B%E6%83%85/" style="font-size: 1.41em; color: rgb(90, 105, 167);">友情</a><a href="/tags/SDN/" style="font-size: 1.2em; color: rgb(123, 106, 132);">SDN</a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.2em; color: rgb(198, 101, 78);">网络</a><a href="/tags/%E6%91%98%E5%BD%95/" style="font-size: 1.2em; color: rgb(199, 50, 50);">摘录</a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&amp;d=monsterid&amp;r=g" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">GoodBoyboy</div><div class="author-info-description">看朝霞万里，石头花开</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">258</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">292</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" href="https://blog.goodboyboy.top/atom.xml"><i class="fa-solid fa-rss"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.goodboyboy.top" target="_blank" title="Home"><i class="fa-solid fa-house"></i></a><a class="social-icon" href="mailto:me@goodboyboy.top" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/GoodBoyboy666" rel="external nofollow noreferrer" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">愿每个生命，都能被温柔对待</div></div><div class="card-widget ad_card" id="custom_ad_card"><div class="item-headline"><i class="fas fa-heartbeat"></i><span>本站由 QiuDun 提供公益内容分发</span></div><div class="item-content"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.scdn.koxiuqiu.cc/"><img src="https://www.goodboyboy.top/uploads/img/qiudun.png" alt="QiuDun CDN" style="width: 100vw; height: auto; max-width: 100%;" /></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2388809258.html" title="Debian13安装Nvidia驱动">Debian13安装Nvidia驱动</a><time datetime="2025-08-11T10:02:36.000Z" title="发表于 2025-08-11 18:02:36">2025-08-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1421567704.html" title="现在小孩都这么早熟么。。。">现在小孩都这么早熟么。。。</a><time datetime="2025-08-04T08:35:09.000Z" title="发表于 2025-08-04 16:35:09">2025-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2703079552.html" title="《动物迷城》二周目通关！"><img src="https://pic.goodboyboy.top/imgs/2025/07/29/动物迷城.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《动物迷城》二周目通关！"/></a><div class="content"><a class="title" href="/posts/2703079552.html" title="《动物迷城》二周目通关！">《动物迷城》二周目通关！</a><time datetime="2025-07-29T09:57:51.000Z" title="发表于 2025-07-29 17:57:51">2025-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3129869980.html" title="Bing索引终于恢复了">Bing索引终于恢复了</a><time datetime="2025-07-22T01:41:40.000Z" title="发表于 2025-07-22 09:41:40">2025-07-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/108438560.html" title="家里蹲大学开始招生！">家里蹲大学开始招生！</a><time datetime="2025-07-21T03:39:11.000Z" title="发表于 2025-07-21 11:39:11">2025-07-21</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Code/"><span class="card-category-list-name">Code</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Csharp/"><span class="card-category-list-name">Csharp</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hardware/"><span class="card-category-list-name">Hardware</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Jetpack-Compose/"><span class="card-category-list-name">Jetpack Compose</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Software/"><span class="card-category-list-name">Software</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Web/"><span class="card-category-list-name">Web</span><span class="card-category-list-count">12</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9B%BE%E7%89%87/" style="font-size: 1.15em; color: rgb(137, 50, 162);">图片</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.24em; color: rgb(136, 111, 157);">微软</a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E5%9B%BE/" style="font-size: 1.15em; color: rgb(87, 189, 148);">每日一图</a><a href="/tags/CC/" style="font-size: 1.15em; color: rgb(181, 50, 178);">CC</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.36em; color: rgb(200, 173, 113);">公告</a><a href="/tags/OpenSSH/" style="font-size: 1.19em; color: rgb(59, 172, 50);">OpenSSH</a><a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 1.15em; color: rgb(50, 193, 60);">漏洞</a><a href="/tags/%E6%98%8E%E4%BF%A1%E7%89%87/" style="font-size: 1.32em; color: rgb(50, 111, 50);">明信片</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.32em; color: rgb(144, 75, 136);">博客</a><a href="/tags/%E5%91%A8%E5%B9%B4/" style="font-size: 1.15em; color: rgb(138, 89, 50);">周年</a><a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.15em; color: rgb(170, 198, 198);">评论系统</a><a href="/tags/Blog/" style="font-size: 1.15em; color: rgb(132, 50, 96);">Blog</a><a href="/tags/IPv6/" style="font-size: 1.19em; color: rgb(50, 138, 52);">IPv6</a><a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 1.19em; color: rgb(161, 77, 69);">升级</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.28em; color: rgb(50, 50, 50);">服务器</a><a href="/tags/emoji/" style="font-size: 1.15em; color: rgb(140, 84, 64);">emoji</a><a href="/tags/%E9%9F%B3%E4%B9%90%E9%A6%86/" style="font-size: 1.15em; color: rgb(134, 143, 50);">音乐馆</a><a href="/tags/2FA/" style="font-size: 1.19em; color: rgb(186, 50, 113);">2FA</a><a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 1.19em; color: rgb(50, 57, 93);">软件</a><a href="/tags/%E5%97%B7%E5%91%9C/" style="font-size: 1.19em; color: rgb(193, 84, 166);">嗷呜</a><a href="/tags/c/" style="font-size: 1.19em; color: rgb(102, 198, 50);">c#</a><a href="/tags/%E5%BA%94%E7%94%A8/" style="font-size: 1.15em; color: rgb(50, 84, 65);">应用</a><a href="/tags/QiuDN/" style="font-size: 1.15em; color: rgb(53, 50, 50);">QiuDN</a><a href="/tags/%E5%BB%BA%E6%A0%A1/" style="font-size: 1.15em; color: rgb(118, 74, 50);">建校</a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.15em; color: rgb(50, 50, 161);">大学</a><a href="/tags/%E6%8B%9B%E7%94%9F/" style="font-size: 1.15em; color: rgb(134, 57, 50);">招生</a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.41em; color: rgb(181, 50, 200);">笔记</a><a href="/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/" style="font-size: 1.15em; color: rgb(96, 156, 106);">电子电路</a><a href="/tags/%E5%8C%BB%E4%BF%9D/" style="font-size: 1.15em; color: rgb(50, 50, 50);">医保</a><a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 1.15em; color: rgb(50, 98, 90);">转载</a><a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 1.15em; color: rgb(169, 76, 56);">杂谈</a><a href="/tags/%E8%AE%BA%E8%AF%B4/" style="font-size: 1.15em; color: rgb(50, 50, 64);">论说</a><a href="/tags/%E5%93%B2%E5%AD%A6/" style="font-size: 1.15em; color: rgb(80, 160, 126);">哲学</a><a href="/tags/Hegel/" style="font-size: 1.15em; color: rgb(75, 86, 50);">Hegel</a><a href="/tags/%E5%AD%98%E5%9C%A8/" style="font-size: 1.15em; color: rgb(50, 138, 113);">存在</a><a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 1.15em; color: rgb(67, 50, 50);">索引</a><a href="/tags/%E8%AF%B4%E8%AF%B4/" style="font-size: 1.45em; color: rgb(58, 50, 77);">说说</a><a href="/tags/Canokey/" style="font-size: 1.15em; color: rgb(92, 178, 61);">Canokey</a><a href="/tags/%E7%89%A9%E7%90%86%E5%AF%86%E9%92%A5/" style="font-size: 1.15em; color: rgb(50, 137, 50);">物理密钥</a><a href="/tags/Edge/" style="font-size: 1.15em; color: rgb(122, 163, 187);">Edge</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">258</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2015-09-04T07:25:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">304.7k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-11T10:20:17.552Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-color: rgba(27, 31, 35, .05);"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2025 By GoodBoyboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text"><a href ="https://status.goodboyboy.top/status/normal" target="_blank">运行状态</a> | <a href="https://icp.gov.moe/?keyword=20236007" rel="external nofollow noreferrer" target="_blank">萌ICP备20236007号</a></br><--- 朝霞万里 石头花开 ---></br><a href="https://travel.moe/go.html?travel=on" rel="external nofollow noreferrer" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">异次元之旅</a> </br><i class="fa-solid fa-paw"></i></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="show-music" type="button" title="显示音乐控件" onclick="showmusic()"><i class="fa-solid fa-music"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://jsd.foxsay.top/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="https://jsd.foxsay.top/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://jsd.foxsay.top/npm/katex@0.16.21/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://jsd.foxsay.top/npm/katex@0.16.21/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://jsd.foxsay.top/npm/mermaid@11.4.1/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://jsd.foxsay.top/npm/chart.js@4.4.8/dist/chart.umd.min.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'artalk-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getAvatarValue = async () => {
+    const predefinedAvatarCdn = ''
+    const predefinedAvatarDefault = ''
+
+    const avatarDefaultFormat = e => e.startsWith('d=') ? e : `d=${e}`
+
+    if (predefinedAvatarCdn && predefinedAvatarDefault) {
+      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
+    }
+
+    try {
+      const res = await fetch('https://artalk.goodboyboy.top/api/v2/conf')
+      const result = await res.json()
+      const { mirror, params, default: defaults } = result.frontend_conf.gravatar
+      const avatarCdn = predefinedAvatarCdn || mirror
+      let avatarDefault = avatarDefaultFormat(predefinedAvatarDefault || params || defaults)
+      return { avatarCdn, avatarDefault}
+    } catch (e) {
+      console.error(e)
+      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
+    }
+  }
+
+  const searchParams = new URLSearchParams({
+    'site_name': 'GoodBoyboyBlog',
+    'limit': '12', // Fetch more comments to filter pending comments
+  })
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch(`https://artalk.goodboyboy.top/api/v2/stats/latest_comments?${searchParams}`)
+      const result = await res.json()
+      const { avatarCdn, avatarDefault } = await getAvatarValue()
+      const artalk = result.data
+        .filter(e => !e.is_pending) // Filter pending comments
+        .slice(0, 6) // Limit the number of comments
+        .map(e => {
+          const avatar = avatarCdn && e.email_encrypted ? `${avatarCdn}${e.email_encrypted}?${avatarDefault}` : ''
+          return {
+            'avatar': avatar,
+            'content': changeContent(e.content_marked),
+            'nick': e.nick,
+            'url': e.page_url,
+            'date': e.date,
+          }
+        })
+      btf.saveToLocal.set(keyName, JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk, ele)
+    } catch (e) {
+      console.log(e)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script data-pjax async src="/advance_script.js"></script><script async src="/js/APlayer.min.js"></script><div id="aplayerdiv" class="no-destroy"></div><script src="https://www.goodboyboy.top/uploads/music/music.js"></script><script src="/js/info.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://jsd.foxsay.top/npm/butterfly-extsrc@1.1.4/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://jsd.foxsay.top/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://jsd.foxsay.top/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script>(() => {
+  const option = null
+  const config = {"site_uv":false,"site_pv":false,"page_pv":false,"token":null}
+
+  const runTrack = () => {
+    umami.track(props => ({ ...props, url: window.location.pathname, title: GLOBAL_CONFIG_SITE.title }))
+  }
+
+  const loadUmamiJS = () => {
+    btf.getScript('https://umami.foxsay.top/script.js', {
+      'data-website-id': '21f60885-f721-40e3-89b5-0940bab42e68',
+      'data-auto-track': 'false',
+      ...option
+    }).then(runTrack)
+  }
+
+  const getData = async (isPost) => {
+    const now = Date.now()
+    const keyUrl = isPost ? `&url=${window.location.pathname}` : ''
+    const headerList = { 'Accept': 'application/json' }
+    if (true) headerList['Authorization'] = `Bearer ${config.token}`
+    else headerList['x-umami-api-key'] = config.token
+    const res = await fetch(`https://umami.foxsay.top/api/websites/21f60885-f721-40e3-89b5-0940bab42e68/stats?startAt=0000000000&endAt=${now}${keyUrl}`, {
+      method: "GET",
+      headers: headerList
+    })
+    return await res.json()
+  }
+
+  const insertData = async () => {
+    try {
+      if (GLOBAL_CONFIG_SITE.pageType === 'post' && config.page_pv) {
+        const pagePV = document.getElementById('umamiPV')
+        if (pagePV) {
+          const data = await getData(true)
+          pagePV.textContent = data.pageviews.value
+        }
+      } else {
+        const data = (config.site_uv || config.site_pv) && await getData()
+        if (config.site_uv) {
+          const siteUV = document.getElementById('umami-site-uv')
+          if (siteUV) siteUV.textContent = data.visitors.value
+        }
+        if (config.site_pv) {
+          const sitePV = document.getElementById('umami-site-pv')
+          if (sitePV) sitePV.textContent = data.pageviews.value
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load Umami Analytics:', e)
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', runTrack, 'umami_analytics_run_track')
+  btf.addGlobalFn('pjaxComplete', insertData, 'umami_analytics_insert')
+
+  loadUmamiJS()
+  insertData()
+})()</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.3.5"></script></div></div></body></html>
