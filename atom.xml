@@ -1797,9 +1797,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
-    
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="烟花" scheme="https://blog.goodboyboy.top/tags/%E7%83%9F%E8%8A%B1/"/>
     
   </entry>
   
@@ -1832,9 +1832,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
     
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="理发店" scheme="https://blog.goodboyboy.top/tags/%E7%90%86%E5%8F%91%E5%BA%97/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -7852,9 +7852,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     <category term="应用" scheme="https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/"/>
     
-    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="Windows" scheme="https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/Windows/"/>
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="Code" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/Code/"/>
     
