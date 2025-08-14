@@ -1935,9 +1935,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -4142,9 +4142,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -4884,9 +4884,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> C </tag>
-            
             <tag> 学习 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -5198,9 +5198,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> 学习 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
@@ -7540,11 +7540,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
