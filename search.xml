@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Arduino+VSCode开发ESP32-S3</title>
+      <!--<link href="/posts/1775233746.html"/>
+      <url>/posts/1775233746.html</url>-->
+      <link href="posts/1775233746.html"/>
+      <url>posts/1775233746.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>Arduino IDE对于我来说太难用了，不过本质还是C++开发，理论上VSCode也可以。</p><h2 id="安装-Arduino-CLI">安装 Arduino CLI</h2><p>Arduino不仅提供了IDE，也提供有命令行工具</p><p>首先安装Arduino CLI，在 <a href="https://docs.arduino.cc/arduino-cli/installation/">https://docs.arduino.cc/arduino-cli/installation/</a> 中找到适合自己系统的Arduino CLI并进行安装。</p><p>安装完成后输入<code>arduino-cli help core</code>确保已经正常安装。</p><h2 id="配置-Arduino-CLI">配置 Arduino CLI</h2><p>首先需要初始化Arduino CLI</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config init</span><br></pre></td></tr></table></figure><p>配置“用户目录”，该目录会用于存放第三方库等等，推荐和config设置为一个路径</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config <span class="built_in">set</span> directories.user <span class="string">&quot;用户目录路径&quot;</span></span><br></pre></td></tr></table></figure><p>然后添加官方的加速源，否则可能下载会十分慢</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config <span class="built_in">set</span> board_manager.additional_urls https://jihulab.com/esp-mirror/espressif/arduino-esp32/-/raw/gh-pages/package_esp32_index_cn.json</span><br></pre></td></tr></table></figure><p>接着更新板子列表</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli core update-index</span><br></pre></td></tr></table></figure><p>这里我们可以先不下载。</p><h2 id="配置-VSCode与环境">配置 VSCode与环境</h2><p>安装<code>Arduino Maker Workshop</code>插件，然后打开一个文件夹用于工作目录。</p><p>插件安装完成后在侧边栏点击插件，点击<code>Maker Workshop Home</code>，即可打开配置栏。</p><p>首先进入<code>Boards Manager</code>，点击Not Installed标签，搜索<code>esp32</code>，然后点最右边的倒三角展开，版本选择<code>x.x.x-cn</code>，这个才是加速的版本</p><p>然后点击版本旁边的下载按钮开始下载。</p><p>安装完成后进入<code>Board Selection</code>，选择<code>ESP32S3 Dev Module</code>即可。</p><p>接着点击<code>Board Configuration</code>配置板子</p><p><code>Uplaod Speed</code>最好别选921600，太高板子可能承受不住，512000我的可以正常刷入，实际根据板子体质决定。</p><p><code>Flash Mode</code>根据实际情况来决定，部分板子可能支持OPI，可以通过下面命令查看（错误的配置会导致板子无法启动）：</p><blockquote><p>提示esptool找不到则是没安装esptool，如何安装esptool请自行Google</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool flash-id</span><br></pre></td></tr></table></figure><p>然后回输出<code>Flash Memory Information</code>，在<code>Flash type set in eFuse</code>一栏中查看，我的板子是<code>quad (4 data lines)</code></p><p>所以我选择<code>QIO 80MHz</code>，如果你的Flash支持8 data lines则可以选择OPI</p><p><code>Flash Size</code>是多少选多少，我的是N16R8，所以我选择的是<code>16MB</code></p><p><code>Partition Scheme</code>我选的是<code>16M Flash（2MB APP/12.5MB FATFS）</code>，自己根据实际情况选择</p><p><code>PSRAM</code>一般情况下，ESP32-S3-WROOM-1-N4R8/N8R8/N16R8是支持Octal SPI的，可以选择OPI PSRAM</p><p>该文中有详细表：<a href="https://blog.csdn.net/tianizimark/article/details/125264464">https://blog.csdn.net/tianizimark/article/details/125264464</a></p><p><code>Arduino Run On</code>和<code>Events Run On</code>是否要同一个核心看你自己，不同核心的话可能会出现多线程竟态问题（存疑），如果工程简单的话都跑在一个核心上没问题</p><p>剩下的全部默认即可</p><h2 id="编译烧录">编译烧录</h2><p>点击Compile和Upload就行。</p><h2 id="飘红问题">飘红问题</h2><p>有时候安装第三方库include后会飘红，这里只需要编译（Compile）一下，就会自动补齐配置</p><p>如果还是有问题，按住<code>Ctrl+Shift+P</code>打开VSCode的命令栏，找到<code>编辑配置（UI）</code>，指定一下g++位置，包含路径中添加库文件夹即可</p><p>例如我的是<code>C:\Users\GoodBoyboy\AppData\Local\Arduino15\libraries/**</code></p><h2 id="参考">参考</h2><p><a href="https://docs.arduino.cc/arduino-cli/getting-started/">https://docs.arduino.cc/arduino-cli/getting-started/</a></p><p><a href="https://blog.csdn.net/ZHOU_YONG915/article/details/130118049">https://blog.csdn.net/ZHOU_YONG915/article/details/130118049</a></p><p><a href="https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html">https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html</a></p><p><a href="https://blog.csdn.net/tianizimark/article/details/125264464">https://blog.csdn.net/tianizimark/article/details/125264464</a></p><p><a href="https://blog.csdn.net/tianizimark/article/details/124663902">https://blog.csdn.net/tianizimark/article/details/124663902</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Hardware </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> EPS32 </tag>
+            
+            <tag> Arduino </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>EPS32-S3刷入MicroPython</title>
       <!--<link href="/posts/3337643602.html"/>
       <url>/posts/3337643602.html</url>-->
@@ -1997,9 +2028,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -7567,13 +7598,13 @@
             
             <tag> Minecraft </tag>
             
-            <tag> CustomSkinLoad </tag>
-            
-            <tag> 皮肤站 </tag>
-            
             <tag> blessing </tag>
             
+            <tag> CustomSkinLoad </tag>
+            
             <tag> skin </tag>
+            
+            <tag> 皮肤站 </tag>
             
         </tags>
       
@@ -7602,11 +7633,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
