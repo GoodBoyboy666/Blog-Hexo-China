@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>ESP32 S3外设小记</title>
+      <!--<link href="/posts/2709354330.html"/>
+      <url>/posts/2709354330.html</url>-->
+      <link href="posts/2709354330.html"/>
+      <url>posts/2709354330.html</url>
+      
+        <content type="html"><![CDATA[<p>最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9n8zx.webp" alt="点绿灯"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9v76y.webp" alt="点红灯"></p><h2 id="踩坑">踩坑</h2><p>因为是第一次玩，什么硬件知识都不懂，顶多了解了一点课上学的模电数电知识（还是非电气专业的课程，属于是基础中的基础），也不敢乱接（金属膜电阻都不会认，100欧的电阻找了半天），于是猛猛问ChatGPT</p><p>之前买了好几个有趣的外设，例如红外接收器，显示屏，有按键的数码管。</p><p>感觉有按键的数码管更好玩，16个按键可以设置16个状态，不用老是重新烧写（每次编译时间还不短。。。）</p><p>找客服要了一份资料，本来是打算只要一个管脚图的，客服发了一堆资料（手册，电路图等等），感觉事情的不简单</p><p>里面找到了一份TM1638B（驱动芯片）的Arduino工程文件，打开一看200多行代码（给刚点完灯的小白亿点点震惊）</p><p>尝试看了一下代码，嗯，完全看不懂。。。</p><p>不过无所谓，打算先烧上去再说，看看怎么玩</p><p>编译完成后，问了问ChatGPT该怎么组装</p><p>然而我发现这玩意的工作电压是5V，问了一下ChatGPT，才发现ESP32 S3是3.3V，两者不能直接连接</p><p>详细问了一下，才知道要电平转换，而且查了一下资料，这个芯片最低高电平电压是0.7*VDD，也就是至少要3.5V，3.3V完全不够，并且从TM1638B向ESP32传输数据时5V直接进GPIO口也会烧坏板子</p><p>没办法，那只能去淘宝物色一下电平转换的模块了</p><h2 id="尝试">尝试</h2><p>又看了一下红外接收器，发现也要5V，不过显示屏倒只要3.3V就能驱动，于是找ChatGPT又开始问东问西</p><p>然后就又了解到I2C是开漏输出，需要外部上拉电阻，4.4k欧或者10k欧，用于上拉信号，但是我没有4.4k欧的，只好用10k欧的</p><p>组装好电路后，找ChatGPT要了一份代码，就当我以为ok时，刷完固件显示屏直接花屏。。。</p><p>折腾过去又折腾过来，从I2C地址到线材通信等等，最后发现是我芯片提供错了，我用的这个OLED显示屏驱动芯片是SH1106，我给ChatGPT说成另一款屏幕的SSD1306了😅</p><p>ChatGPT一个流汗黄豆塞我脸上🤣</p><p>换了新的代码终于是能跑了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/wa9mmb.webp" alt="点亮屏幕"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 说说 </tag>
+            
+            <tag> ESP32 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Arduino+VSCode开发ESP32-S3</title>
       <!--<link href="/posts/1775233746.html"/>
       <url>/posts/1775233746.html</url>-->
@@ -4095,9 +4124,9 @@
             
             <tag> 长城跨境通 </tag>
             
-            <tag> 借记卡 </tag>
-            
             <tag> 中国银行 </tag>
+            
+            <tag> 借记卡 </tag>
             
         </tags>
       
@@ -7598,13 +7627,13 @@
             
             <tag> Minecraft </tag>
             
-            <tag> CustomSkinLoad </tag>
-            
-            <tag> 皮肤站 </tag>
-            
             <tag> blessing </tag>
             
+            <tag> CustomSkinLoad </tag>
+            
             <tag> skin </tag>
+            
+            <tag> 皮肤站 </tag>
             
         </tags>
       

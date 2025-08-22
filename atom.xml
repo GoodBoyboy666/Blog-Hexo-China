@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-08-20T14:11:49.000Z</updated>
+  <updated>2025-08-22T11:03:36.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ESP32 S3外设小记</title>
+    <link href="https://blog.goodboyboy.top/posts/2709354330.html"/>
+    <id>https://blog.goodboyboy.top/posts/2709354330.html</id>
+    <published>2025-08-22T11:03:36.000Z</published>
+    <updated>2025-08-22T11:03:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9n8zx.webp" alt="点绿灯"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9v76y.webp" alt="点红灯"></p><h2 id="踩坑">踩坑</h2><p>因为是第一次玩，什么硬件知识都不懂，顶多了解了一点课上学的模电数电知识（还是非电气专业的课程，属于是基础中的基础），也不敢乱接（金属膜电阻都不会认，100欧的电阻找了半天），于是猛猛问ChatGPT</p><p>之前买了好几个有趣的外设，例如红外接收器，显示屏，有按键的数码管。</p><p>感觉有按键的数码管更好玩，16个按键可以设置16个状态，不用老是重新烧写（每次编译时间还不短。。。）</p><p>找客服要了一份资料，本来是打算只要一个管脚图的，客服发了一堆资料（手册，电路图等等），感觉事情的不简单</p><p>里面找到了一份TM1638B（驱动芯片）的Arduino工程文件，打开一看200多行代码（给刚点完灯的小白亿点点震惊）</p><p>尝试看了一下代码，嗯，完全看不懂。。。</p><p>不过无所谓，打算先烧上去再说，看看怎么玩</p><p>编译完成后，问了问ChatGPT该怎么组装</p><p>然而我发现这玩意的工作电压是5V，问了一下ChatGPT，才发现ESP32 S3是3.3V，两者不能直接连接</p><p>详细问了一下，才知道要电平转换，而且查了一下资料，这个芯片最低高电平电压是0.7*VDD，也就是至少要3.5V，3.3V完全不够，并且从TM1638B向ESP32传输数据时5V直接进GPIO口也会烧坏板子</p><p>没办法，那只能去淘宝物色一下电平转换的模块了</p><h2 id="尝试">尝试</h2><p>又看了一下红外接收器，发现也要5V，不过显示屏倒只要3.3V就能驱动，于是找ChatGPT又开始问东问西</p><p>然后就又了解到I2C是开漏输出，需要外部上拉电阻，4.4k欧或者10k欧，用于上拉信号，但是我没有4.4k欧的，只好用10k欧的</p><p>组装好电路后，找ChatGPT要了一份代码，就当我以为ok时，刷完固件显示屏直接花屏。。。</p><p>折腾过去又折腾过来，从I2C地址到线材通信等等，最后发现是我芯片提供错了，我用的这个OLED显示屏驱动芯片是SH1106，我给ChatGPT说成另一款屏幕的SSD1306了😅</p><p>ChatGPT一个流汗黄豆塞我脸上🤣</p><p>换了新的代码终于是能跑了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/wa9mmb.webp" alt="点亮屏幕"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2025/08/22/w9</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="ESP32" scheme="https://blog.goodboyboy.top/tags/ESP32/"/>
+    
+  </entry>
   
   <entry>
     <title>Arduino+VSCode开发ESP32-S3</title>
@@ -1439,35 +1466,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
     
     <category term="打印机" scheme="https://blog.goodboyboy.top/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实验室组里添了一台打印机</title>
-    <link href="https://blog.goodboyboy.top/posts/563959450.html"/>
-    <id>https://blog.goodboyboy.top/posts/563959450.html</id>
-    <published>2025-04-14T11:47:36.000Z</published>
-    <updated>2025-04-14T11:47:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="搬进实验室">搬进实验室</h2><p>前几天组里老师问我需不需要一台打印机，她那里多了一台。我当时想着自己平时没啥打印需求，组里也没看见谁经常打印东西，再加上实验室里东西太多，确实是摆不下了，于是就说暂时可能用不到，然后实验室里也没空位放，老师便说如果之后需要就找她。</p><p>后来我把这个消息发组群里，征求了一下大家意见，确实是没啥打印需求，不过如果有的话会方便一些。我想着想着，觉得有一台打印机确实会方便很多，虽然平时打印需求不多，但能方便一下是一下，还可以节省打印费（doge）。想到这里，当天晚上便找了找实验室有没有空余的地方，物色了一个堆了一些东西的桌子。</p><p>第二天刚好是周六，课比较少，来到实验室，把桌子上的东西清理了一下，感觉可以放下打印机，于是给老师发了消息。不过当时老师忙着研究生复试，就让我等她消息。我以为会花很久，就先一步回了寝室，结果在寝室休息了一会接到老师电话问我在哪😂。好吧，只能麻烦实验室里其他学长去搬了。</p><p>周日的时候，发现打印机不在实验室，问了问老师，原来是那天时间不够，所以就没搬成，不过好在老师今天也在学校，最后终于把打印机搬进了实验室😄</p><p>搬的时候老师还说自己还有一台打印复印一体式的，问我需不需要（好奇老师怎么这么多打印机doge），不过实验室确实是摆不下了，只能作罢。</p><h2 id="研究打印机">研究打印机</h2><p>打印机是普通的usb打印机，看了一下是惠普的激光打印机（爽了）。如果是墨盒的还要更换墨盒，太久不用还会卡墨水，激光打印机就方便很多。</p><p>把打印机连上电脑，直接就识别到了打印机，因为还没买纸，只好随便找了张用过的测试一下。打印了一下，发现效果还不错。</p><p>我本来想自己买纸的，结果学长打算出钱买，17块钱500张纸，折合下来0.034一张纸，比外面0.6一张（双面）便宜太多了。</p><h2 id="折腾打印机">折腾打印机</h2><p>既然来了新成员，就少不了折腾。因为这台打印机只支持usb打印，而且摆放的位置在角落，日常打印不方便，我打算把他变成无线打印机。</p><p>网上找了下，初步方案是使用cups，刚好自己有一台闲置的玩客云。</p><p>重新刷个armbian，安装cups和hplip以及hp-plugin。</p><p>拿上以前搞社团活动白嫖的10米网线，把另一端打上水晶头，插入玩客云和实验室的路由器。</p><p>最后在cups上添加打印机。</p><p>电脑上成功发现内网打印机并且成功添加，然而就当我满怀希望的按下打印测试页，打印机没反应。。。</p><p>我：@#￥</p><p>折腾了几个小时，到处排查，但由于设备太少无法控制变量来排查，最终以失败告终。。。</p><h2 id="后记">后记</h2><p>还是老老实实用usb吧，再也不想碰关于Linux的任何驱动问题了。。。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;搬进实验室&quot;&gt;搬进实验室&lt;/h2&gt;
-&lt;p&gt;前几天组里老师问我需不需要一台打印机，她那里多了一台。我当时想着自己平时没啥打印需求，组里也没看见谁经常打印东西，再加上实验室里东西太多，确实是摆不下了，于是就说暂时可能用不到，然后实验室里也没空位放，老师便说如果之后需要</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-    <category term="打印机" scheme="https://blog.goodboyboy.top/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
-    
-    <category term="实验室" scheme="https://blog.goodboyboy.top/tags/%E5%AE%9E%E9%AA%8C%E5%AE%A4/"/>
     
   </entry>
   
