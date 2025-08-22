@@ -1302,11 +1302,11 @@
       
         <tags>
             
-            <tag> OAuth2 </tag>
-            
             <tag> OpenID Connect </tag>
             
             <tag> oidc </tag>
+            
+            <tag> OAuth2 </tag>
             
         </tags>
       
@@ -2028,9 +2028,9 @@
             
             <tag> 教程 </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> S/MIME </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -4095,9 +4095,9 @@
             
             <tag> 长城跨境通 </tag>
             
-            <tag> 中国银行 </tag>
-            
             <tag> 借记卡 </tag>
+            
+            <tag> 中国银行 </tag>
             
         </tags>
       
@@ -7633,11 +7633,11 @@
       
         <tags>
             
+            <tag> 证书 </tag>
+            
             <tag> openssl </tag>
             
             <tag> 根证书 </tag>
-            
-            <tag> 证书 </tag>
             
         </tags>
       
