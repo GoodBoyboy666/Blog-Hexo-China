@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-08-22T11:03:36.000Z</updated>
+  <updated>2025-08-23T12:30:38.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -17,19 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ESP32 S3开发小结</title>
+    <link href="https://blog.goodboyboy.top/posts/4228956106.html"/>
+    <id>https://blog.goodboyboy.top/posts/4228956106.html</id>
+    <published>2025-08-23T12:30:38.000Z</published>
+    <updated>2025-08-23T12:30:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="小结">小结</h2><p>在历经状态机设计，爆栈，中文字体缺失，URL编码问题，C++野指针，页面竞争，任务假死，二维码无法扫描等亿系列问题后，终于弄好了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xn20au.webp" alt="授权二维码"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xnlaox.webp" alt="授权成功"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xn8zd0.webp" alt="授权成功"></p><h2 id="目标">目标</h2><p>采用OAuth2的设备码授权方式，设备请求用户代码并向用户展示，由用户在自己的设备上进行授权，授权完成后ESP32拿到令牌，然后对用户资源进行访问。</p><h2 id="已实现功能">已实现功能</h2><h3 id="系统">系统</h3><p>采用FreeRTOS任务模式，实现多任务并发，结合排他锁解决并发竟态问题。</p><h3 id="WIFI">WIFI</h3><p>支持断线重连，当出现断线时自动切换任务。</p><h3 id="UI">UI</h3><p>支持切换不同页面，为不同功能页提供显示功能。</p><h3 id="OAuth">OAuth</h3><p>支持自动轮询授权情况，并支持当授权链接失效时自动重新获取以及生成二维码。</p><h2 id="不足">不足</h2><p>感觉还不是最佳实践，系统健壮性不高，无法支撑复杂功能（未验证）</p><p>屏幕还是太小了，128*64的分辨率一个正常包含链接的二维码都塞不下去，目前只能用二维码展示用户授权所需的用户代码，无法展示完整授权链接，可能需要制作一个专用APP用于扫码来拼接授权链接并在用户端调起授权。</p><h2 id="下一步方向">下一步方向</h2><p>寻找最佳实践的设计，增加系统健壮性，目前状态机设计还有提升空间</p><p>支持复杂的交互操作，支持16键输入控制系统以及页面，实现菜单选择等</p><p>接入NFC控件，便于用户进行碰一碰授权操作</p><p>接入蓝牙通信，动态控制设备连接附近WIFI（可能需要制作配套APP）</p><p>接入MQTT，实现远程控制（已实现样例）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;小结&quot;&gt;小结&lt;/h2&gt;
+&lt;p&gt;在历经状态机设计，爆栈，中文字体缺失，URL编码问题，C++野指针，页面竞争，任务假死，二维码无法扫描等亿系列问题后，终于弄好了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/20</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="ESP32" scheme="https://blog.goodboyboy.top/tags/ESP32/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ESP32 S3外设小记</title>
     <link href="https://blog.goodboyboy.top/posts/2709354330.html"/>
     <id>https://blog.goodboyboy.top/posts/2709354330.html</id>
     <published>2025-08-22T11:03:36.000Z</published>
     <updated>2025-08-22T11:03:36.000Z</updated>
     
-    <content type="html"><![CDATA[<p>最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9n8zx.webp" alt="点绿灯"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9v76y.webp" alt="点红灯"></p><h2 id="踩坑">踩坑</h2><p>因为是第一次玩，什么硬件知识都不懂，顶多了解了一点课上学的模电数电知识（还是非电气专业的课程，属于是基础中的基础），也不敢乱接（金属膜电阻都不会认，100欧的电阻找了半天），于是猛猛问ChatGPT</p><p>之前买了好几个有趣的外设，例如红外接收器，显示屏，有按键的数码管。</p><p>感觉有按键的数码管更好玩，16个按键可以设置16个状态，不用老是重新烧写（每次编译时间还不短。。。）</p><p>找客服要了一份资料，本来是打算只要一个管脚图的，客服发了一堆资料（手册，电路图等等），感觉事情的不简单</p><p>里面找到了一份TM1638B（驱动芯片）的Arduino工程文件，打开一看200多行代码（给刚点完灯的小白亿点点震惊）</p><p>尝试看了一下代码，嗯，完全看不懂。。。</p><p>不过无所谓，打算先烧上去再说，看看怎么玩</p><p>编译完成后，问了问ChatGPT该怎么组装</p><p>然而我发现这玩意的工作电压是5V，问了一下ChatGPT，才发现ESP32 S3是3.3V，两者不能直接连接</p><p>详细问了一下，才知道要电平转换，而且查了一下资料，这个芯片最低高电平电压是0.7*VDD，也就是至少要3.5V，3.3V完全不够，并且从TM1638B向ESP32传输数据时5V直接进GPIO口也会烧坏板子</p><p>没办法，那只能去淘宝物色一下电平转换的模块了</p><h2 id="尝试">尝试</h2><p>又看了一下红外接收器，发现也要5V，不过显示屏倒只要3.3V就能驱动，于是找ChatGPT又开始问东问西</p><p>然后就又了解到I2C是开漏输出，需要外部上拉电阻，4.4k欧或者10k欧，用于上拉信号，但是我没有4.4k欧的，只好用10k欧的</p><p>组装好电路后，找ChatGPT要了一份代码，就当我以为ok时，刷完固件显示屏直接花屏。。。</p><p>折腾过去又折腾过来，从I2C地址到线材通信等等，最后发现是我芯片提供错了，我用的这个OLED显示屏驱动芯片是SH1106，我给ChatGPT说成另一款屏幕的SSD1306了😅</p><p>ChatGPT一个流汗黄豆塞我脸上🤣</p><p>换了新的代码终于是能跑了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/wa9mmb.webp" alt="点亮屏幕"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9n8zx.webp" alt="点绿灯"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9v76y.webp" alt="点红灯"></p><h2 id="踩坑">踩坑</h2><p>因为是第一次玩，什么硬件知识都不懂，顶多了解了一点课上学的模电数电知识（还是非电气专业的课程，属于是基础中的基础），也不敢乱接（金属膜电阻都不会认，100欧的电阻找了半天），于是猛猛问ChatGPT</p><p>之前买了好几个有趣的外设，例如红外接收器，显示屏，有按键的数码管。</p><p>感觉有按键的数码管更好玩，16个按键可以设置16个状态，不用老是重新烧写（每次编译时间还不短。。。）</p><p>找客服要了一份资料，本来是打算只要一个管脚图的，客服发了一堆资料（手册，电路图等等），感觉事情的不简单</p><p>里面找到了一份TM1638B（驱动芯片）的Arduino工程文件，打开一看200多行代码（给刚点完灯的小白亿点点震惊）</p><p>尝试看了一下代码，嗯，完全看不懂。。。</p><p>不过无所谓，打算先烧上去再说，看看怎么玩</p><p>编译完成后，问了问ChatGPT该怎么组装</p><p>然而我发现这玩意的工作电压是5V，问了一下ChatGPT，才发现ESP32 S3是3.3V，两者不能直接连接</p><p>详细问了一下，才知道要电平转换，而且查了一下资料，这个芯片最低高电平电压是0.7*VDD，也就是至少要3.5V，3.3V完全不够，并且从TM1638B向ESP32传输数据时5V直接进GPIO口也会烧坏板子</p><p>没办法，那只能去淘宝物色一下电平转换的模块了</p><h2 id="尝试">尝试</h2><p>又看了一下红外接收器，发现也要5V，不过显示屏倒只要3.3V就能驱动，于是找ChatGPT又开始问东问西</p><p>然后就又了解到I2C是开漏输出，需要外部上拉电阻，4.4k欧或者10k欧，用于上拉信号，但是我没有4.4k欧的，只好用10k欧的</p><p>组装好电路后，找ChatGPT要了一份代码，就当我以为ok时，刷完固件显示屏直接花屏。。。</p><p>折腾过去又折腾过来，从I2C地址到线材通信等等，最后发现是我芯片提供错了，我用的这个OLED显示屏驱动芯片是SH1106，我给ChatGPT说成另一款屏幕的SSD1306了😅</p><p>ChatGPT一个流汗黄豆塞我脸上🤣</p><p>换了新的代码终于是能跑了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/wa9mmb.webp" alt="点亮屏幕"></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2025/08/22/w9</summary>
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.to</summary>
       
     
     
@@ -1437,35 +1466,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>试用新来的打印机</title>
-    <link href="https://blog.goodboyboy.top/posts/2518449653.html"/>
-    <id>https://blog.goodboyboy.top/posts/2518449653.html</id>
-    <published>2025-04-15T15:23:55.000Z</published>
-    <updated>2025-04-15T15:23:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>今天学长的纸到了，刚好自己也要打印一些材料，于是开始第一次正式使用</p><h2 id="开始使用">开始使用</h2><p>打开打印界面，看了一下，在打印机属性里找到了双面打印的选项，但是打印机看起来不是那种自动双面打印机，所以也不知道到底会怎么双面打印。</p><p>调整好打印机属性后（窗口是HP的打印程序），word里打印界面的选项也跟着变成了双面打印，不管了，先打印看看。</p><p>点击打印后，复印纸开始进纸，从上方出纸，然后纸就掉到了下面？？？</p><p>我：WTF？这就是双面打印？？？</p><p>感觉有点不对头，记忆中应该有个挡板在下面垫着的，看着复印纸连续掉了几张，突然发现出纸口有块突起的地方，翻过来</p><p>啪，挡板出现了。。。</p><p>好吧被自己蠢到了。。。</p><p>这下纸没再掉下来了，不过这时看电脑屏幕，发现弹出一个提示，教我怎么手动双面打印</p><p>是把打印出来的纸再放进进纸口，点击打印机上的继续打印按钮</p><p>但问题是，一开始纸掉下来，我手动把纸收集了起来，忘记了原来在出纸口纸张的方向。。。</p><p>好吧，先打了再说，把纸塞回进纸口，继续打印，然后，不出意外的打印反了。。。</p><p>想了一会，还是打算重新打印一份</p><p>这次先不打印全部，先打印4页看看，然后在打印页那里填了个4，接着打印机就打印了第四页。。。</p><p>好吧，再一次被自己蠢到</p><p>再再再次尝试，填入1-4，点击打印，然后又出了问题。。。</p><p>打印时在word里设置了双面打印（自动），应该是word接管双面打印服务，此时打印机应该是只收到奇数页内容的单面打印指令，没有继续打印的提示，点继续后会发送偶数页的单面打印，然后我的点了个取消。。。</p><p>不过无所谓了，反正也是测试😂</p><p>最后，终于是完成了双面打印</p><h2 id="纸张">纸张</h2><p>学长买的纸貌似质量一般般，单面打印还好，双面打印就感觉效果一般般了</p><p>自己重新在网上买了得力的佳铂80g的复印纸，打算之后不重要的内容就用学长买的纸，重要的内容就用得力的。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;今天学长的纸到了，刚好自己也要打印一些材料，于是开始第一次正式使用&lt;/p&gt;
-&lt;h2 id=&quot;开始使用&quot;&gt;开始使用&lt;/h2&gt;
-&lt;p&gt;打开打印界面，看了一下，在打印机属性里找到了双面打印的选项，但是打印机看起来不是那种自动双面打印机，所以</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-    <category term="打印机" scheme="https://blog.goodboyboy.top/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
     
   </entry>
   
