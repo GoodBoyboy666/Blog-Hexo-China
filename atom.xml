@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-08-23T12:30:38.000Z</updated>
+  <updated>2025-09-04T02:04:03.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客十周年啦🎉</title>
+    <link href="https://blog.goodboyboy.top/posts/3021178758.html"/>
+    <id>https://blog.goodboyboy.top/posts/3021178758.html</id>
+    <published>2025-09-04T02:04:03.000Z</published>
+    <updated>2025-09-04T02:04:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=554929687&auto=1&height=66"></iframe><p>今天逛了逛博客，发现已经十周年了诶😄</p><h2 id="小学">小学</h2><p>还记得最开始那会，自己什么也不懂，不懂网站，不懂域名，更不用说html，js之类的，只是觉得这些网站很神奇。</p><p>在网上兜兜转转，用搜索引擎搜索，去大佬群里问，后来不知道在哪里看到，找到了一个叫领地网的网站，开启了我最初的博客生涯</p><p>其实那会领地网的模式有点类似现在的csdn，你在它的平台上发文章，而且只能写文字，也插入不了html和js</p><p>不过确实是让我在互联网中，第一次有了一块自己的小空间，开启了我的博客1.0</p><p>后来，领地网升级改版，这个网站也就不了了之</p><p>之后转向了安卓APP，在网上找了一个叫叮铛APP的APP设计平台，都是模块化设计，不用代码知识，对于当时的我来说刚刚好</p><p>还记得那会在官方群里和各个大佬交流，特别有趣</p><p>只是好景不长，平台从2.0升级到3.0后就改成收费的了，当时群里听说3.0要出来了还特别兴奋，结果出来后就改成收费，没办法，只好放弃app</p><h2 id="初中">初中</h2><p>到初一后，家里有了电脑，我开始接触更多信息，了解到虚拟主机，便在网上找免费的虚拟主机</p><p>我记得最开始接触的是一个叫3vfree的虚拟主机网站，提供100M的免费空间，仅支持静态html和asp</p><p>虽然配置低，但是当时也玩得起劲，还在网上找了许多asp网站程序，玩得不亦乐乎，只是这个免费虚拟主机会在你的网站底部自动加上广告。。。</p><p>后面又了解到云邦互联这个网站，提供免费虚拟主机，但是好像只有半个月有效期，续期需要去各个论坛发广告审核，用了一段日子，直到一次因为审核晚了数据都被清了，就再也没用这个网站</p><p>那会还买了自己第一个域名，不过因为有点中二，后来换成了现在的域名</p><p>之后又断断续续找了很多免费的虚拟主机网站，但是都不稳定，而且那会重心也从网站转向写程序</p><p>安卓app暂时没头绪，无意间了解到C#的netframwork，开始写winform程序</p><p>一直到初三上吧，重心才又开始转向网站，中间这段混乱的时间算是我的博客2.0</p><p>时间来到初三，当时阿里云好像是有个学生机器优惠，每个月只要9.9，那会非443端口的网站还不需要备案，我便用那个优惠机器搭网站</p><p>那会开始了解到宝塔面板，最开始Windows宝塔面板还有设置GUI，可以在GUI里面调整网站配置，后面倒是全搬到web面板中了</p><p>也多亏了宝塔，让我的网站搭建之路很顺畅，不用折腾MySQL，apache这些环境</p><p>也是从这里开始，我用上了真正的博客程序，emlog，搭配了一个当时emlog中超好看的叫colorful的主题，开始我的博客3.0</p><h2 id="高中">高中</h2><p>到高一的时候，emlog从5.x升级到了7.x，emlog5被爆出有漏洞，但是colorful主题并不支持emlog7，没办法，只好舍弃了emlog</p><p>与此同时，我又了解到了wordpress，便搭建了一个wordpress，把文章全部迁移到了wordpress</p><p>但众所周知，wordpress十分臃肿，阿里的9.9小鸡根本扛不住，再加上寒假那会我还要那它开mc服务器（狠狠压榨了🤣），大部分时间其实都花在怎么优化wordpress，不过好在在我高中学业繁忙之前弄好了</p><p>到了高二高三，就真的没有时间去打理网站了，一直忙着学业，而且那会又突然喜欢上写程序，白天课余时间构思，在纸上写程序框架和逻辑，写伪代码，星期天就用3个小时的时间在家里实现</p><p>别人周末打游戏，我周末就写程序😂</p><p>不知不觉，高中生活转瞬即逝，转眼就进入了大学生活</p><h2 id="大学">大学</h2><p>到了大学，那时间就是大把大把的多😆</p><p>给自己的博客换了一个好看的主题，叫pjax sakura，同时也开始混博客圈，算是正式进入博客4.0</p><p>我记得应该是和 <a href="https://blog.moeworld.tech/">晓空</a> 互换了第一个友情链接，他博客现在用的主题就是pjax sakura</p><p>我的博客同时也于2022年12月10日加入了开往，于2022年12月31日加入了十年之约</p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/04/k5u4pq.webp" alt="开往"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/04/k5tmql.webp" alt="十年之约"></p><p>后来是实在忍受不了wordpress的臃肿，在了解到hexo后就直接转了hexo，用上了butterfly主题（也就是现在用的这个）</p><p>同时也给博客做了版本控制：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/04/k8s4bb.webp" alt="开始"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/04/k8xrbs.webp" alt="现在"></p><h2 id="未完待续">未完待续</h2><p>一路陪伴，感谢有你❤️</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=5549</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
+    
+    
+    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="十周年" scheme="https://blog.goodboyboy.top/tags/%E5%8D%81%E5%91%A8%E5%B9%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>ESP32 S3开发小结</title>
@@ -1370,11 +1400,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
+    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
-    
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
@@ -1438,34 +1468,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
     <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客明信片打样完成</title>
-    <link href="https://blog.goodboyboy.top/posts/1538506451.html"/>
-    <id>https://blog.goodboyboy.top/posts/1538506451.html</id>
-    <published>2025-04-16T14:33:29.000Z</published>
-    <updated>2025-04-16T14:33:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天明信片快递到了，下面是打印的效果：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yzxki.webp" alt="外包装"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/16/10yx537.webp" alt="明信片"></p><p>看了一下，背面还有需要调整的地方，1.2元的邮票会挡住收信地址栏一部分，还可能挡住OpenPGP Key的条码，另外邮编框也有点小了，打算先把第一批申请的发出去，然后准备打第二版。</p><p>第二版的话会增加其他封面，敬请期待~😁</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;今天明信片快递到了，下面是打印的效果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2025/04/16/10yzxki.webp&quot; alt=&quot;外包装&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goo</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/categories/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
-    
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
   </entry>
   
