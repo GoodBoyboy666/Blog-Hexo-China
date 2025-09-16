@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-09-04T02:04:03.000Z</updated>
+  <updated>2025-09-16T14:16:40.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>欢迎招行万事达加入卡包大家庭</title>
+    <link href="https://blog.goodboyboy.top/posts/1436642200.html"/>
+    <id>https://blog.goodboyboy.top/posts/1436642200.html</id>
+    <published>2025-09-16T14:16:40.000Z</published>
+    <updated>2025-09-16T14:16:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>上个星期去网点，结果网点说系统还没升级，只能申请金葵花卡，让我等一个星期后再看看，来之前还可以先打网点电话问问。</p><p>等了一个星期，刚好今天下午没课，择日不如撞日，那就今天吧（doge）<br>保险起见先call一下网点电话，问了一下网点现在可以开普卡了，于是打车猛猛去网点</p><h2 id="开卡">开卡</h2><p>招行分行果然没让我失望，开卡流程顺畅无比，没额外要求任何证明材料，一张身份证即可，而且柜员业务熟练，裤裤就帮我开好了</p><p>而且限额直接就是学生能开的顶级，每日5k，<br>我之前那张招行的一类卡还是花了一个月才从2k升到了5k</p><p>最后小姐姐问我能不能100块存三个月定期，他们有任务，能不能帮个忙。既然人家服务这么好，这点小忙能帮还是会帮的啦，便存了100块的三个月定期。</p><p>暂时没绑在Google play上，因为我怕把地区弄回国区了，不过PayPal上倒是绑了试了一下，可以正常绑定。</p><p>这张卡是普卡（但是卡背面印刷着platinum debit），支持开为二类户，完全不影响原先的一类卡，而且支持APP查询预授权，无每月150元的账户管理费</p><p>卡支付来说，100%冻结比例，支持3ds（非强制），支持自动兑换货币（不占用每人每年5w美元额度），人民币账户，支持绑定微信支付宝，境外消费5‰返现，每月免首笔境外ATM取款手续费，境外ATM查询手续费、货币兑换手续费全免，而且听说汇率走的是万事达的汇率，比银行汇率优惠一丢丢</p><p>可以说国内万事达借记卡中，将它称之为神卡不过分吧</p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/16/65dea9ae3e7c5bbb5242406c757596e991b3492fd52018ad27de291984254ebc.jpg" alt="卡片"></p><h2 id="后记">后记</h2><p>自从中信的金貔貅支持自动兑换货币后，邮储那张万事达在我心中的地位就跌入底谷了，毕竟强制3ds这一点真的就拒了很多海外网站</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;上个星期去网点，结果网点说系统还没升级，只能申请金葵花卡，让我等一个星期后再看看，来之前还可以先打网点电话问问。&lt;/p&gt;
+&lt;p&gt;等了一个星期，刚好今天下午没课，择日不如撞日，那就今天吧（doge）&lt;br&gt;
+保险起见先call一下网点电</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="万事达" scheme="https://blog.goodboyboy.top/tags/%E4%B8%87%E4%BA%8B%E8%BE%BE/"/>
+    
+    <category term="招行" scheme="https://blog.goodboyboy.top/tags/%E6%8B%9B%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>博客十周年啦🎉</title>
@@ -1437,37 +1466,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客明信片v2版发布啦，喜欢就快来申请一张吧！</title>
-    <link href="https://blog.goodboyboy.top/posts/1630314981.html"/>
-    <id>https://blog.goodboyboy.top/posts/1630314981.html</id>
-    <published>2025-04-20T07:32:50.000Z</published>
-    <updated>2025-04-20T07:32:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note success flat"><p>第二版博客明信片制作完成，选一张自己喜欢的吧~😁<br>申请详情-&gt; <a href="/posts/243612221.html">设计了一张博客明信片</a></p></div><h2 id="落日系列">落日系列</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/qzv9ub.webp" alt="落日系列"></p><h2 id="湖泊系列">湖泊系列</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r1ghoz.webp" alt="湖泊系列"></p><h2 id="Flower系列">Flower系列</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r2oq5f.webp" alt="Flower系列"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r3wy3i.webp" alt="Flower系列"></p><h2 id="Human系列">Human系列</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r4f7c1.webp" alt="Human系列"></p><h2 id="建筑系列">建筑系列</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r4jw4c.webp" alt="建筑系列"></p><h2 id="背面">背面</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/04/20/r4o641.webp" alt="背面"></p><p>相较于v1版，v2版背面的邮编框和右侧邮票框大小进行了调整，同时，移除了收信地址栏预留的<code>To</code>以及下划线</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note success flat&quot;&gt;&lt;p&gt;第二版博客明信片制作完成，选一张自己喜欢的吧~😁&lt;br&gt;
-申请详情-&amp;gt; &lt;a href=&quot;/posts/243612221.html&quot;&gt;设计了一张博客明信片&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 id=&quot;</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/categories/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
-    
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
-    
-    <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
