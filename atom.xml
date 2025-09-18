@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-09-16T14:16:40.000Z</updated>
+  <updated>2025-09-18T11:30:19.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新增外设漫步者G1500bar</title>
+    <link href="https://blog.goodboyboy.top/posts/426277464.html"/>
+    <id>https://blog.goodboyboy.top/posts/426277464.html</id>
+    <published>2025-09-18T11:30:19.000Z</published>
+    <updated>2025-09-18T11:30:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="起因">起因</h2><p>之前的那个音响坏了，用了一年多，过保没多久，没办法，只能重新买个了</p><h2 id="物色">物色</h2><p>在网上物色了一会，知道百元价位就纯听个响，也就没多苛求什么了</p><p>找了一圈，看上了g1500bar，主要还是这个外观设计比较戳我，7.1声道什么的无所谓，效果还不如不开</p><p>但是价格有点贵，日常价是199，但是经常打折到170左右</p><p>然而就当我打算买的时候，我发现这玩意居然也能用国补，能减20块钱，但总所周知，下半年的国补真的一言难尽，只能用“如补”来形容</p><p>现在湖南国补改成了每月一号抢，再看这发券量，能抢上就有鬼了，之前听有些人说抢了40多分钟才抢到，为了那20块钱浪费我半个小时实在没必要，少吃一顿就节省出来了。。。</p><p>最近打算不等了，等它降价到170多就买</p><h2 id="下单">下单</h2><p>今天发现它上了京东的国家补贴，不用去逆天云闪付抢券，又去搜刮了几块钱的券，折合下来也差不多是170多</p><p>下单的时候买了个8块的三年三包故障无忧焕新，不想再被搞心态，过保就报废。。。</p><p>因为今早下单下得早，今日达下午六点就到学校驿站了</p><h2 id="使用">使用</h2><p>听个响，中规中矩吧</p><p>试了一下麦克风，也没像网上说的那样不堪，感觉收音还不错</p><p>一开始都还不知道下面那个灯条是rgb，以为就一个颜色，看了说明书才发现原来是rgb灯条，还能音频响应（喜</p><p>而且当初也是当usb音响买的，突然想起这玩意也能用蓝牙连接，可以当蓝牙音响玩了（doge</p><p>因为电脑A口就两个，一个A口接了个USB HUB，一开始我把音响插HUB上，系统里看到了设备，但是就是无法输出声音，然后Windows就提示无法正常启动这个USB设备</p><p>我想这玩意又要从USB取电，又要传递数据，会不会是HUB的问题，接到另一个A口上后果然就正常了</p><p>然后这个音响还有软件，软件里可以调的功能还比较多，试了一圈下来我就开了个清晰度增强和动态低音，这两个功能确实是能让我明显感到变化，特别是动态低音，效果还不错（喜</p><p>来张桌面图（doge</p><p><img src="https://pic.goodboyboy.top/imgs/2025/09/18/x3o07m.webp" alt="桌面"></p><h2 id="后记">后记</h2><p>总体来说还不错，又是满意的一次购物体验😁</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
+&lt;p&gt;之前的那个音响坏了，用了一年多，过保没多久，没办法，只能重新买个了&lt;/p&gt;
+&lt;h2 id=&quot;物色&quot;&gt;物色&lt;/h2&gt;
+&lt;p&gt;在网上物色了一会，知道百元价位就纯听个响，也就没多苛求什么了&lt;/p&gt;
+&lt;p&gt;找了一圈，看上了g1500bar，主</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="外设" scheme="https://blog.goodboyboy.top/tags/%E5%A4%96%E8%AE%BE/"/>
+    
+    <category term="音响" scheme="https://blog.goodboyboy.top/tags/%E9%9F%B3%E5%93%8D/"/>
+    
+    <category term="漫步者" scheme="https://blog.goodboyboy.top/tags/%E6%BC%AB%E6%AD%A5%E8%80%85/"/>
+    
+  </entry>
   
   <entry>
     <title>欢迎招行万事达加入卡包大家庭</title>
@@ -1432,38 +1464,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
-    
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OAuth 2.0 Client Secret 模式和 PKCE 模式区别</title>
-    <link href="https://blog.goodboyboy.top/posts/873069865.html"/>
-    <id>https://blog.goodboyboy.top/posts/873069865.html</id>
-    <published>2025-04-22T12:19:59.000Z</published>
-    <updated>2025-04-22T12:19:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note info flat"><p>本文由DeepSeek生成，仅用于博主学习笔记记录</p></div><h2 id="关键区别对比"><strong>关键区别对比</strong></h2><table><thead><tr><th>特性</th><th>传统 Client Secret 模式</th><th>PKCE 模式（无 Client Secret）</th></tr></thead><tbody><tr><td><strong>适用场景</strong></td><td>机密客户端（有后端服务器）</td><td>公开客户端（SPA、移动端、无后端）</td></tr><tr><td><strong>是否需要 <code>client_secret</code></strong></td><td>✅ 需要（后端存储）</td><td>❌ 不需要</td></tr><tr><td><strong>令牌请求方</strong></td><td>由<strong>应用后端</strong>向授权服务器换取令牌</td><td>由<strong>应用后端</strong>或<strong>前端</strong>换取令牌（但无需 <code>client_secret</code>）</td></tr><tr><td><strong>核心安全机制</strong></td><td>依赖 <code>client_secret</code> 的保密性</td><td>依赖动态的 <code>code_verifier</code> 和 <code>code_challenge</code></td></tr><tr><td><strong>攻击防护</strong></td><td>需防止 <code>client_secret</code> 泄露</td><td>防止授权码截获（即使泄露 <code>code</code> 也无法换令牌）</td></tr></tbody></table><hr><h2 id="详细流程对比"><strong>详细流程对比</strong></h2><h3 id="1-Client-Secret-模式（传统后端换令牌）"><strong>1. Client Secret 模式（传统后端换令牌）</strong></h3><pre><code class="highlight mermaid">sequenceDiagram    participant 用户    participant 前端    participant 后端    participant 授权服务器    用户-&gt;&gt;前端: 点击登录    前端-&gt;&gt;授权服务器: 重定向授权页面（带 client_id）    用户-&gt;&gt;授权服务器: 登录并授权    授权服务器-&gt;&gt;前端: 返回 code 到 redirect_uri    前端-&gt;&gt;后端: 发送 code    后端-&gt;&gt;授权服务器: 用 code + client_secret 换 token    授权服务器-&gt;&gt;后端: 返回 access_token    后端-&gt;&gt;前端: 返回 token 或用户数据</code></pre><ul><li><strong>关键点</strong>：<code>client_secret</code> 由后端安全存储，前端不接触。</li></ul><h3 id="2-PKCE-模式（无-Client-Secret，适合公开客户端）"><strong>2. PKCE 模式（无 Client Secret，适合公开客户端）</strong></h3><pre><code class="highlight mermaid">sequenceDiagram    participant 用户    participant 前端    participant 授权服务器    用户-&gt;&gt;前端: 点击登录    前端-&gt;&gt;前端: 生成 code_verifier 和 code_challenge    前端-&gt;&gt;授权服务器: 重定向授权页面（带 code_challenge）    用户-&gt;&gt;授权服务器: 登录并授权    授权服务器-&gt;&gt;前端: 返回 code 到 redirect_uri    前端-&gt;&gt;授权服务器: 用 code + code_verifier 换 token    授权服务器-&gt;&gt;前端: 返回 access_token</code></pre><ul><li><strong>关键点</strong>：全程无需 <code>client_secret</code>，依赖 <code>code_verifier</code> 的临时性和唯一性。</li></ul><hr><h2 id="为什么-PKCE-更安全？"><strong>为什么 PKCE 更安全？</strong></h2><ol><li><p><strong>防御授权码截获攻击</strong></p><ul><li>即使攻击者截获 <code>authorization_code</code>，也无法使用它（缺少 <code>code_verifier</code>）。</li></ul></li><li><p><strong>无需长期密钥</strong></p><ul><li><code>client_secret</code> 是长期有效的，一旦泄露风险极大；而 <code>code_verifier</code> 仅单次有效。</li></ul></li><li><p><strong>适应公开客户端限制</strong></p><ul><li>移动端或 SPA 无法安全存储 <code>client_secret</code>，PKCE 提供了替代方案。</li></ul></li></ol><hr><h2 id="何时用哪种模式？"><strong>何时用哪种模式？</strong></h2><table><thead><tr><th>客户端类型</th><th>推荐模式</th><th>原因</th></tr></thead><tbody><tr><td>传统 Web 应用（有后端）</td><td>Client Secret + 授权码模式</td><td>后端可安全存储 <code>client_secret</code></td></tr><tr><td>单页应用（SPA）</td><td>PKCE（无 Client Secret）</td><td>前端无法保密 <code>client_secret</code></td></tr><tr><td>移动端应用</td><td>PKCE + 后端代理换令牌</td><td>避免前端直接处理 <code>access_token</code>（即使使用 PKCE，令牌也应尽量由后端管理）</td></tr></tbody></table><hr><h2 id="常见误解澄清"><strong>常见误解澄清</strong></h2><h3 id="❌-误解1：PKCE-不需要后端">❌ 误解1：PKCE 不需要后端</h3><ul><li><p><strong>事实</strong>：PKCE 可以完全在前端实现（如 SPA），但如果有后端，仍推荐由后端换令牌（避免前端暴露 <code>access_token</code>）。</p></li><li><p><strong>安全增强</strong>：即使使用 PKCE，最佳实践仍是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前端拿到 code → 发给后端 → 后端用 code_verifier 换 token → 返回 token 给前端</span><br></pre></td></tr></table></figure></li></ul><hr><h3 id="❌-误解2：OAuth2-只是用来做“第三方登录”的">❌ 误解2：OAuth2 只是用来做“第三方登录”的</h3><ul><li><strong>事实</strong>：<br>OAuth2 的核心是 <strong>授权委托</strong>（Authorization Delegation），而不仅仅是登录。<ul><li><strong>登录（认证）</strong> 是 OpenID Connect（OAuth2 的扩展协议）的功能。</li><li><strong>原生用途</strong>：控制资源访问权限（如允许 GitHub 应用访问你的仓库）。</li></ul></li></ul><hr><h3 id="❌-误解3：PKCE-只用于移动端或-SPA">❌ 误解3：PKCE 只用于移动端或 SPA</h3><ul><li><strong>事实</strong>：<br>PKCE <strong>对所有客户端类型均有益</strong>，包括传统 Web 应用：<ul><li>可防止授权码截获攻击（即使有机密客户端也应启用 PKCE）。</li><li>例如：GitHub 的 OAuth2 已强制要求所有客户端使用 PKCE。</li></ul></li></ul><hr><h3 id="❌-误解4：state-参数是可选的">❌ 误解4：<code>state</code> 参数是可选的</h3><ul><li><strong>事实</strong>：<br><code>state</code> 是 <strong>防御 CSRF 攻击的必备参数</strong>，必须满足：<ul><li><p><strong>随机性</strong>：每次请求生成唯一值（如 UUID）。</p></li><li><p><strong>绑定会话</strong>：校验回调时是否与初始请求一致。</p></li><li><p><strong>错误示例</strong>：</p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/authorize?response_type=code&amp;client_id=xxx  </span><br><span class="line"># ❌ 缺少 state 参数！</span><br></pre></td></tr></table></figure></li></ul></li></ul><hr><h3 id="❌-误解5：前端可以直接用-access-token-调用-API">❌ 误解5：前端可以直接用 <code>access_token</code> 调用 API</h3><ul><li><strong>事实</strong>：<ul><li><strong>风险</strong>：前端暴露 <code>access_token</code> 可能导致 XSS 攻击窃取令牌。</li><li><strong>正确做法</strong>：<ul><li>通过后端代理 API 请求（前端传 <code>token</code> 给后端，后端校验后转发）。</li><li>使用 <strong>短期有效的 <code>access_token</code></strong> + <code>refresh_token</code>（存储在后端）。</li></ul></li></ul></li></ul><hr><h3 id="❌-误解6：refresh-token-可以无限期使用">❌ 误解6：<code>refresh_token</code> 可以无限期使用</h3><ul><li><strong>事实</strong>：<ul><li><code>refresh_token</code> 应有 <strong>有效期</strong> 和 <strong>使用限制</strong>：<ul><li>例如：GitHub 的 <code>refresh_token</code> 默认 6 个月过期。</li></ul></li><li>必须配合 <code>client_secret</code> 或 PKCE 使用（不能裸奔）。</li></ul></li></ul><hr><h3 id="❌-误解7：OAuth2-的-implicit-流程适合-SPA">❌ 误解7：OAuth2 的 <code>implicit</code> 流程适合 SPA</h3><ul><li><strong>事实</strong>：<ul><li><code>implicit</code> 流程（直接返回 <code>token</code> 到前端）<strong>已被废弃</strong>（RFC 6749 附录 10.3）。</li><li><strong>现代替代方案</strong>：PKCE + 授权码模式（即使 SPA 也应通过后端换令牌）。</li></ul></li></ul><hr><h3 id="❌-误解8：OAuth2-不需要-HTTPS">❌ 误解8：OAuth2 不需要 HTTPS</h3><ul><li><strong>事实</strong>：<ul><li><p><strong>所有 OAuth2 流量必须通过 HTTPS</strong>：</p><ul><li>防止 <code>code</code>、<code>token</code> 被中间人窃取。</li><li>例外：仅限 <code>localhost</code> 环回地址（如开发环境）。</li></ul></li><li><p><strong>致命错误</strong>：</p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://gitea.com/login/oauth/authorize?...  </span><br><span class="line"># ❌ 非 HTTPS 的授权端点！</span><br></pre></td></tr></table></figure></li></ul></li></ul><hr><h2 id="总结"><strong>总结</strong></h2><ul><li><strong>Client Secret 模式</strong>：依赖后端保护的静态密钥，适合有机密存储能力的应用。</li><li><strong>PKCE 模式</strong>：通过动态临时密钥实现安全，专为无法保密 <code>client_secret</code> 的公开客户端设计。</li><li><strong>核心原则</strong>：无论哪种模式，都应确保 <code>access_token</code> 不暴露给不可信的上下文（如前端页面 URL）。</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;本文由DeepSeek生成，仅用于博主学习笔记记录&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 id=&quot;关键区别对比&quot;&gt;&lt;strong&gt;关键区别对比&lt;/strong&gt;&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;特性</summary>
-      
-    
-    
-    
-    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
-    
     
     <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
