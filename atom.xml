@@ -101,9 +101,9 @@
     
     <category term="博客" scheme="https://blog.goodboyboy.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
-    
     <category term="十周年" scheme="https://blog.goodboyboy.top/tags/%E5%8D%81%E5%91%A8%E5%B9%B4/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
   </entry>
   
@@ -695,9 +695,9 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Software" scheme="https://blog.goodboyboy.top/categories/Software/"/>
     
     
-    <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
-    
     <category term="Passkey" scheme="https://blog.goodboyboy.top/tags/Passkey/"/>
+    
+    <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
     
   </entry>
   
@@ -1461,11 +1461,11 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
     
     
+    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
+    
     <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
     
     <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
-    
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
     
   </entry>
   
