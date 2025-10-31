@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-09-18T11:30:19.000Z</updated>
+  <updated>2025-10-31T09:23:24.855Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>十月小记</title>
+    <link href="https://blog.goodboyboy.top/posts/734778049.html"/>
+    <id>https://blog.goodboyboy.top/posts/734778049.html</id>
+    <published>2025-10-31T08:57:40.000Z</published>
+    <updated>2025-10-31T09:23:24.855Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>这个月差不多都是些零零散散的琐事，就用一篇小记来总结吧。</p><h2 id="国庆">国庆</h2><p>国庆大部分还是在学校玩，一个人去自助餐吃了一顿，然后就是最后一天去醴陵转了一圈。</p><p>不得不说，醴陵交通还是有些不方便，等部分线路公交车等半天，而且也没有共享电单车，走路脚都走痛了</p><h2 id="实验室搬迁">实验室搬迁</h2><p>由于今年学校研究生扩招，导致我们原来的实验室被划为研究生工位，一堆东西要搬走，不过我的东西倒不多</p><p>不过最难蚌的还是搬到新地方后，还没过几天，又被划为研究生工位了。。。</p><p>然后就是又搬迁……</p><h2 id="参会">参会</h2><p>然后就是参加了一个工业软件创新发展大会，不过因为下午临时有座谈会，和同学交接完工作后就打车回学校了</p><h2 id="参观工厂">参观工厂</h2><p>报名的时候以为是参观科技公司，结果发现是参观工业类的公司qwq，整个队伍里计算机专业的就两三个人，其他全是电气自动化，机械专业的，感觉报错活动了（</p><p>不过倒也蛮有趣的，上午参观了一下本地的一个生产车间（不得不说有个车间味道是真的大。。。</p><p>还有就是去参观了一个通航企业，看了一下他们公司的直升机</p><p>中午免费蹭了顿饭，好吃（逃</p><p>下午则是去参观了一家水泥厂公司，然后听了个就业讲座，感觉还不错，没白来😄</p><h2 id="团建">团建</h2><p>和部门里新来的干事们一起去大碗先生吃了顿饭，然后去KTV唱歌</p><p>他们在那里摇色子，我就在那唱歌😂</p><p>不得不说，团建人多就是好，饭钱平均下来每人30+，KTV平均下来每人才11块，还送了24瓶啤酒😂</p><hr><p>全文完，感谢阅读。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;这个月差不多都是些零零散散的琐事，就用一篇小记来总结吧。&lt;/p&gt;
+&lt;h2 id=&quot;国庆&quot;&gt;国庆&lt;/h2&gt;
+&lt;p&gt;国庆大部分还是在学校玩，一个人去自助餐吃了一顿，然后就是最后一天去醴陵转了一圈。&lt;/p&gt;
+&lt;p&gt;不得不说，醴陵交通还是有些</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>新增外设漫步者G1500bar</title>
@@ -1434,38 +1458,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="2FA" scheme="https://blog.goodboyboy.top/tags/2FA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OpenID Connect认证流程</title>
-    <link href="https://blog.goodboyboy.top/posts/3034134255.html"/>
-    <id>https://blog.goodboyboy.top/posts/3034134255.html</id>
-    <published>2025-04-25T12:55:33.000Z</published>
-    <updated>2025-04-25T12:55:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note info flat"><p>本文使用最常用的Authorization Code的Code认证方式，IdP采用ZITADEL</p></div><p>首先依赖方会要求提供<code>discovery endpoint</code>，具体地址由IdP提供，一般为<code>&#123;idp_domain&#125;/.well-known/openid-configuration</code>，该链接包含认证所需的很多endpoint。</p><p>然后在授权服务器注册应用，注册完成后会得到<code>Client ID</code>与<code>Client Secret</code>，注册时填写的callback地址由依赖方提供，用于用户完成授权后客户端调用callback地址传递授权码。</p><h2 id="认证流程">认证流程</h2><h3 id="重定向授权页面">重定向授权页面</h3><p>由依赖方在登录页面发起授权请求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/authorize</span><br><span class="line">?response_type=code</span><br><span class="line">&amp;client_id=CLIENT_ID</span><br><span class="line">&amp;redirect_uri=REDIRECT_URI</span><br><span class="line">&amp;scope=SCOPE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中<code>CLIENT_ID</code>为注册应用时获得的Client ID，<code>REDIRECT_URI</code>为注册应用时填写的callback地址，<code>SCOPE</code>为授权范围，具体范围需要参考IdP，在<code>discovery endpoint</code>中<code>scopes_supported</code>也可以看到可以申请的授权范围，<code>STATE</code>为由依赖方产生的随机值，用于防止CSRF攻击，在授权完成调用callback地址时会附加在链接中，便于依赖方校对。</p><h3 id="重定向callback地址">重定向callback地址</h3><p>用户授权完成后重定向至callback url</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;callback_url&#125;</span><br><span class="line">?code=CODE</span><br><span class="line">&amp;state=STATE</span><br></pre></td></tr></table></figure><p>其中<code>CODE</code>为授权码，<code>STATE</code>与上文一致</p><h3 id="请求Access-Token">请求Access Token</h3><p>依赖方后端收到授权码，校验state后向<code>token endpoint</code>请求Access Token</p><p>后端构建Authorization头：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: &quot;Basic &quot; + base64( formUrlEncode(client_id) + &quot;:&quot; + formUrlEncode(client_secret) )</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oauth/v2/token</span><br><span class="line"></span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Authorization: Basic xxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code</span><br><span class="line">code=CODE</span><br><span class="line">redirect_uri=REDIRECT_URI</span><br><span class="line">scope=SCOPE</span><br></pre></td></tr></table></figure><p><code>CODE</code>，<code>REDIRECT_URI</code>，<code>SCOPE</code>同上文一致</p><p>返回如下Json：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;access_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;token_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bearer&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;expires_in&quot;</span><span class="punctuation">:</span> <span class="number">43199</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;id_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><div class="note info flat"><p>ZITADEL<code>refresh_token</code>需要在scope内添加<code>offline_access</code>，否则返回内容不会有refresh_token<br>ZITADEL<code>id_token</code>默认不会含有email，profile之类的信息（即使scope已声明），需要在应用设置，令牌设置内勾选<code>在 ID Token 中包含用户信息</code>，或者直接向<code>userinfo_endpoint</code>请求用户信息。</p></div><h3 id="获取用户信息">获取用户信息</h3><p>后端向<code>userinfo_endpoint</code>请求用户信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;idp_domain&#125;/oidc/v1/userinfo</span><br><span class="line">Authorization: Bearer ACCESS_TOKEN</span><br></pre></td></tr></table></figure><p>其中<code>ACCESS_TOKEN</code>为上文拿到的Access Token</p><p>返回如下Json</p><div class="note info flat"><p>不同IdP可能不一样</p></div><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;000000000000000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;given_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;family_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;locale&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="number">0000000000000000</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;preferred_username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxx@xxxxxxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxx@xxxxxxxxx.xxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;email_verified&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;本文使用最常用的Authorization Code的Code认证方式，IdP采用ZITADEL&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;首先依赖方会要求提供&lt;code&gt;discovery endpoint&lt;/code&gt;，具体地址</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
-    
-    
-    <category term="OAuth2" scheme="https://blog.goodboyboy.top/tags/OAuth2/"/>
-    
-    <category term="OpenID Connect" scheme="https://blog.goodboyboy.top/tags/OpenID-Connect/"/>
-    
-    <category term="oidc" scheme="https://blog.goodboyboy.top/tags/oidc/"/>
     
   </entry>
   
