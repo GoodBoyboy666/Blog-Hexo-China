@@ -4,6 +4,68 @@
   
     
     <entry>
+      <title>OpenPGP邮件加密——关于测试邮件握手的思考</title>
+      <!--<link href="/posts/643318964.html"/>
+      <url>/posts/643318964.html</url>-->
+      <link href="posts/643318964.html"/>
+      <url>posts/643318964.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>和网友互换了OpenPGP公钥，然后测试了下加密邮件，然后有了下面的思考：</p><p>如何“规范”的进行加密邮件测试？</p><h2 id="结论">结论</h2><p>这里先给出我的结论：进行三轮握手。</p><blockquote><p>Tips：以上结论用于子密钥分担不同职责的情况。</p></blockquote><h2 id="原因">原因</h2><p>OpenPGP密钥有四个职能：认证、加密、验证、签名。</p><p>一般来说，主密钥担任认证职责，三个子密钥分别担任加密、验证、签名职责。</p><p>目前市面上的OpenPGP 物理安全密钥会有三个插槽，分别对应存储三个子密钥，主密钥则离线冷存储。</p><p>当两个人互换OpenPGP公钥后，准备发送测试邮件测试邮件加密功能：</p><p>这里使用A和B区分用户</p><blockquote><p>第一次握手：A向B（也可以是B向A）发测试邮件（发起握手请求）</p></blockquote><p>A的邮件客户端会使用B的OpenPGP公钥中的“加密”子密钥的公钥，对邮件内容进行加密，并使用自己的OpenPGP公钥中的“签名”子密钥对邮件进行签名。</p><p>B在收到邮件后，邮件客户端会使用自己的OpenPGP公钥中的“加密”子密钥的私钥对邮件内容进行解密，并且使用A的OpenPGP公钥中的“签名”子密钥的公钥对签名进行检查，如果检查通过，那么代表：</p><div class="note success flat"><p>A什么都还不知道（B还未作出回应）</p><p>B知道了自己的OpenPGP公钥中的“加密”子密钥功能正常（邮件客户端正常解密邮件），A的OpenPGP公钥中的“签名”子密钥功能正常（邮件客户端正确显示邮件签名）</p></div><blockquote><p>第二次握手：B向A发送测试邮件</p></blockquote><p>这次和第一次流程是反过来的</p><p>B的邮件客户端会使用A的OpenPGP公钥中的“加密”子密钥的公钥，对邮件内容进行加密，并使用自己的OpenPGP公钥中的“签名”子密钥对邮件进行签名。</p><p>A在收到邮件后，邮件客户端会使用自己的OpenPGP公钥中的“加密”子密钥的私钥对邮件内容进行解密，并且使用B的OpenPGP公钥中的“签名”子密钥的公钥对签名进行检查，如果检查通过，那么代表：</p><div class="note success flat"><p>A知道了自己的OpenPGP公钥中的“加密”子密钥功能正常（邮件客户端正常解密邮件），B的OpenPGP公钥中的“签名”子密钥功能正常（邮件客户端正确显示邮件签名），自己的OpenPGP公钥中的“签名”子密钥功能正常（否则B也不会回复测试成功），B的OpenPGP公钥中的“加密”子密钥功能正常（否则B也不会回复测试成功）。</p><p>B还是仅知道自己的OpenPGP公钥中的“加密”子密钥功能正常，A的OpenPGP公钥中的“签名”子密钥功能正常</p></div><blockquote><p>第三次握手：A向B发送完成测试邮件</p></blockquote><p>同样是B在收到邮件后，邮件客户端会使用自己的OpenPGP公钥中的“加密”子密钥的私钥对邮件内容进行解密，并且使用A的OpenPGP公钥中的“签名”子密钥的公钥对签名进行检查，如果检查通过，那么代表：</p><div class="note success flat"><p>A已知全部</p><p>B知道了自己的OpenPGP公钥中的“加密”子密钥功能正常（第一轮握手已知），A的OpenPGP公钥中的“签名”子密钥功能正常（第一轮握手已知），自己的OpenPGP公钥中的“签名”子密钥功能正常（不然A也不会回复测试成功），A的OpenPGP公钥中的“加密”子密钥功能正常（不然A也不会回复测试成功）。</p></div><p>整理成表格如下：</p><table><thead><tr><th>轮数</th><th>A</th><th>B</th></tr></thead><tbody><tr><td>第一轮握手A-&gt;B</td><td>A什么都还不知道</td><td>B的“加密”子密钥功能正常、A的“签名”子密钥功能正常</td></tr><tr><td>第二轮握手B-&gt;A</td><td>A的“加密”子密钥功能正常、B的“签名”子密钥功能正常、A的“签名”子密钥功能正常、B的“加密”子密钥功能正常</td><td>B的“加密”子密钥功能正常、A的“签名”子密钥功能正常</td></tr><tr><td>第三轮握手A-&gt;B</td><td>A的“加密”子密钥功能正常、B的“签名”子密钥功能正常、A的“签名”子密钥功能正常、B的“加密”子密钥功能正常</td><td>B的“加密”子密钥功能正常、A的“签名”子密钥功能正常、B的“签名”子密钥功能正常、A的“加密”子密钥功能正常</td></tr></tbody></table><p>整理成mermaid如下：</p><pre><code class="highlight mermaid">sequenceDiagram    autonumber    participant A    participant B    Note over A,B: 握手过程开始    %% 第一轮    rect rgb(240, 248, 255)    Note left of A: 状态: A什么都还不知道    A-&gt;&gt;B: 第一轮握手 (A -&gt; B)    Note right of B: 状态: &lt;br/&gt;1. A的“签名”子密钥功能正常&lt;br/&gt;2. B的“加密”子密钥功能正常    end    %% 第二轮    rect rgb(255, 250, 240)    B-&gt;&gt;A: 第二轮握手 (B -&gt; A)&lt;br/&gt;（隐含B的1、2点状态）    Note left of A: 状态: &lt;br/&gt;1. A的“加密”子密钥功能正常&lt;br/&gt;2. B的“签名”子密钥功能正常&lt;br/&gt;3. A的“签名”子密钥功能正常&lt;br/&gt;4. B的“加密”子密钥功能正常    Note right of B: (B维持上一轮状态)    end    %% 第三轮    rect rgb(240, 255, 240)    A-&gt;&gt;B: 第三轮握手 (A -&gt; B)    Note left of A: (A维持全正常状态)    Note right of B: 状态: &lt;br/&gt;1. A的“加密”子密钥功能正常&lt;br/&gt;2. B的“签名”子密钥功能正常&lt;br/&gt;3. A的“签名”子密钥功能正常&lt;br/&gt;4. B的“加密”子密钥功能正常    end</code></pre><p>至此，A与B都已知自己和对方的邮件签名和加密功能正常。</p><h2 id="后记">后记</h2><p>怎么感觉像是TCP的三次握手（</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenPGP </tag>
+            
+            <tag> 邮件加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>疯狂动物城2太好看了（无具体剧透）</title>
+      <!--<link href="/posts/3999786379.html"/>
+      <url>/posts/3999786379.html</url>-->
+      <link href="posts/3999786379.html"/>
+      <url>posts/3999786379.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/11/26/zowcqe.webp" alt="海报"></p><p>今天疯狂动物城2上映，前两天就订了票，今天吃完晚饭去看了看。</p><p>省流：非常好看😆</p><h2 id="正文">正文</h2><p>剧情上来说，有搞笑，也有爱情，还有深度，而且没有毁IP，人物刻画特别棒，剧情张度也有，不是平淡无奇的那种，最后懂得都懂，肯定是Happy Ending啦</p><p>画面上来说，这点完全可以相信迪士尼，我看过的迪士尼动画画面就没有难看的，不仅是尼克和朱迪的面部表情刻画的很到位，其他角色也是非常不错。而且新角色猞猁（芝士猞猁bushi）颜值真的不错（逃）</p><p>角色表现上来说，人物刻画很立体，每个角色都很栩栩如生</p><p>总而言之，非常值得一看</p><h2 id="后记">后记</h2><p>不要乱磕CP，会被制裁😂</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 疯狂动物城2 </tag>
+            
+            <tag> Zootopia 2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>进程调度——时间片轮转</title>
       <!--<link href="/posts/2351378595.html"/>
       <url>/posts/2351378595.html</url>-->
