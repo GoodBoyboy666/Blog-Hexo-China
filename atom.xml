@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-12-17T14:57:14.000Z</updated>
+  <updated>2025-12-19T05:10:17.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新购Intel AX210网卡</title>
+    <link href="https://blog.goodboyboy.top/posts/1633583570.html"/>
+    <id>https://blog.goodboyboy.top/posts/1633583570.html</id>
+    <published>2025-12-19T05:10:17.000Z</published>
+    <updated>2025-12-19T05:10:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>众所周知，华硕天选系列的游戏本基本都是网卡硬盘叠叠乐。我当时那会天选三出来，网卡有Intel和Realtek（螃蟹卡）两个批次，我比较幸运抽到了Intel AX201。虽然Intel的比螃蟹卡好一点但不多，一旦电脑进入高负载还是会掉网卡。</p><p>不过那会都是高负载下才掉网卡，我电脑充电器一般都扔在寝室，在外的时候没充电也上不了高负载。在寝室的时我则是直接用有线，掉网卡也不影响，我也就懒得换AX210了。</p><p>然而最近在低负载开机时居然也开始掉网卡了，这就让我有点不能忍了。</p><p>特别是去实验室学习的时候，背着这么重的游戏本走老远的路到工位，开机发现网卡掉了上不了网，蓝牙也掉连不了耳机，只能坐在那发呆，属实是有点难蚌。。。</p><h2 id="换网卡">换网卡</h2><p>之前听说在高温下AX210比201稳定很多（其实温度也没多高，我把原来的镁光换成了致态7100Plus，无缓加上单面颗粒，正常负载下也就48°左右，PCB背面温度应该更低），去PDD上找了一家看着还可以的，花了60买了个Intel AX210。</p><p>今天网卡到货后，便立马拆机换网卡</p><p>这电脑都被我拆N次了，裤裤就是一顿拆，虽然还没拆过网卡，但是知道大致位置，保险起见还是在B站随便找了个视频看了下教程。</p><p>其他步骤还好，主要是天线的拆卸和安装有点难蚌（还有那紧的要命的螺丝）。</p><p>旧网卡和天线的那个扣扣的超级紧，我扣半天没扣下来，最后还是先把网卡拆了再连着天线掰了下来</p><p>然而我把天线扣网新网卡上扣的时候半天扣不上去，扣上去了轻轻一挑又掉了，又不敢大力出奇迹怕把天线扣或者网卡座子弄坏，最后折腾半天才勉强扣上去。</p><h2 id="驱动">驱动</h2><p>换网卡之前提前把WIFI和蓝牙驱动下好了，不过装完开机后没过一会系统自己就打好驱动了</p><h2 id="使用">使用</h2><p>AX210和201在功能上好像没多大区别，好像就是从蓝牙5.2变成5.3了，WIFI6变成了WIFI6E，支持6GHz。不过我一个也用不到😂</p><p>我在寝室用的有线，实验室那边还是WIFI5</p><h2 id="后记">后记</h2><p>不知道Intel E5支不支持CNVio2，201好像要CPU支持CNVio2才能用，如果支持还可以给我的洋垃圾服务器装上，不支持就留着之后备用吧。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;众所周知，华硕天选系列的游戏本基本都是网卡硬盘叠叠乐。我当时那会天选三出来，网卡有Intel和Realtek（螃蟹卡）两个批次，我比较幸运抽到了Intel AX201。虽然Intel的比螃蟹卡好一点但不多，一旦电脑进入高负载还是会掉网</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="无线网卡" scheme="https://blog.goodboyboy.top/tags/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1/"/>
+    
+    <category term="Intel" scheme="https://blog.goodboyboy.top/tags/Intel/"/>
+    
+  </entry>
   
   <entry>
     <title>梦</title>
@@ -1447,35 +1474,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="域名" scheme="https://blog.goodboyboy.top/tags/%E5%9F%9F%E5%90%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>恭喜邮储万事达储蓄卡加入卡包大家庭</title>
-    <link href="https://blog.goodboyboy.top/posts/4196636881.html"/>
-    <id>https://blog.goodboyboy.top/posts/4196636881.html</id>
-    <published>2025-05-17T05:26:31.000Z</published>
-    <updated>2025-05-17T05:26:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="展示">展示</h2><p><img src="https://pic.goodboyboy.top/imgs/2025/05/17/mhget3.webp" alt="卡面"></p><h2 id="前言">前言</h2><p>因为之前开的那张中信的万事达卡不能自动兑汇（不如不开。。。），最近又听说邮储的万事达卡现在支持线上支付了（强制3ds），去app一看确实没有“仅支持线下场景使用”的提示，于是打算办一张，不方便购汇的时候可以用。</p><h2 id="办理">办理</h2><p>一开始是去的校门口的支行，虽然不报什么希望，但是实在是懒得走那么远</p><p>结果可想而知——没有，不知道</p><p>好吧，直接去分行</p><p>但令我大吃一惊的是，分行居然也不知道有万事达储蓄卡</p><p>最后只能网申一张然后线下激活了</p><p>花了25块钱工本费用来网申</p><p>不过返了30微信立减金，但是我来回一趟花了5块路费，不亏不赚吧。。。</p><h2 id="激活">激活</h2><p>前天晚上拿到卡，昨天课比较多，今天去激活</p><p>来到大厅，签了一张法律告知书</p><p>然后就取号排队了</p><p>不得不说，虽然现在断卡行动还在继续，但是比前几年正常多了</p><p>现在你只要是本地+有正当理由+分行，几乎都是100%下卡，至于是一类还是二类要看银行，邮储貌似一般都只开二类</p><p>分行一般开的限额也高一些</p><p>去年我去招商开户都还需要我的学生证或者学信网，今天开只需要一张身份证即可</p><h2 id="小插曲">小插曲</h2><p>一开始还没开成功，绑微信绑不上，手机银行也绑不上</p><p>按理说手机银行怎么都可以绑上的，而且这卡好像都是23年9月出的，也不可能是系统没更新的原因</p><p>柜员小姐姐又查了一下账户，没看到新的那张卡</p><p>又在自助机上弄了一下，这次用的开通定制卡的方式，成功开卡</p><p>可能是之前用的开银联卡的方式所以开失败了</p><p>还有个小插曲就是绑定手机银行出现问题</p><p>微信是绑上去了，但是手机银行绑的时候要人脸验证，结果死活验证不过去，自助机上绑定的话需要拿原来的卡过来才行</p><p>不过好在最后还是人脸验证过了</p><h2 id="最后">最后</h2><p>最后小姐姐还负责的提醒我一定要合规使用银行卡，不要出借。</p><h2 id="后记">后记</h2><p>目前人民币支付可以正常交易，外币还没试，有空试一试，感受一下新万事达的自动兑汇（doge</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;展示&quot;&gt;展示&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2025/05/17/mhget3.webp&quot; alt=&quot;卡面&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;因为之前开的那张中信的万事达</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="万事达" scheme="https://blog.goodboyboy.top/tags/%E4%B8%87%E4%BA%8B%E8%BE%BE/"/>
-    
-    <category term="邮储银行" scheme="https://blog.goodboyboy.top/tags/%E9%82%AE%E5%82%A8%E9%93%B6%E8%A1%8C/"/>
     
   </entry>
   
