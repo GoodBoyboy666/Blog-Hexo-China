@@ -4,6 +4,72 @@
   
     
     <entry>
+      <title>Canokey导入S/MIME邮箱证书并使用Thunderbird发送邮件</title>
+      <!--<link href="/posts/3174411847.html"/>
+      <url>/posts/3174411847.html</url>-->
+      <link href="posts/3174411847.html"/>
+      <url>posts/3174411847.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前期准备">前期准备</h2><blockquote><p>Tips: 需要安装1.2.4以及以下的版本，高版本不支持Canokey（或者使用Canokey自家的ckman也行）</p></blockquote><ul><li>安装ykman：<a href="https://developers.yubico.com/yubikey-manager-qt/Releases/">https://developers.yubico.com/yubikey-manager-qt/Releases/</a></li></ul><blockquote><p>S/MIME邮箱证书可以看我上一篇文章（<a href="/posts/2880062507.html">1.90$申请 WISeID S/MIME 邮箱证书</a>）</p></blockquote><ul><li><p>S/MIME邮箱证书</p></li><li><p>安装OpenSC：<a href="https://github.com/OpenSC/OpenSC">https://github.com/OpenSC/OpenSC</a></p></li></ul><h2 id="导入证书">导入证书</h2><p>目前Canokey支持以下几种算法的证书</p><ul><li>RSA2048</li><li>NIST P-256</li><li>NIST P-384</li></ul><p>对于固件版本3.0.0以上的Canokey（CanoKey Canary），还支持以下算法的证书</p><ul><li>RSA3072</li><li>RSA4096</li><li>secp256k1</li><li>Ed25519</li><li>X25519</li><li>SM2</li></ul><blockquote><p>Tips: CanoKey 固件版本 3.0.0 仅支持使用 Ed25519 算法对 32 字节数据做签名，仅支持使用内部生成的 X25519 密钥。</p></blockquote><p>安装好ykman后，连接Canokey，进入终端</p><p>输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey info</span><br></pre></td></tr></table></figure><p>应该能够看到智能卡的相关信息</p><p>输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv info</span><br></pre></td></tr></table></figure><p>应该能看到PIV的相关信息</p><p>然后CanoKey一般有4个可用的插槽：</p><ul><li>9A：PIV Authentication</li><li>9E：Card Authentication</li><li>9C：Digital Signature</li><li>9D：Key Management</li></ul><p>从固件版本 2.0.0 开始，CanoKey 还支持82、83插槽</p><p>固件版本 3.0.0 开始，好像还支持<code>Card Capability Container</code>、<code>Card Holder Unique Identifier</code>、<code>Printed Information</code>，有邪修玩法用来存VeraCrypt的密钥</p><p>需要注意的是，9E插槽的默认PIN策略是不验证</p><p>不过这都无所谓，可以通过<code>--pin-policy</code>来设置，具体可以看ykman的命令帮助来使用</p><p>这里使用的是9c插槽</p><p>首先是导入私钥</p><blockquote><p>Tips: Canokey默认的管理密钥是：010203040506070801020304050607080102030405060708，如果修改了管理密钥需要加上<code>-m</code>参数传入管理密钥</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv keys import 9c &lt;私钥文件路径&gt;</span><br></pre></td></tr></table></figure><p>然后是导入公钥证书</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv certificates import -v 9c &lt;公钥文件路径&gt;</span><br></pre></td></tr></table></figure><p>这里会提示输入PIN，输入PIV的PIN即可，这里的<code>-v</code>参数用于验证证书是否匹配导入的私钥，可有可无</p><h2 id="导入Thunderbird">导入Thunderbird</h2><p>启动Thunderbird，找到端到端加密，点击<code>S/MIME安全设备</code>按钮，然后点击<code>加载</code>按钮，选择<code>浏览</code>按钮</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/kgtxq.webp" alt="1"></p><p>找到你安装OpenSC的地方，<code>OpenSC/pkcs11/</code>该目录下有个<code>opensc-pkcs11.dll</code>，选择即可。</p><p>正常加载模块后，点击刚刚添加的模块，模块下面有个canokey设备，选择后点击登录，会要求输入PIN</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/kvn71.webp" alt="2"></p><p>登录完成返回到端到端加密页面，点击个人数字签名证书旁边的<code>选择</code>按钮，一般来说会自动找到符合条件的证书，选择后可以点击旁边的<code>测试</code>按钮</p><p>如果测试提示颁发者无效，说明可能是缺少中间证书，点击<code>管理S/MIME证书</code>按钮，选择证书颁发机构，导入你的颁发机构的中间证书即可。</p><h2 id="参考">参考</h2><p><a href="https://docs.canokeys.org/zh-hans/userguide/piv/">https://docs.canokeys.org/zh-hans/userguide/piv/</a></p><p><a href="https://thinkalone.win/canokey-canary.html">https://thinkalone.win/canokey-canary.html</a></p><p><a href="https://www.liups.net/2025/10/s-mime-%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%8A%A0%E5%AF%86%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">https://www.liups.net/2025/10/s-mime-证书签名加密电子邮件/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Canokey </tag>
+            
+            <tag> S/MIME </tag>
+            
+            <tag> Thunderbird </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1.90$申请 WISeID S/MIME 邮箱证书</title>
+      <!--<link href="/posts/2880062507.html"/>
+      <url>/posts/2880062507.html</url>-->
+      <link href="posts/2880062507.html"/>
+      <url>posts/2880062507.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>之前Actalis免费申请的一年S/MIME证书到期了，这次打算换个好点的性价比高的，于是找到了WISeID</p><h2 id="资费">资费</h2><p>basic计划一年是1.9<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>（主页上写的是</mtext><mn>4.9</mn><mtext>实际注册登录后只要</mtext><mn>1.9</mn></mrow><annotation encoding="application/x-tex">（主页上写的是4.9实际注册登录后只要1.9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">（主页上写的是</span><span class="mord">4.9</span><span class="mord cjk_fallback">实际注册登录后只要</span><span class="mord">1.9</span></span></span></span>），并且他家还提供一个月的免费S/MIME证书用于测试，可以先签发一个测试一下。</p><h2 id="购买">购买</h2><p>测试没有问题后就可以开始正式购买</p><p>进入<a href="https://account.wiseid.com/dashboard/my-subscription">https://account.wiseid.com/dashboard/my-subscription</a></p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/iscrv.webp" alt="1"></p><p>可以看到basic计划，该计划支持签发1-3年的证书</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/j8vpx.webp" alt="2"></p><p>这里可以先买一年试用一下</p><blockquote><p>Tips: 这里只能使用万事达或者VISA卡支付</p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jdeem.webp" alt="3"></p><p>支付成功后可以看到变成了<code>Request Certificate</code></p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jsta6.webp" alt="4"></p><h2 id="申请证书">申请证书</h2><p>点击<code>Request Certificate</code>后来到证书申请界面。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jv479.webp" alt="5"></p><blockquote><p>Tips: ECC仅支持签名，不支持邮件加密，RSA支持签名和加密</p></blockquote><p>我个人更喜欢ECC，并且加密功能由我自己的OpenPGP提供，所以选择的是ECC。（虽然对NIST P-256也喜欢不到哪去，要是能Ed25519/Curve25519最好了）</p><p><code>Key Generation method</code>部分看你自己，我个人因为不用于加密倒是无所谓（人家要是想搞坏事直接重新签发一个就行了），如果是RSA并且用于加密邮件，建议还是选择CSR上传不要将私钥托管至平台</p><p>当然如果是想简便那就选择服务器生成吧。</p><p>这里写一下如何通过CSR上传的方式来避免私钥的传输</p><p>首先需要安装OpenSSL，这不是本教程主题，需要自行搜索教程</p><p>安装完成后，打开终端（CMD），输入下面命令生成私钥</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl ecparam -genkey -name prime256v1 -out my_smime_key.key</span><br></pre></td></tr></table></figure><p>这里私钥会生成在当前终端的工作目录下</p><p>然后是生成CSR</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key my_smime_key.key -out my_smime.csr</span><br></pre></td></tr></table></figure><p>这里会提示输入<code>Country Name</code>、<code>State or Province Name</code>等等，这些都不是重要的，最重要的是<code>Common Name</code>和<code>Email Address</code>，需要填写申请页面中你的邮箱地址。</p><p>然后将<code>my_smime.csr</code>的内容复制到申请页面中的指定位置，点击申请按钮即可。</p><p>申请成功后就可以点击Download旁边的下载证书按钮下载了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/k8zdw.webp" alt="6"></p><h2 id="制作PKCS12证书（可选）">制作PKCS12证书（可选）</h2><p>如果你觉得公钥私钥分离太麻烦，或者有导入到其他设备的需求，可以将其打包成一个.p12证书文件，包含了公钥和私钥。</p><blockquote><p>Tips: WISeID上下载的CRT公钥文件仅包含当前签发证书，不包含完整信任链，建议制作时将中间证书一起打包，避免出现问题</p></blockquote><p>先是不打包中间证书</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out final.p12 -inkey my_smime_key.key -<span class="keyword">in</span> &lt;签发的公钥CRT证书文件&gt;</span><br></pre></td></tr></table></figure><p>最后就会生成一个<code>final.p12</code>文件，包含你的公钥和私钥，当然也可以加个<code>-passout pass:123456</code>给证书设置个密码</p><p>如果要打包中间证书，需要先从官网下载中间证书：<a href="https://public.wisekey.com/crt/wcidpersgbca4.cer">https://public.wisekey.com/crt/wcidpersgbca4.cer</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out final.p12 -inkey my_smime_key.key -<span class="keyword">in</span> &lt;签发的公钥CRT证书文件&gt; -certfile &lt;下载的中间证书CER文件&gt;</span><br></pre></td></tr></table></figure><p>这样生成的证书文件就包含了中间证书。</p><h2 id="后记">后记</h2><p>不知道为啥有效期是两年，我明明申请的是一年。</p><p>请妥善保管私钥，不要泄露，泄露后请及时Revoke。</p><h2 id="参考">参考</h2><p><a href="https://dallas.lu/cheapest-smime-cert-from-wiseid/">https://dallas.lu/cheapest-smime-cert-from-wiseid/</a></p><p><a href="https://www.v2ex.com/t/1169946">https://www.v2ex.com/t/1169946</a></p><p><a href="https://blog.dejavu.moe/posts/how-to-apply-for-s-mime-certs-at-low-cost/">https://blog.dejavu.moe/posts/how-to-apply-for-s-mime-certs-at-low-cost/</a></p><p><a href="https://www.liups.net/2025/10/s-mime-%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%8A%A0%E5%AF%86%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/#%E7%9B%AE%E5%BD%95">https://www.liups.net/2025/10/s-mime-证书签名加密电子邮件/#目录</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> S/MIME </tag>
+            
+            <tag> WISeID </tag>
+            
+            <tag> EMail </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新购Intel AX210网卡</title>
       <!--<link href="/posts/1633583570.html"/>
       <url>/posts/1633583570.html</url>-->

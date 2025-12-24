@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-12-19T05:10:17.000Z</updated>
+  <updated>2025-12-24T15:33:55.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,74 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Canokey导入S/MIME邮箱证书并使用Thunderbird发送邮件</title>
+    <link href="https://blog.goodboyboy.top/posts/3174411847.html"/>
+    <id>https://blog.goodboyboy.top/posts/3174411847.html</id>
+    <published>2025-12-24T15:33:55.000Z</published>
+    <updated>2025-12-24T15:33:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前期准备">前期准备</h2><blockquote><p>Tips: 需要安装1.2.4以及以下的版本，高版本不支持Canokey（或者使用Canokey自家的ckman也行）</p></blockquote><ul><li>安装ykman：<a href="https://developers.yubico.com/yubikey-manager-qt/Releases/">https://developers.yubico.com/yubikey-manager-qt/Releases/</a></li></ul><blockquote><p>S/MIME邮箱证书可以看我上一篇文章（<a href="/posts/2880062507.html">1.90$申请 WISeID S/MIME 邮箱证书</a>）</p></blockquote><ul><li><p>S/MIME邮箱证书</p></li><li><p>安装OpenSC：<a href="https://github.com/OpenSC/OpenSC">https://github.com/OpenSC/OpenSC</a></p></li></ul><h2 id="导入证书">导入证书</h2><p>目前Canokey支持以下几种算法的证书</p><ul><li>RSA2048</li><li>NIST P-256</li><li>NIST P-384</li></ul><p>对于固件版本3.0.0以上的Canokey（CanoKey Canary），还支持以下算法的证书</p><ul><li>RSA3072</li><li>RSA4096</li><li>secp256k1</li><li>Ed25519</li><li>X25519</li><li>SM2</li></ul><blockquote><p>Tips: CanoKey 固件版本 3.0.0 仅支持使用 Ed25519 算法对 32 字节数据做签名，仅支持使用内部生成的 X25519 密钥。</p></blockquote><p>安装好ykman后，连接Canokey，进入终端</p><p>输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey info</span><br></pre></td></tr></table></figure><p>应该能够看到智能卡的相关信息</p><p>输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv info</span><br></pre></td></tr></table></figure><p>应该能看到PIV的相关信息</p><p>然后CanoKey一般有4个可用的插槽：</p><ul><li>9A：PIV Authentication</li><li>9E：Card Authentication</li><li>9C：Digital Signature</li><li>9D：Key Management</li></ul><p>从固件版本 2.0.0 开始，CanoKey 还支持82、83插槽</p><p>固件版本 3.0.0 开始，好像还支持<code>Card Capability Container</code>、<code>Card Holder Unique Identifier</code>、<code>Printed Information</code>，有邪修玩法用来存VeraCrypt的密钥</p><p>需要注意的是，9E插槽的默认PIN策略是不验证</p><p>不过这都无所谓，可以通过<code>--pin-policy</code>来设置，具体可以看ykman的命令帮助来使用</p><p>这里使用的是9c插槽</p><p>首先是导入私钥</p><blockquote><p>Tips: Canokey默认的管理密钥是：010203040506070801020304050607080102030405060708，如果修改了管理密钥需要加上<code>-m</code>参数传入管理密钥</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv keys import 9c &lt;私钥文件路径&gt;</span><br></pre></td></tr></table></figure><p>然后是导入公钥证书</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ykman -r canokey piv certificates import -v 9c &lt;公钥文件路径&gt;</span><br></pre></td></tr></table></figure><p>这里会提示输入PIN，输入PIV的PIN即可，这里的<code>-v</code>参数用于验证证书是否匹配导入的私钥，可有可无</p><h2 id="导入Thunderbird">导入Thunderbird</h2><p>启动Thunderbird，找到端到端加密，点击<code>S/MIME安全设备</code>按钮，然后点击<code>加载</code>按钮，选择<code>浏览</code>按钮</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/kgtxq.webp" alt="1"></p><p>找到你安装OpenSC的地方，<code>OpenSC/pkcs11/</code>该目录下有个<code>opensc-pkcs11.dll</code>，选择即可。</p><p>正常加载模块后，点击刚刚添加的模块，模块下面有个canokey设备，选择后点击登录，会要求输入PIN</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/kvn71.webp" alt="2"></p><p>登录完成返回到端到端加密页面，点击个人数字签名证书旁边的<code>选择</code>按钮，一般来说会自动找到符合条件的证书，选择后可以点击旁边的<code>测试</code>按钮</p><p>如果测试提示颁发者无效，说明可能是缺少中间证书，点击<code>管理S/MIME证书</code>按钮，选择证书颁发机构，导入你的颁发机构的中间证书即可。</p><h2 id="参考">参考</h2><p><a href="https://docs.canokeys.org/zh-hans/userguide/piv/">https://docs.canokeys.org/zh-hans/userguide/piv/</a></p><p><a href="https://thinkalone.win/canokey-canary.html">https://thinkalone.win/canokey-canary.html</a></p><p><a href="https://www.liups.net/2025/10/s-mime-%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%8A%A0%E5%AF%86%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">https://www.liups.net/2025/10/s-mime-证书签名加密电子邮件/</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前期准备&quot;&gt;前期准备&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tips: 需要安装1.2.4以及以下的版本，高版本不支持Canokey（或者使用Canokey自家的ckman也行）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;安装ykman：&lt;a hr</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
+    
+    
+    <category term="Canokey" scheme="https://blog.goodboyboy.top/tags/Canokey/"/>
+    
+    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
+    
+    <category term="Thunderbird" scheme="https://blog.goodboyboy.top/tags/Thunderbird/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.90$申请 WISeID S/MIME 邮箱证书</title>
+    <link href="https://blog.goodboyboy.top/posts/2880062507.html"/>
+    <id>https://blog.goodboyboy.top/posts/2880062507.html</id>
+    <published>2025-12-24T14:39:00.000Z</published>
+    <updated>2025-12-24T14:39:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>之前Actalis免费申请的一年S/MIME证书到期了，这次打算换个好点的性价比高的，于是找到了WISeID</p><h2 id="资费">资费</h2><p>basic计划一年是1.9<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>（主页上写的是</mtext><mn>4.9</mn><mtext>实际注册登录后只要</mtext><mn>1.9</mn></mrow><annotation encoding="application/x-tex">（主页上写的是4.9实际注册登录后只要1.9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">（主页上写的是</span><span class="mord">4.9</span><span class="mord cjk_fallback">实际注册登录后只要</span><span class="mord">1.9</span></span></span></span>），并且他家还提供一个月的免费S/MIME证书用于测试，可以先签发一个测试一下。</p><h2 id="购买">购买</h2><p>测试没有问题后就可以开始正式购买</p><p>进入<a href="https://account.wiseid.com/dashboard/my-subscription">https://account.wiseid.com/dashboard/my-subscription</a></p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/iscrv.webp" alt="1"></p><p>可以看到basic计划，该计划支持签发1-3年的证书</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/j8vpx.webp" alt="2"></p><p>这里可以先买一年试用一下</p><blockquote><p>Tips: 这里只能使用万事达或者VISA卡支付</p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jdeem.webp" alt="3"></p><p>支付成功后可以看到变成了<code>Request Certificate</code></p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jsta6.webp" alt="4"></p><h2 id="申请证书">申请证书</h2><p>点击<code>Request Certificate</code>后来到证书申请界面。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/jv479.webp" alt="5"></p><blockquote><p>Tips: ECC仅支持签名，不支持邮件加密，RSA支持签名和加密</p></blockquote><p>我个人更喜欢ECC，并且加密功能由我自己的OpenPGP提供，所以选择的是ECC。（虽然对NIST P-256也喜欢不到哪去，要是能Ed25519/Curve25519最好了）</p><p><code>Key Generation method</code>部分看你自己，我个人因为不用于加密倒是无所谓（人家要是想搞坏事直接重新签发一个就行了），如果是RSA并且用于加密邮件，建议还是选择CSR上传不要将私钥托管至平台</p><p>当然如果是想简便那就选择服务器生成吧。</p><p>这里写一下如何通过CSR上传的方式来避免私钥的传输</p><p>首先需要安装OpenSSL，这不是本教程主题，需要自行搜索教程</p><p>安装完成后，打开终端（CMD），输入下面命令生成私钥</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl ecparam -genkey -name prime256v1 -out my_smime_key.key</span><br></pre></td></tr></table></figure><p>这里私钥会生成在当前终端的工作目录下</p><p>然后是生成CSR</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key my_smime_key.key -out my_smime.csr</span><br></pre></td></tr></table></figure><p>这里会提示输入<code>Country Name</code>、<code>State or Province Name</code>等等，这些都不是重要的，最重要的是<code>Common Name</code>和<code>Email Address</code>，需要填写申请页面中你的邮箱地址。</p><p>然后将<code>my_smime.csr</code>的内容复制到申请页面中的指定位置，点击申请按钮即可。</p><p>申请成功后就可以点击Download旁边的下载证书按钮下载了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/12/25/k8zdw.webp" alt="6"></p><h2 id="制作PKCS12证书（可选）">制作PKCS12证书（可选）</h2><p>如果你觉得公钥私钥分离太麻烦，或者有导入到其他设备的需求，可以将其打包成一个.p12证书文件，包含了公钥和私钥。</p><blockquote><p>Tips: WISeID上下载的CRT公钥文件仅包含当前签发证书，不包含完整信任链，建议制作时将中间证书一起打包，避免出现问题</p></blockquote><p>先是不打包中间证书</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out final.p12 -inkey my_smime_key.key -<span class="keyword">in</span> &lt;签发的公钥CRT证书文件&gt;</span><br></pre></td></tr></table></figure><p>最后就会生成一个<code>final.p12</code>文件，包含你的公钥和私钥，当然也可以加个<code>-passout pass:123456</code>给证书设置个密码</p><p>如果要打包中间证书，需要先从官网下载中间证书：<a href="https://public.wisekey.com/crt/wcidpersgbca4.cer">https://public.wisekey.com/crt/wcidpersgbca4.cer</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out final.p12 -inkey my_smime_key.key -<span class="keyword">in</span> &lt;签发的公钥CRT证书文件&gt; -certfile &lt;下载的中间证书CER文件&gt;</span><br></pre></td></tr></table></figure><p>这样生成的证书文件就包含了中间证书。</p><h2 id="后记">后记</h2><p>不知道为啥有效期是两年，我明明申请的是一年。</p><p>请妥善保管私钥，不要泄露，泄露后请及时Revoke。</p><h2 id="参考">参考</h2><p><a href="https://dallas.lu/cheapest-smime-cert-from-wiseid/">https://dallas.lu/cheapest-smime-cert-from-wiseid/</a></p><p><a href="https://www.v2ex.com/t/1169946">https://www.v2ex.com/t/1169946</a></p><p><a href="https://blog.dejavu.moe/posts/how-to-apply-for-s-mime-certs-at-low-cost/">https://blog.dejavu.moe/posts/how-to-apply-for-s-mime-certs-at-low-cost/</a></p><p><a href="https://www.liups.net/2025/10/s-mime-%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D%E5%8A%A0%E5%AF%86%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/#%E7%9B%AE%E5%BD%95">https://www.liups.net/2025/10/s-mime-证书签名加密电子邮件/#目录</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;之前Actalis免费申请的一年S/MIME证书到期了，这次打算换个好点的性价比高的，于是找到了WISeID&lt;/p&gt;
+&lt;h2 id=&quot;资费&quot;&gt;资费&lt;/h2&gt;
+&lt;p&gt;basic计划一年是1.9&lt;span class=&quot;katex&quot;&gt;&lt;s</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Web" scheme="https://blog.goodboyboy.top/categories/Web/"/>
+    
+    
+    <category term="S/MIME" scheme="https://blog.goodboyboy.top/tags/S-MIME/"/>
+    
+    <category term="WISeID" scheme="https://blog.goodboyboy.top/tags/WISeID/"/>
+    
+    <category term="EMail" scheme="https://blog.goodboyboy.top/tags/EMail/"/>
+    
+  </entry>
   
   <entry>
     <title>新购Intel AX210网卡</title>
@@ -1420,60 +1488,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>好用的CloudFlare Tunnel，使我大脑旋转</title>
-    <link href="https://blog.goodboyboy.top/posts/3954763362.html"/>
-    <id>https://blog.goodboyboy.top/posts/3954763362.html</id>
-    <published>2025-05-18T09:08:02.000Z</published>
-    <updated>2025-05-18T09:08:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="致谢">致谢</h2><p>CloudFlare真的是赛博活佛😍</p><h2 id="起因">起因</h2><p>无聊看了几篇写CF Tunnel的文章，发现用来内外穿透效果还不错？（仅对于Web网站，游戏联机就不要想了）</p><p>虽然自己也有服务器可以搭建Frp进行穿透，但一个是配置麻烦，更改配置还需要重启Frpc，另外也不想什么都通过主服务器穿透，万一哪天主服务器被打进黑洞了超麻烦（阿里云的鸡一摸就死，服务还没死呢就给你扔黑洞去了）</p><p>更何况有些服务自带的验证安全程度还达不到我的要求，例如cockpit，仅仅是验证主机的Linux账户密码（为了防止自己锁自己，宿舍服务器密码没有用keepass生成），1panel还好，我用keepass，但是为了方便没开2fa。</p><p>这就导致离开寝室局域网后将无法控制我的宿舍服务器，只能使用部分映射出来的服务。</p><p>前几天就因为宿舍忘记交电费意外断电后我忘记启动kvm上挂的实验环境，导致实验室的学弟用不了虚拟机，当时在实验室也没办法远程启动，只能等我回寝室后登录后台启动</p><h2 id="play">play</h2><p>CF Tunnel现在被归类到Zero Trust内</p><p>目前我用过的就3个大块：Gateway，Access，网络</p><p>Gateway管理的就是原来的warp以及warp+，不过现在大陆已经用不了了</p><p>CF Tunnel则在网络内</p><h3 id="安装客户端与创建隧道">安装客户端与创建隧道</h3><p>首先需要安装cloudflared，这里为了方便管理我选择的docker安装</p><p>按照官方给出的含token的命令创建好容器后，将容器网络改为<code>host</code>方便访问主机内各个服务</p><p>建议一个隧道对应一个主机，一个主机只需要创建一个隧道就行</p><h3 id="创建公共主机名">创建公共主机名</h3><p>这里就是配置具体服务（有点类似配置反向代理）</p><p><strong>子域</strong>配置的是公共访问地址，访问内网服务就访问该地址</p><p><strong>类型</strong>配置的是内网具体是什么服务，cloudflare如何访问你的内网服务，和设置CDN差不多，只是说CDN的话如果设置HTTP，那cf到你源服务器的流量就真的是完全未加密，而Tunnel默认是完全加密的</p><blockquote><p>Tips:一个常见小坑是，源服务开启HTTPS并开启HTTP自动跳转HTTPS，但CF后端地址却填写的HTTP协议，这会造成无限跳转，无论用户访问是HTTPS还是HTTP。因为当流量从cf流向源服务器时进入的是80端口，源服务器会返回一个301跳转指向HTTPS，客户端收到301并继续跳转访问，然后流量继续从cf流向源服务器的80端口，无限循环。</p></blockquote><div class="note info flat"><p>一个大坑：如果你是用的docker部署，后端协议选的HTTPS的话，下发的配置默认不会带originServerName，导致cf会把源服务器返回的证书SNI与你填写的后端地址进行对比。一般来说本地服务都会填写127.0.0.1或者localhost，这就会导致<code>remote error: tls: internal error&quot;</code>，解决方案一个是开启<code>noTLSVerify</code>，不要验证TLS证书，一个是填写<code>源服务器名称</code>，而且我发现填写一次后哪怕之后删掉，也不会出现这个问题了。</p></div><p>创建完后就可以愉快的使用公共主机名地址访问了</p><h3 id="添加Access">添加Access</h3><p>用来管理访问策略</p><h3 id="策略">策略</h3><p>可以先创建一些策略，例如ban掉海外ip，仅允许自己的邮箱访问等等</p><h3 id="应用程序">应用程序</h3><p>这里就对应之前的公共主机名，一个公共主机名可以对应一个应用程序（虽然设置上可以对应多个）</p><p><code>应用程序名称</code>爱怎么填怎么填</p><p><code>公共主机名</code>内容和服务公共主机名一致</p><p>然后在策略一栏选择自己创建的策略</p><p><code>登录方法</code>默认的只有向邮箱发送一次性OTP代码的选项，不过支持很多第三方OAuth，例如github，google等，还支持自定义openid connect，可以对接我自己部署的zitadel</p><p>不过自从隔壁博主的casdoor出现 <a href="https://blog.moeworld.tech/2025/05/09/cve-2025-4210-casdoor-v1-811-0-unauthenticated-scim-operations/">CVE-2025-4210 Casdoor &lt;=v1.811.0 - Unauthenticated SCIM Operations</a>导致 <a href="https://blog.moeworld.tech/2025/05/08/%e3%80%90%e8%ad%a6%e5%91%8a%e3%80%91%e6%88%91%e4%bb%ac%e6%b3%a8%e6%84%8f%e5%88%b0moeworld-tech%e5%8f%91%e7%94%9f%e4%ba%86%e9%82%ae%e4%bb%b6%e7%9b%97%e7%94%a8%e7%8e%b0%e8%b1%a1/">【警告】我们注意到moeworld.tech发生了邮件盗用现象</a>后，我就有点不敢用自托管的统一身份认证了，在这种可能会危及到内网安全的重要服务上还是算了，邮件OTP也不是不行</p><p>目前市面上常见的IAM基本上都会有角色控制功能，不仅仅提供IdP的功能，也就是说应用开发可以完全不需要自己独立的账户权限管理功能而依赖IAM，但一旦IAM出现问题那就不好玩了</p><p>创建完应用程序后在Tunnel内的公共主机名进行绑定即可</p><h2 id="后记">后记</h2><p>这下内网一些私密服务可以通过Tunnel+Access暴露出来了🥰</p><p>至于网站访问速度，虽然延迟有点高，但至少可以正常访问，不像CF的CDN，正常访问都是挑战</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
-&lt;p&gt;CloudFlare真的是赛博活佛😍&lt;/p&gt;
-&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
-&lt;p&gt;无聊看了几篇写CF Tunnel的文章，发现用来内外穿透效果还不错？（仅对于Web网站，游戏联机就不要想了）&lt;/p&gt;
-&lt;p&gt;虽然自己也有服务</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="CloudFlare" scheme="https://blog.goodboyboy.top/tags/CloudFlare/"/>
-    
-    <category term="Tunnel" scheme="https://blog.goodboyboy.top/tags/Tunnel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新注册furwolf.com域名</title>
-    <link href="https://blog.goodboyboy.top/posts/2975776194.html"/>
-    <id>https://blog.goodboyboy.top/posts/2975776194.html</id>
-    <published>2025-05-17T06:04:14.000Z</published>
-    <updated>2025-05-17T06:04:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>感谢&lt;<a href="http://blog.zrf.me">blog.zrf.me</a>&gt;博主的详细教程《<a href="https://blog.zrf.me/p/Google-Workspace-Domains/">超低价注册.COM域名：Google Workspace土耳其区仅需14元/年详细教程</a>》，成功使用75拉里（约等于13.93 人民币）拿下furwolf.com域名</p><p>稍后部分服务可能会迁移至新域名上</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;感谢&amp;lt;&lt;a href=&quot;http://blog.zrf.me&quot;&gt;blog.zrf.me&lt;/a&gt;&amp;gt;博主的详细教程《&lt;a href=&quot;https://blog.zrf.me/p/Google-Workspace-Domains/&quot;&gt;超低价注册.COM域名：Googl</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="域名" scheme="https://blog.goodboyboy.top/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   
