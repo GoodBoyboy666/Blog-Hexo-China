@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2025-12-24T15:33:55.000Z</updated>
+  <updated>2026-01-01T06:00:30.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再见2025，你好2026</title>
+    <link href="https://blog.goodboyboy.top/posts/2138059444.html"/>
+    <id>https://blog.goodboyboy.top/posts/2138059444.html</id>
+    <published>2026-01-01T06:00:30.000Z</published>
+    <updated>2026-01-01T06:00:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><h3 id="1月">1月</h3><p>2024年12月16日，DeepSeek-V3发布<br>2025年1月15日，DeepSeek APP发布<br>2025年1月20日，DeepSeek-R1发布</p><p>至此，AI正式走入了我的生活</p><h3 id="2月">2月</h3><p>由于DeepSeek的火热，官方服务器一时无法承载大量流量</p><p>也是这段时间，各大云厂商纷纷部署DeepSeek，我也在硅基流动白嫖了一大堆邀请奖励，开始了API自由。（<a href="/posts/2942945809.html">《DeepSeek API挂了？SiliconFlow来救！》</a>）</p><p>不过好景不长，大家都发现了硅基流动，于是没过几天硅基流动也卡成狗了，于是转战字节的火山引擎，继续白嫖doge。（<a href="/posts/1550451800.html">《DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！》</a>）</p><p>中间受 <a href="https://ab2cd.com/">奇甲安全</a> 邀请，测试他们加的主流产品 <a href="https://ab2cd.com/product/138.html">一指灵通</a> ，产品还蛮好用的，作为安全产品价格也不贵。（<a href="/posts/3512270884.html">《一指灵通安全硬件体验》</a>）</p><p>然后就是我人生中第一张软件著作权登记下来了，也是我第一次正式写的一款APP（虽然后面很快就用jetpack compose重构了😂）</p><h3 id="3月">3月</h3><p>我开始学习Jetpack Compose，主要还是因为传统的Android View的material 2没3好看，但是Android View 的material3老是出问题，便转向了风格更统一的Jetpack Compose，而且我也更喜欢Jetpack Compose的设计理念，这也是我第一次接触MVVM设计架构。</p><p>然后就是开了我的第二张万事达卡（<a href="/posts/2366358045.html">《欢迎中信万事达双币借记卡加入卡包大家庭！》</a>），有人民币和美元账户，可以往里面存人民币了，也可以用这张卡购汇，不用像中行万事达那样还要一张一类卡用于购汇。</p><p>最后就是受晚夜的BLOG QSL卡启发，做了个博客明信片。（<a href="/posts/243612221.html">《设计了一张博客明信片》</a>）</p><h3 id="4月-5月">4月-5月</h3><p>四月主要还是在折腾OAuth2和OIDC，然后做了第二版的博客明信片😁（<a href="/posts/1630314981.html">《博客明信片v2版发布啦，喜欢就快来申请一张吧！》</a>）</p><p>五月则是折腾了一会土区Apple Music，顺便还办了张邮储万事达卡（变卡王了😂），还注册了个喜欢的域名（<a href="/posts/2975776194.html">《新注册furwolf.com域名》</a>）</p><p>五月最后加入了Postcrossing，开启了 <a href="/posts/3994121440.html">送你一张明信片</a> 活动（欢迎大家来参加），开始正式投递博客明信片。</p><h3 id="6月-7月">6月-7月</h3><p>整个六月差不多都是在折腾Debian，折腾Debian桌面、指纹、游戏、显示器、输入法、字体等等（什么时候能统一一下啊😭）</p><p>然后就是白嫖了一个一年的Gemini Pro，让我的学习速度更加迅猛，再也不用去CSDN屎里淘金了。。。</p><p>七月大部分时间呆在实验室，留校没有回家</p><p>不得不说，湖南七月那真的是热炸了，打个伞出门转一圈都可以浑身大汗，宛如蒸桑拿，而实验室里的空调制冷效果也一般般，开16度结果面板上显示还是28度。。。</p><p>七月折腾完后赶紧跑路回家了，太热了待不了一点。</p><h3 id="8月">8月</h3><p>八月在家就舒服很多，开始折腾上了ESP32</p><p>本来买ESP32是打算刷个Picokey固件玩，结果折腾半天刷好了效果还一般般，完全比不上Canokey，遂放弃折腾Picokey，而是玩起了最基础的电路以及ESP32编程</p><p>ESP32太好玩了，基本上整个月我都在玩ESP32，买各种硬件，显示屏、按钮、LED、电阻、万用表等等</p><p>而且当时我买的是ESP32 S3顶配版，8M的RAM和16M的存储，怎么玩都行。</p><h3 id="9月">9月</h3><p>九月当然是开卡的一个月，招行万事达卡普卡发布，迫不及待跑去分行开卡，我的国内万事达卡有它就够了，没有继续开万事达卡的欲望了（doge</p><p>然后就是买了新音响，原来的那个在暑假的时候坏了</p><p>G1500bar这段时间体验下来感觉还不错，不过默认参数就有点拉了，建议装官方的软件调一下参数，这样低音和人声效果会好很多。</p><h3 id="10月-12月">10月-12月</h3><p>这段时间倒没有折腾什么，每天课多得爆炸，大三也要准备就业相关的事情，时间少了很多qwq</p><p>十一月底的时候疯狂动物城2上映，立马就去看了😆</p><h2 id="小结">小结</h2>        <div id="aplayer-sZyPzYye" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>  <script>  var options = {"narrow":false,"autoplay":false,"showlrc":3,"mode":"random","mutex":true,"preload":"metadata","listmaxheight":"513px","music":[{"name":"Zoo (From Zootopia 2)","url":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).flac","artist":"Disney/Shakira","cover":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).jpg","lrc":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).lrc","theme":"#7767c6ff","pic":""}]};  options.element = document.getElementById("aplayer-sZyPzYye");  var ap = new APlayer(options);    window.aplayers || (window.aplayers = []);  window.aplayers.push(ap);  </script><p>祝大家2026新的一年里幸福安康、财源滚滚、心想事成！😄</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;h3 id=&quot;1月&quot;&gt;1月&lt;/h3&gt;
+&lt;p&gt;2024年12月16日，DeepSeek-V3发布&lt;br&gt;
+2025年1月15日，DeepSeek APP发布&lt;br&gt;
+2025年1月20日，DeepSeek-R1发布&lt;/p&gt;
+&lt;p&gt;至此，AI</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="回忆" scheme="https://blog.goodboyboy.top/categories/%E5%9B%9E%E5%BF%86/"/>
+    
+    
+    <category term="年度总结" scheme="https://blog.goodboyboy.top/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Canokey导入S/MIME邮箱证书并使用Thunderbird发送邮件</title>
@@ -1467,27 +1498,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
     <category term="Postcrossing" scheme="https://blog.goodboyboy.top/tags/Postcrossing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>今天收到了BQSL卡片</title>
-    <link href="https://blog.goodboyboy.top/posts/512081334.html"/>
-    <id>https://blog.goodboyboy.top/posts/512081334.html</id>
-    <published>2025-05-19T05:59:52.000Z</published>
-    <updated>2025-05-19T06:30:32.431Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note info flat"><p>BLOG QSL CARD ，中文名：博客QSL卡片，为防止与业余无线电中的QSL卡片混为一谈，所以将博客QSL卡片简称为BQSL卡片，实质为一种明信片，尺寸大小：140mm x 90mm</p><p>作用：可用于友站之间呼唤或者供游客申领，能够加强站点与来访游客或者友站的联系</p><p>设计规范：背面应注明日期时间，即访问博客的日期时间；写上HTTP状态码；IS代表网站速度，用时间代替速度，即用户打开网站到加载全部完成的时间；NAME代表网站名称；URL代表网站地址。</p><p>详情-&gt;《<a href="https://www.iczrx.cn/archives/150/">[BQSL]BLOG QSL卡片详解及免费申领（附预览图</a>》</p></div><h2 id="收信">收信</h2><p>今天终于收到了博主<a href="https://www.iczrx.cn/">晚夜</a>的BQSL卡</p><p>看了一下邮戳，4月29号博主所在市的邮戳，5月3号本市的邮戳，然而5月19号也就是今天我才收到我们学校收发室取信的短信通知。。。</p><p>算了懒得喷了</p><h2 id="小插曲">小插曲</h2><p>我申请时填写的是我网名GoodBoyboy，一进收发室那个负责人问我叫什么名字</p><p>我：？？？</p><p>有点小尴尬哈，不过我急中生智，先讲了我自己的名字，看到他正在一个本子上找我的名字，于是赶忙走过去找名字</p><p>因为其他都是中文，一下就看到了我的英文</p><p>负责人：咿呀，还是英文名，下次写你自己的名字咯</p><p>我：（尴尬）</p><p>然后负责人说让我签名，他帮我找</p><p>我就把GoodBoyboy签上了，负责人找到后看了下签名</p><p>负责人：哎呀，你签你的汉名咯</p><p>我：（尴尬）（默默签下名字）（赶紧逃离）</p><p>下次再也不填网名了，真的要命😿</p><h2 id="卡片">卡片</h2><p>很好看的卡片</p><p><img src="https://pic.goodboyboy.top/imgs/2025/05/19/nllucb.webp" alt="信封"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/05/19/nlrxrr.webp" alt="卡片"></p><h2 id="后记">后记</h2><p>之后填到具体邮筒+使用中文化名得了，还以为邮路不通只能发不能收呢</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;BLOG QSL CARD ，中文名：博客QSL卡片，为防止与业余无线电中的QSL卡片混为一谈，所以将博客QSL卡片简称为BQSL卡片，实质为一种明信片，尺寸大小：140mm x 90mm&lt;/p&gt;
-&lt;p&gt;作用：可用于友</summary>
-      
-    
-    
-    
     
   </entry>
   

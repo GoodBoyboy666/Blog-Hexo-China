@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>再见2025，你好2026</title>
+      <!--<link href="/posts/2138059444.html"/>
+      <url>/posts/2138059444.html</url>-->
+      <link href="posts/2138059444.html"/>
+      <url>posts/2138059444.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><h3 id="1月">1月</h3><p>2024年12月16日，DeepSeek-V3发布<br>2025年1月15日，DeepSeek APP发布<br>2025年1月20日，DeepSeek-R1发布</p><p>至此，AI正式走入了我的生活</p><h3 id="2月">2月</h3><p>由于DeepSeek的火热，官方服务器一时无法承载大量流量</p><p>也是这段时间，各大云厂商纷纷部署DeepSeek，我也在硅基流动白嫖了一大堆邀请奖励，开始了API自由。（<a href="/posts/2942945809.html">《DeepSeek API挂了？SiliconFlow来救！》</a>）</p><p>不过好景不长，大家都发现了硅基流动，于是没过几天硅基流动也卡成狗了，于是转战字节的火山引擎，继续白嫖doge。（<a href="/posts/1550451800.html">《DeepSeek服务器繁忙？SiliconFlow卡成狗？快来火山引擎！》</a>）</p><p>中间受 <a href="https://ab2cd.com/">奇甲安全</a> 邀请，测试他们加的主流产品 <a href="https://ab2cd.com/product/138.html">一指灵通</a> ，产品还蛮好用的，作为安全产品价格也不贵。（<a href="/posts/3512270884.html">《一指灵通安全硬件体验》</a>）</p><p>然后就是我人生中第一张软件著作权登记下来了，也是我第一次正式写的一款APP（虽然后面很快就用jetpack compose重构了😂）</p><h3 id="3月">3月</h3><p>我开始学习Jetpack Compose，主要还是因为传统的Android View的material 2没3好看，但是Android View 的material3老是出问题，便转向了风格更统一的Jetpack Compose，而且我也更喜欢Jetpack Compose的设计理念，这也是我第一次接触MVVM设计架构。</p><p>然后就是开了我的第二张万事达卡（<a href="/posts/2366358045.html">《欢迎中信万事达双币借记卡加入卡包大家庭！》</a>），有人民币和美元账户，可以往里面存人民币了，也可以用这张卡购汇，不用像中行万事达那样还要一张一类卡用于购汇。</p><p>最后就是受晚夜的BLOG QSL卡启发，做了个博客明信片。（<a href="/posts/243612221.html">《设计了一张博客明信片》</a>）</p><h3 id="4月-5月">4月-5月</h3><p>四月主要还是在折腾OAuth2和OIDC，然后做了第二版的博客明信片😁（<a href="/posts/1630314981.html">《博客明信片v2版发布啦，喜欢就快来申请一张吧！》</a>）</p><p>五月则是折腾了一会土区Apple Music，顺便还办了张邮储万事达卡（变卡王了😂），还注册了个喜欢的域名（<a href="/posts/2975776194.html">《新注册furwolf.com域名》</a>）</p><p>五月最后加入了Postcrossing，开启了 <a href="/posts/3994121440.html">送你一张明信片</a> 活动（欢迎大家来参加），开始正式投递博客明信片。</p><h3 id="6月-7月">6月-7月</h3><p>整个六月差不多都是在折腾Debian，折腾Debian桌面、指纹、游戏、显示器、输入法、字体等等（什么时候能统一一下啊😭）</p><p>然后就是白嫖了一个一年的Gemini Pro，让我的学习速度更加迅猛，再也不用去CSDN屎里淘金了。。。</p><p>七月大部分时间呆在实验室，留校没有回家</p><p>不得不说，湖南七月那真的是热炸了，打个伞出门转一圈都可以浑身大汗，宛如蒸桑拿，而实验室里的空调制冷效果也一般般，开16度结果面板上显示还是28度。。。</p><p>七月折腾完后赶紧跑路回家了，太热了待不了一点。</p><h3 id="8月">8月</h3><p>八月在家就舒服很多，开始折腾上了ESP32</p><p>本来买ESP32是打算刷个Picokey固件玩，结果折腾半天刷好了效果还一般般，完全比不上Canokey，遂放弃折腾Picokey，而是玩起了最基础的电路以及ESP32编程</p><p>ESP32太好玩了，基本上整个月我都在玩ESP32，买各种硬件，显示屏、按钮、LED、电阻、万用表等等</p><p>而且当时我买的是ESP32 S3顶配版，8M的RAM和16M的存储，怎么玩都行。</p><h3 id="9月">9月</h3><p>九月当然是开卡的一个月，招行万事达卡普卡发布，迫不及待跑去分行开卡，我的国内万事达卡有它就够了，没有继续开万事达卡的欲望了（doge</p><p>然后就是买了新音响，原来的那个在暑假的时候坏了</p><p>G1500bar这段时间体验下来感觉还不错，不过默认参数就有点拉了，建议装官方的软件调一下参数，这样低音和人声效果会好很多。</p><h3 id="10月-12月">10月-12月</h3><p>这段时间倒没有折腾什么，每天课多得爆炸，大三也要准备就业相关的事情，时间少了很多qwq</p><p>十一月底的时候疯狂动物城2上映，立马就去看了😆</p><h2 id="小结">小结</h2>        <div id="aplayer-sZyPzYye" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>  <script>  var options = {"narrow":false,"autoplay":false,"showlrc":3,"mode":"random","mutex":true,"preload":"metadata","listmaxheight":"513px","music":[{"name":"Zoo (From Zootopia 2)","url":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).flac","artist":"Disney/Shakira","cover":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).jpg","lrc":"https://www.goodboyboy.top/uploads/music/Disney _ Shakira - Zoo (From _Zootopia 2_)/Disney _ Shakira - Zoo (From _Zootopia 2_).lrc","theme":"#7767c6ff","pic":""}]};  options.element = document.getElementById("aplayer-sZyPzYye");  var ap = new APlayer(options);    window.aplayers || (window.aplayers = []);  window.aplayers.push(ap);  </script><p>祝大家2026新的一年里幸福安康、财源滚滚、心想事成！😄</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 回忆 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 年度总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Canokey导入S/MIME邮箱证书并使用Thunderbird发送邮件</title>
       <!--<link href="/posts/3174411847.html"/>
       <url>/posts/3174411847.html</url>-->
