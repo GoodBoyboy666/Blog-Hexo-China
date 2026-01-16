@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-01-04T10:58:58.000Z</updated>
+  <updated>2026-01-16T03:32:28.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>家里也换成光纤了qwq</title>
+    <link href="https://blog.goodboyboy.top/posts/1070030594.html"/>
+    <id>https://blog.goodboyboy.top/posts/1070030594.html</id>
+    <published>2026-01-16T03:32:28.000Z</published>
+    <updated>2026-01-16T03:32:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前还没放假回家时，就听我妈说家里有阵突然上不了网，叫了宽带师傅，换成了光纤，然后我就感觉大事不妙</p><p>众所周知，运营商的光猫垃圾的要死，还默认是路由模式，并且普通账户还改不了桥接</p><p>回家登录光猫后台一看，果然是路由模式。。。</p><p>拿itdog ping了一下ipv6，直接全红😭</p><p>而且那个装修师傅搞的网络一言难尽</p><p>你说他不懂吧，他知道把路由器接在了几个Lan口中唯一一个千兆口上，你说他懂吧，他把光猫WiFi开着，我家原来的路由器也开着，而且让我爸妈手机连接的是原来的路由器，最难蚌的是，善后做的一坨，我问我爸妈WiFi密码是多少，他们居然不知道，看来是根本没给我爸妈讲WiFi密码。。。最后还是我通过手机WiFi密码分享功能才调出来WiFi密码。。。</p><p>之前还叫过一次宽带师傅，那个宽带师傅明显就做的好很多，弄了个不干胶贴纸把WiFi密码，宽带账号密码写了贴在路由器上，我回家一看一目了然。</p><p>哦对，还把我路由器管理员密码改了，幸好管理员密码是和WiFi密码一样的，不然真的就变成宽带师傅的路由器了。。。</p><h2 id="后记">后记</h2><p>后面我又试了很多网上的教程，尝试拿到光猫管理员密码，结果都不行。。。看来只能找客服扯皮让他们远程改成桥接了😭</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;之前还没放假回家时，就听我妈说家里有阵突然上不了网，叫了宽带师傅，换成了光纤，然后我就感觉大事不妙&lt;/p&gt;
+&lt;p&gt;众所周知，运营商的光猫垃圾的要死，还默认是路由模式，并且普通账户还改不了桥接&lt;/p&gt;
+&lt;p&gt;回家登录光猫后台一看，果然是路由模式。。。&lt;/p&gt;
+&lt;p&gt;拿itdo</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="网络" scheme="https://blog.goodboyboy.top/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="光纤" scheme="https://blog.goodboyboy.top/tags/%E5%85%89%E7%BA%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>姜还是老的辣</title>
+    <link href="https://blog.goodboyboy.top/posts/2421446382.html"/>
+    <id>https://blog.goodboyboy.top/posts/2421446382.html</id>
+    <published>2026-01-16T03:19:04.000Z</published>
+    <updated>2026-01-16T03:19:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>放假回家，我妈带我去开点喉炎药，回家路上，看到有老板在卖牛肉，于是把我拉过去。</p><p>一开始问，老板是说买的多35一斤，普通的就37一斤。</p><p>然后我妈就开始讲价，老板边切牛肉边讲价，我从来也没自己买过牛肉，不知道行情是怎样，就站在旁边不打扰我妈输出。</p><p>就当我无聊准备看手机时，我妈给老板说“我孩子现在也放假回家，之后经常又会来这边买”之类的。</p><p>站在旁边当装饰的我：？</p><p>我妈还诈老板一下，说“我记得之前都是30一斤的”</p><p>最后老板还是按35卖了。</p><p>要是我买菜，没被缺斤少两坑就不错了，完全讲不来价😂</p><p>不过在小县城也明显感受到经济下行带来的通缩影响了。</p><p>往年牛肉基本都是40-50一斤，今年直接跌倒35一斤。</p><p>和我爸去办点事回来路上买点水果，车厘子居然掉到19.9一斤了，虽然不是高档的那种，但是19.9还是很离谱了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;放假回家，我妈带我去开点喉炎药，回家路上，看到有老板在卖牛肉，于是把我拉过去。&lt;/p&gt;
+&lt;p&gt;一开始问，老板是说买的多35一斤，普通的就37一斤。&lt;/p&gt;
+&lt;p&gt;然后我妈就开始讲价，老板边切牛肉边讲价，我从来也没自己买过牛肉，不知道行情是怎样，就站在旁边不打扰我妈输出。&lt;/</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="买菜" scheme="https://blog.goodboyboy.top/tags/%E4%B9%B0%E8%8F%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>布洛芬效果真不错</title>
@@ -1442,62 +1497,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="GitHub" scheme="https://blog.goodboyboy.top/tags/GitHub/"/>
     
     <category term="学生认证" scheme="https://blog.goodboyboy.top/tags/%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[公告]音乐馆重新上线</title>
-    <link href="https://blog.goodboyboy.top/posts/1639439830.html"/>
-    <id>https://blog.goodboyboy.top/posts/1639439830.html</id>
-    <published>2025-05-25T16:17:50.000Z</published>
-    <updated>2025-05-25T16:17:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>时隔一年，音乐馆功能重新上线😁，目前部分分类还在施工，不过不影响使用。</p><p>打开方式：</p><p><a href="https://blog.goodboyboy.top/music/">https://blog.goodboyboy.top/music/</a></p><p>或者在顶部菜单里找到<code>页面</code>-&gt;<code>音乐馆</code></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
-&lt;p&gt;时隔一年，音乐馆功能重新上线😁，目前部分分类还在施工，不过不影响使用。&lt;/p&gt;
-&lt;p&gt;打开方式：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.goodboyboy.top/music/&quot;&gt;https://blog.go</summary>
-      
-    
-    
-    
-    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
-    
-    
-    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
-    
-    <category term="音乐馆" scheme="https://blog.goodboyboy.top/tags/%E9%9F%B3%E4%B9%90%E9%A6%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[活动]送你一张明信片（长期有效）</title>
-    <link href="https://blog.goodboyboy.top/posts/3994121440.html"/>
-    <id>https://blog.goodboyboy.top/posts/3994121440.html</id>
-    <published>2025-05-20T05:37:11.000Z</published>
-    <updated>2025-11-29T07:24:49.463Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近加入了<a href="https://www.postcrossing.com">Postcrossing</a>平台，看到《<a href="https://pwsz.com/hobby/4493.html">方寸间、自有天地：一张明信片的故事</a>》，感受到了明信片的魅力，因此特开一文用于明信片交换，如果有喜欢明信片的朋友，可以通过下发方式将指定格式的信息发送给我哦，收到信息后我会尽快安排邮寄😁~</p><p>目前已发布的明信片样式可以在这篇文章里找到《<a href="/posts/1630314981.html">博客明信片v2版发布啦，喜欢就快来申请一张吧！</a>》</p><h2 id="信息内容格式">信息内容格式</h2><ul><li>收信人（必填，用于填写收信人一栏）</li><li>地址（必填，用于填写收信地址）</li><li>邮编（必填）</li><li>联系电话（选填，送达后邮递员可能会通过该手机号联系您）</li><li>网名（选填，用于写信内容）</li><li>Email（选填，用于告知投递情况）</li><li>博客网址（选填，用于展示您的博客信息）</li><li>明信片样式（选填，默认随机样式）</li></ul><h2 id="信息发送方式">信息发送方式</h2><h3 id="Email">Email</h3><p>将上方信息通过Email发送至me#goodboyboy.top（将#换成@）</p><div class="note warning flat"><p>因为包含隐私信息，建议发送邮件前使用博主公开的 <a href="https://www.goodboyboy.top/public-key.pub">OpenPGP 公钥</a>对其进行加密（公钥指纹： <code>7B49 3862 FEFB 5A10 B875 4458 391C C423 AEFF 3B06</code>），已和博主有邮件往来的也可以使用博主的 S/MIME 证书对其进行加密。</p></div><h3 id="评论区留言">评论区留言</h3><p>将上方信息在留言至本篇文章底部评论区</p><div class="note warning flat"><p>评论为公开内容，请务必在留言前使用博主的OpenPGP公钥对其进行加密，否则不建议使用该方式。</p></div><h2 id="信息保存">信息保存</h2><div class="note success flat"><p>提供的信息仅用于发送明信片，在投递后预计会保留一周左右，用于补寄等特殊情况。</p></div><h2 id="部分参与展示">部分参与展示</h2><table><thead><tr><th>参与人/博主</th><th>状态</th></tr></thead><tbody><tr><td><a href="https://www.iczrx.cn/">晚夜</a></td><td>已寄出</td></tr><tr><td><a href="https://airy.ink">瓦匠</a></td><td>已寄出</td></tr><tr><td><a href="https://blog.moeworld.tech/">晓空</a></td><td>已寄出</td></tr><tr><td>李寒</td><td>已寄出</td></tr><tr><td>kk</td><td>已寄出</td></tr><tr><td><a href="https://blog.noah0932.top/">Noah</a></td><td>已寄出</td></tr></tbody></table>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近加入了&lt;a href=&quot;https://www.postcrossing.com&quot;&gt;Postcrossing&lt;/a&gt;平台，看到《&lt;a href=&quot;https://pwsz.com/hobby/4493.html&quot;&gt;方寸间、自有天地</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://blog.goodboyboy.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/categories/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
-    
-    
-    <category term="明信片" scheme="https://blog.goodboyboy.top/tags/%E6%98%8E%E4%BF%A1%E7%89%87/"/>
     
   </entry>
   
