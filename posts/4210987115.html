@@ -274,7 +274,7 @@ python -&gt; python3 + python-is-python3</p>
 <p>GND引脚随便找个GND PIN就行</p>
 <h3 id="修改前准备">修改前准备</h3>
 <p>处理环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> BOARD=orangepi3b</span><br><span class="line"><span class="built_in">source</span> build/envsetup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> BOARD=orangepi3b</span><br><span class="line"><span class="built_in">source</span> build/envsetup.sh</span><br><span class="line">lunch rk356x_box-userdebug</span><br></pre></td></tr></table></figure>
 <h3 id="修改内核设备树-DTS">修改内核设备树 (DTS)</h3>
 <p>在<code>kernel/arch/arm64/boot/dts/rockchip/</code>中找到<code>rk3566-orangepi-3b.dts</code>打开</p>
 <p>在<code>/ &#123;...&#125;</code>内部新增下面配置：</p>
