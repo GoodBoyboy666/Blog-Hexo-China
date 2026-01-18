@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>官方Android11 Box系统的OrangePi 3B新增红外模块教程 | GoodBoyboy 's Blog｜惬意小屋-点滴记忆</title><meta name="author" content="GoodBoyboy"><meta name="copyright" content="GoodBoyboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 打算把手上的OrangePi 3B刷成电视盒子给家里用，但是OrangePi 3B没有板载红外模块，于是从官方店铺下单了外置红外模块和遥控器，结果到手发现官方并没有进行适配，没办法只能自己适配了  Tips：本篇教程有点长，并且不适合小白使用  准备环节 下载工具 进入OrangePi官网 http:&#x2F;&#x2F;www.orangepi.cn&#x2F; 进入OrangePi 3B的下载页面 http:&#x2F;&#x2F;w">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>官方Android11 Box系统的OrangePi 3B新增红外模块教程 | GoodBoyboy 's Blog｜惬意小屋-点滴记忆</title><meta name="author" content="GoodBoyboy"><meta name="copyright" content="GoodBoyboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 打算把手上的OrangePi 3B刷成电视盒子给家里用，但是OrangePi 3B没有板载红外模块，于是从官方店铺下单了外置红外模块和遥控器，结果到手发现官方并没有进行适配，没办法只能自己适配了  Tips：本篇教程有点长，并且不适合小白使用  准备环节  Tips：不要买OrangePi官方店铺的那个红外传感器，那是红外光电二极管 (IR Photodiode)，不是集成红外接收头 (In">
 <meta property="og:type" content="article">
 <meta property="og:title" content="官方Android11 Box系统的OrangePi 3B新增红外模块教程">
 <meta property="og:url" content="https://blog.goodboyboy.top/posts/4210987115.html">
 <meta property="og:site_name" content="GoodBoyboy &#39;s Blog｜惬意小屋-点滴记忆">
-<meta property="og:description" content="前言 打算把手上的OrangePi 3B刷成电视盒子给家里用，但是OrangePi 3B没有板载红外模块，于是从官方店铺下单了外置红外模块和遥控器，结果到手发现官方并没有进行适配，没办法只能自己适配了  Tips：本篇教程有点长，并且不适合小白使用  准备环节 下载工具 进入OrangePi官网 http:&#x2F;&#x2F;www.orangepi.cn&#x2F; 进入OrangePi 3B的下载页面 http:&#x2F;&#x2F;w">
+<meta property="og:description" content="前言 打算把手上的OrangePi 3B刷成电视盒子给家里用，但是OrangePi 3B没有板载红外模块，于是从官方店铺下单了外置红外模块和遥控器，结果到手发现官方并没有进行适配，没办法只能自己适配了  Tips：本篇教程有点长，并且不适合小白使用  准备环节  Tips：不要买OrangePi官方店铺的那个红外传感器，那是红外光电二极管 (IR Photodiode)，不是集成红外接收头 (In">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gravatar.alexfox.top/avatar/9da9d1d515d273d4794015f2321f6e04?s=96&d=monsterid&r=g">
 <meta property="article:published_time" content="2026-01-18T07:04:16.000Z">
@@ -225,6 +225,9 @@ btf.addGlobalFn('pjaxSend', () => {
 <p>Tips：本篇教程有点长，并且不适合小白使用</p>
 </blockquote>
 <h2 id="准备环节">准备环节</h2>
+<blockquote>
+<p>Tips：不要买OrangePi官方店铺的那个红外传感器，那是<code>红外光电二极管 (IR Photodiode)</code>，不是<code>集成红外接收头 (Integrated IR Receiver)</code>！！！</p>
+</blockquote>
 <h3 id="下载工具">下载工具</h3>
 <p>进入OrangePi官网 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.orangepi.cn/">http://www.orangepi.cn/</a></p>
 <p>进入OrangePi 3B的下载页面 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-3B.html">http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-3B.html</a></p>
@@ -363,7 +366,7 @@ python -&gt; python3 + python-is-python3</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> rk356x_box:/ $ getevent -l</span><br><span class="line"></span><br><span class="line">add device 1: /dev/input/event1</span><br><span class="line"></span><br><span class="line">  name:     <span class="string">&quot;gpio_ir_recv&quot;</span></span><br><span class="line"></span><br><span class="line">add device 2: /dev/input/event2</span><br><span class="line"></span><br><span class="line">  name:     <span class="string">&quot;rk-headset&quot;</span></span><br><span class="line"></span><br><span class="line">add device 3: /dev/input/event0</span><br><span class="line"></span><br><span class="line">  name:     <span class="string">&quot;rk805 pwrkey&quot;</span> </span><br></pre></td></tr></table></figure>
 <p>执行<code>cat /sys/kernel/debug/gpio | grep &quot;gpio-123&quot;</code>也会有下面输出，表示正在使用的GPIO是哪个驱动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpio-123 (                    |ir-receiver         ) <span class="keyword">in</span>  hi </span><br></pre></td></tr></table></figure>
-<p>然后开启选择ir协议</p>
+<p>然后开始选择ir协议</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sys/class/rc/rc0/protocols</span><br></pre></td></tr></table></figure>
 <p>会看到当前支持的所有协议，选择要监听的协议</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;+nec&quot;</span> &gt; /sys/class/rc/rc0/protocols</span><br></pre></td></tr></table></figure>
