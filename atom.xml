@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-01-25T08:31:01.000Z</updated>
+  <updated>2026-02-13T04:39:03.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Perfect Pic —— 一个基于 Gin 开发的高性能、轻量级图床</title>
+    <link href="https://blog.goodboyboy.top/posts/3951141653.html"/>
+    <id>https://blog.goodboyboy.top/posts/3951141653.html</id>
+    <published>2026-02-13T04:39:03.000Z</published>
+    <updated>2026-02-13T04:39:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>假期在家无聊，和AI一起用Go搓了一个图床，边搓边学Go（doge）</p><blockquote><p>其实很久之前就想搓了awa</p></blockquote><h2 id="Perfect-Pic-是什么？">Perfect Pic 是什么？</h2><p>Perfect Pic 是一个基于 Go (Gin) 开发的高性能、轻量级图床。采用前后端分离架构，为个人或小型团队设计，提供安全可靠的图片存储、管理和分发功能。</p><h2 id="Perfect-Pic-相较于其他图床有哪些优势？">Perfect Pic 相较于其他图床有哪些优势？</h2><ul><li>采用 MIT License 开源，可以自行托管，数据完全由自己掌控。</li><li>采用Go语言开发，相较于传统PHP图床性能好，对服务器压力小。</li><li>支持SQLite、MySQL、PostgreSQL数据库，可根据实际业务场景选择。</li><li>内置内存缓存、Redis支持，提高响应速度。</li><li>前后端分离架构，可以自行编写前端，DIY可玩性高。</li><li>支持Docker部署。</li></ul><h2 id="为什么要开发-Perfect-Pic">为什么要开发 Perfect Pic</h2><p>因为自己博客需要托管图片，商业图床数据不在自己手里不放心，试了好几个开源图床，许多都是用PHP开发，对于我这种垃圾服务器来说压力不小</p><p>特别是当开启图片转换时，我的垃圾服务器可以CPU堵塞好几秒，有时候甚至图片上传失败。有些开源图床又过于臃肿，有些功能根本用不上。</p><p>最后打算自己做一个高性能图床，想吃什么自己做😋</p><h2 id="项目仓库">项目仓库</h2><p>Perfect Pic有两个仓库：</p><ul><li><a href="https://github.com/GoodBoyboy666/perfect-pic-server">perfect-pic-server</a>（后端仓库）</li><li><a href="https://github.com/GoodBoyboy666/perfect-pic-web">perfect-pic-web</a>（前端仓库）</li></ul><p>开发以后端为主，构建均在后端仓库 <a href="https://github.com/GoodBoyboy666/perfect-pic-server/releases">Releases</a> , Releases 构建分为 embed 和非 embed 版，embed版会内嵌前端，便于需求小的用户快速启动，无需额外部署前端。</p><h2 id="开发进度">开发进度</h2><p>目前大部分功能已完成设计并测试，等待系统性功能测试，感兴趣的友友可以去体验体验😄</p><p>喜欢的话麻烦顺手点个免费Star吧（小声）</p><p>仓库目前由我一人维护，开发速度可能不会很快，不过会尽快推出1.0版</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;假期在家无聊，和AI一起用Go搓了一个图床，边搓边学Go（doge）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其实很久之前就想搓了awa&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Perfect-Pic-是什么？&quot;&gt;Perf</summary>
+      
+    
+    
+    
+    <category term="应用" scheme="https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="图床" scheme="https://blog.goodboyboy.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="Perfect Pic" scheme="https://blog.goodboyboy.top/tags/Perfect-Pic/"/>
+    
+  </entry>
   
   <entry>
     <title>尘封了八年的祝福</title>
@@ -1468,35 +1499,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
     
     <category term="Software" scheme="https://blog.goodboyboy.top/categories/Software/"/>
-    
-    
-    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
-    
-    <category term="KDE" scheme="https://blog.goodboyboy.top/tags/KDE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅尝Debian KDE桌面</title>
-    <link href="https://blog.goodboyboy.top/posts/1593855977.html"/>
-    <id>https://blog.goodboyboy.top/posts/1593855977.html</id>
-    <published>2025-06-07T03:54:00.000Z</published>
-    <updated>2025-06-07T03:54:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近入手了一个128G的闪迪U盘，读速400MB/s,写入实测80MB/s，4k写入3MB/s，刚好了解到KDE桌面还不错，打算把他用来装Debian玩玩。</p><h2 id="系统安装">系统安装</h2><p>和普通的Debian安装没什么不同，不过这次用的是在线安装的小镜像。</p><p>事实证明就应该下完整镜像，莫名其妙补了一堆用不到的软件，花了40多分钟。。。</p><p>因为是装在U盘里，并且有可能有移动需求，从数据安全的角度来说我还是倾向于使用全盘加密</p><p>虽然之前在另一个U盘里装Debian启用全盘加密后导致性能大跌，但这次U盘性能好一些，应该没有什么大问题（确信</p><p>主要是不启用全盘加密真的不敢存放隐私数据（U盘丢失概率比笔记本大多了）</p><p>密码设置没有太复杂，没有使用密码库软件生成的密码，这只是为了防丢，不是为了对抗，没必要设置太复杂的密码麻烦自己。</p><h2 id="进入桌面">进入桌面</h2><p>不得不说，linux启动就是比windows快，1s引导，2s进桌面，开机总共3s</p><p>进入桌面后，KDE给我的感觉是非常好看，简约但不失优雅。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/07/kckpkt.webp" alt="优雅的桌面"></p><p>桌面各种动画都有，最关键的是，比windows那奇怪的动画流畅多了</p><p>和GNOME的简约过头相比，KDE可以高度自定义桌面，虽然网上有些人说设置太多导致眼花缭乱，但我个人觉得刚刚好，默认的设置也完全够用</p><p>GNOME改个什么设置还要装插件，麻烦的要命。。。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/07/lrj5nd.webp" alt="系统信息"></p><p>不同的主题，感觉都很好看</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/07/12f9fem.webp" alt="PurPurDay Global 5桌面"><br><img src="https://pic.goodboyboy.top/imgs/2025/06/07/12faf4p.webp" alt="PurPurDay Global 5窗口"><br><img src="https://pic.goodboyboy.top/imgs/2025/06/07/12fbozs.webp" alt="PurPurNight Global 5桌面"><br><img src="https://pic.goodboyboy.top/imgs/2025/06/07/12fc3b2.webp" alt="PurPurNight Global 5窗口"><br><img src="https://pic.goodboyboy.top/imgs/2025/06/07/12fcx9w.webp" alt="Motto Dark Global 5桌面"></p><h2 id="软件安装">软件安装</h2><p>这个没得说，虽然有discover这类应用商店，但对国内用户不友好，下载慢而且很多软件没有（例如QQ,微信等）</p><p>目前一般有两种方式，使用deb包或者appimage包。</p><p>deb包需要使用命令安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install deb包文件位置</span><br></pre></td></tr></table></figure><p>appimage包则双击就能直接用了</p><p>我优先使用deb包安装，没有deb包就下appimage包</p><p>装一些国产软件有一些小坑，例如qq音乐要在快捷方式参数加上<code>--no-sandbox</code>才能启动，微信要手动安装一个依赖才能启动，感觉QQ反而是支持的最好的了（QQ NT跨平台能力太强了），虽然我讨厌塞浏览器内核这种行为，但在跨平台方面确实效果不错。</p><p>浏览器我选择librewolf，安装稍微复杂一点，不过也没有多大困难</p><p>其实像这些有deb包的都很好安装，依赖什么的都会自动补全，appimage更是想删就删，像mac那样直接拖进废纸篓（右键删除）就完成卸载了。</p><p>最难安装的还是需要自行编译的软件，不过这类软件如果是小白用户一般也很难遇到咯</p><p>由于我有智能卡的需求，需要安装opensc来让某些APP（例如vera crypt、thunderbird）支持读取智能卡，官方release只有msi和exe，linux用户需要自己编译（泪目了🥹）</p><p>不过好在官方编译文档比较完善，编译也就make一下</p><h2 id="软件代替">软件代替</h2><p>部分软件在linux上没有，只能找找平替的了</p><p>android studio，IDEA之类的倒是有Debian版</p><p>但是像affinity，Git Extension之类的就暂时没找到完美的平替</p><p>自带的GIMP虽然说功能强大，但是那个界面真的一言难尽，有一种10年左右的UI风格（个人觉得）</p><h2 id="兼容性问题">兼容性问题</h2><p>这方面感觉Debian做的已经很不错了，开箱即用，目前没有手动打任何驱动（NVIDIA驱动不打算打），WIFI，蓝牙，显示器，触控板都能正常使用，而且居然还能调节键盘背光亮度，系统上暂时没有出现兼容性问题（Deepin之前登陆页面出现兼容性问题，屏幕发绿，不知道现在解决了没）</p><p>目前暂时不打算打NVIDIA驱动，装这个系统本来就是打算用作外出没带充电器时延长笔记本使用时间用的</p><p>更多的其实还是软件上的兼容性问题，QQ的桌面通知可以正常显示，但是没有通知铃声，而tg却能正常触发铃声。</p><p>另外QQ的截图功能用不了，这个貌似是Wayland的问题，之后再看看怎么解决吧。</p><p>QQ音乐的桌面歌词不能置顶显示，以至于开了和没开一样，系统的音乐控制控制不了QQ音乐 ，只能在QQ音乐界面切换音乐。</p><p>thunderbird的OpenPGP加密邮件不支持外置智能卡，并且通过opensc读取智能卡可以读取到证书，但是发邮件时就读取不了，虽然内置的KMail支持系统的OpenPGP实现，但是界面没thunderbird好看（doge</p><h2 id="续航">续航</h2><p>实测在打开QQ音乐，librewolf浏览器，vscode，刷新率60Hz，重启机器3次情况下，持续使用2个小时仍有48%的电量</p><p>电池健康度为76%，电池初始容量为90Wh。</p><p>平常windows 11下3小时刚好用完。</p><p>综合下来延长续航效果还是有的。</p><h2 id="打印机问题">打印机问题</h2><p>linux下只要不要我碰驱动一切好说，一旦碰驱动就一言难尽。</p><p>实验室的那台打印机用不了，系统自带的驱动虽然已经识别出来了打印机型号，但是打印测试页失败。</p><p>之前打算给这台打印机弄个cups结果也是打印失败。</p><p>去hp官网下载驱动安装失败，有些包找不到，应该是Debian 12太新了。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近入手了一个128G的闪迪U盘，读速400MB/s,写入实测80MB/s，4k写入3MB/s，刚好了解到KDE桌面还不错，打算把他用来装Debian玩玩。&lt;/p&gt;
-&lt;h2 id=&quot;系统安装&quot;&gt;系统安装&lt;/h2&gt;
-&lt;p&gt;和普通的Deb</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
     
     
     <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
