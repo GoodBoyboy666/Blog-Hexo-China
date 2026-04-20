@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Easy Drop——一个基于Gin开发的高性能、轻量级说说平台</title>
+      <!--<link href="/posts/1249150699.html"/>
+      <url>/posts/1249150699.html</url>-->
+      <link href="posts/1249150699.html"/>
+      <url>posts/1249150699.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>是的没错，又开新坑了（老坑仍然在更哈</p></blockquote><h2 id="项目背景">项目背景</h2><p>用hexo这种静态博客平台不怎么方便发布零星的内容，特别是时间很碎片化的时候，基本上没什么心情更博客，就容易给人一种“假死”的状态。虽然有memos，但是感觉还是不是我喜欢的类型，所以打算自己搓一个。</p><h2 id="项目地址">项目地址</h2><p><a href="https://github.com/GoodBoyboy666/easydrop">https://github.com/GoodBoyboy666/easydrop</a></p><h2 id="项目进度">项目进度</h2><p>目前项目还在开发中，变动会比较频繁，如果想要尝鲜的朋友可以先部署玩玩</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 应用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 说说 </tag>
+            
+            <tag> Gin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Perfect Pic —— 一个基于 Gin 开发的高性能、轻量级图床</title>
       <!--<link href="/posts/3951141653.html"/>
       <url>/posts/3951141653.html</url>-->
