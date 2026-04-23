@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-04-20T11:50:52.000Z</updated>
+  <updated>2026-04-23T14:16:08.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GoodBoyboy &#39;s Talk上线！</title>
+    <link href="https://blog.goodboyboy.top/posts/3509156966.html"/>
+    <id>https://blog.goodboyboy.top/posts/3509156966.html</id>
+    <published>2026-04-23T14:16:08.000Z</published>
+    <updated>2026-04-23T14:16:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>采用 <a href="https://github.com/GoodBoyboy666">EasyDrop</a> 搭建的 <a href="https://talk.furwolf.com/">GoodBoyboy 's Talk</a> 正式上线！</p><p>后续我将会在GoodBoyboy 's Talk上更新说说相关内容，欢迎大家来玩😄</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;采用 &lt;a href=&quot;https://github.com/GoodBoyboy666&quot;&gt;EasyDrop&lt;/a&gt; 搭建的 &lt;a href=&quot;https://talk.furwolf.com/&quot;&gt;GoodBoyboy &#39;s Talk</summary>
+      
+    
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="EasyDrop" scheme="https://blog.goodboyboy.top/tags/EasyDrop/"/>
+    
+  </entry>
   
   <entry>
     <title>Easy Drop——一个基于Gin开发的高性能、轻量级说说平台</title>
@@ -1475,35 +1504,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
     
     <category term="KDE" scheme="https://blog.goodboyboy.top/tags/KDE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian开玩Minecraft</title>
-    <link href="https://blog.goodboyboy.top/posts/3464924544.html"/>
-    <id>https://blog.goodboyboy.top/posts/3464924544.html</id>
-    <published>2025-06-10T05:05:06.000Z</published>
-    <updated>2025-06-10T05:05:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>虽然装Debian确实是为了外出方便省电，但还是需要劳逸结合的（逃</p><h2 id="官方启动器">官方启动器</h2><p>在官方下载页面<a href="https://www.minecraft.net/zh-hans/download">https://www.minecraft.net/zh-hans/download</a>找到<code>Debian 版及基于 Debian 的版本</code>，下载deb包然后安装即可。</p><p>界面区别和windows版不大</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lv9mrt.webp" alt="官方启动器"></p><h2 id="LabyMod">LabyMod</h2><p>第三方PvP客户端LabyMod也支持Debian，在下载页面<a href="https://www.labymod.net/en/download">https://www.labymod.net/en/download</a>选择<code>other</code>，找到Debian下载deb包安装即可。</p><p>界面和windows版区别也不大</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lv9zov.webp" alt="LabyMod启动器"></p><h2 id="HMCL">HMCL</h2><p>第三方MC客户端由java编写，同时也适配了Linux系统，在下载页面<a href="https://hmcl.huangyuhui.net/download/">https://hmcl.huangyuhui.net/download/</a>下载<code>.jar</code>文件</p><p>需要注意的是，稳定版貌似提供的是一个sh脚本文件，但是我运行出了问题，下面开发版则是可以直接下载到.jar</p><p>另外系统需要先安装java环境才能启动HMCL，不过如果先安装了官方启动器，官方启动器会将环境配置好，因此直接使用命令就能启动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar HMCL jar文件的位置</span><br></pre></td></tr></table></figure><p>界面和windows版没有区别。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/10/lvaab0.webp" alt="HMCL"></p><h2 id="后继">后继</h2><p>虽然没装独显驱动，但是不打光影用核显跑还是没问题的，180fps跑满</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;虽然装Debian确实是为了外出方便省电，但还是需要劳逸结合的（逃&lt;/p&gt;
-&lt;h2 id=&quot;官方启动器&quot;&gt;官方启动器&lt;/h2&gt;
-&lt;p&gt;在官方下载页面&lt;a href=&quot;https://www.minecraft.net/zh-hans/</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="Minecraft" scheme="https://blog.goodboyboy.top/tags/Minecraft/"/>
-    
-    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
     
   </entry>
   
