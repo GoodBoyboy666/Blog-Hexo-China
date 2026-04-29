@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>滴滴Android客户端一面凉经</title>
+      <!--<link href="/posts/3466962992.html"/>
+      <url>/posts/3466962992.html</url>-->
+      <link href="posts/3466962992.html"/>
+      <url>posts/3466962992.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>终于是更新了，但是是凉经😢</p><h2 id="正文">正文</h2><p>首先是自我介绍，介绍一下自己。</p><p>然后是项目盘点：</p><ul><li>项目介绍</li><li>询问项目细节</li></ul><p>接着是八股盛宴</p><ul><li>有用过Handler吗，介绍一下Handler，Handler和Looper之间的关系</li><li>为什么Looper不会造成阻塞</li><li>epoll底层机制是怎么样的</li><li>Android XML和Compose的区别</li><li>Compose 声明式UI和XML命令式UI有什么区别</li><li>有了解过跨端吗</li><li>你用过哪些架构，了解过MVC、MVP吗？介绍一下MVC、MVP、MVVM</li><li>Android四大件是什么，分别是干什么的</li><li>如何和Service交互，正常启动Service和bindService启动有什么区别</li><li>有了解过哪些设计模式（这里没答上来，面试官后面继续问）</li><li>什么是单例模式，单例模式有哪几种（依旧是脑抽没答上来）</li><li>知道什么是懒汉式？（这里想到有懒汉式和饿汉式，但是还是紧张忘记了，一顿乱答（悲））</li><li>了解过建造者模式吗？（意识到是Builder之类的，答对了一半吧，后面又是一顿乱答）</li><li>知道工厂模式吗？（依旧是忘记了然后胡言乱语😢）</li><li>了解过HashMap吗？他是线程安全的吗？（这里HashMap有点忘记了，不过大部分答对了，引出ConcurrentHashMap，但其实这里面试官想问的是HashTable）</li><li>那你说的ConcurrentHashMap和HashTable有什么区别吗？（属于给自己挖坑了）</li><li>有用过哪些布局（这里答的不是很好，因为很久没写XML了，基本上都是Compose）</li><li>说一下RecycleView缓存机制（依旧是给自己挖坑，答得一坨）</li><li>说一下什么是线程死锁，产生死锁的条件</li><li>说一下View的渲染流程（还是答得一坨，答到activity生命周期去了）</li></ul><p>最后一道算法题，面试官手出，可能是当时面试官也没准备什么特别难的题目，就leecode的一个两数之和，直接秒了。</p><p>最后反问</p><h2 id="结局">结局</h2><p>成功进入人才储备库（垃圾桶），原因是岗位不匹配</p><p>其实当时反问环节就差不多知道结局了，他们团队大部分用的还是Kotlin+XML，而且之后打算向跨端flutter方向发展，迁移成Compose的化工程量太大</p><h2 id="后记">后记</h2><p>人生的第一次面试，感觉体验不错（至于为什么等这几天更新腾讯一面面经就知道了），至少一场面试下来能很好的发现自己有哪些八股还掌握不牢，和面试官互动还是很深入的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> 面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 滴滴 </tag>
+            
+            <tag> Android客户端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GoodBoyboy &#39;s Talk上线！</title>
       <!--<link href="/posts/3509156966.html"/>
       <url>/posts/3509156966.html</url>-->

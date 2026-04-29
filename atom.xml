@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-04-23T14:16:08.000Z</updated>
+  <updated>2026-04-29T07:34:49.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>滴滴Android客户端一面凉经</title>
+    <link href="https://blog.goodboyboy.top/posts/3466962992.html"/>
+    <id>https://blog.goodboyboy.top/posts/3466962992.html</id>
+    <published>2026-04-29T07:34:49.000Z</published>
+    <updated>2026-04-29T07:34:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>终于是更新了，但是是凉经😢</p><h2 id="正文">正文</h2><p>首先是自我介绍，介绍一下自己。</p><p>然后是项目盘点：</p><ul><li>项目介绍</li><li>询问项目细节</li></ul><p>接着是八股盛宴</p><ul><li>有用过Handler吗，介绍一下Handler，Handler和Looper之间的关系</li><li>为什么Looper不会造成阻塞</li><li>epoll底层机制是怎么样的</li><li>Android XML和Compose的区别</li><li>Compose 声明式UI和XML命令式UI有什么区别</li><li>有了解过跨端吗</li><li>你用过哪些架构，了解过MVC、MVP吗？介绍一下MVC、MVP、MVVM</li><li>Android四大件是什么，分别是干什么的</li><li>如何和Service交互，正常启动Service和bindService启动有什么区别</li><li>有了解过哪些设计模式（这里没答上来，面试官后面继续问）</li><li>什么是单例模式，单例模式有哪几种（依旧是脑抽没答上来）</li><li>知道什么是懒汉式？（这里想到有懒汉式和饿汉式，但是还是紧张忘记了，一顿乱答（悲））</li><li>了解过建造者模式吗？（意识到是Builder之类的，答对了一半吧，后面又是一顿乱答）</li><li>知道工厂模式吗？（依旧是忘记了然后胡言乱语😢）</li><li>了解过HashMap吗？他是线程安全的吗？（这里HashMap有点忘记了，不过大部分答对了，引出ConcurrentHashMap，但其实这里面试官想问的是HashTable）</li><li>那你说的ConcurrentHashMap和HashTable有什么区别吗？（属于给自己挖坑了）</li><li>有用过哪些布局（这里答的不是很好，因为很久没写XML了，基本上都是Compose）</li><li>说一下RecycleView缓存机制（依旧是给自己挖坑，答得一坨）</li><li>说一下什么是线程死锁，产生死锁的条件</li><li>说一下View的渲染流程（还是答得一坨，答到activity生命周期去了）</li></ul><p>最后一道算法题，面试官手出，可能是当时面试官也没准备什么特别难的题目，就leecode的一个两数之和，直接秒了。</p><p>最后反问</p><h2 id="结局">结局</h2><p>成功进入人才储备库（垃圾桶），原因是岗位不匹配</p><p>其实当时反问环节就差不多知道结局了，他们团队大部分用的还是Kotlin+XML，而且之后打算向跨端flutter方向发展，迁移成Compose的化工程量太大</p><h2 id="后记">后记</h2><p>人生的第一次面试，感觉体验不错（至于为什么等这几天更新腾讯一面面经就知道了），至少一场面试下来能很好的发现自己有哪些八股还掌握不牢，和面试官互动还是很深入的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;终于是更新了，但是是凉经😢&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;首先是自我介绍，介绍一下自己。&lt;/p&gt;
+&lt;p&gt;然后是项目盘点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目介绍&lt;/li&gt;
+&lt;li&gt;询问项目细节&lt;/li&gt;
+&lt;/ul</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="滴滴" scheme="https://blog.goodboyboy.top/tags/%E6%BB%B4%E6%BB%B4/"/>
+    
+    <category term="Android客户端" scheme="https://blog.goodboyboy.top/tags/Android%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>GoodBoyboy &#39;s Talk上线！</title>
@@ -1473,37 +1511,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="Edge" scheme="https://blog.goodboyboy.top/tags/Edge/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian KDE Plasma 5调整外接显示器亮度</title>
-    <link href="https://blog.goodboyboy.top/posts/950775551.html"/>
-    <id>https://blog.goodboyboy.top/posts/950775551.html</id>
-    <published>2025-06-10T17:21:56.000Z</published>
-    <updated>2025-06-10T17:21:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note info flat"><p>KDE Plasma 6.2已支持调整DDC/CI协议的显示器</p></div><p>但是Debian12用的是Plasma 5.27.5，还不支持这个功能（悲</p><p>找到了一个好用的小插件，特地来分享记录一下</p><p>该插件可以像作为小组件集成到Plasma中，就像windows下的Twinkle Tray一样。</p><p>项目地址：<a href="https://github.com/davidhi7/ddcci-plasmoid">https://github.com/davidhi7/ddcci-plasmoid</a></p><h2 id="安装ddcutil">安装ddcutil</h2><p>ddcutil为实际控制显示器的工具，用于和显示器通信</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install ddcutil</span><br></pre></td></tr></table></figure><p>安装完成后检测显示器，看是否能正常识别到显示器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ddcutil detect</span><br></pre></td></tr></table></figure><p>正常情况下应该能读取到类似下面的信息（这是我的显示器信息）</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Display 1</span><br><span class="line">   I2C bus:  /dev/i2c-32</span><br><span class="line">   DRM connector:           card0-DP-1</span><br><span class="line">   EDID synopsis:</span><br><span class="line">      Mfg id:               AOC - UNK</span><br><span class="line">      Model:                Q27G2S</span><br><span class="line">      Product code:         9986  (0x2702)</span><br><span class="line">      Serial number:        xxxxxxxxxxxxx</span><br><span class="line">      Binary serial number: xxxx (0xxxxxxxxx)</span><br><span class="line">      Manufacture year:     2024,  Week: 8</span><br><span class="line">   VCP version:         2.2</span><br></pre></td></tr></table></figure><p>如果返回的是下面的信息，说明没有加载内核模块（Debian一般都会出现这种情况）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">No /dev/i2c devices exist.</span><br><span class="line">ddcutil requires module i2c-dev.</span><br></pre></td></tr></table></figure><p>这里加载一下内核模块就行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> modprobe i2c-dev</span><br></pre></td></tr></table></figure><p>验证是否加载成功</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /dev/i2c-*</span><br></pre></td></tr></table></figure><p>正常加载会显示<code>/dev/i2c-0</code>等设备文件</p><p>如果正确加载我们将配置写入模块列表确保开机自动加载</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;i2c-dev&quot;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/modules-load.d/i2c-dev.conf</span><br></pre></td></tr></table></figure><p>然后更新initramfs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-initramfs -u</span><br></pre></td></tr></table></figure><h2 id="调整亮度">调整亮度</h2><p>先尝试查询亮度</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ddcutil getvcp 10</span><br></pre></td></tr></table></figure><p>设置亮度为50%（按自己喜欢来，只是做测试）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ddcutil getvcp 10 50</span><br></pre></td></tr></table></figure><p>如果发现显示器可以正常响应亮度修改则进入下一步</p><h2 id="安装backend">安装backend</h2><p>这个是小组件的后端，一个python包，可以通过pip或者pipx安装</p><p>pip：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --user ddcci-plasmoid-backend</span><br></pre></td></tr></table></figure><p>pipx：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipx install ddcci-plasmoid-backend</span><br></pre></td></tr></table></figure><h2 id="安装小组件">安装小组件</h2><p>下载小组建<a href="https://store.kde.org/p/2015475">https://store.kde.org/p/2015475</a></p><p>下载后解压，然后安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kpackagetool5 --install plasmoid</span><br></pre></td></tr></table></figure><div class="note warning flat"><p>如果您在上一步中使用了<code>pipx</code>来安装backend，则小部件设置<code>Backend executable command</code>必须设置为<code>~/.local/bin/ddcci_plasmoid_backend</code>（前面不带 python3 或其他任何内容）。</p></div><h2 id="显示小组件">显示小组件</h2><p>系统托盘的箭头-&gt;配置系统托盘-&gt;项目-&gt;找到<code>显示器亮度</code> 并根据您的偏好设置可见性</p><p>如果使用pipx安装的backend，则点击小组件后点击右上角的设置按钮，按照前面的提示<code>后端命令行</code>的内容，最后应用即可。</p><p>Enjoy！😘</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;KDE Plasma 6.2已支持调整DDC/CI协议的显示器&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;但是Debian12用的是Plasma 5.27.5，还不支持这个功能（悲&lt;/p&gt;
-&lt;p&gt;找到了一个好用的小插件，特地来分享记</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
-    
-    
-    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
-    
-    <category term="KDE" scheme="https://blog.goodboyboy.top/tags/KDE/"/>
     
   </entry>
   
