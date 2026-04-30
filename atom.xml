@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-04-29T07:34:49.000Z</updated>
+  <updated>2026-04-30T12:20:48.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>只有失去了才会懂得珍惜，但幸好我还没有失去</title>
+    <link href="https://blog.goodboyboy.top/posts/4025561226.html"/>
+    <id>https://blog.goodboyboy.top/posts/4025561226.html</id>
+    <published>2026-04-30T12:20:48.000Z</published>
+    <updated>2026-04-30T12:20:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="NULL">NULL</h2><p>曾几何时，我彷徨过，也悲伤过</p><p>胡思乱想，郁郁寡欢</p><p>想要证明自己，想要一个完美的自己</p><p>为此不断舍弃，只为尽快实现目标</p><p>它很光鲜亮丽，让我无比向往</p><p>它很遥远，让我望不可及</p><p>它带给我的不再是希望，满足，而是欲望，焦虑</p><p>迷茫之际，那个曾被我遗忘在角落的，接纳了我</p><p>让我放下了执念，看清了自己</p><p>让我明白，我不是一个人在前进</p><p>让我学会，接纳不完美的自己</p><p>正如只有失去了才会懂得珍惜</p><p>但幸好我还没有失去</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;NULL&quot;&gt;NULL&lt;/h2&gt;
+&lt;p&gt;曾几何时，我彷徨过，也悲伤过&lt;/p&gt;
+&lt;p&gt;胡思乱想，郁郁寡欢&lt;/p&gt;
+&lt;p&gt;想要证明自己，想要一个完美的自己&lt;/p&gt;
+&lt;p&gt;为此不断舍弃，只为尽快实现目标&lt;/p&gt;
+&lt;p&gt;它很光鲜亮丽，让我无比向往&lt;/p&gt;
+&lt;p&gt;它很遥远，让</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>滴滴Android客户端一面凉经</title>
@@ -1484,33 +1514,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
     
     <category term="字体" scheme="https://blog.goodboyboy.top/tags/%E5%AD%97%E4%BD%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian12 KDE Edge输入法问题</title>
-    <link href="https://blog.goodboyboy.top/posts/1016592383.html"/>
-    <id>https://blog.goodboyboy.top/posts/1016592383.html</id>
-    <published>2025-06-11T06:36:09.000Z</published>
-    <updated>2025-06-11T06:36:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>因为部分网页可能Chromium内核渲染更好，而且也打算把两个主流内核都补齐，Chrome因为墙的原因数据同步比较麻烦，于是打算用Edge。</p><h2 id="输入法问题">输入法问题</h2><p>已知在最新版Edge（microsoft-edge-stable_137.0.3296.68-1_amd64）上出现输入法问题</p><p>具体表现为fcitx5在英文状态下无法输入任何内容，而在非英文状态下则正常输入。</p><p>ubuntu ask上也有人提了相关问题：<a href="https://askubuntu.com/questions/1550458/cannot-type-in-ms-edge-and-chrome-with-fcitx5-english-under-x11-fcitx5-chinese">https://askubuntu.com/questions/1550458/cannot-type-in-ms-edge-and-chrome-with-fcitx5-english-under-x11-fcitx5-chinese</a></p><p>该问题说包含Chrome浏览器，但是经过我测试Chrome浏览器没有出现该情况，我使用的是Wayland，可能是在x11上chrome也表现不佳？</p><p>目前在Debian的官方应用商店上也有相关评论：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/11/nwyblu.webp" alt="问题"></p><p>该问题应该不是个例</p><h2 id="解决方案">解决方案</h2><p>降级Edge浏览器，经过测试，<code>136.0.3240.92-1</code>版本没有该问题，其他版本未知</p><p>历史版本下载地址：<a href="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/">https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/</a></p><h2 id="后记">后记</h2><p>虽然该问题对中文用户影响较小，但我平时输入英文还是更喜欢切换到英文输入法，用中文输入法输入中文感觉好别扭。</p><p>Debian安装deb包需要sudo,因此一般不会像windows上那样偷偷自动更新（微软怕不是对自动更新有什么执念）</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;因为部分网页可能Chromium内核渲染更好，而且也打算把两个主流内核都补齐，Chrome因为墙的原因数据同步比较麻烦，于是打算用Edge。&lt;/p&gt;
-&lt;h2 id=&quot;输入法问题&quot;&gt;输入法问题&lt;/h2&gt;
-&lt;p&gt;已知在最新版Edge（mi</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="Edge" scheme="https://blog.goodboyboy.top/tags/Edge/"/>
     
   </entry>
   
