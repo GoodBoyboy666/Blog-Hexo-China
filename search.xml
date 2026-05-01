@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>GoodBoyboy Blog、Talk联动成功</title>
+      <!--<link href="/posts/1749152833.html"/>
+      <url>/posts/1749152833.html</url>-->
+      <link href="posts/1749152833.html"/>
+      <url>posts/1749152833.html</url>
+      
+        <content type="html"><![CDATA[<p>博客现已接入 <a href="https://talk.furwolf.com/">GoodBoyboy Talk</a> 说说功能，将会在右侧侧边栏实时同步说说内容</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 公告 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>只有失去了才会懂得珍惜，但幸好我还没有失去</title>
       <!--<link href="/posts/4025561226.html"/>
       <url>/posts/4025561226.html</url>-->
