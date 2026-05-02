@@ -1,5 +1,5 @@
 /**
- * EasyDrop 说说嵌入脚本 (talk.js)
+ * EasyDrop 说说嵌入脚本
  *
  * 将 EasyDrop 的说说列表嵌入到任意第三方页面。
  * 本文件由用户自行部署到自己的服务器或 CDN，不依赖 EasyDrop 服务端托管。
@@ -44,18 +44,50 @@
   var MIN_COUNT = 1;
 
   var script = document.currentScript;
+  if (!script) {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      if (scripts[i].getAttribute('data-easydrop-base') !== null) {
+        script = scripts[i];
+        break;
+      }
+    }
+  }
   var globalConfig = window.EasyDropTalk || {};
 
-  function getAttr(name, defaultValue, transform) {
+  function getAttr(name, defaultValue, transform, globalName) {
     var attrVal = script ? script.getAttribute('data-' + name) : null;
-    var globalVal = globalConfig[name];
+    var preferredGlobalName = globalName || name;
+    var globalVal = globalConfig[preferredGlobalName];
+
+    if (globalVal === undefined && preferredGlobalName !== name) {
+      globalVal = globalConfig[name];
+    }
+
     var val = attrVal !== null ? attrVal : (globalVal !== undefined ? globalVal : defaultValue);
     return transform ? transform(val) : val;
   }
 
-  var BASE_URL = getAttr('easydrop-base', window.location.origin, function (v) {
-    return v.replace(/\/+$/, '');
-  });
+  var BASE_URL = getAttr('easydrop-base', null, function (v) {
+    if (v === null || v === undefined || String(v).trim() === '') {
+      console.error('[EasyDrop Talk] 缺少必填配置 data-easydrop-base（或 window.EasyDropTalk.baseUrl）');
+      return null;
+    }
+
+    v = String(v).trim().replace(/\/+$/, '');
+    try {
+      var parsed = new URL(v);
+      if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+        throw new Error('仅允许 http/https 协议');
+      }
+    } catch (e) {
+      console.error('[EasyDrop Talk] data-easydrop-base 不合法:', e.message);
+      return null;
+    }
+    return v;
+  }, 'baseUrl');
+
+  var CONTAINER_ID = getAttr('container', DEFAULT_CONTAINER_ID);
 
   var COUNT = getAttr('count', DEFAULT_COUNT, function (v) {
     var n = parseInt(v, 10);
@@ -63,8 +95,6 @@
     if (n > MAX_COUNT) return MAX_COUNT;
     return n;
   });
-
-  var CONTAINER_ID = getAttr('container', DEFAULT_CONTAINER_ID);
 
   /* ========== 内联样式 ========== */
   var CSS = [
@@ -153,8 +183,8 @@
       .replace(/^#{1,6}\s+/gm, '')
       .replace(/(\*{1,3}|_{1,3})(.*?)\1/g, '$2')
       .replace(/~~(.*?)~~/g, '$1')
-      .replace(/`([^`]*)`/g, '$1')
       .replace(/```[\s\S]*?```/g, '')
+      .replace(/`([^`]*)`/g, '$1')
       .replace(/^>\s?/gm, '')
       .replace(/^[-*_]{3,}\s*$/gm, '')
       .replace(/^[\s]*[-*+]\s+/gm, '')
@@ -200,13 +230,13 @@
 
       html += '<div class="easydrop-talk-item">';
       var postUrl = BASE_URL + '/posts/' + post.id;
-      html += '<div class="easydrop-talk-content"><a href="' + escapeHtml(postUrl) + '" target="_blank" rel="noopener">' + escapeHtml(content) + '</a></div>';
+      html += '<div class="easydrop-talk-content"><a href="' + escapeHtml(postUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(content) + '</a></div>';
       html += '<div class="easydrop-talk-date">' + escapeHtml(date) + '</div>';
       html += '</div>';
     }
 
     html += '<div class="easydrop-talk-powered">';
-    html += 'Powered by <a href="https://github.com/GoodBoyboy666/easydrop" target="_blank" rel="noopener">EasyDrop</a>';
+    html += 'Powered by <a href="https://github.com/GoodBoyboy666/easydrop" target="_blank" rel="noopener noreferrer">EasyDrop</a>';
     html += '</div>';
 
     container.innerHTML = html;
@@ -219,9 +249,18 @@
 
   /* ========== 启动 ========== */
   function boot() {
+    if (!BASE_URL) {
+      console.error('[EasyDrop Talk] 未提供有效的 data-easydrop-base');
+      return;
+    }
+
     var container = document.getElementById(CONTAINER_ID);
     if (!container) {
       console.warn('[EasyDrop Talk] 未找到容器元素 #' + CONTAINER_ID);
+      return;
+    }
+
+    if (container.classList.contains('easydrop-talk-widget')) {
       return;
     }
 
@@ -244,7 +283,10 @@
         return res.json();
       })
       .then(function (data) {
-        renderItems(container, data.items);
+        var pinnedItems = Array.isArray(data && data.pinned_items) ? data.pinned_items : [];
+        var items = Array.isArray(data && data.items) ? data.items : [];
+        var mergedItems = pinnedItems.concat(items).slice(0, COUNT);
+        renderItems(container, mergedItems);
       })
       .catch(function (err) {
         console.error('[EasyDrop Talk] 请求失败:', err);
