@@ -21,6 +21,8 @@
  *   container: 'easydrop-talk'
  * };
  * </script>
+ * <div id="easydrop-talk"></div>
+ * <script src="/your-path/talk.js"></script>
  *
  * 注意：PJAX / Turbolinks 等动态加载站点，data-* 属性可能失效，
  * 请务必使用 window.EasyDropTalk 全局变量方式配置。
