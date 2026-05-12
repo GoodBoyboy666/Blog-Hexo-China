@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-05-05T04:23:58.000Z</updated>
+  <updated>2026-05-12T02:58:59.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯元宝客户端实习一面面经</title>
+    <link href="https://blog.goodboyboy.top/posts/2566688502.html"/>
+    <id>https://blog.goodboyboy.top/posts/2566688502.html</id>
+    <published>2026-05-12T02:58:59.000Z</published>
+    <updated>2026-05-12T02:58:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>相较于搜狗输入法那场面试的面试官，这次的面试官明显就对我感兴趣很多了，和面试官互动得很深入。</p><p>依旧是深度定制DIY面试，无八股盛宴</p><h2 id="正文">正文</h2><h3 id="手撕环节">手撕环节</h3><p>无自我介绍，上来直接开始手撕代码</p><p>题目是二维矩阵最优寻找target数（<a href="https://leetcode.cn/problems/search-a-2d-matrix-ii">240. 搜索二维矩阵 II</a>）</p><p>虽然leetcode做过，但是测试程序依旧是不支持Kotlin，面试官说可以用Java，然鹅我Java都忘得差不多了😂</p><p>没办法，最后面试官让我用JavaScript写，不得不说，JavaScript和Kotlin在基础语法上真的就大差不差，直接救我老命😂</p><p>虽然基础语法上大差不差，但是细节上坑死我了，把console.print写成print，把数组长度的length写成size和size()，在那里测试半天，最后还是面试官提醒我该怎么写🥹</p><p>最后代码出来了，但是边界条件没做好，又卡半天，面试官又善良的提醒了我一下while的边界条件，才把题目A掉。（面试官太善良了🥹）</p><p>本来面试官打算出第二道题的，看时间有点不够了，便结束了手撕环节</p><h3 id="项目盘点环节">项目盘点环节</h3><p>先是让我介绍一下简历里的两个项目，挑重点讲。于是我便快速的过了一遍项目重点和难点。</p><p>然后问了下简历中写的项目优化是怎么优化的</p><p>接着问了下项目用户受众情况</p><p>询问了下项目缓存的实现逻辑以及缓存过期逻辑</p><p>询问了下如何处理宽屏分辨率问题（答得不是很好，因为这块代码是AI写的（doge））</p><h3 id="Kotlin相关知识">Kotlin相关知识</h3><p>Kotlin中的suspend是怎么挂起的，它是线程安全的吗？</p><p>这个前半段有点问道我盲点了，后面问了下Gemini，Gemini是这样说的：</p><details class="toggle" style="border: 1px solid bg"><summary class="toggle-button" style="background-color: bg;color: color">Gemini回答</summary><div class="toggle-content"><p>简单来说：<strong><code>suspend</code> 的挂起是通过“状态机（State Machine）”和“续体传递风格（CPS 变换）”实现的；而 <code>suspend</code> 关键字本身绝对不是线程安全的。</strong></p><p>一、 <code>suspend</code> 是怎么挂起的？（底层原理）</p><p><code>suspend</code> 实际上是一个<strong>编译器魔法</strong>。当你在 Kotlin 中写下一个 <code>suspend</code> 函数时，编译器会在后台对代码进行大幅度的重写。它并不会真正去“阻塞”或“休眠”底层的操作系统线程，而是将函数切分成了多个片段。</p><p>具体来说，编译器做了以下三件事：</p><ol><li>CPS 变换 (Continuation-Passing Style)</li></ol><p>编译器会在你的 <code>suspend</code> 函数签名中，默默追加一个隐藏的参数：<code>Continuation</code>（续体）。<br><code>Continuation</code> 可以理解为“后续的代码”或“一个书签”，它保存了函数恢复执行时需要的所有上下文。</p><ul><li><strong>你的代码：</strong></li></ul><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">getUserInfo</span><span class="params">(id: <span class="type">String</span>)</span></span>: User</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li><strong>编译器眼里的代码（伪代码）：</strong></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object <span class="title function_">getUserInfo</span><span class="params">(String id, Continuation&lt;User&gt; cont)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><em>(注：返回值变成了 <code>Object</code>，因为它可能返回真实结果，也可能返回一个特殊的挂起标志。)</em></p><ol start="2"><li>生成状态机 (State Machine)</li></ol><p>编译器会把你函数内部的代码，以其他的 <code>suspend</code> 函数调用为“分界点”，切分成多个状态（label）。</p><p>假设你有这样一段代码：</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">fetchData</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;Start&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> token = requestToken()      <span class="comment">// 挂起点 1</span></span><br><span class="line">    <span class="keyword">val</span> <span class="keyword">data</span> = requestData(token)   <span class="comment">// 挂起点 2</span></span><br><span class="line">    println(<span class="string">&quot;Result: <span class="variable">$data</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>编译器会把它变成类似下面这样的<strong>状态机（伪代码）</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Object <span class="title function_">fetchData</span><span class="params">(Continuation cont)</span> &#123;</span><br><span class="line">    <span class="comment">// 提取状态机和局部变量</span></span><br><span class="line">    <span class="type">StateMachine</span> <span class="variable">sm</span> <span class="operator">=</span> cont; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (sm.label) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            println(<span class="string">&quot;Start&quot;</span>);</span><br><span class="line">            sm.label = <span class="number">1</span>; <span class="comment">// 准备进入下一个状态</span></span><br><span class="line">            <span class="comment">// 调用挂起函数，如果它真挂起了，立刻 return 释放当前线程</span></span><br><span class="line">            <span class="keyword">if</span> (requestToken(sm) == COROUTINE_SUSPENDED) <span class="keyword">return</span> COROUTINE_SUSPENDED;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">// 恢复执行时，提取上一步的结果</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> (String) sm.result; </span><br><span class="line">            sm.label = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (requestData(token, sm) == COROUTINE_SUSPENDED) <span class="keyword">return</span> COROUTINE_SUSPENDED;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> (String) sm.result;</span><br><span class="line">            println(<span class="string">&quot;Result: &quot;</span> + data);</span><br><span class="line">            <span class="keyword">return</span> Unit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ol start="3"><li>挂起与恢复 (Suspend &amp; Resume)</li></ol><ul><li><strong>挂起（Suspend）：</strong> 当代码执行到 <code>requestToken()</code> 并真正需要等待（比如网络 IO）时，它会向上一层返回一个特殊的标志 <code>COROUTINE_SUSPENDED</code>。这个标志会一路 <code>return</code> 到最外层，<strong>从而把当前的 CPU 线程释放出来</strong>，让线程可以去干别的事情（比如更新 UI 或处理其他协程）。</li><li><strong>恢复（Resume）：</strong> 当网络请求完成时，底层系统（比如回调机制）会调用 <code>Continuation.resumeWith(result)</code>。这会重新触发 <code>fetchData</code> 函数，由于 <code>sm.label</code> 已经变成了 1，代码会直接 <code>switch</code> 到 <code>case 1</code> 继续执行，并带入了网络请求的结果。</li></ul><p><strong>生活中的比喻：</strong><br>就像你看书时遇到了一个不懂的词（<strong>挂起点</strong>），你夹入一个书签（<strong>保存 Continuation 状态</strong>），然后合上书去查字典。在这个期间，你的大脑（<strong>线程</strong>）可以去喝水、听歌（<strong>执行其他任务</strong>）。查到意思后，你翻开书签那一页（<strong>Resume 恢复</strong>），继续往下读。</p></div></details><p>后半段我有点没懂面试官意思，以为面试官是说协程本身是不是线程安全的。</p><p>这就让我有点懵，这就好比你问线程本身是不是线程安全的这种问题</p><p>后面我知道了面试官是问用协程去操作一个变量是不是线程安全的，那当然是非线程安全的啦，这和线程并发出现竞争是一个道理。不过感觉答得不是很好</p><p>然后就是问Kotlin中和UI实现状态的同步是怎么做的。</p><p>我的回答就是用Kotlin的StateFlow，Compose会collect ViewModel中的StateFlow，根据StateFlow传来的变化而变化之类的，感觉答的不是很好。</p><p>接着就是问是否有用过传统Android XML UI。答：有用过，不过后来转Kotlin+Compose了。</p><h3 id="AI相关知识">AI相关知识</h3><p>根据我的项目提问，询问在使用AI编程的时候如何节省Token。</p><p><a href="http://xn--AIAGENT-xm9kn51bc8qnzkga718kz34c6opk0em9som7c.md">我回答是让AI编程工具生成AGENT.md</a>，GEMINI.md等文件，提前读取项目整个架构，避免AI无意义的搜索整个项目，然后每次给出清晰的指令，避免给出模糊的指令，以及模块化编程，避免AI大范围搜索和改动。</p><p>然后面试官询问Skill和MCP哪个用的token较少。</p><p>这当然是Skill啦，Skill当初提出就是为了解决MCP占用上下文过多的问题</p><p>最后问我用过哪些Agent，Agent是什么。</p><p>我目前接触的Agent就Copilot、Codex里面这些自带的Plan、Build这些Agent，没自己做过Agent，所以后半段答得不是很好。</p><h3 id="反问环节">反问环节</h3><p>依旧是询问团队是用Java用的比较多还是Kotlin比较多</p><p>回答不出意外，已有代码用Java，新代码用Kotlin（咳特灵还是太好用了，有效治疗Java带来的偏头痛，以至于我完全不想用Java（逃））</p><h2 id="面试小插曲">面试小插曲</h2><p>因为实验室刚搬迁，网络设施还没弄好，于是只能用手机热点给电脑共享网络。结果面试到一半时突然网络卡顿，立马查了用腾讯会议自带的网络检查功能检查，发现网络有问题，看了下手机，结果是逆天中信（为什么逆天之后说）打来的电话，把我网络顶掉了（有电话时移动数据会被顶掉），想都没想直接挂掉😡</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;相较于搜狗输入法那场面试的面试官，这次的面试官明显就对我感兴趣很多了，和面试官互动得很深入。&lt;/p&gt;
+&lt;p&gt;依旧是深度定制DIY面试，无八股盛宴&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;h3 id=&quot;手撕环节&quot;&gt;手撕环节&lt;/</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="腾讯" scheme="https://blog.goodboyboy.top/tags/%E8%85%BE%E8%AE%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>对越来越多AI博文的看法</title>
@@ -1480,36 +1512,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
     
     <category term="emoji" scheme="https://blog.goodboyboy.top/tags/emoji/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian GRUB踩坑记——out of memory</title>
-    <link href="https://blog.goodboyboy.top/posts/2924052970.html"/>
-    <id>https://blog.goodboyboy.top/posts/2924052970.html</id>
-    <published>2025-06-18T16:08:12.000Z</published>
-    <updated>2025-06-18T16:08:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="起因">起因</h2><p>偶然在网上刷到一个很好看的grub引导界面，才发现原来grub也能设置主题，而且这种设置只是更改grub配置文件，不操作引导程序的二进制文件，因而不会影响Secure Boot</p><p>于是找了一个超好看的主题给grub安排上</p><p>结果就是：</p><p>Error: out of memory<br>Press any key to continue…</p><p>然后进不去系统了。。。</p><h2 id="折腾">折腾</h2><blockquote><p>解决方案可以直接去下一节</p></blockquote><p>首先出的问题是选择Debian引导后加载initramfs时提示内存耗尽</p><p>然后按下任意键提示：<code>Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</code></p><p>因为我启用了luks全盘加密，所以这种情况第一反应是引导找不到加密分区了</p><p>问了一下ChatGPT，给出的方案是GRUB配置错误或者initramfs损坏</p><p>但是在此之前我都能正常启动系统，而且我也只是对GRUB进行了更改，没有动initramfs,所以排除initramfs损坏</p><p>然后我给ChatGPT拍了一下GRUB中Debian引导的引导脚本，ChatGPT说是initramfs中没有包含LVM支持，但同样的，我根本没动initramfs,而且之前也能正常开机</p><p>给ChatGPT说了一下，并附上了引导脚本，然后给出了修改引导脚本的方法，这里就开始鬼畜起来了</p><p>让我给内核文件路径和initramfs文件路径加上<code>/boot</code>前缀，说如果/boot是独立分区，不加前缀是找不到内核和initramfs的（开始胡言乱语起来了）</p><p>按照它说的，加了前缀之后引导直接找不到内核文件了。。。</p><p>给ChatGPT反映了一下该情况，ChatGPT马上改口，说不要加<code>/boot</code>前缀。。。</p><p>自己又怀疑了一下是不是存储介质的问题，毕竟是U盘，插到电脑上当作系统盘温度超高（把我的USB Hub连带着一起烫），没测过温度，反正手放在上面超过半秒就烫得受不了</p><p>引导到windows下用dg扫了一下，除了几十个严重，其他大多数都是良好，这种结果的话那就没什么参考价值了</p><p>没办法，只能拿另一个U盘装个Live CD来抢救</p><p>然后就是不知道自己是那根筋没对，把Live CD刻在DVD上折磨自己😅</p><p>好不容易把iso刻录完成，启动系统启动了十多分钟。。。</p><p>启动完成后解锁分区，挂载分区，update了一下grub（以为是grub损坏了）</p><p>reboot，很好，问题依旧</p><p>不想再浪费时间启动DVD了，重新拿个U盘把Live CD刻了上去。。。</p><p>继续深问，然后说最稳妥的启动配置是不加前缀的那个，那不就和原来一样的了，变成最开始的问题😂</p><p>然后ChatGPT继续复盘，又说是initrd.img缺少luks和lvm模块。。。</p><p>我都说了快八百遍了没动initramfs</p><p>算了，选择怀疑一下自己，进Live CD挂载好原来的分区，执行<code>update-initramfs -u</code>重新生成一下</p><p>不出所料，还是一样的问题。。。</p><p>最后想着，看看把grub配置恢复成没安装主题的时候会怎么办（丝毫没怀疑是主题的问题）</p><p>注释掉主题配置行，执行<code>update-grub</code></p><p>诶👆🙄，引导成功，进入系统</p><p>虽然成功进入系统，但是还是没搞懂原因，于是把解决方案给ChatGPT说了一下，又开始了胡言乱语。。。</p><p>说是主题会替换grub.cfg模板，阻断加密检测的执行云云</p><p>但我实际对比了一下启用主题和没启用主题下生成的grub.cfg的区别，就单纯多了一个加载主题资源的代码而已</p><p>而且整个主题都是我手动cp装的，根本没执行主题自带的安装脚本</p><p>后面继续胡言乱语，说要加入<code>DRUB_ENABLE_CRYPTODISK=y</code>来解锁Boot分区，但是我tm根本没加密boot分区啊啊啊。。。</p><p>启用luks全盘加密下根本不能加密boot分区，不然谁给你解密分区。。。</p><p>然后我给它“善意”的提醒了一下，马上又改口不用加。。。</p><p>还是得靠自己，控制变量法下找了另一个评级最高的主题试了一下，发现居然可以成功引导</p><p>间接证明ChatGPT前面一大堆都是废话。。。</p><p>突然灵光一现想着会不会有什么内存限制？</p><p>出问题的那个主题有13MB大小，没问题的那个主题只有0.7MB大小，并且最开始也是<code>out of memory</code>，或许根本不是什么找不到加密分区，一开始方向就错了！！！</p><p>问了一下ChatGPT，发现确实是有内存限制，不过不同设备限制不同</p><p>以防万一，去AI Studio顺便问了问Gemini,也是肯定有相关限制，但是具体限制多少以及怎么解除限制说不出来</p><p>Gemini留的链接:</p><p><a href="https://www.ibm.com/support/pages/system-boot-ends-grub-out-memory-oom">https://www.ibm.com/support/pages/system-boot-ends-grub-out-memory-oom</a></p><p><a href="https://forum.endeavouros.com/t/grub-out-of-memory/30967/38">https://forum.endeavouros.com/t/grub-out-of-memory/30967/38</a></p><p><a href="https://www.kubuntuforums.net/forum/currently-supported-releases/kubuntu-22-04-jammy-jellyfish/post-installation-ax/666407-fatal-out-of-memory-error-on-boot-grub-efi-problem">https://www.kubuntuforums.net/forum/currently-supported-releases/kubuntu-22-04-jammy-jellyfish/post-installation-ax/666407-fatal-out-of-memory-error-on-boot-grub-efi-problem</a></p><p>梳理了一下，得到了最终的结果</p><h2 id="结果">结果</h2><p>由于使用了较大的主题，导致GRUB out of memory，然后由于out of memory，导致luks模块和lvm模块没加载进内存，因此无法解密加密分区，出现<code>Kernel Panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)</code></p><p>当主题换成较小的主题时未触发out of memory，正常加载模块，解密加密分区，进入系统。</p><p>回想起来，设置那个有问题的主题的时候，第一次分辨率配置格式没配置正确，导致引导界面分辨率超低，但也使得没有out of memory，成功引导进入系统，第二次正确配置成2560x1440的2k分辨率后就出现out of memory了（高分辨率特别占memory）。</p><p>具体memory大小我也不知道怎么查，可能是128MB？256MB？还是512MB？</p><p>不过这个memory会加载系统内核，initrd，还有各种模块，我看网上有些人的initrd文件大小高达100MB+，正常引导不设置主题都会出现out of memory😂</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
-&lt;p&gt;偶然在网上刷到一个很好看的grub引导界面，才发现原来grub也能设置主题，而且这种设置只是更改grub配置文件，不操作引导程序的二进制文件，因而不会影响Secure Boot&lt;/p&gt;
-&lt;p&gt;于是找了一个超好看的主题给grub安排上&lt;</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
-    
-    
-    <category term="Debian" scheme="https://blog.goodboyboy.top/tags/Debian/"/>
-    
-    <category term="GRUB" scheme="https://blog.goodboyboy.top/tags/GRUB/"/>
     
   </entry>
   
