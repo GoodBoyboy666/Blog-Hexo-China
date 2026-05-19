@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-05-12T02:58:59.000Z</updated>
+  <updated>2026-05-19T10:10:36.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯元宝客户端实习二面面经</title>
+    <link href="https://blog.goodboyboy.top/posts/3668760505.html"/>
+    <id>https://blog.goodboyboy.top/posts/3668760505.html</id>
+    <published>2026-05-19T10:10:36.000Z</published>
+    <updated>2026-05-19T10:10:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近身体不太舒服（体测，一生之敌），感觉今天面试发挥一般般</p><h2 id="正文">正文</h2><h3 id="算法相关">算法相关</h3><p>这次不是手撕了，而是根据场景选择合适的数据结构来完成场景任务。</p><p>场景任务为选择一个合适的数据结构维护一个top10的热搜词，还有千亿级的搜索词</p><p>因为之前从来没有接触过这类问题，前半段答得牛头不对马嘴😭</p><p>后面经过面试官持续描述，加上说到O（1）的时间复杂度，才想起哈希表qwq</p><p>然后关于top10热搜词，我想到了二叉树，然后就是堆，但是我之前堆接触的比较少，凭着记忆以为是最大堆，后面面试官说应该是最小堆（）</p><h3 id="项目相关">项目相关</h3><p>提问：MVC、MVP、MVVM、MVI是什么，有什么区别</p><p>这个问题我会，属于是八股内容了，然而接下来问题让我懵了</p><p>那MVVM有哪些缺点？如果一个简单的应用，不考虑activity生命周期以及屏幕旋转，是用MVVM好还是MVC好？</p><p>说实话我之前还真没觉得MVVM这种架构有什么缺点，它基本上解决了Android APP MVC架构下各种耦合、引用持有问题，而且平常也没有那种极致渲染要求场景，确实是没考虑到。</p><p>面试官的回答是MVC架构更简单，MVVM有一层封装，会有额外的性能开销。确实，对于这种人为限定场景来说，MVC确实比MVVM合适。</p><p>提问：协程和线程有什么区别</p><p>这个问题属于八股内容，八股答法+结合自己的理解</p><p>提问：协程是否能实现真正的并发，再加上额外限制例如单核CPU。</p><p>当时脑子不在状态，答得不是很好。这个具体看实现，而且并发和并行是两个概念，想要实现真正的并行那确实是需要多核CPU，但是并发只需要多个任务同时执行，通过切分CPU时间片达到并发任务执行。而协程是建立在线程之上的，如果按照并发设计是可以实现真正的并发的。</p><p>提问：协程和线程哪个是用户态，哪个是内核态</p><p>这个没什么异议，协程底层就是一个线程池，本质是一个状态机，没有系统调用等开销，运行在用户态。而线程需要通过系统调用和系统进行交互，开销大。</p><p>提问：activity生命周期，activity跳转的生命周期</p><p>依旧是八股问题，第一个答对了，第二个之前看过但是忘记了qwq，面试官叫我面试完自己试试😭</p><p>提问：Compose重组发生在什么时候，如何避免无效的重组（终于有compose的内容了qwq）</p><p>直接秒了</p><p>提问：http中1.x，2.x，3.x有什么区别。分别优化了什么</p><p>秒了</p><p>追问：http2.x相较于http1.x，内容传输上有什么不同</p><p>这个确实是忘了，主要是变成了二进制传输来连接复用</p><p>提问：询问项目缓存机制</p><p>秒了</p><p>提问：列表如何进行缓存设计</p><p>答得不是很好，一个是语言组织上，另一个是没回答完全，只说到了本地缓存，后面面试官说可以做二级缓存，使用内存进行缓存才恍然大悟。</p><p>提问：平常哪些场景使用了AI Coding</p><p>劈里啪啦说了一大堆，过</p><p>最后反问</p><h2 id="后记">后记</h2><p>这次发挥的不是很好，希望能过吧qwq</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近身体不太舒服（体测，一生之敌），感觉今天面试发挥一般般&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;h3 id=&quot;算法相关&quot;&gt;算法相关&lt;/h3&gt;
+&lt;p&gt;这次不是手撕了，而是根据场景选择合适的数据结构来完成场景任务。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="面试" scheme="https://blog.goodboyboy.top/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="腾讯" scheme="https://blog.goodboyboy.top/tags/%E8%85%BE%E8%AE%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>腾讯元宝客户端实习一面面经</title>
@@ -1482,36 +1515,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/tags/Jetpack-Compose/"/>
     
     <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[公告]现评论区已支持使用emoji表情符号😊</title>
-    <link href="https://blog.goodboyboy.top/posts/3957499697.html"/>
-    <id>https://blog.goodboyboy.top/posts/3957499697.html</id>
-    <published>2025-06-23T05:00:29.000Z</published>
-    <updated>2025-06-23T05:00:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="正文">正文</h2><blockquote><p>现博客评论区已支持使用emoji表情符号😊</p></blockquote><p>因历史原因，服务器数据库字符集采用utf8mb3编码，最大支持3字节字符，导致不支持4字节的emoji，以及大部分Unicode字符集。</p><p>为跟上时代发展（？），启动数据库更新计划。</p><p>目前已将数据库字符集由原来的utf8mb3调整为utf8mb4，排序规则由utf8mb3_general_ci调整为utf8mb4_unicode_ci。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;现博客评论区已支持使用emoji表情符号😊&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;因历史原因，服务器数据库字符集采用utf8mb3编码，最大支持3字节字符，导致不支持4字节的emoji，以及大部分Uni</summary>
-      
-    
-    
-    
-    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
-    
-    
-    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
-    
-    <category term="emoji" scheme="https://blog.goodboyboy.top/tags/emoji/"/>
     
   </entry>
   
