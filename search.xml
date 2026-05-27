@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>主域名服务不稳定通知</title>
+      <!--<link href="/posts/630772453.html"/>
+      <url>/posts/630772453.html</url>-->
+      <link href="posts/630772453.html"/>
+      <url>posts/630772453.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>由于阿里云公网权威解析服务免费版即将限速，为保障各项服务稳定，计划将托管于阿里云的主域名<code>goodboyboy.top</code>DNS解析进行迁移。</p><p>主域名<code>goodboyboy.top</code> DNS解析于 2026-5-26 晚开始迁移</p><p>原定迁移至华为云，但出现海外IP无法正常解析问题。因此计划重新迁移至CloudFlare。</p><p>目前主域名<code>goodboyboy.top</code>DNS解析已全部迁移至CloudFlare，由于NS记录缓存问题，NS记录同步全球最长需要48小时，因此在接下来的48小时内主域名下的各项服务质量可能会下降，包括<code>Gravatar 头像加速</code>、<code>Steam 卡片生成</code>等服务。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 公告 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>腾讯元宝客户端实习二面凉经</title>
       <!--<link href="/posts/3668760505.html"/>
       <url>/posts/3668760505.html</url>-->

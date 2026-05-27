@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-05-19T10:10:36.000Z</updated>
+  <updated>2026-05-27T14:41:44.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>主域名服务不稳定通知</title>
+    <link href="https://blog.goodboyboy.top/posts/630772453.html"/>
+    <id>https://blog.goodboyboy.top/posts/630772453.html</id>
+    <published>2026-05-27T14:41:44.000Z</published>
+    <updated>2026-05-27T14:41:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>由于阿里云公网权威解析服务免费版即将限速，为保障各项服务稳定，计划将托管于阿里云的主域名<code>goodboyboy.top</code>DNS解析进行迁移。</p><p>主域名<code>goodboyboy.top</code> DNS解析于 2026-5-26 晚开始迁移</p><p>原定迁移至华为云，但出现海外IP无法正常解析问题。因此计划重新迁移至CloudFlare。</p><p>目前主域名<code>goodboyboy.top</code>DNS解析已全部迁移至CloudFlare，由于NS记录缓存问题，NS记录同步全球最长需要48小时，因此在接下来的48小时内主域名下的各项服务质量可能会下降，包括<code>Gravatar 头像加速</code>、<code>Steam 卡片生成</code>等服务。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;由于阿里云公网权威解析服务免费版即将限速，为保障各项服务稳定，计划将托管于阿里云的主域名&lt;code&gt;goodboyboy.top&lt;/code&gt;DNS解析进行迁移。&lt;/p&gt;
+&lt;p&gt;主域名&lt;code&gt;goodboyboy.top&lt;/cod</summary>
+      
+    
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>腾讯元宝客户端实习二面凉经</title>
@@ -1482,39 +1508,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     
     
     <category term="Passkey" scheme="https://blog.goodboyboy.top/tags/Passkey/"/>
-    
-    <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多线程我太爱你了，你个“大可爱”</title>
-    <link href="https://blog.goodboyboy.top/posts/1349596188.html"/>
-    <id>https://blog.goodboyboy.top/posts/1349596188.html</id>
-    <published>2025-06-26T04:44:54.000Z</published>
-    <updated>2025-06-26T04:44:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>又是大早上被多线程折磨的一天</p></blockquote><p>先简单讲一下功能框架吧</p><pre><code class="highlight mermaid">flowchart TD    A(用户发起查询操作) --&gt; B&#123;查询cache&#125;    B -- 有 --&gt; C[返回cache内容给用户]    B -- 没有 --&gt; D[请求remote]    D --&gt; E[remote返回内容]    E --&gt; F[内容返回给用户]    E --&gt; G[remote内容写入cache]</code></pre><p>简单来说就是从两个数据源获取信息，先查cache，cache没有再查remote，remote得到数据后返回给用户并写入cache</p><p>然后就出问题了，具体问题表现为出现重复插入情况</p><p>经过排查，发现remote请求返回的数据正常，但是到写入Room数据库的时候出现插入数量正确，但是部分item重复插入，部分item丢失的情况</p><p>问了一下ChatGPT，在给出的几个可能性中锁定到多线程并发写入导致的竞态和异常。</p><p>不过虽然该保存数据的函数确实是suspend的异步函数，但是我在函数入口明明打了断点，断点只触发一次，不存在多线程的问题</p><p>把代码贴上来问了问ChatGPT，结果给我整绷不住了：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/ktlzkw.webp" alt="问题"></p><p>不是，也没人给我说呀，怎么kotlin的foreach和for还有这大坑等着我的。。。</p><p>然而把foreach改成for后还是一样的问题，继续追问</p><p>在众多的可能性中，锁定协程作用域问题</p><p>指出<code>确保你的suspend fun saveServiceList()不是在多个协程并发调用！否则即使方法内部串行，外部还是会并发插入，导致竞态。</code></p><p>但是之前说过，我打的断点明明只触发一次，怎么会出现外部多次调用呢？</p><p>没办法，按照ChatGPT说的老老实实打Log看输出，在dao的insert方法前后插Log，发现确实是出现竟态问题。</p><p>然后ChatGPT再次指出确保整个suspend方法不在多个协程并发调用，提出用Mutex锁包裹整个suspend方法</p><p>结果发现居然没问题了？？？</p><p>所以还真是被多个协程调用了？？？我怎么不知道？？？</p><p>虽然用锁临时解决了该问题，但这个操作本质是不应该被多个协程调用的，说明代码本身有问题</p><p>本着不想写屎山的心态，继续问</p><p>然后ChatGPT指出：</p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnnu2i.webp" alt="原因"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/06/26/lnzvr8.webp" alt="原因"></p><p>所以断点在并发协程中并不适用来判断调用次数</p><p>我：多线程你太可爱了</p><p>给suspend方法第一行插个Log，发现确实日志打印了两遍</p><p>然后就是顺藤摸瓜，给所有调用点全部插Log，最后发现在ViewModel中的起始loadService函数被调用了两次</p><p>定位到View中发现在UI里有两处调用，一看代码就发现问题了。</p><p>一个来自ViewModel中的loadServiceState在View中监听，当State由Idle变为Loading后触发loadService，加载数据</p><p>然后一个手动刷新按钮，首先清除数据，然后更改loadServiceState的State为Loading，最后手动调用loadService</p><p>因此当手动刷新时，就会出现loadServiceState改变而触发的loadService以及按钮自身调用的loadService。。。</p><p>代码一多自己都忘记原来写的逻辑了，又是被多线程折腾的一天</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;又是大早上被多线程折磨的一天&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;先简单讲一下功能框架吧&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;highlight mermaid&quot;&gt;flowchart TD
-    A(用户发起查询操作) --&amp;gt;</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-    <category term="Jetpack Compose" scheme="https://blog.goodboyboy.top/tags/Jetpack-Compose/"/>
     
     <category term="Android" scheme="https://blog.goodboyboy.top/tags/Android/"/>
     
