@@ -1,3 +1,4 @@
+https://blog.goodboyboy.top/posts/4010684677.html
 https://blog.goodboyboy.top/posts/930007696.html
 https://blog.goodboyboy.top/posts/4123452949.html
 https://blog.goodboyboy.top/free/index.html
@@ -663,6 +664,9 @@ https://blog.goodboyboy.top/tags/Btrfs/
 https://blog.goodboyboy.top/tags/LUKS2/
 https://blog.goodboyboy.top/tags/%E8%AE%B0%E5%BF%86/
 https://blog.goodboyboy.top/tags/%E5%B1%8B%E5%AD%90/
+https://blog.goodboyboy.top/tags/argon2id/
+https://blog.goodboyboy.top/tags/shamir/
+https://blog.goodboyboy.top/tags/PoW/
 https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/
 https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/
 https://blog.goodboyboy.top/categories/%E6%8E%A8%E5%B9%BF/
@@ -695,3 +699,4 @@ https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/%E7%A1%AC%E4%BB%B6/
 https://blog.goodboyboy.top/categories/%E5%B0%8F%E8%AF%B4/
 https://blog.goodboyboy.top/categories/%E5%B0%8F%E8%AF%B4/%E6%9A%AE%E8%89%B2%E9%81%97%E6%A2%A6/
 https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/%E9%9D%A2%E8%AF%95/
+https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/Python/
