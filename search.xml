@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>公益服务迁移通知</title>
+      <!--<link href="/posts/2030627247.html"/>
+      <url>/posts/2030627247.html</url>-->
+      <link href="posts/2030627247.html"/>
+      <url>posts/2030627247.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>由于资源组合调整，现将大部分公益服务已从<code>goodboyboy.top</code>迁移至<code>furwolf.com</code>下。</p><p>并关闭了部分使用较少或项目已被出售的服务。</p><p>对于接口类的公益服务已在原有域名上设定了301重定向，短期不会影响服务正常运行，但仍建议迁移至新域名。</p><p>具体变更请见公益服务页面：<a href="https://blog.goodboyboy.top/free/">https://blog.goodboyboy.top/free/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 公告 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一种基于argon2id算法与shamir算法的内存PoW（工作量证明）解密游戏</title>
       <!--<link href="/posts/4010684677.html"/>
       <url>/posts/4010684677.html</url>-->
