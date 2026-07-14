@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-07-09T10:25:56.000Z</updated>
+  <updated>2026-07-14T15:57:38.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新设计了一个Astro主题</title>
+    <link href="https://blog.goodboyboy.top/posts/1365608464.html"/>
+    <id>https://blog.goodboyboy.top/posts/1365608464.html</id>
+    <published>2026-07-14T15:57:38.000Z</published>
+    <updated>2026-07-14T15:57:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>最近闲的无聊，设计了一款叫Furnest的Astro的主题，中文名叫绒毛小窝，定位是一款Furry主题。</p><p>虽然说定位是Furry，但是整个主题除了首页大屏是一张Furry图以外好像其他地方并没有看见Furry元素（逃</p><p>主要还是因为手上没多少Furry素材，不过现在主题绝大部分功能已经设计完成了，后续会补齐一些Furry元素（确信</p><h2 id="展示">展示</h2><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/90413278-7231-45e8-8091-2505d204be74.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/48f74e2f-23bb-4166-9398-a7cca62d0e52.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/3e4b6368-eb25-4e76-844f-634bda6013f6.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/a4638da9-d4e1-42d0-94a9-b4bb15a0eeeb.webp" alt=""></p><h2 id="Demo">Demo</h2><p>如果有兴趣的话可以看看Demo哦，等完善的差不多后会进行开源供大家使用。</p><p>Demo：<a href="https://www.furwolf.com/">https://www.furwolf.com/</a></p><p>是的，官网即Demo（逃</p><h2 id="参与">参与</h2><ul><li>Penpot：<a href="https://penpot.app/">https://penpot.app/</a> 感谢由Penpot提供开源UI设计解决方案</li><li>DeepSeekk：<a href="https://www.deepseek.com/">https://www.deepseek.com/</a> 感谢由DeepSeek提供开源AI模型</li><li>ChatGPT：<a href="https://chatgpt.com/">https://chatgpt.com/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;最近闲的无聊，设计了一款叫Furnest的Astro的主题，中文名叫绒毛小窝，定位是一款Furry主题。&lt;/p&gt;
+&lt;p&gt;虽然说定位是Furry，但是整个主题除了首页大屏是一张Furry图以外好像其他地方并没有看见Furry元素（逃&lt;/</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="主题" scheme="https://blog.goodboyboy.top/tags/%E4%B8%BB%E9%A2%98/"/>
+    
+    <category term="Astro" scheme="https://blog.goodboyboy.top/tags/Astro/"/>
+    
+    <category term="Furnest" scheme="https://blog.goodboyboy.top/tags/Furnest/"/>
+    
+  </entry>
   
   <entry>
     <title>Cap，一个基于PoW的自托管验证码系统</title>
@@ -1490,40 +1520,6 @@ var meting_api=&#39;https://meting.furwolf.com/api?server=:server&amp;type=:type
     <category term="Authentik" scheme="https://blog.goodboyboy.top/tags/Authentik/"/>
     
     <category term="RAM" scheme="https://blog.goodboyboy.top/tags/RAM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GitHub release以及Git Commit常用模板</title>
-    <link href="https://blog.goodboyboy.top/posts/40686844.html"/>
-    <id>https://blog.goodboyboy.top/posts/40686844.html</id>
-    <published>2025-07-13T08:00:21.000Z</published>
-    <updated>2025-07-13T08:00:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近发现Lobe Chat的Commit和Release内容都很美观，找Gemini要了个模板过来。</p><h2 id="Git-Commit-模板">Git Commit 模板</h2><p>结构：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;emoji&gt; &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;BLANK LINE&gt;</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure><p>常用Emoji与类型：</p><table><thead><tr><th>Emoji</th><th>类型(<code>type</code>)</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td>✨</td><td>feat</td><td>新增功能 (A new feature)</td><td>✨ feat(api): 新增用户注册接口</td></tr><tr><td>🐛</td><td>fix</td><td>修复 Bug (A bug fix)</td><td>🐛 fix(payment): 修复微信支付回调失败的问题</td></tr><tr><td>📝</td><td>docs</td><td>仅修改文档 (Documentation only changes)</td><td>📝 docs(readme): 更新项目介绍和安装指南</td></tr><tr><td>💄</td><td>style</td><td>代码格式调整，不影响代码逻辑 (A code style update)</td><td>💄 style(lint): 调整 ESLint 规则并格式化所有 .js 文件</td></tr><tr><td>♻️</td><td>refactor</td><td>代码重构，既不是修复 bug 也不是新增功能</td><td>♻️ refactor(user): 重构用户认证模块，提升性能</td></tr><tr><td>⚡️</td><td>perf</td><td>提升性能的改动 (A code change that improves performance)</td><td>⚡️ perf(image): 优化图片加载速度，采用懒加载</td></tr><tr><td>✅</td><td>test</td><td>增加或修改测试 (Adding missing tests or correcting existing tests)</td><td>✅ test(utils):为日期格式化函数增加单元测试</td></tr><tr><td>🔨</td><td>build</td><td>影响构建系统或外部依赖的更改</td><td>🔨 build(deps): 升级 webpack 到 v5</td></tr><tr><td>⚙️</td><td>ci</td><td>更改 CI 配置文件和脚本</td><td>⚙️ ci(github): 优化 GitHub Actions 的构建流程</td></tr><tr><td>🧹</td><td>chore</td><td>其他不修改 src 或 test 文件的更改</td><td>🧹 chore(release): 准备 v1.2.0 版本发布</td></tr><tr><td>⏪️</td><td>revert</td><td>回滚一个之前的 commit</td><td>⏪️ revert(feat): 回滚上次的用户权限更新</td></tr><tr><td>🚀</td><td>deploy</td><td>部署相关</td><td>🚀 deploy(prod): 部署 v2.0.0 到生产环境</td></tr><tr><td>🚧</td><td>wip</td><td>工作进行中 (Work in progress)</td><td>🚧 wip(search): 搜索功能初步实现，请勿合并</td></tr><tr><td>🎉</td><td>release</td><td>发布新版本</td><td>🎉 release: v3.0.0</td></tr><tr><td>⬆️</td><td>upgrade</td><td>升级依赖 (Upgrade dependencies)</td><td>⬆️ upgrade(react): 升级 React 到 v18</td></tr><tr><td>⬇️</td><td>downgrade</td><td>降级依赖 (Downgrade dependencies)</td><td>⬇️ downgrade(lodash): 降级 lodash 解决兼容性问题</td></tr></tbody></table><h3 id="示例">示例</h3><p>一个简单的修复:</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">🐛 fix(header): 修复移动端视图下导航栏溢出的问题</span><br></pre></td></tr></table></figure><p>一个包含详细描述的新功能:</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">✨ feat(profile): 新增用户个人资料编辑页面</span><br><span class="line"></span><br><span class="line">- 用户现在可以上传头像、修改昵称和个人简介。</span><br><span class="line">- 增加了输入验证，确保数据的有效性。</span><br><span class="line"></span><br><span class="line">Closes #123</span><br></pre></td></tr></table></figure><h2 id="Release-模板">Release 模板</h2><p>结构:</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 🎉 Release v[版本号] - [发布日期]</span></span><br><span class="line"></span><br><span class="line">[这里可以写一段简短的发布介绍，比如 &quot;我们很高兴地宣布 XX 版本的发布！本次更新带来了期待已久的新功能并修复了若干重要问题。&quot;]</span><br><span class="line"></span><br><span class="line"><span class="section">## ✨ 新功能 (Features)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 新增用户注册功能，现在可以通过邮箱或手机号注册 (#101)</span><br><span class="line"><span class="bullet">-</span> 增加了全新的仪表盘页面，提供数据可视化图表 (#105)</span><br><span class="line"><span class="bullet">-</span> 支持通过 OAuth2 与 Google 账户集成登录 (#112)</span><br><span class="line"></span><br><span class="line"><span class="section">## 🐛 Bug 修复 (Bug Fixes)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 修复了在 Safari 浏览器中日期选择器无法弹出的问题 (#98)</span><br><span class="line"><span class="bullet">-</span> 解决了特定场景下可能导致内存泄漏的 Bug (#102)</span><br><span class="line"><span class="bullet">-</span> 修正了 API 文档中一个错误的参数示例 (#108)</span><br><span class="line"></span><br><span class="line"><span class="section">## ♻️ 重构与优化 (Refactoring &amp; Performance)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 重构了支付模块，提升了代码可维护性 (#95)</span><br><span class="line"><span class="bullet">-</span> 优化了首页的加载性能，首次渲染时间减少 30% (#100)</span><br><span class="line"><span class="bullet">-</span> 升级了数据库查询逻辑，响应速度更快 (#110)</span><br><span class="line"></span><br><span class="line"><span class="section">## 📝 文档 (Documentation)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 更新了 <span class="code">`README.md`</span> 文件，包含了最新的安装和使用指南 (#97)</span><br><span class="line"><span class="bullet">-</span> 增加了贡献指南 <span class="code">`CONTRIBUTING.md`</span> (#99)</span><br><span class="line"></span><br><span class="line"><span class="section">## 🔨 构建与依赖 (Build &amp; Dependencies)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 将项目依赖的 Node.js 版本升级至 v20 (#115)</span><br><span class="line"><span class="bullet">-</span> 引入了 <span class="code">`Vite`</span> 作为新的构建工具，大幅提升开发服务器启动速度 (#120)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">### ❤️ 贡献者 (Contributors)</span></span><br><span class="line"></span><br><span class="line">感谢以下所有为这个版本做出贡献的开发者！</span><br><span class="line"></span><br><span class="line">[<span class="string">@username1</span>](<span class="link">https://github.com/username1</span>)</span><br><span class="line">[<span class="string">@username2</span>](<span class="link">https://github.com/username2</span>)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近发现Lobe Chat的Commit和Release内容都很美观，找Gemini要了个模板过来。&lt;/p&gt;
-&lt;h2 id=&quot;Git-Commit-模板&quot;&gt;Git Commit 模板&lt;/h2&gt;
-&lt;p&gt;结构：&lt;/p&gt;
-&lt;figure c</summary>
-      
-    
-    
-    
-    <category term="笔记" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Git" scheme="https://blog.goodboyboy.top/categories/%E7%AC%94%E8%AE%B0/Git/"/>
-    
-    
-    <category term="GitHub" scheme="https://blog.goodboyboy.top/tags/GitHub/"/>
-    
-    <category term="Git" scheme="https://blog.goodboyboy.top/tags/Git/"/>
-    
-    <category term="Git Commit" scheme="https://blog.goodboyboy.top/tags/Git-Commit/"/>
     
   </entry>
   

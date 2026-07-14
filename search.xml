@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>新设计了一个Astro主题</title>
+      <!--<link href="/posts/1365608464.html"/>
+      <url>/posts/1365608464.html</url>-->
+      <link href="posts/1365608464.html"/>
+      <url>posts/1365608464.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>最近闲的无聊，设计了一款叫Furnest的Astro的主题，中文名叫绒毛小窝，定位是一款Furry主题。</p><p>虽然说定位是Furry，但是整个主题除了首页大屏是一张Furry图以外好像其他地方并没有看见Furry元素（逃</p><p>主要还是因为手上没多少Furry素材，不过现在主题绝大部分功能已经设计完成了，后续会补齐一些Furry元素（确信</p><h2 id="展示">展示</h2><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/90413278-7231-45e8-8091-2505d204be74.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/48f74e2f-23bb-4166-9398-a7cca62d0e52.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/3e4b6368-eb25-4e76-844f-634bda6013f6.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/07/14/a4638da9-d4e1-42d0-94a9-b4bb15a0eeeb.webp" alt=""></p><h2 id="Demo">Demo</h2><p>如果有兴趣的话可以看看Demo哦，等完善的差不多后会进行开源供大家使用。</p><p>Demo：<a href="https://www.furwolf.com/">https://www.furwolf.com/</a></p><p>是的，官网即Demo（逃</p><h2 id="参与">参与</h2><ul><li>Penpot：<a href="https://penpot.app/">https://penpot.app/</a> 感谢由Penpot提供开源UI设计解决方案</li><li>DeepSeekk：<a href="https://www.deepseek.com/">https://www.deepseek.com/</a> 感谢由DeepSeek提供开源AI模型</li><li>ChatGPT：<a href="https://chatgpt.com/">https://chatgpt.com/</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 主题 </tag>
+            
+            <tag> Astro </tag>
+            
+            <tag> Furnest </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cap，一个基于PoW的自托管验证码系统</title>
       <!--<link href="/posts/1964691587.html"/>
       <url>/posts/1964691587.html</url>-->
