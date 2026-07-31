@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-07-29T09:45:03.000Z</updated>
+  <updated>2026-07-31T09:37:49.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>打算做个博客评论系统</title>
+    <link href="https://blog.goodboyboy.top/posts/3370655395.html"/>
+    <id>https://blog.goodboyboy.top/posts/3370655395.html</id>
+    <published>2026-07-31T09:37:49.000Z</published>
+    <updated>2026-07-31T09:37:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近打算做一个博客评论系统，给自己博客评论系统升级一下。</p><p>Artalk都好久没更新了，想要一些功能但是又没有。</p><p>现在AI这么好用，打算和AI一起搓一个，等搓完后会开源出来😄</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近打算做一个博客评论系统，给自己博客评论系统升级一下。&lt;/p&gt;
+&lt;p&gt;Artalk都好久没更新了，想要一些功能但是又没有。&lt;/p&gt;
+&lt;p&gt;现在AI这么好用，打算和AI一起搓一个，等搓完后会开源出来😄&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="评论" scheme="https://blog.goodboyboy.top/tags/%E8%AF%84%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>开了一个游泳馆的月卡</title>
@@ -1491,33 +1520,6 @@
     <category term="大学" scheme="https://blog.goodboyboy.top/tags/%E5%A4%A7%E5%AD%A6/"/>
     
     <category term="招生" scheme="https://blog.goodboyboy.top/tags/%E6%8B%9B%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>家里蹲大学即将建校，欢迎各位莘莘学子来本校深造（doge</title>
-    <link href="https://blog.goodboyboy.top/posts/901378813.html"/>
-    <id>https://blog.goodboyboy.top/posts/901378813.html</id>
-    <published>2025-07-20T16:10:26.000Z</published>
-    <updated>2025-07-20T16:10:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>标题是开玩笑的（doge</p><p>最近注册了一个edu.kg后缀的域名，打算当一把校长（doge，看看能不能过那些教育邮箱验证</p><p>这类野鸡域名可能难过，不过可以试试，反正注册一个也没多少钱，实在不行就拿来自己玩了</p><p>目前正在等待全球NS记录同步，到时候整个官网和域名邮箱，欢迎有意愿的同学们来本校深造，我们会给每位学子分发自己的教育邮箱（doge</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;标题是开玩笑的（doge&lt;/p&gt;
-&lt;p&gt;最近注册了一个edu.kg后缀的域名，打算当一把校长（doge，看看能不能过那些教育邮箱验证&lt;/p&gt;
-&lt;p&gt;这类野鸡域名可能难过，不过可以试试，反正注册一个也没多少钱，实在不行就拿来自己玩了&lt;/p&gt;
-&lt;p&gt;目前正在等待全球NS记录同步</summary>
-      
-    
-    
-    
-    <category term="推广" scheme="https://blog.goodboyboy.top/categories/%E6%8E%A8%E5%B9%BF/"/>
-    
-    
-    <category term="建校" scheme="https://blog.goodboyboy.top/tags/%E5%BB%BA%E6%A0%A1/"/>
     
   </entry>
   
