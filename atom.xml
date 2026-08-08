@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-07-31T09:37:49.000Z</updated>
+  <updated>2026-08-08T12:34:43.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客评论系统的一些设计</title>
+    <link href="https://blog.goodboyboy.top/posts/2809720001.html"/>
+    <id>https://blog.goodboyboy.top/posts/2809720001.html</id>
+    <published>2026-08-08T12:34:43.000Z</published>
+    <updated>2026-08-08T12:34:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>开发接近尾声了，这里展示一下部分设计细节</p><h2 id="凭据种类与类型">凭据种类与类型</h2><p>总共设计有三种凭据，均为JWT凭据</p><h3 id="第一方登录凭据">第一方登录凭据</h3><p>该凭据为评论系统本站使用的登录凭据，用于操作评论系统</p><h3 id="登录模式评论凭据">登录模式评论凭据</h3><p>在登录模式下，第三方网站中的Widget使用</p><h3 id="匿名模式评论凭据">匿名模式评论凭据</h3><p>在匿名模式下，第三方网站中的Widget使用</p><h2 id="凭据存储">凭据存储</h2><p>三种凭据均存储于Cookie中，请求时由浏览器自动提交，并设置<code>__Host-</code>头，禁止子域写入</p><p>其中评论凭据采用CHIPS，以支持第三方Cookie嵌入。</p><h2 id="评论提交">评论提交</h2><p>系统总共有两种模式：匿名模式和登录模式</p><p>这个是匿名模式评论提交时序图</p><pre><code class="highlight mermaid">sequenceDiagram    autonumber    participant U as 用户    participant W as Widget    participant CA as 匿名凭据端点    participant CC as 评论端点    U-&gt;&gt;W: 填写昵称、邮箱、网址    W-&gt;&gt;CA: 请求匿名凭据    CA--&gt;&gt;W: 返回评论凭据    W-&gt;&gt;CC: 携带评论凭据提交评论</code></pre><p>这个是登录模式评论提交时序图</p><pre><code class="highlight mermaid">sequenceDiagram    autonumber    participant U as 用户    participant W as Widget    participant A as 授权页面    participant T as 凭据交换端点    participant C as 评论端点    U-&gt;&gt;W: 填写昵称、邮箱、网址    W-&gt;&gt;A: 附带邮箱参数跳转授权页面    A--&gt;&gt;W: 授权后返回授权码    W-&gt;&gt;T: 使用授权码请求评论凭据    T--&gt;&gt;W: 返回评论凭据    W-&gt;&gt;C: 携带评论凭据提交评论</code></pre><h2 id="登录方式">登录方式</h2><p>总共设计有四种登录方式</p><h3 id="邮箱验证码">邮箱验证码</h3><p>通过邮箱验证码进行无密码登录，未注册情况下自动完成注册。</p><p>一般来说推荐开启登录模式时采用该方式，兼顾安全与便利</p><h3 id="Passkey">Passkey</h3><p>通过通行密钥进行无用户名，无密码登录</p><p>但是需要用户提前去评论系统网站注册Passkey才可用，便利程度与邮箱验证码相比较低，但是安全性最高。</p><h3 id="密码">密码</h3><p>通过邮箱，密码进行登录，便利程度较低，安全性取决于密码复杂度</p><h3 id="第三方登录">第三方登录</h3><p>支持GitHub，Google，OIDC等第三方登录。</p><p>便利程度一般，安全性取决于第三方身份提供商。</p><p>另外如果邮箱已经被注册，则会禁止从未绑定的第三方登录进行登录。</p><p>需要进入评论系统手动绑定对应的第三方账户才可通过第三方登录进行登录。</p><h2 id="Captcha支持">Captcha支持</h2><p>支持市面上常见的CloudFlare Turnstile、Google ReCaptcha、hcaptcha、Cap</p><p>Geetest后续考虑支持</p><h2 id="后记">后记</h2><p>其实系统本身不复杂（迫真），有三到四天的时间全在调整架构，果然让AI从零开始写就喜欢乱搞架构</p><p>目前大部分架构已经确立完毕，现在正边打磨细节，边慢慢处理AI拉的屎。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;开发接近尾声了，这里展示一下部分设计细节&lt;/p&gt;
+&lt;h2 id=&quot;凭据种类与类型&quot;&gt;凭据种类与类型&lt;/h2&gt;
+&lt;p&gt;总共设计有三种凭据，均为JWT凭据&lt;/p&gt;
+&lt;h3 id=&quot;第一方登录凭据&quot;&gt;第一方登录凭据&lt;/h3&gt;
+&lt;p&gt;该凭据为</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="评论" scheme="https://blog.goodboyboy.top/tags/%E8%AF%84%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>打算做个博客评论系统</title>
@@ -1492,34 +1523,6 @@
     <category term="索引" scheme="https://blog.goodboyboy.top/tags/%E7%B4%A2%E5%BC%95/"/>
     
     <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>家里蹲大学开始招生！</title>
-    <link href="https://blog.goodboyboy.top/posts/108438560.html"/>
-    <id>https://blog.goodboyboy.top/posts/108438560.html</id>
-    <published>2025-07-21T03:39:11.000Z</published>
-    <updated>2025-07-21T03:39:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>继上文《<a href="/posts/901378813.html">家里蹲大学即将建校，欢迎各位莘莘学子来本校深造（doge</a>》，今日家里蹲大学正式建校（doge</p><p>我们将为每位同学免费分发本校的教育邮箱，教育邮箱申请方式如下：</p><p>向me#goodboyboy.top（#换成@）发送邮件进行申请，申请内容需要包含以下内容：</p><ul><li>用户名（仅允许包含A-Z，a-z，0-9）</li></ul><p>为防止被用于发送非法邮件，此邮箱使用CloudFlare邮件转发功能，只允许收信不允许发信，转发目的地为发送申请邮件的邮箱地址。</p><p>申请通过后将会向转发目的地邮箱发送一封验证邮件，请及时完整验证避免影响收信。</p><p>另外，禁止滥用教育邮箱，否则我们有权利收回教育邮箱</p><h2 id="题外话">题外话</h2><p>可以去薅薅管的不严的一些学生优惠，像GitHub Education这种特别严的就不要想了</p><p>另外因为使用邮件的是转发功能，所以收信可能会慢一些，国内的某些邮箱甚至可能收不到信，可以提前用自己的另一个邮箱测试一下。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
-&lt;p&gt;继上文《&lt;a href=&quot;/posts/901378813.html&quot;&gt;家里蹲大学即将建校，欢迎各位莘莘学子来本校深造（doge&lt;/a&gt;》，今日家里蹲大学正式建校（doge&lt;/p&gt;
-&lt;p&gt;我们将为每位同学免费分发本校的教育邮箱，教育邮</summary>
-      
-    
-    
-    
-    <category term="推广" scheme="https://blog.goodboyboy.top/categories/%E6%8E%A8%E5%B9%BF/"/>
-    
-    
-    <category term="大学" scheme="https://blog.goodboyboy.top/tags/%E5%A4%A7%E5%AD%A6/"/>
-    
-    <category term="招生" scheme="https://blog.goodboyboy.top/tags/%E6%8B%9B%E7%94%9F/"/>
     
   </entry>
   
