@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-08-08T12:34:43.000Z</updated>
+  <updated>2026-08-17T10:35:18.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在WSL中使用Canokey智能卡进行Git Commit签名</title>
+    <link href="https://blog.goodboyboy.top/posts/602251247.html"/>
+    <id>https://blog.goodboyboy.top/posts/602251247.html</id>
+    <published>2026-08-17T10:35:18.000Z</published>
+    <updated>2026-08-17T10:35:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近有在WSL开发的需求，不过发现在WSL里使用Canokey智能卡签名Git Commit有些问题，因此出这一篇教程</p><h2 id="正文">正文</h2><h3 id="确认WSL版本">确认WSL版本</h3><p>下面的步骤都需要时WSL2才能进行</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v</span><br></pre></td></tr></table></figure><p>应该类似为：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  NAME      STATE           VERSION</span><br><span class="line">* Ubuntu    Running         2</span><br></pre></td></tr></table></figure><p>如果是WSL1则需要切换到WSL2</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --<span class="built_in">set</span>-version Ubuntu <span class="number">2</span></span><br></pre></td></tr></table></figure><h3 id="安装usbipd-win">安装usbipd-win</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install --interactive --exact dorssel.usbipd-win</span><br></pre></td></tr></table></figure><p>插入Canokey后</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbipd list</span><br></pre></td></tr></table></figure><p>应该会看到类似输出：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BUSID  VID:PID    DEVICE                                STATE</span><br><span class="line">2-4    20a0:42d4  USB 输入设备, WebUSB, Microsoft Usbccid Smartcard Reader ...  Not shared</span><br></pre></td></tr></table></figure><p>这里需要记住<code>BUSID</code></p><p>启动管理员命令提示符</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbipd bind --busid <span class="number">2</span>-<span class="number">4</span></span><br></pre></td></tr></table></figure><p>然后输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbipd list</span><br></pre></td></tr></table></figure><p>这时设备应该从<code>Not shared</code>转变为<code>Shared</code></p><h3 id="附加设备">附加设备</h3><p>将设备附加到WSL</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbipd attach --wsl --busid <span class="number">2</span>-<span class="number">4</span></span><br></pre></td></tr></table></figure><p>此时再执行usbipd list，应该会看到<code>Shared</code>转变为了<code>Attached</code>，并且会有Windows提示音</p><p>然后进入WSL检查设备情况：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsusb</span><br></pre></td></tr></table></figure><p>应该会出现下面类似输出</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bus 001 Device 003: ID 20a0:42d4 Clay Logic CanoKey Canary</span><br></pre></td></tr></table></figure><h3 id="安装PC-SC组件">安装PC/SC组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install pcscd pcsc-tools libccid</span><br></pre></td></tr></table></figure><p>启动组件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now pcscd.socket</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart pcscd</span><br></pre></td></tr></table></figure><p>然后检查card情况</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcsc_scan</span><br></pre></td></tr></table></figure><p>如果出现智能卡信息则代表成功</p><p>如果出现Access denied，但是<code>sudo pcsc_scan</code>可以看到智能卡信息，则还需要一些配置：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/polkit-1/rules.d/49-pcscd.rules</span><br></pre></td></tr></table></figure><p>写入（注意改用户名）：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">polkit.addRule(function(action, subject) &#123;</span><br><span class="line">    if ((action.id == &quot;org.debian.pcsc-lite.access_pcsc&quot; ||</span><br><span class="line">         action.id == &quot;org.debian.pcsc-lite.access_card&quot;) &amp;&amp;</span><br><span class="line">        subject.user == &quot;goodboyboy&quot;) &#123;</span><br><span class="line">        return polkit.Result.YES;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>继续重启：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart polkit</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart pcscd.socket</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart pcscd</span><br></pre></td></tr></table></figure><p>然后<code>pcsc_scan</code>应该能够正常输出智能卡信息</p><h3 id="调整gpg配置">调整gpg配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.gnupg/scdaemon.conf</span><br></pre></td></tr></table></figure><p>查看是否有<code>disable-ccid</code>字样</p><p>如果没有这个文件的话：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/.gnupg</span><br><span class="line"><span class="built_in">chmod</span> 700 ~/.gnupg</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;disable-ccid&#x27;</span> &gt; ~/.gnupg/scdaemon.conf</span><br><span class="line"><span class="built_in">chmod</span> 600 ~/.gnupg/scdaemon.conf</span><br></pre></td></tr></table></figure><p>最后：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> all</span><br></pre></td></tr></table></figure><p>测试：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --card-status</span><br></pre></td></tr></table></figure><p>此时应该就能正常输出智能卡信息了</p><h3 id="导入公钥">导入公钥</h3><p>这个没什么好说的</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --import &lt;公钥文件路径&gt;</span><br></pre></td></tr></table></figure><h3 id="配置GPG-TTY">配置GPG TTY</h3><p>有大概率GPG会找不到TTY，导致pinentry出现问题</p><p>可以先测试</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GPG_TTY=$(<span class="built_in">tty</span>)</span><br><span class="line">gpg-connect-agent updatestartuptty /bye</span><br></pre></td></tr></table></figure><p>然后尝试签名：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -S -m <span class="string">&quot;test signed commit&quot;</span></span><br></pre></td></tr></table></figure><p>如果能正常显示Card PIN输入界面，即配置完成</p><p>将配置持久化：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure><p>将</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GPG_TTY=$(<span class="built_in">tty</span>)</span><br><span class="line">gpg-connect-agent updatestartuptty /bye &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure><p>放在文件末尾</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近有在WSL开发的需求，不过发现在WSL里使用Canokey智能卡签名Git Commit有些问题，因此出这一篇教程&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;h3 id=&quot;确认WSL版本&quot;&gt;确认WSL版本&lt;/h3&gt;
+&lt;p&gt;</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
+    
+    
+    <category term="Canokey" scheme="https://blog.goodboyboy.top/tags/Canokey/"/>
+    
+    <category term="Git" scheme="https://blog.goodboyboy.top/tags/Git/"/>
+    
+    <category term="WSL" scheme="https://blog.goodboyboy.top/tags/WSL/"/>
+    
+    <category term="智能卡" scheme="https://blog.goodboyboy.top/tags/%E6%99%BA%E8%83%BD%E5%8D%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>博客评论系统的一些设计</title>
@@ -1495,34 +1531,6 @@
     <category term="动物迷城" scheme="https://blog.goodboyboy.top/tags/%E5%8A%A8%E7%89%A9%E8%BF%B7%E5%9F%8E/"/>
     
     <category term="游戏" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E6%88%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bing索引终于恢复了</title>
-    <link href="https://blog.goodboyboy.top/posts/3129869980.html"/>
-    <id>https://blog.goodboyboy.top/posts/3129869980.html</id>
-    <published>2025-07-22T01:41:40.000Z</published>
-    <updated>2025-07-22T01:41:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>差不多半年前，不知道发生了什么，博客在Bing的索引直线下降，直到完全没有。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/flron3.webp" alt="索引情况"></p><p>URL检查是能索引的，但是就是死活不索引。。。</p><p>后面看到有人也有这个情况，是需要向客服提交工单解决，于是大概一个月前我也向客服提了工单，中间陆陆续续收到几封客服邮件，今天收到客服邮件说已经解决了该问题</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/fnjh75.webp" alt="邮件"></p><p>上线Webmaster Tools看了一下，确实印象数上升了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/foietp.webp" alt="印象数"></p><p>去bing搜了一下site:goodboyboy.top，也确实是能看见博客了</p><p><img src="https://pic.goodboyboy.top/imgs/2025/07/22/fqgolt.webp" alt="搜索页面"></p><h2 id="后记">后记</h2><p>长达半年的丢失索引终于解决了😂，后面只能等排名慢慢恢复了</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;差不多半年前，不知道发生了什么，博客在Bing的索引直线下降，直到完全没有。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/2025/07/22/flron3.webp&quot; alt=&quot;</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="索引" scheme="https://blog.goodboyboy.top/tags/%E7%B4%A2%E5%BC%95/"/>
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
     
   </entry>
   
