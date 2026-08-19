@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>评论系统即将更换</title>
+      <!--<link href="/posts/2703472613.html"/>
+      <url>/posts/2703472613.html</url>-->
+      <link href="posts/2703472613.html"/>
+      <url>posts/2703472613.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>Furtalk评论系统初版已完成开发，将在近日完成主题适配和数据迁移</p><p>目前Furtalk已全部开源，采用MIT开源协议。</p><p>项目地址：<a href="https://github.com/GoodBoyboy666/furtalk">https://github.com/GoodBoyboy666/furtalk</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 说说 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 评论系统 </tag>
+            
+            <tag> 说说 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在WSL中使用Canokey智能卡进行Git Commit签名</title>
       <!--<link href="/posts/602251247.html"/>
       <url>/posts/602251247.html</url>-->

@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-08-17T10:35:18.000Z</updated>
+  <updated>2026-08-19T03:46:49.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>评论系统即将更换</title>
+    <link href="https://blog.goodboyboy.top/posts/2703472613.html"/>
+    <id>https://blog.goodboyboy.top/posts/2703472613.html</id>
+    <published>2026-08-19T03:46:49.000Z</published>
+    <updated>2026-08-19T03:46:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>Furtalk评论系统初版已完成开发，将在近日完成主题适配和数据迁移</p><p>目前Furtalk已全部开源，采用MIT开源协议。</p><p>项目地址：<a href="https://github.com/GoodBoyboy666/furtalk">https://github.com/GoodBoyboy666/furtalk</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;Furtalk评论系统初版已完成开发，将在近日完成主题适配和数据迁移&lt;/p&gt;
+&lt;p&gt;目前Furtalk已全部开源，采用MIT开源协议。&lt;/p&gt;
+&lt;p&gt;项目地址：&lt;a href=&quot;https://github.com/GoodBoybo</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="评论系统" scheme="https://blog.goodboyboy.top/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>在WSL中使用Canokey智能卡进行Git Commit签名</title>
@@ -1501,36 +1530,6 @@
     
     
     <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《动物迷城》二周目通关！</title>
-    <link href="https://blog.goodboyboy.top/posts/2703079552.html"/>
-    <id>https://blog.goodboyboy.top/posts/2703079552.html</id>
-    <published>2025-07-29T09:57:51.000Z</published>
-    <updated>2025-07-29T09:57:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>《动物迷城》二周目通关！非常好玩而且有意义的一款国产CRPG游戏😄</p><blockquote><p><em><strong>“逆境或许能将人毁灭，但别让它轻易把你我打败”</strong></em></p></blockquote><p><img src="https://pic.goodboyboy.top/imgs/2025/07/29/%E9%80%9A%E5%85%B3.webp" alt="通关"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;《动物迷城》二周目通关！非常好玩而且有意义的一款国产CRPG游戏😄&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;“逆境或许能将人毁灭，但别让它轻易把你我打败”&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;h</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="动物迷城" scheme="https://blog.goodboyboy.top/tags/%E5%8A%A8%E7%89%A9%E8%BF%B7%E5%9F%8E/"/>
-    
-    <category term="游戏" scheme="https://blog.goodboyboy.top/tags/%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
