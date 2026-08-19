@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>博客评论数据已全部完成迁移</title>
+      <!--<link href="/posts/1318119464.html"/>
+      <url>/posts/1318119464.html</url>-->
+      <link href="posts/1318119464.html"/>
+      <url>posts/1318119464.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>所有评论数据目前已完成迁移，目前正部署Furtalk博客评论区组件。</p><p>为保证数据一致性，迁移期间评论功能不可用。</p><h2 id="小记">小记</h2><p>几年下来不知不觉博客已经累积了这么多的网友和评论，这次迁移才注意到有这么多网友给我留过言，在今后的日子里，希望和各位继续努力，无限进步！</p><p><img src="https://pic.goodboyboy.top/imgs/2026/08/19/f44e80fa-eeb2-494d-9444-3bb8fabe940f.webp" alt="评论一览"></p><p><img src="https://pic.goodboyboy.top/imgs/2026/08/19/869dcb73-e85d-4284-b819-4fea08523cd9.webp" alt="用户一览"></p><p><img src="https://pic.goodboyboy.top/imgs/2026/08/19/31d7f993-9eb2-4cb0-93dd-01a7fdc2c3a0.webp" alt="全部数据"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 公告 </tag>
+            
+            <tag> 迁移 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>评论系统即将更换</title>
       <!--<link href="/posts/2703472613.html"/>
       <url>/posts/2703472613.html</url>-->
