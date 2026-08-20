@@ -534,60 +534,62 @@ btf.addGlobalFn('pjaxSend', () => {
     btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
   }
 }</script><script>window.addEventListener('load', () => {
-  const keyName = 'artalk-newest-comments'
+  const siteId = "2"
+  const configuredServiceOrigin = "https://furtalk.goodboyboy.top/"
+  const widgetUrl = "https://jsd.foxsay.top/npm/furtalk-widget@0.1.2/dist/furtalk.min.js"
+  const serviceOrigin = (configuredServiceOrigin || new URL(widgetUrl, location.href).origin).replace(/\/$/, '')
+  const keyName = `furtalk-newest-comments-${serviceOrigin}-${siteId}`
   const { changeContent, generateHtml, run } = window.newestComments
 
-  const getAvatarValue = async () => {
-    const predefinedAvatarCdn = ''
-    const predefinedAvatarDefault = ''
+  const escapeHtml = value => String(value || '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[char])
 
-    const avatarDefaultFormat = e => e.startsWith('d=') ? e : `d=${e}`
+  const markdownToText = value => changeContent(String(value || '')
+    .replace(/```[\s\S]*?```/g, '[代码]')
+    .replace(/`[^`\n]*`/g, '[代码]')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '[图片]')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^\s*[#>]+\s?/gm, '')
+    .replace(/[~*_]/g, ''))
 
-    if (predefinedAvatarCdn && predefinedAvatarDefault) {
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
-    }
-
+  const getCommentUrl = comment => {
     try {
-      const res = await fetch('https://artalk.goodboyboy.top/api/v2/conf')
-      const result = await res.json()
-      const { mirror, params, default: defaults } = result.frontend_conf.gravatar
-      const avatarCdn = predefinedAvatarCdn || mirror
-      let avatarDefault = avatarDefaultFormat(predefinedAvatarDefault || params || defaults)
-      return { avatarCdn, avatarDefault}
-    } catch (e) {
-      console.error(e)
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
+      const url = new URL(comment.page_url || GLOBAL_CONFIG.root, location.origin)
+      if (!['http:', 'https:'].includes(url.protocol)) return '#post-comment'
+      url.hash = 'post-comment'
+      return escapeHtml(url.href)
+    } catch (error) {
+      return '#post-comment'
     }
   }
 
-  const searchParams = new URLSearchParams({
-    'site_name': 'GoodBoyboyBlog',
-    'limit': '12', // Fetch more comments to filter pending comments
-  })
-
-  const getComment = async (ele) => {
+  const getComment = async ele => {
     try {
-      const res = await fetch(`https://artalk.goodboyboy.top/api/v2/stats/latest_comments?${searchParams}`)
-      const result = await res.json()
-      const { avatarCdn, avatarDefault } = await getAvatarValue()
-      const artalk = result.data
-        .filter(e => !e.is_pending) // Filter pending comments
-        .slice(0, 6) // Limit the number of comments
-        .map(e => {
-          const avatar = avatarCdn && e.email_encrypted ? `${avatarCdn}${e.email_encrypted}?${avatarDefault}` : ''
-          return {
-            'avatar': avatar,
-            'content': changeContent(e.content_marked),
-            'nick': e.nick,
-            'url': e.page_url,
-            'date': e.date,
-          }
-        })
-      btf.saveToLocal.set(keyName, JSON.stringify(artalk), 10/(60*24))
-      generateHtml(artalk, ele)
-    } catch (e) {
-      console.log(e)
-      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+      const query = new URLSearchParams({ limit: '6' })
+      const response = await fetch(`${serviceOrigin}/api/v1/widget/sites/${encodeURIComponent(siteId)}/latest-comments?${query}`)
+      if (!response.ok) throw new Error(`Furtalk latest comments request failed: ${response.status}`)
+
+      const result = await response.json()
+      if (!Array.isArray(result.comments)) throw new Error('Invalid Furtalk latest comments response')
+
+      const comments = result.comments.map(comment => ({
+        'avatar': escapeHtml(comment.avatar_url),
+        'content': escapeHtml(markdownToText(comment.body)),
+        'nick': escapeHtml(comment.author_nickname),
+        'url': getCommentUrl(comment),
+        'date': comment.created_at
+      }))
+
+      btf.saveToLocal.set(keyName, JSON.stringify(comments), 10/(60*24))
+      generateHtml(comments, ele)
+    } catch (error) {
+      console.error(error)
+      ele.textContent = "无法获取评论，请确认相关配置是否正确"
     }
   }
 

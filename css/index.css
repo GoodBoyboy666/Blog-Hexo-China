@@ -4081,6 +4081,24 @@ figure.highlight pre .javascript .function {
 #post-comment.move .comment-wrap > div:last-child {
   display: block;
 }
+#post-comment #furtalk-wrap furtalk-comments {
+  --furtalk-font: Microsoft YaHei;
+  --furtalk-text: var(--font-color);
+  --furtalk-text-muted: var(--card-meta);
+  --furtalk-border: var(--hr-border);
+  --furtalk-bg: var(--card-bg);
+  --furtalk-bg-muted: var(--search-bg);
+  --furtalk-accent: var(--default-bg-color);
+  --furtalk-danger: #f47466;
+}
+#post-comment #furtalk-wrap .furtalk-load-error {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--hr-border);
+  color: #f47466;
+  text-align: center;
+  border-radius: 8px;
+}
 #footer {
   position: relative;
   background-color: #49b1f5;
