@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-08-19T14:41:04.000Z</updated>
+  <updated>2026-08-21T12:45:25.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新的博客评论系统正式启动</title>
+    <link href="https://blog.goodboyboy.top/posts/1780945784.html"/>
+    <id>https://blog.goodboyboy.top/posts/1780945784.html</id>
+    <published>2026-08-21T12:45:25.000Z</published>
+    <updated>2026-08-21T12:45:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><p>新的评论系统 <a href="https://github.com/GoodBoyboy666/furtalk">Furtalk</a> 已正式启用</p><p>试运行期间如果有无法评论、评论组件异常等情况可以给我私发邮件哦 -&gt; me#goodboyboy.top（将#换成@）</p><p>如果有好的建议也可以在本贴下留言😄</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;新的评论系统 &lt;a href=&quot;https://github.com/GoodBoyboy666/furtalk&quot;&gt;Furtalk&lt;/a&gt; 已正式启用&lt;/p&gt;
+&lt;p&gt;试运行期间如果有无法评论、评论组件异常等情况可以给我私发邮件哦 -&amp;</summary>
+      
+    
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/"/>
+    
+    
+    <category term="公告" scheme="https://blog.goodboyboy.top/tags/%E5%85%AC%E5%91%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>博客评论数据已全部完成迁移</title>
@@ -1506,35 +1532,6 @@
     <category term="EPS32" scheme="https://blog.goodboyboy.top/tags/EPS32/"/>
     
     <category term="Picokeys" scheme="https://blog.goodboyboy.top/tags/Picokeys/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian13安装Nvidia驱动</title>
-    <link href="https://blog.goodboyboy.top/posts/2388809258.html"/>
-    <id>https://blog.goodboyboy.top/posts/2388809258.html</id>
-    <published>2025-08-11T10:02:36.000Z</published>
-    <updated>2025-08-11T10:02:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="检查硬件">检查硬件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci -vnn | grep -i VGA</span><br></pre></td></tr></table></figure><p>检查输出内容中是否含有<code>Nvidia</code>字样的设备。</p><h2 id="修改源">修改源</h2><p>NVIDIA驱动属于闭源软件，需要启用<code>non-free</code>源</p><p>编辑source.list文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure><p>在每个源后面加上<code>contrib</code>和<code>non-free</code>，保存后退出。</p><p>然后更新软件包列表</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure><h2 id="安装驱动">安装驱动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install linux-headers-$(<span class="built_in">uname</span> -r) nvidia-driver firmware-misc-nonfree</span><br></pre></td></tr></table></figure><p>安装时会自动禁用nouveau</p><h2 id="导入签名公钥">导入签名公钥</h2><p>因为修改了内核模块，将无法通过secure boot启动，需要手动导入密钥至bios，如果主板未打开secure boot则可以跳过本节。</p><p>安装时已自动生成了密钥并对模块进行了签名，这里只需要导入签名公钥即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mokutil --import /var/lib/dkms/mok.pub</span><br></pre></td></tr></table></figure><p>一般是这个路径，安装日志中会显示文件位置</p><p>然后会要求你输入密码，该密码仅用于临时验证，不需要太复杂</p><h2 id="重启机器">重启机器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure><p>如果导入了签名公钥，那么在启动时会出现MOK management界面，选择<code>Enroll MOK</code>-&gt;<code>Continue</code>，然后输入刚刚使用mokutil导入公钥时输入的密码。</p><h2 id="检查驱动">检查驱动</h2><p>进入终端输入<code>nvidia-smi</code>，如果输出了显卡详细信息以及GPU进程，则代表驱动安装成功。</p><h2 id="食用方法">食用方法</h2><p>启动程序时设置环境变量<code>__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia</code>即可。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;检查硬件&quot;&gt;检查硬件&lt;/h2&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td clas</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
-    
-    
-    <category term="Nvidia" scheme="https://blog.goodboyboy.top/tags/Nvidia/"/>
-    
-    <category term="Debian13" scheme="https://blog.goodboyboy.top/tags/Debian13/"/>
     
   </entry>
   
