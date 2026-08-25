@@ -1,3 +1,4 @@
+https://blog.goodboyboy.top/posts/2637732758.html
 https://blog.goodboyboy.top/posts/208413281.html
 https://blog.goodboyboy.top/emotion/emoji-pack.json
 https://blog.goodboyboy.top/posts/1780945784.html
@@ -696,6 +697,8 @@ https://blog.goodboyboy.top/tags/%E6%91%98%E5%BD%95/
 https://blog.goodboyboy.top/tags/%E5%A4%A9%E9%80%89%E4%B8%89/
 https://blog.goodboyboy.top/tags/AX210/
 https://blog.goodboyboy.top/tags/fedora/
+https://blog.goodboyboy.top/tags/TPM/
+https://blog.goodboyboy.top/tags/FIDO2/
 https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/
 https://blog.goodboyboy.top/categories/%E5%85%AC%E5%91%8A/
 https://blog.goodboyboy.top/categories/%E5%BA%94%E7%94%A8/

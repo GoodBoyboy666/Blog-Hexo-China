@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.goodboyboy.top/posts/2637732758.html</loc>
+    
+    <lastmod>2026-08-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.goodboyboy.top/posts/208413281.html</loc>
     
     <lastmod>2026-08-25</lastmod>
@@ -5564,6 +5573,20 @@
   
   <url>
     <loc>https://blog.goodboyboy.top/tags/fedora/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/TPM/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.goodboyboy.top/tags/FIDO2/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

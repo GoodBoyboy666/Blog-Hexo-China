@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-08-25T01:15:45.000Z</updated>
+  <updated>2026-08-25T01:47:20.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fedora LUKS2设置TPM2+PIN与FIDO2解锁</title>
+    <link href="https://blog.goodboyboy.top/posts/2637732758.html"/>
+    <id>https://blog.goodboyboy.top/posts/2637732758.html</id>
+    <published>2026-08-25T01:47:20.000Z</published>
+    <updated>2026-08-25T01:47:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>新装了fedora，开机一直要输入luks密码解锁硬盘感觉有点麻烦，既然luks2支持tpm和fido2，这次就全给他整上</p><h2 id="FIDO2">FIDO2</h2><p>首先是FIDO2方式</p><p>需要FIDO2密钥支持<code>hmac-secret</code>扩展</p><p>我的话手里的Canokey Canary就支持</p><p>首先确定luks的分区</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk -f</span><br></pre></td></tr></table></figure><p>然后确认luks分区版本，确保是luks2</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> cryptsetup luksDump /dev/nvme0n1p3 | <span class="built_in">head</span></span><br></pre></td></tr></table></figure><p>确认分区后，插入FIDO2密钥，查看状态</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemd-cryptenroll --fido2-device=list</span><br></pre></td></tr></table></figure><p>正常来说会出现下面类似输出</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PATH          MANUFACTURER PRODUCT</span><br><span class="line">/dev/hidraw4 Yubico       YubiKey 5...</span><br></pre></td></tr></table></figure><p>然后开始注册</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemd-cryptenroll \</span><br><span class="line">    --fido2-device=auto \</span><br><span class="line">    /dev/nvme0n1p3</span><br></pre></td></tr></table></figure><p>接着会需要输入当前LUKS密码以及FIDO PIN，触摸两次硬件密钥完成注册</p><p>注册完后配置<code>/etc/crypttab</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/crypttab</span><br></pre></td></tr></table></figure><p>一般会输出</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luks-12345678-... UUID=12345678-... none discard</span><br></pre></td></tr></table></figure><p>在后面加入<code>fido2-device=auto</code></p><p>例如</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luks-12345678-... UUID=12345678-... none discard,fido2-device=auto</span><br></pre></td></tr></table></figure><p>最后通过dracut把FIDO2支持加入initramfs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/dracut.conf.d</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;add_dracutmodules+=&quot; fido2 &quot;&#x27;</span> | \</span><br><span class="line">    <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/dracut.conf.d/fido2.conf</span><br></pre></td></tr></table></figure><p>重建initramfs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dracut --regenerate-all --force</span><br></pre></td></tr></table></figure><p>验证一下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsinitrd -m /boot/initramfs-$(<span class="built_in">uname</span> -r).img | grep fido</span><br></pre></td></tr></table></figure><p>一切正常的话会看到<code>fido2</code>字样</p><p>保持密钥插入重启，启动时就会要求输入FIDO2 PIN</p><p>输入完触摸一下安全密钥即可完成解锁。</p><h2 id="TPM2-PIN">TPM2+PIN</h2><p>PC既然有TPM2，那也不能浪费了</p><p>先确认tpm设备</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemd-cryptenroll --tpm2-device=list</span><br></pre></td></tr></table></figure><p>正常会看到<code>/dev/tpmrm0</code></p><p>然后开始注册</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemd-cryptenroll \</span><br><span class="line">  --tpm2-device=auto \</span><br><span class="line">  --tpm2-with-pin=<span class="built_in">yes</span> \</span><br><span class="line">  --tpm2-pcrs=7 \</span><br><span class="line">  /dev/nvme0n1p3</span><br></pre></td></tr></table></figure><blockquote><p>具体PCR选什么怎么组合就看你自己的需求</p></blockquote><p>然后是下面流程</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">现有 LUKS 密码</span><br><span class="line">↓</span><br><span class="line">新的 TPM2 PIN</span><br><span class="line">↓</span><br><span class="line">再次确认 TPM2 PIN</span><br></pre></td></tr></table></figure><p>另外PIN不一定只能是数字，但是连续输错TPM PIN会导致TPM暂时锁定</p><p>接着同样是修改<code>/etc/crypttab</code></p><p>后面加上<code>tpm2-device=auto</code></p><p>例如</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luks-xxxxxxxx UUID=xxxxxxxx none discard,fido2-device=auto,tpm2-device=auto</span><br></pre></td></tr></table></figure><p>以及加入initramfs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;add_dracutmodules+=&quot; tpm2-tss &quot;&#x27;</span> | \</span><br><span class="line">  <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/dracut.conf.d/tpm2.conf</span><br></pre></td></tr></table></figure><p>最后</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dracut --regenerate-all --force</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;新装了fedora，开机一直要输入luks密码解锁硬盘感觉有点麻烦，既然luks2支持tpm和fido2，这次就全给他整上&lt;/p&gt;
+&lt;h2 id=&quot;FIDO2&quot;&gt;FIDO2&lt;/h2&gt;
+&lt;p&gt;首先是FIDO2方式&lt;/p&gt;
+&lt;p&gt;需要FI</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Software" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Software/"/>
+    
+    
+    <category term="LUKS2" scheme="https://blog.goodboyboy.top/tags/LUKS2/"/>
+    
+    <category term="TPM" scheme="https://blog.goodboyboy.top/tags/TPM/"/>
+    
+    <category term="FIDO2" scheme="https://blog.goodboyboy.top/tags/FIDO2/"/>
+    
+  </entry>
   
   <entry>
     <title>解决天选三AX210在fedora 44/Ubuntu 26.04上睡眠后恢复失败的问题</title>
@@ -1504,38 +1538,6 @@
     <category term="EPS32" scheme="https://blog.goodboyboy.top/tags/EPS32/"/>
     
     <category term="Arduino" scheme="https://blog.goodboyboy.top/tags/Arduino/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EPS32-S3刷入MicroPython</title>
-    <link href="https://blog.goodboyboy.top/posts/3337643602.html"/>
-    <id>https://blog.goodboyboy.top/posts/3337643602.html</id>
-    <published>2025-08-18T03:30:16.000Z</published>
-    <updated>2025-08-18T03:30:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="note info flat"><p>本教程适合乐鑫官方ESP32-S3模组，非官方模组可能不适用</p></div><h2 id="下载固件">下载固件</h2><blockquote><p>Tips:根据 <a href="https://github.com/micropython/micropython/commit/6201e77999b3614518abc4b21773e735d9b0b0ee">Commit 6201e77</a>，现在MicroPython已经支持自动计算flash大小</p></blockquote><p>进入MicroPython的ESP32 S3的固件下载页面<a href="https://micropython.org/download/ESP32_GENERIC_S3/">https://micropython.org/download/ESP32_GENERIC_S3/</a></p><p>在<code>Firmware (Support for Octal-SPIRAM)</code>下方找到最新的一个固件，点击<code>[.bin]</code>下载bin格式的固件。</p><h2 id="安装刷入工具">安装刷入工具</h2><p>这里使用乐鑫的官方刷入工具<code>esptool</code></p><blockquote><p>没有python环境请先安装python环境</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install esptool</span><br></pre></td></tr></table></figure><p>安装esptool时会自动配置好环境变量</p><h2 id="刷入固件">刷入固件</h2><p>将EPS32-S3接入计算机，建议使用USB to COM口，即插即用。</p><blockquote><p>一般来说esptool会自动识别COM口，不需要在命令中手动指定；Linux环境下可能需要将命令中的<code>esptool</code>替换为<code>esptool.py</code></p></blockquote><p>首先擦除flash：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool erase_flash</span><br></pre></td></tr></table></figure><p>然后刷入固件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool --baud 460800 write_flash 0 你的固件.bin</span><br></pre></td></tr></table></figure><p>如果中途刷入失败可以尝试降低或移除<code>--baud 460800</code>（一般不会）</p><h2 id="使用MicroPython">使用MicroPython</h2><p>刷完将板子重接接入计算机，使用各种交互式终端连接对应的COM口即可</p><p>可以使用下面代码查看内存和闪存情况：</p><p>查看内存：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> micropython</span><br><span class="line">micropython.mem_info()</span><br></pre></td></tr></table></figure><p>查看闪存：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> esp</span><br><span class="line">esp.flash_size()</span><br><span class="line"><span class="comment">#或者esp.flash_size()/1024/1024</span></span><br></pre></td></tr></table></figure><h2 id="自行编译固件（可选）">自行编译固件（可选）</h2><h3 id="本地编译">本地编译</h3><blockquote><p>需要良好的网络环境</p></blockquote><p>这里需要使用到IDF</p><p>目前，MicroPython支持IDF v5.2、v5.2.2、v5.3、v5.4、v5.4.1 和 v5.4.2</p><p>环境最好为Linux，Windows下则需要使用WSL</p><p>首先Clone拉取IDF</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b v5.4.2 --recursive https://github.com/espressif/esp-idf</span><br></pre></td></tr></table></figure><p>然后安装IDF：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> esp-idf</span><br><span class="line">./install.sh esp32</span><br><span class="line"><span class="built_in">source</span> export.sh <span class="comment">#用于设置环境变量，每个新会话都需要重新设置</span></span><br></pre></td></tr></table></figure><p>然后回到上一级目录，拉取MicroPython</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/micropython/micropython</span><br></pre></td></tr></table></figure><p>构建交叉编译器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> micropython</span><br><span class="line">make -C mpy-cross</span><br></pre></td></tr></table></figure><p>构建MicroPython</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ports/esp32</span><br><span class="line">make submodules</span><br><span class="line">make BOARD=ESP32_GENERIC_S3 BOARD_VARIANT=SPIRAM_OCT</span><br></pre></td></tr></table></figure><p>构建完成后可以在<code>build-ESP32_GENERIC_S3-SPIRAM_OCT</code>文件夹中找到<code>firmware.bin</code>，这就是最终的固件。</p><h3 id="GitHub-Action-编译">GitHub Action 编译</h3><p>可以使用GitHub Action来编译固件，避免网络环境问题。</p><p><a href="https://github.com/GoodBoyboy666/ESP32-S3-N16R8-Action">https://github.com/GoodBoyboy666/ESP32-S3-N16R8-Action</a></p><p>可以自行fork修改</p><h2 id="参考">参考</h2><p><a href="https://github.com/micropython/micropython/tree/master/ports/esp32">https://github.com/micropython/micropython/tree/master/ports/esp32</a></p><p><a href="https://github.com/micropython/micropython/tree/master/ports/esp32/boards/ESP32_GENERIC_S3">https://github.com/micropython/micropython/tree/master/ports/esp32/boards/ESP32_GENERIC_S3</a></p><p><a href="https://micropython.org/download/ESP32_GENERIC_S3/">https://micropython.org/download/ESP32_GENERIC_S3/</a></p><p><a href="http://micropython.com.cn/en/latet/esp32/quickref.html#installing-micropython">http://micropython.com.cn/en/latet/esp32/quickref.html#installing-micropython</a></p><p><a href="https://github.com/espressif/esp-idf/blob/master/README_CN.md">https://github.com/espressif/esp-idf/blob/master/README_CN.md</a></p><p><a href="https://www.bilibili.com/video/BV1s24y137cK?vd_source=d70f12a573c31ee545ff78eaf31116ea">https://www.bilibili.com/video/BV1s24y137cK?vd_source=d70f12a573c31ee545ff78eaf31116ea</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;note info flat&quot;&gt;&lt;p&gt;本教程适合乐鑫官方ESP32-S3模组，非官方模组可能不适用&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 id=&quot;下载固件&quot;&gt;下载固件&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Tips:根据 &lt;a href=&quot;https://gi</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Hardware" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Hardware/"/>
-    
-    
-    <category term="EPS32" scheme="https://blog.goodboyboy.top/tags/EPS32/"/>
-    
-    <category term="MicroPython" scheme="https://blog.goodboyboy.top/tags/MicroPython/"/>
     
   </entry>
   
