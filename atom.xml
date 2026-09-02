@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-08-25T01:47:20.000Z</updated>
+  <updated>2026-09-02T13:49:13.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>撒谎撒多了，别把自己都骗了</title>
+    <link href="https://blog.goodboyboy.top/posts/3421190270.html"/>
+    <id>https://blog.goodboyboy.top/posts/3421190270.html</id>
+    <published>2026-09-02T13:49:13.000Z</published>
+    <updated>2026-09-02T13:49:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>撒谎撒多了，别把自己都骗了</p><p>这段时间不是开学季么，全国各地应该又要上演一支笔，一台灯，一个神话的故事了</p><p>这个故事刚好也在我家上演了，不过主角是我妹</p><h2 id="正文">正文</h2><p>我妹整个暑假简直就是和手机过日子</p><p>早上起床玩手机，中午兴趣班回来玩手机，下午和她的小伙伴一起玩手机，晚上依旧是玩手机，就没怎么看到没玩手机的时候</p><p>倒暑假还剩几天的时候，我妈临时有事，让我辅导一下她做不来的英语题。</p><p>等我妈出去后，我看她过了一会就从书房出来，趴在我床上玩手机。</p><p>我说让她把做不来的作业拿出来我来讲，她跟我说做完了</p><p>我知道她不老实最喜欢顶嘴，于是我再问了一遍，还跟我语气很差地说做完了</p><p>当时本来想直接当着面打电话问我妈和她对质一下的，后面想还是算了，反正后面要是没做完也是她自己补</p><p>后面几天依旧是每天做一会作业（大概半个小时吧），除去兴趣班的两三个小时，其他时间就是纯玩手机</p><p>结果到报名前一天晚上暴雷了🤣🤣🤣</p><p>我妈让她拿出所有作业检查一遍，然而她支支吾吾不拿，我当时还在客厅呢，听到我妈的质问声我就知道有好戏看了，速速去书房看戏</p><p>拿出作业一算，还有17篇日记还是读书笔记什么的没写🤣🤣🤣</p><p>我妈问她为什么之前问的时候不说，她就开始撒猫尿，说怕我妈骂她（都什么时候了还想着狡辩，给我都整无语了）</p><p>她心也是真的大，像我们小时候，即使每天的作业任务偷偷的剩一点，最后要报名的时候也是悄悄的每天加一点作业量，保证最后能赶完不会暴雷</p><p>这家伙报名前几天依旧是每天爽玩，松弛感拉满，完全没有一点紧迫感，到报名前一天晚上了还剩这么多，是想着谁给她做呢🤣🤣🤣</p><p>最后当然就是熬夜赶作业，赶到十点半，第二天大早上起来继续赶，一直赶到快中午才去报名</p><h2 id="后记">后记</h2><p>骗我爸，骗我妈，骗我，到最后把自己都骗了</p><p>我只能说，撒谎撒多了，别把自己都骗了🤣</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;撒谎撒多了，别把自己都骗了&lt;/p&gt;
+&lt;p&gt;这段时间不是开学季么，全国各地应该又要上演一支笔，一台灯，一个神话的故事了&lt;/p&gt;
+&lt;p&gt;这个故事刚好也在我家上演了，不过主角是我妹&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;p&gt;我妹</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="谎言" scheme="https://blog.goodboyboy.top/tags/%E8%B0%8E%E8%A8%80/"/>
+    
+  </entry>
   
   <entry>
     <title>Fedora LUKS2设置TPM2+PIN与FIDO2解锁</title>
@@ -1507,37 +1538,6 @@
     <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
     
     <category term="ESP32" scheme="https://blog.goodboyboy.top/tags/ESP32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Arduino+VSCode开发ESP32-S3</title>
-    <link href="https://blog.goodboyboy.top/posts/1775233746.html"/>
-    <id>https://blog.goodboyboy.top/posts/1775233746.html</id>
-    <published>2025-08-20T14:11:49.000Z</published>
-    <updated>2025-08-20T14:11:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>Arduino IDE对于我来说太难用了，不过本质还是C++开发，理论上VSCode也可以。</p><h2 id="安装-Arduino-CLI">安装 Arduino CLI</h2><p>Arduino不仅提供了IDE，也提供有命令行工具</p><p>首先安装Arduino CLI，在 <a href="https://docs.arduino.cc/arduino-cli/installation/">https://docs.arduino.cc/arduino-cli/installation/</a> 中找到适合自己系统的Arduino CLI并进行安装。</p><p>安装完成后输入<code>arduino-cli help core</code>确保已经正常安装。</p><h2 id="配置-Arduino-CLI">配置 Arduino CLI</h2><p>首先需要初始化Arduino CLI</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config init</span><br></pre></td></tr></table></figure><p>配置“用户目录”，该目录会用于存放第三方库等等，推荐和config设置为一个路径</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config <span class="built_in">set</span> directories.user <span class="string">&quot;用户目录路径&quot;</span></span><br></pre></td></tr></table></figure><p>然后添加官方的加速源，否则可能下载会十分慢</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli config <span class="built_in">set</span> board_manager.additional_urls https://jihulab.com/esp-mirror/espressif/arduino-esp32/-/raw/gh-pages/package_esp32_index_cn.json</span><br></pre></td></tr></table></figure><p>接着更新板子列表</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino-cli core update-index</span><br></pre></td></tr></table></figure><p>这里我们可以先不下载。</p><h2 id="配置-VSCode与环境">配置 VSCode与环境</h2><p>安装<code>Arduino Maker Workshop</code>插件，然后打开一个文件夹用于工作目录。</p><p>插件安装完成后在侧边栏点击插件，点击<code>Maker Workshop Home</code>，即可打开配置栏。</p><p>首先进入<code>Boards Manager</code>，点击Not Installed标签，搜索<code>esp32</code>，然后点最右边的倒三角展开，版本选择<code>x.x.x-cn</code>，这个才是加速的版本</p><p>然后点击版本旁边的下载按钮开始下载。</p><p>安装完成后进入<code>Board Selection</code>，选择<code>ESP32S3 Dev Module</code>即可。</p><p>接着点击<code>Board Configuration</code>配置板子</p><p><code>Uplaod Speed</code>最好别选921600，太高板子可能承受不住，512000我的可以正常刷入，实际根据板子体质决定。</p><p><code>Flash Mode</code>根据实际情况来决定，部分板子可能支持OPI，可以通过下面命令查看（错误的配置会导致板子无法启动）：</p><blockquote><p>提示esptool找不到则是没安装esptool，如何安装esptool请自行Google</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool flash-id</span><br></pre></td></tr></table></figure><p>然后回输出<code>Flash Memory Information</code>，在<code>Flash type set in eFuse</code>一栏中查看，我的板子是<code>quad (4 data lines)</code></p><p>所以我选择<code>QIO 80MHz</code>，如果你的Flash支持8 data lines则可以选择OPI</p><p><code>Flash Size</code>是多少选多少，我的是N16R8，所以我选择的是<code>16MB</code></p><p><code>Partition Scheme</code>我选的是<code>16M Flash（2MB APP/12.5MB FATFS）</code>，自己根据实际情况选择</p><p><code>PSRAM</code>一般情况下，ESP32-S3-WROOM-1-N4R8/N8R8/N16R8是支持Octal SPI的，可以选择OPI PSRAM</p><p>该文中有详细表：<a href="https://blog.csdn.net/tianizimark/article/details/125264464">https://blog.csdn.net/tianizimark/article/details/125264464</a></p><p><code>Arduino Run On</code>和<code>Events Run On</code>是否要同一个核心看你自己，不同核心的话可能会出现多线程竟态问题（存疑），如果工程简单的话都跑在一个核心上没问题</p><p>剩下的全部默认即可</p><h2 id="编译烧录">编译烧录</h2><p>点击Compile和Upload就行。</p><h2 id="飘红问题">飘红问题</h2><p>有时候安装第三方库include后会飘红，这里只需要编译（Compile）一下，就会自动补齐配置</p><p>如果还是有问题，按住<code>Ctrl+Shift+P</code>打开VSCode的命令栏，找到<code>编辑配置（UI）</code>，指定一下g++位置，包含路径中添加库文件夹即可</p><p>例如我的是<code>C:\Users\GoodBoyboy\AppData\Local\Arduino15\libraries/**</code></p><h2 id="参考">参考</h2><p><a href="https://docs.arduino.cc/arduino-cli/getting-started/">https://docs.arduino.cc/arduino-cli/getting-started/</a></p><p><a href="https://blog.csdn.net/ZHOU_YONG915/article/details/130118049">https://blog.csdn.net/ZHOU_YONG915/article/details/130118049</a></p><p><a href="https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html">https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html</a></p><p><a href="https://blog.csdn.net/tianizimark/article/details/125264464">https://blog.csdn.net/tianizimark/article/details/125264464</a></p><p><a href="https://blog.csdn.net/tianizimark/article/details/124663902">https://blog.csdn.net/tianizimark/article/details/124663902</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;Arduino IDE对于我来说太难用了，不过本质还是C++开发，理论上VSCode也可以。&lt;/p&gt;
-&lt;h2 id=&quot;安装-Arduino-CLI&quot;&gt;安装 Arduino CLI&lt;/h2&gt;
-&lt;p&gt;Arduino不仅提供了IDE，也提供</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="Hardware" scheme="https://blog.goodboyboy.top/categories/%E6%95%99%E7%A8%8B/Hardware/"/>
-    
-    
-    <category term="EPS32" scheme="https://blog.goodboyboy.top/tags/EPS32/"/>
-    
-    <category term="Arduino" scheme="https://blog.goodboyboy.top/tags/Arduino/"/>
     
   </entry>
   
