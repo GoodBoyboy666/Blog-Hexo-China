@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-09-02T13:49:13.000Z</updated>
+  <updated>2026-09-04T05:24:44.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>时间过得蛮快的</title>
+    <link href="https://blog.goodboyboy.top/posts/41264820.html"/>
+    <id>https://blog.goodboyboy.top/posts/41264820.html</id>
+    <published>2026-09-04T05:24:44.000Z</published>
+    <updated>2026-09-04T05:24:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="正文">正文</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1903408779&auto=0&height=66"></iframe><p>明天要回学校了，今天收拾东西的时候，注意到了一直放在柜子里的那本日记本</p><p>这个笔记本记录了我初二到高三的日记</p><p>虽然叫日记本，但也只是哪天空闲时想起才记录下来</p><p>不过也算是承载了我的整个高中生活。</p><p>日记截至在8月14号那天，给旧的十二年以来的读书历程画上了句号，我也迎来了新的大学生活。</p><p>时间一晃而过，转眼便来到大四</p><p>虽然没有用日记本记录，但有我的博客以及各位读者，陪伴着我走过了这段旅程</p><p>交换友联，互访博客</p><p>每个博文下的评论，都是记忆里的点滴</p><p>最后，放几首歌给最后剩下一年的大学生活打打气</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=539755773&auto=0&height=66"></iframe><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27364034&auto=0&height=66"></iframe><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2692398017&auto=0&height=66"></iframe>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/p</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="时间" scheme="https://blog.goodboyboy.top/tags/%E6%97%B6%E9%97%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>撒谎撒多了，别把自己都骗了</title>
@@ -1500,34 +1527,6 @@
     <summary type="html">&lt;h2 id=&quot;小结&quot;&gt;小结&lt;/h2&gt;
 &lt;p&gt;在历经状态机设计，爆栈，中文字体缺失，URL编码问题，C++野指针，页面竞争，任务假死，二维码无法扫描等亿系列问题后，终于弄好了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/20</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-    <category term="ESP32" scheme="https://blog.goodboyboy.top/tags/ESP32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ESP32 S3外设小记</title>
-    <link href="https://blog.goodboyboy.top/posts/2709354330.html"/>
-    <id>https://blog.goodboyboy.top/posts/2709354330.html</id>
-    <published>2025-08-22T11:03:36.000Z</published>
-    <updated>2025-08-22T11:03:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9n8zx.webp" alt="点绿灯"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/w9v76y.webp" alt="点红灯"></p><h2 id="踩坑">踩坑</h2><p>因为是第一次玩，什么硬件知识都不懂，顶多了解了一点课上学的模电数电知识（还是非电气专业的课程，属于是基础中的基础），也不敢乱接（金属膜电阻都不会认，100欧的电阻找了半天），于是猛猛问ChatGPT</p><p>之前买了好几个有趣的外设，例如红外接收器，显示屏，有按键的数码管。</p><p>感觉有按键的数码管更好玩，16个按键可以设置16个状态，不用老是重新烧写（每次编译时间还不短。。。）</p><p>找客服要了一份资料，本来是打算只要一个管脚图的，客服发了一堆资料（手册，电路图等等），感觉事情的不简单</p><p>里面找到了一份TM1638B（驱动芯片）的Arduino工程文件，打开一看200多行代码（给刚点完灯的小白亿点点震惊）</p><p>尝试看了一下代码，嗯，完全看不懂。。。</p><p>不过无所谓，打算先烧上去再说，看看怎么玩</p><p>编译完成后，问了问ChatGPT该怎么组装</p><p>然而我发现这玩意的工作电压是5V，问了一下ChatGPT，才发现ESP32 S3是3.3V，两者不能直接连接</p><p>详细问了一下，才知道要电平转换，而且查了一下资料，这个芯片最低高电平电压是0.7*VDD，也就是至少要3.5V，3.3V完全不够，并且从TM1638B向ESP32传输数据时5V直接进GPIO口也会烧坏板子</p><p>没办法，那只能去淘宝物色一下电平转换的模块了</p><h2 id="尝试">尝试</h2><p>又看了一下红外接收器，发现也要5V，不过显示屏倒只要3.3V就能驱动，于是找ChatGPT又开始问东问西</p><p>然后就又了解到I2C是开漏输出，需要外部上拉电阻，4.4k欧或者10k欧，用于上拉信号，但是我没有4.4k欧的，只好用10k欧的</p><p>组装好电路后，找ChatGPT要了一份代码，就当我以为ok时，刷完固件显示屏直接花屏。。。</p><p>折腾过去又折腾过来，从I2C地址到线材通信等等，最后发现是我芯片提供错了，我用的这个OLED显示屏驱动芯片是SH1106，我给ChatGPT说成另一款屏幕的SSD1306了😅</p><p>ChatGPT一个流汗黄豆塞我脸上🤣</p><p>换了新的代码终于是能跑了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/22/wa9mmb.webp" alt="点亮屏幕"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近玩ESP32玩得起劲（太好玩了），光做软件上的编程还差点意思，昨天只实现了MQTT远程点灯，于是今天打算利用好这30多个GPIO口玩玩硬件上的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.to</summary>
       
     
     
