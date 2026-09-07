@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-09-04T05:24:44.000Z</updated>
+  <updated>2026-09-07T04:13:37.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>嘉立创牛逼，免费的总裁卡到了</title>
+    <link href="https://blog.goodboyboy.top/posts/1036581794.html"/>
+    <id>https://blog.goodboyboy.top/posts/1036581794.html</id>
+    <published>2026-09-07T04:13:37.000Z</published>
+    <updated>2026-09-07T04:13:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>在小黑盒看到有人打了个三角洲的总裁卡，所以自己也想打一张玩玩</p><h2 id="提交订单">提交订单</h2><p>虽然没直接发链接，但是我在嘉立创开源社区里找到了对应的pcb</p><p>直接用现成的工程文件即可</p><p>我自己则是背面DIY了一个二维码</p><p>下单之前领了一个2层板的沉金优惠券，直接就免费了，一共五张</p><p>因为自己DIY了一个二维码，所以没有选择给板子印上生产批号，因此额外花了10块钱，快递则是顺丰包邮</p><h2 id="成品">成品</h2><p><img src="https://pic.goodboyboy.top/imgs/2026/09/07/14fd8da2-7cdf-4d77-bbec-964c85fb31ea.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/09/07/d3250727-ead7-49d1-8c65-89cef9276bf7.webp" alt=""></p><p><img src="https://pic.goodboyboy.top/imgs/2026/09/07/46b9518a-5fe7-46bf-ae6a-ac11596f73d7.webp" alt=""></p><p>金色部分就是沉金，特别好看（doge</p><p>工程项目里板子是有线圈的，只需要焊接一个CUID芯片即可，只是不怎么会焊接</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;在小黑盒看到有人打了个三角洲的总裁卡，所以自己也想打一张玩玩&lt;/p&gt;
+&lt;h2 id=&quot;提交订单&quot;&gt;提交订单&lt;/h2&gt;
+&lt;p&gt;虽然没直接发链接，但是我在嘉立创开源社区里找到了对应的pcb&lt;/p&gt;
+&lt;p&gt;直接用现成的工程文件即可&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="嘉立创" scheme="https://blog.goodboyboy.top/tags/%E5%98%89%E7%AB%8B%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>时间过得蛮快的</title>
@@ -1509,34 +1540,6 @@
     <category term="回忆" scheme="https://blog.goodboyboy.top/tags/%E5%9B%9E%E5%BF%86/"/>
     
     <category term="十周年" scheme="https://blog.goodboyboy.top/tags/%E5%8D%81%E5%91%A8%E5%B9%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ESP32 S3开发小结</title>
-    <link href="https://blog.goodboyboy.top/posts/4228956106.html"/>
-    <id>https://blog.goodboyboy.top/posts/4228956106.html</id>
-    <published>2025-08-23T12:30:38.000Z</published>
-    <updated>2025-08-23T12:30:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="小结">小结</h2><p>在历经状态机设计，爆栈，中文字体缺失，URL编码问题，C++野指针，页面竞争，任务假死，二维码无法扫描等亿系列问题后，终于弄好了。</p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xn20au.webp" alt="授权二维码"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xnlaox.webp" alt="授权成功"></p><p><img src="https://pic.goodboyboy.top/imgs/2025/08/23/xn8zd0.webp" alt="授权成功"></p><h2 id="目标">目标</h2><p>采用OAuth2的设备码授权方式，设备请求用户代码并向用户展示，由用户在自己的设备上进行授权，授权完成后ESP32拿到令牌，然后对用户资源进行访问。</p><h2 id="已实现功能">已实现功能</h2><h3 id="系统">系统</h3><p>采用FreeRTOS任务模式，实现多任务并发，结合排他锁解决并发竟态问题。</p><h3 id="WIFI">WIFI</h3><p>支持断线重连，当出现断线时自动切换任务。</p><h3 id="UI">UI</h3><p>支持切换不同页面，为不同功能页提供显示功能。</p><h3 id="OAuth">OAuth</h3><p>支持自动轮询授权情况，并支持当授权链接失效时自动重新获取以及生成二维码。</p><h2 id="不足">不足</h2><p>感觉还不是最佳实践，系统健壮性不高，无法支撑复杂功能（未验证）</p><p>屏幕还是太小了，128*64的分辨率一个正常包含链接的二维码都塞不下去，目前只能用二维码展示用户授权所需的用户代码，无法展示完整授权链接，可能需要制作一个专用APP用于扫码来拼接授权链接并在用户端调起授权。</p><h2 id="下一步方向">下一步方向</h2><p>寻找最佳实践的设计，增加系统健壮性，目前状态机设计还有提升空间</p><p>支持复杂的交互操作，支持16键输入控制系统以及页面，实现菜单选择等</p><p>接入NFC控件，便于用户进行碰一碰授权操作</p><p>接入蓝牙通信，动态控制设备连接附近WIFI（可能需要制作配套APP）</p><p>接入MQTT，实现远程控制（已实现样例）</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;小结&quot;&gt;小结&lt;/h2&gt;
-&lt;p&gt;在历经状态机设计，爆栈，中文字体缺失，URL编码问题，C++野指针，页面竞争，任务假死，二维码无法扫描等亿系列问题后，终于弄好了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pic.goodboyboy.top/imgs/20</summary>
-      
-    
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
-    
-    
-    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
-    
-    <category term="ESP32" scheme="https://blog.goodboyboy.top/tags/ESP32/"/>
     
   </entry>
   
