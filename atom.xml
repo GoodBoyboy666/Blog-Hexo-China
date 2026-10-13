@@ -6,7 +6,7 @@
   <link href="https://blog.goodboyboy.top/atom.xml" rel="self"/>
   
   <link href="https://blog.goodboyboy.top/"/>
-  <updated>2026-10-11T12:47:00.000Z</updated>
+  <updated>2026-10-13T06:39:00.000Z</updated>
   <id>https://blog.goodboyboy.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>欢迎中行万事达哔哩哔哩2233联名借记卡加入卡包大家庭以及办卡要点</title>
+    <link href="https://blog.goodboyboy.top/posts/688722167.html"/>
+    <id>https://blog.goodboyboy.top/posts/688722167.html</id>
+    <published>2026-10-13T06:39:00.000Z</published>
+    <updated>2026-10-13T06:39:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="介绍">介绍</h2><p>中国银行官方网站有此卡的介绍：<a href="https://www.bankofchina.com/bcservice/bc2/202609/t20260922_25693703.html">https://www.bankofchina.com/bcservice/bc2/202609/t20260922_25693703.html</a></p><h2 id="亮点">亮点</h2><p>卡号以<code>223300</code>开头（万事达版），网申可以自选卡号后六位。</p><p>卡面不错。</p><p>新版万事达卡，境内、境外交易均使用人民币扣款，无需提前购汇，不占用购汇额度。</p><p>属于借记卡，免征信，无借记卡年费、账户管理费、境内ATM查询/取现手续费。</p><p>未成年可以办理，不过只能线下办理，并且可能需要监护人陪同。</p><p>境外交易返利1%，部分商户返利更高等等。</p><h2 id="办卡要点">办卡要点</h2><h3 id="申请">申请</h3><p>如果是线上办卡，可以通过申请页面查询办卡进度：<a href="https://open.boc.cn/bankcard/cardReserve/index.html#/?appId=8AFAF8C546EB63E9AE3202BC13DB46FC&amp;prodId=P260802MYZGWK2025060515073600001&amp;subProdId=JJKYY&amp;funcId=cardIntroduce&amp;chanId=bili_bzapp">https://open.boc.cn/bankcard/cardReserve/index.html#/?appId=8AFAF8C546EB63E9AE3202BC13DB46FC&amp;prodId=P260802MYZGWK2025060515073600001&amp;subProdId=JJKYY&amp;funcId=cardIntroduce&amp;chanId=bili_bzapp</a></p><p>当卡到网点时其实也会发送短信通知。</p><p>但是需要网点对卡进行入库操作，才会收到短信通知。</p><p>部分网点可能没有对卡进行入库操作，导致进度一直卡在制卡中，可以在电脑端用下方代码查询实际进度</p><p>在申请页面右键打开开发者模式，进入到申请状态页面，然后切换tab到控制台，输入代码回车，即可看到状态代码</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">javascript</span>: (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> x = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;progress-result-wrap&quot;</span>)[<span class="number">0</span>].<span class="property">__vue__</span></span><br><span class="line">      .<span class="property">$parent</span>.<span class="property">recordInfo</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">MAP</span> = &#123;</span><br><span class="line">      <span class="string">&quot;00&quot;</span>: <span class="string">&quot;待制卡&quot;</span>,</span><br><span class="line">      <span class="string">&quot;01&quot;</span>: <span class="string">&quot;制卡中&quot;</span>,</span><br><span class="line">      <span class="string">&quot;02&quot;</span>: <span class="string">&quot;流程异常&quot;</span>,</span><br><span class="line">      <span class="string">&quot;03&quot;</span>: <span class="string">&quot;寄送中&quot;</span>,</span><br><span class="line">      <span class="string">&quot;04&quot;</span>: <span class="string">&quot;待领卡&quot;</span>,</span><br><span class="line">      <span class="string">&quot;05&quot;</span>: <span class="string">&quot;流程异常&quot;</span>,</span><br><span class="line">      <span class="string">&quot;06&quot;</span>: <span class="string">&quot;已领卡&quot;</span>,</span><br><span class="line">      <span class="string">&quot;07&quot;</span>: <span class="string">&quot;流程异常&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> y = &#123;&#125;;</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(x).<span class="title function_">forEach</span>(<span class="function">(<span class="params">k</span>) =&gt;</span> &#123;</span><br><span class="line">      y[k] = x[k];</span><br><span class="line">      <span class="keyword">if</span> (k === <span class="string">&quot;mkcrdProgreSts&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> st = x[k];</span><br><span class="line">        <span class="keyword">let</span> key =</span><br><span class="line">          st === <span class="literal">undefined</span> || st === <span class="literal">null</span> ? <span class="string">&quot;&quot;</span> : <span class="title class_">String</span>(st).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">        y[<span class="string">&quot;mkcrdProgreStsDesc&quot;</span>] = <span class="variable constant_">MAP</span>[key] || <span class="string">&quot;未知代码&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="title function_">alert</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(y, <span class="literal">null</span>, <span class="number">2</span>));</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;读取失败: &quot;</span> + e.<span class="property">message</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>如果代码是<code>01</code>则说明仍然在制卡，需要耐心等待，如果代码是<code>03</code>则可以尝试打电话询问网点，最近是否收到相关联名卡，然后去线下办理领卡激活。</p><h3 id="领卡">领卡</h3><p>首先去大厅取号，该卡无法在自助机上进行激活操作，需要在柜台领卡激活。</p><p>向柜员提供自己的卡号，让柜员找到定制的卡片。</p><p>如果卡未入库要先让柜员通过<code>9071124</code>交易代码做入库操作。</p><p>如果已入库则通过<code>8103102</code>交易代码（个人开非预制卡）进行领卡操作。</p><p>一般来说，柜员会有个专门的流程单供操作参考，耐心等待柜员操作即可</p><h3 id="激活">激活</h3><p>全程等着柜员操作即可。</p><p>最后在签字板上签字前，一定要核对好开卡的卡号信息，确保与自己定制的卡号一致！！！</p><p>因为此卡比较特殊，虽然是叫非预制卡，但是只算半个非预制卡，仅仅是卡号非预制了，但是卡里是没有预先写入任何个人信息的。</p><p>因此他人也可以错误激活你的卡，你也可能错误激活他人的卡，到时候再销卡重新办卡就十分麻烦，因此签字前请务必核实卡号！！！</p><h3 id="激活2">激活2</h3><p>激活后，绑定手机银行，微信、支付宝等，使用其他卡通过卡号尝试转入100-200不等的资金，然后再尝试转出或充值进微信、支付宝，确保绑卡、转账功能正常，如有问题及时向柜员反映。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;中国银行官方网站有此卡的介绍：&lt;a href=&quot;https://www.bankofchina.com/bcservice/bc2/202609/t20260922_25693703.html&quot;&gt;https://www.bankofc</summary>
+      
+    
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/categories/%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+    <category term="说说" scheme="https://blog.goodboyboy.top/tags/%E8%AF%B4%E8%AF%B4/"/>
+    
+    <category term="中行" scheme="https://blog.goodboyboy.top/tags/%E4%B8%AD%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>暮色遗梦 | 第十二章 搬迁</title>
@@ -1524,30 +1551,6 @@
     <category term="平板" scheme="https://blog.goodboyboy.top/tags/%E5%B9%B3%E6%9D%BF/"/>
     
     <category term="国补" scheme="https://blog.goodboyboy.top/tags/%E5%9B%BD%E8%A1%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>十月小记</title>
-    <link href="https://blog.goodboyboy.top/posts/734778049.html"/>
-    <id>https://blog.goodboyboy.top/posts/734778049.html</id>
-    <published>2025-10-31T08:57:40.000Z</published>
-    <updated>2025-10-31T09:23:35.709Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>这个月差不多都是些零零散散的琐事，就用一篇小记来总结吧。</p><h2 id="国庆">国庆</h2><p>国庆大部分还是在学校玩，一个人去自助餐吃了一顿，然后就是最后一天去醴陵转了一圈。</p><p>不得不说，醴陵交通还是有些不方便，等部分线路公交车等半天，而且也没有共享电单车，走路脚都走痛了</p><h2 id="实验室搬迁">实验室搬迁</h2><p>由于今年学校研究生扩招，导致我们原来的实验室被划为研究生工位，一堆东西要搬走，不过我的东西倒不多</p><p>不过最难蚌的还是搬到新地方后，还没过几天，又被划为研究生工位了。。。</p><p>然后就是又搬迁……</p><h2 id="参会">参会</h2><p>然后就是参加了一个工业软件创新发展大会，不过因为下午临时有座谈会，和同学交接完工作后就打车回学校了</p><h2 id="参观工厂">参观工厂</h2><p>报名的时候以为是参观科技公司，结果发现是参观工业类的公司qwq，整个队伍里计算机专业的就两三个人，其他全是电气自动化，机械专业的，感觉报错活动了（</p><p>不过倒也蛮有趣的，上午参观了一下本地的一个生产车间（不得不说有个车间味道是真的大。。。</p><p>还有就是去参观了一个通航企业，看了一下他们公司的直升机</p><p>中午免费蹭了顿饭，好吃（逃</p><p>下午则是去参观了一家水泥厂公司，然后听了个就业讲座，感觉还不错，没白来😄</p><h2 id="团建">团建</h2><p>和部门里新来的干事们一起去大碗先生吃了顿饭，然后去KTV唱歌</p><p>他们在那里摇色子，我就在那唱歌😂</p><p>不得不说，团建人多就是好，饭钱平均下来每人30+，KTV平均下来每人才11块，还送了24瓶啤酒😂</p><hr><p>全文完，感谢阅读。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;这个月差不多都是些零零散散的琐事，就用一篇小记来总结吧。&lt;/p&gt;
-&lt;h2 id=&quot;国庆&quot;&gt;国庆&lt;/h2&gt;
-&lt;p&gt;国庆大部分还是在学校玩，一个人去自助餐吃了一顿，然后就是最后一天去醴陵转了一圈。&lt;/p&gt;
-&lt;p&gt;不得不说，醴陵交通还是有些</summary>
-      
-    
-    
-    
     
   </entry>
   
